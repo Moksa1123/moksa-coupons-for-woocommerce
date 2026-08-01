@@ -1,0 +1,49 @@
+{
+    "name": "moksaweb/moksafocou",
+    "description": "Moksa Coupons for WooCommerce — AI-powered coupon toolkit (natural-language create, BOGO, cart conditions, URL coupons) via the WordPress Abilities API + MCP.",
+    "type": "wordpress-plugin",
+    "license": "GPL-3.0-or-later",
+    "authors": [
+        {
+            "name": "MoksaWeb",
+            "homepage": "https://moksaweb.com"
+        }
+    ],
+    "require": {
+        "php": ">=8.2"
+    },
+    "require-dev": {
+        "wp-coding-standards/wpcs": "^3.0",
+        "phpcompatibility/phpcompatibility-wp": "^2.1",
+        "dealerdirect/phpcodesniffer-composer-installer": "^1.0",
+        "phpunit/phpunit": "^10.5",
+        "yoast/phpunit-polyfills": "^2.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Moksafocou\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Moksafocou\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "lint": "phpcs",
+        "lint:fix": "phpcbf",
+        "test": "phpunit",
+        "make-pot": "wp i18n make-pot . languages/moksafocou.pot --domain=moksafocou --exclude=vendor,tests,node_modules,scripts,assets"
+    },
+    "config": {
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        },
+        "platform": {
+            "php": "8.2"
+        },
+        "sort-packages": true
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}

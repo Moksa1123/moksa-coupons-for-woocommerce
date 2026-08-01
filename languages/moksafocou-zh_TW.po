@@ -1,0 +1,3163 @@
+# Traditional Chinese (Taiwan) translation for Moksa Coupons for WooCommerce.
+# Copyright (C) 2026 MoksaWeb
+# This file is distributed under the GPLv3 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: moksafocou\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/moksafocou\n"
+"Language: zh_TW\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Domain: moksafocou\n"
+
+msgid " (and lock it to this Email only)"
+msgstr "(並鎖定只限此 Email 使用)"
+
+msgid " Advanced capabilities (all via the moksafocou settings object in create-coupon / update-coupon, or dedicated shortcuts): tiered discounts (tiers, or use create-tiered-coupon), maximum discount (discount_cap), auto-apply (auto_apply), mutual exclusion / no stacking (exclude_coupons), schedule start and end, user role, cart minimum, products / categories, shipping region, payment method, weekday and time window, Buy X Get Y, free gift, shipping override, and 26 types of AND/OR \"advanced rules\" (moksafocou.advanced_rules). When unsure which rule types exist or what the merchant's payment / shipping codes are, first use list-rule-types / get-settings-schema / list-payment-gateways / list-shipping-zones / list-countries to find out; when unsure about templates, use list-templates instead of guessing. Confirm with tools before creating (such as whether a code is a duplicate), and reply briefly and clearly; if something cannot be found or fails, say so plainly and do not make things up. Always end with text, do not stop at a tool call."
+msgstr " 進階能力(都透過 create-coupon / update-coupon 的 moksafocou 設定物件,或專用捷徑):階梯折扣(tiers,或用 create-tiered-coupon)、折扣上限(discount_cap)、自動套用(auto_apply)、互斥不可疊加(exclude_coupons)、排程起訖、會員角色、購物車最低、商品 / 分類、收件地區、付款方式、星期時段、買 X 送 Y、免費贈品、運費覆寫,以及 26 種型別的 AND/OR「進階規則」(moksafocou.advanced_rules)。不確定有哪些規則型別或商家的付款 / 運送代碼時,先用 list-rule-types / get-settings-schema / list-payment-gateways / list-shipping-zones / list-countries 查清楚;不確定範本時用 list-templates,別硬猜。建立前先用工具確認(如代碼是否重複),簡短清楚回覆;查不到或失敗就明說,不要編造。每次都以文字作結,不要只停在工具呼叫。"
+
+msgid "\"%1$s\" (%2$s) has driven %3$d order(s) and %4$s in discounts, and is currently the most effective coupon. You can extend its expiry or copy it into a new campaign."
+msgstr "「%1$s」(%2$s)已帶來 %3$d 筆訂單、折抵 %4$s,是目前最有效的券。可延長到期或複製成新活動。"
+
+msgid "\"%1$s\" is enabled; we recommend also enabling \"%2$s\", otherwise some features will not take effect."
+msgstr "「%1$s」已啟用,建議一併啟用「%2$s」,否則部分功能不會生效。"
+
+msgid "$100 off $1000"
+msgstr "滿 1000 折 100"
+
+msgid "$150 off $600 for new customers"
+msgstr "新客滿 600 折 150"
+
+msgid "$400 off $3000"
+msgstr "滿 3000 折 400"
+
+msgid "%1$s coupon %2$s"
+msgstr "%1$s優惠券 %2$s"
+
+msgid "%1$sCoupon %2$s: %3$s %4$s"
+msgstr "%1$s優惠券 %2$s:%3$s %4$s"
+
+msgid "%2$s %1$d coupon(s)."
+msgstr "已%2$s %1$d 張優惠券。"
+
+msgid "%s off"
+msgstr "折抵 %s"
+
+msgid "%s off per item"
+msgstr "每件折 %s"
+
+msgid "%s%% off"
+msgstr "折 %s%%"
+
+msgid "(%1$d requested; %2$d were not created due to duplicate codes or save failures)"
+msgstr "(要求 %1$d 張,有 %2$d 張因代碼重複或儲存失敗未建立)"
+
+msgid "(No reply)"
+msgstr "(無回覆)"
+
+msgid "(Not set yet)"
+msgstr "(尚未設定)"
+
+msgid "(auto code)"
+msgstr "(自動代碼)"
+
+msgid "(one time only)"
+msgstr "(限一次)"
+
+msgid "(repeatable)"
+msgstr "(可重複)"
+
+msgid "+ Add condition"
+msgstr "+ 新增條件"
+
+msgid "+ Add group"
+msgstr "+ 新增群組"
+
+msgid "+ Add tier"
+msgstr "+ 新增階梯"
+
+msgid ", auto-apply"
+msgstr "、自動套用"
+
+msgid ", cannot be combined with other coupons"
+msgstr "、不可與其他券並用"
+
+msgid ", up to %s off"
+msgstr "、最多折 %s"
+
+msgid ", with advanced settings"
+msgstr "、含進階設定"
+
+msgid "0 = no limit. Applies only when \"repeatable\"."
+msgstr "0 = 不限。僅在「可重複」時有效。"
+
+msgid "10 = 10% off / 200 = 200 off"
+msgstr "10=折10% / 200=折200元"
+
+msgid "10% off 3 or more items"
+msgstr "滿 3 件 9 折"
+
+msgid "10% off coupon for logged-in members only (customer role)."
+msgstr "僅限已登入的會員(customer 角色)使用的 9 折券。"
+
+msgid "10% off coupon for the Double Tenth National Day holiday."
+msgstr "雙十國慶連假 9 折券。"
+
+msgid "10% off coupon for the Dragon Boat Festival season, rice-dumpling gift boxes and summer-cooling products."
+msgstr "端午節檔期 9 折券,粽子禮盒與消暑商品。"
+
+msgid "10% off coupon for the Father's Day season."
+msgstr "父親節檔期 9 折券。"
+
+msgid "10% off coupon for the Mid-Autumn Festival season."
+msgstr "中秋檔期 9 折券。"
+
+msgid "10% off coupon for the Mother's Day season."
+msgstr "母親節檔期 9 折券。"
+
+msgid "10% off coupon for the back-to-school season, stationery, electronics and daily essentials."
+msgstr "開學季 9 折券,文具 3C 與生活用品。"
+
+msgid "10% off daily from 14:00–17:00 to drive orders during off-peak hours."
+msgstr "每天 14:00–17:00 限定 9 折,帶動離峰時段下單。"
+
+msgid "10% off first purchase for new customers"
+msgstr "新客首購 9 折"
+
+msgid "10% off for Double Tenth National Day"
+msgstr "雙十國慶 9 折"
+
+msgid "10% off for Father's Day"
+msgstr "父親節 9 折"
+
+msgid "10% off for Mother's Day"
+msgstr "母親節 9 折"
+
+msgid "10% off for the Dragon Boat Festival"
+msgstr "端午節 9 折"
+
+msgid "10% off for the Mid-Autumn Festival"
+msgstr "中秋節 9 折"
+
+msgid "10% off for the anniversary sale"
+msgstr "週年慶 9 折"
+
+msgid "10% off for the back-to-school season"
+msgstr "開學季 9 折"
+
+msgid "10% off happy hour"
+msgstr "歡樂時光 9 折"
+
+msgid "10% off store-wide coupon for the anniversary sale."
+msgstr "週年慶全館 9 折券。"
+
+msgid "100 off directly for the Children's Day family season, focused on baby and parent-child products."
+msgstr "兒童節親子檔期直接折 100 元,主打母嬰與親子商品。"
+
+msgid "100 off for Children's Day"
+msgstr "兒童節折 100"
+
+msgid "12% off coupon exclusive to the birthday person's birthday month, limited to one use per person (after applying, send it to the birthday person)."
+msgstr "壽星生日月專屬 88 折券,每人限用一次(套用後寄給壽星)。"
+
+msgid "12% off coupon for New Year's Eve / New Year's Day."
+msgstr "跨年 / 元旦新年 88 折券。"
+
+msgid "12% off coupon for Qixi Valentine's Day, the couples' gifting season."
+msgstr "七夕情人節 88 折券,情侶送禮檔期。"
+
+msgid "12% off coupon for the 3.8 Queen's Day, focused on beauty, skincare and self-pampering."
+msgstr "38 女王節 88 折券,主攻美妝保養與寵愛自己。"
+
+msgid "12% off coupon for the Double 12 follow-up sale."
+msgstr "雙十二接力檔 88 折券。"
+
+msgid "12% off coupon for the Valentine's Day season."
+msgstr "情人節檔期 88 折券。"
+
+msgid "12% off for Double 12"
+msgstr "雙12 限時 88 折"
+
+msgid "12% off for New Year"
+msgstr "跨年新年 88 折"
+
+msgid "12% off for Qixi Valentine's Day"
+msgstr "七夕情人節 88 折"
+
+msgid "12% off for Valentine's Day"
+msgstr "情人節 88 折"
+
+msgid "12% off for Women's Day (3.8)"
+msgstr "38 婦女節 88 折"
+
+msgid "12% off orders over $2000"
+msgstr "滿 2000 享 88 折"
+
+msgid "12% off to reward returning customers who have completed at least 1 order."
+msgstr "回饋已完成至少 1 筆訂單的老顧客 88 折。"
+
+msgid "15% off Cyber Monday"
+msgstr "網購星期一 85 折"
+
+msgid "15% off all products site-wide, ideal for big promotions."
+msgstr "全站商品一律 85 折,適合大促銷。"
+
+msgid "15% off coupon for the Christmas season."
+msgstr "聖誕檔期 85 折券。"
+
+msgid "15% off coupon for the Halloween season."
+msgstr "萬聖節檔期 85 折券。"
+
+msgid "15% off for Christmas"
+msgstr "聖誕節 85 折"
+
+msgid "15% off for Halloween"
+msgstr "萬聖節 85 折"
+
+msgid "15% off online-exclusive for Cyber Monday."
+msgstr "網購星期一(Cyber Monday)線上專屬 85 折。"
+
+msgid "15% off site-wide"
+msgstr "全站 85 折"
+
+msgid "15% off store-wide (up to 500)"
+msgstr "全站 85 折(上限 500)"
+
+msgid "15% off store-wide, but with a maximum discount of 500 per order, protecting margins on high-value orders."
+msgstr "全站 85 折,但單筆折抵最多 500 元,保護高客單訂單的毛利。"
+
+msgid "20% off Black Friday"
+msgstr "黑色星期五 8 折"
+
+msgid "20% off coupon for the 618 Mid-Year shopping festival, the most important discount battle of the first half of the year."
+msgstr "618 年中購物節大檔 8 折券,上半年最重要的折扣戰。"
+
+msgid "20% off coupon for the Double 11 shopping festival."
+msgstr "雙十一購物節 8 折券。"
+
+msgid "20% off for Double 11"
+msgstr "雙11 狂歡 8 折"
+
+msgid "20% off for members only (customer role), and cannot be combined with other coupons."
+msgstr "會員(customer 角色)專屬 8 折,且不可與其他優惠券並用。"
+
+msgid "20% off for the 618 Mid-Year Sale"
+msgstr "618 年中慶 8 折"
+
+msgid "20% off to reward high-value customers whose cumulative spend reaches 10000."
+msgstr "回饋累積消費滿 10000 元的高價值顧客 8 折。"
+
+msgid "20% off weekends only"
+msgstr "週末限定 8 折"
+
+msgid "25% off limited time"
+msgstr "限時 75 折"
+
+msgid "26 AND/OR advanced rule types, operators, and value shapes."
+msgstr "26 種 AND/OR 進階規則型別、運算子與值形狀。"
+
+msgid "30% off the third item for every 3"
+msgstr "每三件第三件七折"
+
+msgid "5% off store-wide automatically added when the customer enters the cart, no code required (after applying, set the campaign start and end on the Schedule tab to avoid a permanent discount)."
+msgstr "顧客進購物車自動帶入的全站 95 折,免輸入代碼(套用後到排程分頁設定活動起訖,避免變成永久折扣)。"
+
+msgid "50 off coupon valid only for a specific payment method (after applying, choose the payment method to restrict on the \"Payment method\" tab, e.g. LINE Pay / JKOPAY)."
+msgstr "限定特定付款方式才可用的折 50 券(套用後到「付款方式」分頁選擇要限定的付款方式,如 LINE Pay / 街口)。"
+
+msgid "50 off for a specific payment method"
+msgstr "指定付款方式專屬折 50"
+
+msgid "618 Mid-Year Sale"
+msgstr "618 年中慶"
+
+msgid "85% off only when the cart contains products from a specified category, suitable for cross-selling / bundle promotions (after applying, choose the required category on the \"Product conditions\" tab)."
+msgstr "購物車含指定分類商品才享 85 折,適合交叉銷售 / 組合促銷(套用後到「商品條件」分頁選擇必含分類)。"
+
+msgid "A 20% off Black Friday big-sale coupon (set an expiry date when creating it to make it a limited-time coupon)."
+msgstr "黑色星期五大檔 8 折券(建立時設定到期日即成限時券)。"
+
+msgid "A 20% off coupon usable only on Saturdays and Sundays (based on the store time zone)."
+msgstr "僅在週六、週日可用的 8 折券(依商店時區判定)。"
+
+msgid "A single coupon tiered by cart amount: 10% off over 1000, 15% off over 2000, 20% off over 3000, automatically taking the highest tier."
+msgstr "同一張券依購物車金額分級:滿 1000 折 10%、滿 2000 折 15%、滿 3000 折 20%,自動取最高級距。"
+
+msgid "A total of %1$s coupon(s) used, %2$s order(s), with %3$s in cumulative discount."
+msgstr "共 %1$s 張券被使用、%2$s 筆訂單,累計折抵 %3$s。"
+
+msgid "AI Client is not available (requires WordPress 7.0)."
+msgstr "AI Client 不可用(需 WordPress 7.0)。"
+
+msgid "AI and external openness (MCP)"
+msgstr "AI 與對外開放(MCP)"
+
+msgid "AI and openness"
+msgstr "AI 與開放"
+
+msgid "AI could not complete after several attempts; please rephrase your request."
+msgstr "AI 多次嘗試後仍未完成,請換個問法。"
+
+msgid "AI coupon assistant"
+msgstr "AI 優惠券助手"
+
+msgid "AI is temporarily unavailable, please try again later."
+msgstr "AI 暫時無法回應,請稍後再試。"
+
+msgid "Action"
+msgstr "動作"
+
+msgid "Active"
+msgstr "啟用中"
+
+msgid "Add %s more item(s) to the cart"
+msgstr "購物車再加 %s 件"
+
+msgid "Add %s more kg to the cart"
+msgstr "購物車再加 %s kg"
+
+msgid "Add %s more to the cart"
+msgstr "購物車再加 %s"
+
+msgid "Add a \"Buy X Get Y\" discount type: buy a set quantity of specified products / categories to get the gift free / discounted. Can be created with natural language."
+msgstr "新增「買 X 送 Y」折扣型別:買指定商品 / 分類達數量,贈品享免費 / 折扣。可用自然語言建立。"
+
+msgid "Add a \"Coupon templates\" page offering ready-made coupon templates (new-customer first purchase / spend-threshold discount / free shipping / buy two get one…) to create draft coupons in one click."
+msgstr "新增「優惠券範本」頁,提供預設好的優惠券範本(新客首購 / 滿額折抵 / 免運 / 買二送一…)一鍵建立草稿券。"
+
+msgid "Add a \"Mix & Match\" discount type: for a specified group of products (or the whole store), pick any N items settled at a fixed group total or a group percentage discount (e.g. any 3 for $299), repeatable. Can be created with natural language."
+msgstr "新增「任選優惠」折扣型別:指定一組商品(或全站),任選 N 件以整組固定總價或整組百分比折扣結算(例:任選3件$299),可重複。可用自然語言建立。"
+
+msgid "Add a \"My coupons\" tab under WooCommerce \"My Account\" that lists the dedicated coupons issued to that customer (bound to their account or email), which can be copied or applied in one click."
+msgstr "在 WooCommerce「我的帳戶」加一個「我的優惠券」分頁,列出發放給該顧客(綁定其帳號或 Email)的專屬優惠券,可複製或一鍵套用。"
+
+msgid "Add a \"Send coupon\" ability: send a coupon to a customer's email using natural language, and optionally lock it to that email only."
+msgstr "新增「寄送優惠券」能力:用自然語言把券寄給顧客 Email,可鎖定只限該 Email 使用。"
+
+msgid "Add a consistently styled monochrome icon to each coupon settings tab"
+msgstr "為每個優惠券設定分頁加上統一風格的單色圖示"
+
+msgid "Add an \"Nth-item discount\" type: for the same group of products (or the whole store), every N items qualifies the Nth item for free / percentage / fixed-per-item discount (e.g. 40% off the second item), repeatable. Can be created with natural language."
+msgstr "新增「第 N 件折扣」折扣型別:同組商品(或全站)每滿 N 件,第 N 件享免費 / 百分比 / 每件固定折扣(例:第二件六折),可重複。可用自然語言建立。"
+
+msgid "Add conditions to the coupon edit page such as schedule, role restrictions, minimum cart total, products / categories, shipping region, payment method, and day / time slots, and check them automatically at checkout."
+msgstr "在優惠券編輯頁加入排程、角色限制、購物車最低金額、商品 / 分類、收件地區、付款方式、星期時段等條件,並於結帳時自動檢查。"
+
+msgid "Add coupon"
+msgstr "新增優惠券"
+
+msgid "Add enable / disable status column, bulk enable/disable, and one-click coupon copy to the coupon list"
+msgstr "在優惠券列表加上啟用 / 停用狀態欄、批次啟停、一鍵複製券"
+
+msgid "Add management tools to the coupon list such as an enable / disable status column, batch enable/disable, and one-click copy."
+msgstr "在優惠券列表加入啟用 / 停用狀態欄、批次啟停與一鍵複製等管理工具。"
+
+msgid "Add uniform single-color icons to each settings section of the coupon edit page (schedule / role / cart / shipping…), suitable for both the tabbed and centralized panel layouts."
+msgstr "為優惠券編輯頁的各設定區塊(排程 / 角色 / 購物車 / 運費…)加上統一風格的單色圖示,分頁與集中面板兩種呈現皆適用。"
+
+msgid "Add-more prompt message"
+msgstr "湊件提示訊息"
+
+msgid "Add-more prompt; you can use {mixmatch_qty} {coupon_code}"
+msgstr "湊件提示,可用 {mixmatch_qty} {coupon_code}"
+
+msgid "Add-more prompt; you can use {nth_n} {coupon_code}"
+msgstr "湊件提示,可用 {nth_n} {coupon_code}"
+
+msgid "Add-on / free gift"
+msgstr "加贈品 / 免費贈品"
+
+msgid "Adjust shipping when the coupon is applied: free shipping, a shipping discount, or a fixed amount off (this replaces the shipping cost of all original shipping methods)."
+msgstr "套用優惠券時調整運費:免運、運費打折,或折抵固定金額(會取代原本所有運送方式的運費)。"
+
+msgid "Admin interface and display"
+msgstr "後台介面與呈現"
+
+msgid "Advanced rule types"
+msgstr "進階規則型別"
+
+msgid "Advanced rules"
+msgstr "進階規則"
+
+msgid "Advanced rules (AND/OR)"
+msgstr "進階規則(AND/OR)"
+
+msgid "Advanced rules tree (groups AND/OR). The top level match=all/any combines \"groups\", and each group's match=all/any combines \"rules\". Each rule = { type, op, value }. Types and value shapes: numeric (op gte/lte/gt/lt/eq/neq, value is a numeric string) subtotal / quantity / cart_weight (kg) / order_count / total_spent / hours_since_registered / hours_since_last_order; pair (op numeric, value={a: product or category ID, b: threshold}) product_quantity / category_spent; ID list (op in/not_in, value=integer array) product_in_cart / category_in_cart / ordered_product / ordered_category / shipping_zone; code (op in/not_in, value=string array) shipping_country (uppercase country code) / payment_method / coupon_applied / stock_status (instock, outofstock, onbackorder) / weekday (0-6) / user_role; custom taxonomy (op in/not_in, value={tax: taxonomy, terms:[term ID]}) custom_taxonomy; custom meta (value={key, value}) custom_user_meta (op eq/neq) / custom_cart_item_meta (op in/not_in); time (op gte/lte) time_of_day (value HH:MM) / date (value Y-m-d H:i). Payment method is validated only at checkout."
+msgstr "進階規則樹(群組 AND/OR)。頂層 match=all/any 組「群組」,每群組 match=all/any 組「規則」。每條規則 = { type, op, value }。型別與值形狀:數值(op gte/lte/gt/lt/eq/neq,value 為數字字串)subtotal 小計 / quantity 件數 / cart_weight 重量kg / order_count 訂單數 / total_spent 累積消費 / hours_since_registered 註冊後小時 / hours_since_last_order 上次下單後小時;配對(op 數值,value={a:商品或分類ID, b:門檻})product_quantity / category_spent;清單ID(op in/not_in,value=整數陣列)product_in_cart / category_in_cart / ordered_product / ordered_category / shipping_zone;代碼(op in/not_in,value=字串陣列)shipping_country 國碼大寫 / payment_method / coupon_applied / stock_status(instock,outofstock,onbackorder)/ weekday(0-6)/ user_role;自訂分類法(op in/not_in,value={tax:分類法, terms:[詞彙ID]})custom_taxonomy;自訂meta(value={key, value})custom_user_meta(op eq/neq)/ custom_cart_item_meta(op in/not_in);時間(op gte/lte)time_of_day(value HH:MM)/ date(value Y-m-d H:i)。付款方式於結帳時才驗。"
+
+msgid "Advanced rules: over 600 and 2 items get 80 off"
+msgstr "進階規則:滿 600 且 2 件折 80"
+
+msgid "Advanced settings"
+msgstr "進階設定"
+
+msgid "After an order is completed, automatically copy a \"template coupon\" into a customer-specific coupon (reusing the template's discount and all conditions), place it in the customer's My Account, and optionally send it out to encourage repeat purchases. You must also enable \"My Account coupons\" above for it to be visible."
+msgstr "訂單完成後,自動把一張「範本優惠券」複製成顧客專屬券(沿用範本的折扣與所有條件),放進顧客的會員中心並可寄出,鼓勵回購。需同時啟用上方「會員中心優惠券」才看得到。"
+
+msgid "After an order is completed, copy the specified template coupon into a customer-specific coupon based on conditions, automatically added to My Account and optionally emailed"
+msgstr "訂單完成後依條件把指定範本券複製成顧客專屬券,自動進入會員中心並可寄出"
+
+msgid "After applying, all shipping methods are free (via shipping override)."
+msgstr "套用後所有運送方式免運費(透過運費覆寫)。"
+
+msgid "After applying, shipping for all methods is 50% off."
+msgstr "套用後所有運送方式運費打 5 折。"
+
+msgid "After saving, the share link and QR code will appear here."
+msgstr "儲存後,這裡會顯示分享連結與 QR Code。"
+
+msgid "Aggregate the coupon count, orders used, discount, and revenue for each campaign by \"Campaign\" tag (paid orders only), sorted by discount from high to low. Read-only."
+msgstr "依「行銷活動」標籤彙總每檔活動的券數、使用訂單數、折抵與營收(只算已付款訂單),依折抵由高到低。唯讀。"
+
+msgid "All"
+msgstr "全部"
+
+msgid "All coupons"
+msgstr "全部優惠券"
+
+msgid "Allow appending ?coupon=code to any page URL to apply the coupon. Disabled by default."
+msgstr "允許在任何頁面網址加上 ?coupon=代碼 來套用優惠券。預設關閉。"
+
+msgid "Allow apply via query string"
+msgstr "允許以查詢字串套用"
+
+msgid "Allow destructive capabilities (create / update / delete coupons) to be exposed to external MCP. Disabled by default (read-only)."
+msgstr "允許破壞性能力(建立 / 更新 / 刪除優惠券)暴露給外部 MCP。預設關閉(僅唯讀)。"
+
+msgid "Allow external MCP to make changes"
+msgstr "允許外部 MCP 執行變更"
+
+msgid "Allowed combinable coupon codes"
+msgstr "允許並用的券碼"
+
+msgid "Allowed days"
+msgstr "可使用的星期"
+
+msgid "Also notify the customer by email"
+msgstr "是否同時 Email 通知顧客"
+
+msgid "Always reply in the language the user asks in (use Traditional Chinese when the interface is in Traditional Chinese)."
+msgstr "請一律用使用者提問的語言回覆(介面為繁體中文時即用繁體中文)。"
+
+msgid "An advanced rule builder that freely combines conditions with groups and AND/OR (subtotal / item count / products / categories / region / payment / role / weekday / time), gatekeeping beyond individual conditions."
+msgstr "用群組與 AND/OR 自由組合條件的進階規則建構器(小計 / 件數 / 商品 / 分類 / 地區 / 付款 / 角色 / 星期 / 時間),在單項條件之外額外把關。"
+
+msgid "An error occurred"
+msgstr "發生錯誤"
+
+msgid "Anniversary sale deal"
+msgstr "週年慶優惠"
+
+msgid "Applicable product IDs (leave empty + no categories = whole site)"
+msgstr "適用商品 ID(留空 + 無分類 = 全站)"
+
+msgid "Applicable product category term IDs"
+msgstr "適用商品分類 term ID"
+
+msgid "Applicable products (leave empty = whole site)"
+msgstr "適用商品(留空 = 全站)"
+
+msgid "Apply a built-in template to create a draft coupon (first use list-templates to get the template_id). You can fine-tune code / amount / date_expires / usage_limit, etc. Destructive — the call only \"proposes\"; it is created only after the user confirms."
+msgstr "套用一個內建範本建立草稿優惠券(先用 list-templates 取得 template_id)。可微調 code / amount / date_expires / usage_limit 等。破壞性 —— 呼叫只會「提出」,使用者確認後才建立。"
+
+msgid "Apply cashback based on the \"Cashback\" tab settings after the order is paid"
+msgstr "訂單付款後依「回饋金」分頁設定回饋"
+
+msgid "Apply coupon template"
+msgstr "套用優惠券範本"
+
+msgid "Apply now"
+msgstr "立即套用"
+
+msgid "Apply only once"
+msgstr "只套用一次"
+
+msgid "Apply template \"%s\" to create a draft coupon"
+msgstr "套用範本「%s」建立一張草稿優惠券"
+
+msgid "Apply this template"
+msgstr "套用此範本"
+
+msgid "Approx. %s off"
+msgstr "約 %s 折"
+
+msgid "Array of coupon codes or IDs"
+msgstr "優惠券代碼或 ID 陣列"
+
+msgid "Auto-apply"
+msgstr "自動套用"
+
+msgid "Auto-apply 5% off store-wide"
+msgstr "自動套用全站 95 折"
+
+msgid "Auto-apply coupon"
+msgstr "自動套用優惠券"
+
+msgid "Auto-apply store-wide discount"
+msgstr "自動套用全站折扣"
+
+msgid "Auto-issue a coupon after order completion (remarketing)"
+msgstr "訂單完成後自動發券(再行銷)"
+
+msgid "Automatically add a free gift on cart orders over 1500 (after applying, set the gift on the \"Free gift\" tab)."
+msgstr "購物車滿 1500 元自動加贈一件商品(套用後到「免費贈品」分頁指定贈品)。"
+
+msgid "Automatically add a gift (free or discounted) when the coupon is applied; quantity is locked and withdrawn when the coupon is removed"
+msgstr "套用優惠券時自動加入贈品(免費或折扣),數量鎖定、撤券即撤回"
+
+msgid "Automatically add a specified gift to the cart when the coupon is applied (free or discounted); customers cannot change the quantity or remove it."
+msgstr "套用優惠券時自動把指定贈品加入購物車(免費或折扣),顧客無法改數量或移除。"
+
+msgid "Automatically add the coupon when the cart meets the conditions, no code needed"
+msgstr "購物車符合條件時自動帶入優惠券,免輸入代碼"
+
+msgid "Automatically add this coupon when the customer opens the cart (it still applies only if the conditions are met). Note: auto-apply is not possible when \"usage limit / usage limit per user / email restriction\" is set."
+msgstr "顧客進入購物車時自動帶入此優惠券(仍須符合條件才會套用)。注意:設定「使用次數上限 / 每人限用次數 / Email 限制」時無法自動套用。"
+
+msgid "Automatically apply a coupon via a URL, ideal for EDM / social traffic (after applying, set the link alias on the \"URL coupon\" tab)."
+msgstr "可用網址自動套券,適合 EDM／社群導流(套用後到「網址套券」分頁設定連結代稱)。"
+
+msgid "Automatically email customers each day to remind them their \"exclusive coupon is about to expire\", encouraging use before the deadline"
+msgstr "每天自動 Email 提醒顧客「專屬優惠券即將到期」,鼓勵在期限前使用"
+
+msgid "Available templates"
+msgstr "可用範本"
+
+msgid "Average order value (with coupon)"
+msgstr "平均客單價(帶券)"
+
+msgid "Back up, audit, or bulk-edit coupons: export to CSV, or upload a CSV to create / update many coupons at once."
+msgstr "備份、稽核或大量編輯優惠券:匯出成 CSV,或上傳 CSV 一次新建 / 更新多張券。"
+
+msgid "Back-to-school season deal"
+msgstr "開學季優惠"
+
+msgid "Batch adjust expiry date"
+msgstr "批次調整到期日"
+
+msgid "Besides coupons, you can also look up a customer's points balance, membership tier and benefits, and group-buy / KOL commissions (use the available tools to query; these are read-only). Call the corresponding tool directly when needed."
+msgstr "除了優惠券,你也能查詢顧客的點數餘額、會員等級與權益、以及團購 / KOL 分潤(用可用的工具查詢;這些為唯讀)。需要時直接呼叫對應工具。"
+
+msgid "Birthday gift 12% off"
+msgstr "生日禮 88 折"
+
+msgid "Birthday gift deal"
+msgstr "生日禮優惠"
+
+msgid "Black Friday offer"
+msgstr "黑色星期五優惠"
+
+msgid "Brainstorm coupon campaign ideas based on the store context"
+msgstr "依商店情境發想優惠券活動點子"
+
+msgid "Built-in coupon templates (id / name / description / category / type)."
+msgstr "內建優惠券範本(id / 名稱 / 說明 / 分類 / 型別)。"
+
+msgid "Bulk purchase offer"
+msgstr "量購優惠"
+
+msgid "Bulk-generate %1$d coupons (prefix \"%2$s\"): %3$s"
+msgstr "量產 %1$d 張優惠券(前綴 \"%2$s\"):%3$s"
+
+msgid "Bulk-generate coupons"
+msgstr "量產優惠券"
+
+msgid "Bulk-generate multiple coupons with the same settings and unique codes at once (for marketing campaigns). Destructive — the call only \"proposes\" it, and they are only created after the user confirms."
+msgstr "一次量產多張使用相同設定、代碼唯一的優惠券(行銷活動用)。破壞性 —— 呼叫只會「提出」,使用者確認後才建立。"
+
+msgid "Bulk-generated %d coupons."
+msgstr "已量產 %d 張優惠券。"
+
+msgid "Buy %d items to enjoy the Nth-item discount."
+msgstr "湊滿 %d 件即可享第 N 件折扣。"
+
+msgid "Buy & get / gift"
+msgstr "買送・贈品"
+
+msgid "Buy 1 item, get the second at half price (after applying, set the specific products on the \"Buy X Get Y\" tab)."
+msgstr "買 1 件、第二件半價(套用後到「買 X 送 Y」分頁指定商品)。"
+
+msgid "Buy 2 specific items, get 1 free (after applying, set the specific products on the \"Buy X Get Y\" tab)."
+msgstr "買 2 件指定商品送 1 件(套用後到「買 X 送 Y」分頁指定商品)。"
+
+msgid "Buy 3 get 1 free in specific categories"
+msgstr "指定分類買三送一"
+
+msgid "Buy 3, get 1 free in a specific category (once, no repeated stacking; after applying, set the category on the \"Buy X Get Y\" tab)."
+msgstr "指定分類買 3 件送 1 件(單次,不重複疊送;套用後到「買 X 送 Y」分頁指定分類)。"
+
+msgid "Buy X Get Y"
+msgstr "買 X 送 Y"
+
+msgid "Buy X Get Y \"%1$s\": gift offer, save %2$s"
+msgstr "買 X 送 Y「%1$s」:贈品優惠,省 %2$s"
+
+msgid "Buy X Get Y (BOGO)"
+msgstr "買 X 送 Y(BOGO)"
+
+msgid "Buy X Get Y coupon %s created."
+msgstr "已建立買 X 送 Y 優惠券 %s。"
+
+msgid "Buy and get a gift"
+msgstr "買就送"
+
+msgid "Buy specified products to get a gift / discount, supports repeating"
+msgstr "買指定商品送贈品 / 折扣,支援可重複"
+
+msgid "Buy two get one free"
+msgstr "買二送一"
+
+msgid "CSV import / export"
+msgstr "CSV 匯入 / 匯出"
+
+msgid "Calculate subtotal including tax"
+msgstr "小計含稅計算"
+
+msgid "Calculation method"
+msgstr "計算方式"
+
+msgid "Campaign"
+msgstr "活動"
+
+msgid "Campaign performance"
+msgstr "行銷活動成效"
+
+msgid "Cancel"
+msgstr "取消"
+
+msgid "Cancelled."
+msgstr "已取消。"
+
+msgid "Cannot be combined with other coupons"
+msgstr "不可與其他券並用"
+
+msgid "Cannot be stacked"
+msgstr "不可疊加"
+
+msgid "Cart"
+msgstr "購物車"
+
+msgid "Cart conditions"
+msgstr "購物車條件"
+
+msgid "Cart contains category"
+msgstr "購物車含分類"
+
+msgid "Cart contains custom taxonomy"
+msgstr "購物車含自訂分類法"
+
+msgid "Cart contains product"
+msgstr "購物車含商品"
+
+msgid "Cart contains stock status"
+msgstr "購物車含庫存狀態"
+
+msgid "Cart discount"
+msgstr "購物車折抵"
+
+msgid "Cart item meta"
+msgstr "購物車項目 Meta"
+
+msgid "Cart maximum"
+msgstr "購物車最高"
+
+msgid "Cart minimum"
+msgstr "購物車最低"
+
+msgid "Cart quantity"
+msgstr "購物車件數"
+
+msgid "Cart savings hint"
+msgstr "購物車省下金額提示"
+
+msgid "Cart subtotal"
+msgstr "購物車小計"
+
+msgid "Cart weight (kg)"
+msgstr "購物車重量(kg)"
+
+msgid "Cashback"
+msgstr "回饋金"
+
+msgid "Cashback / points (Cashback)"
+msgstr "回饋金 / 點數(Cashback)"
+
+msgid "Category match type"
+msgstr "分類比對方式"
+
+msgid "Centralized settings metabox"
+msgstr "集中設定 Metabox"
+
+msgid "Cheapest item free for every 3"
+msgstr "每三件最便宜免費"
+
+msgid "Check customers' dedicated coupons automatically every day, and email a reminder when they are about to expire, encouraging use before the deadline."
+msgstr "每天自動檢查顧客的專屬優惠券,即將到期時 Email 提醒,鼓勵在期限前使用。"
+
+msgid "Check whether a code exists"
+msgstr "查代碼是否存在"
+
+msgid "Check whether a given coupon code already exists, returning whether it exists and its ID. Use this before creating to avoid duplicates. Read-only."
+msgstr "檢查某個優惠券代碼是否已存在,回傳是否存在與其 ID。建立前可先用這個避免重複。唯讀。"
+
+msgid "Checkout page"
+msgstr "結帳頁"
+
+msgid "Checkout savings hint"
+msgstr "結帳省額提示"
+
+msgid "Children's Day discount"
+msgstr "兒童節折抵"
+
+msgid "Choose the coupon features you want to enable. Click a section heading to collapse it, so you can focus on the settings you need."
+msgstr "選擇你想開啟的優惠券功能。點各區塊標題可以收合,方便專注在需要的設定。"
+
+msgid "Christmas deal"
+msgstr "聖誕優惠"
+
+msgid "Christmas free shipping"
+msgstr "聖誕免運"
+
+msgid "Claim a coupon via a dedicated link"
+msgstr "專屬連結領券"
+
+msgid "Clear"
+msgstr "清除"
+
+msgid "Clear out slow-moving products"
+msgstr "出清滯銷商品"
+
+msgid "Clear the expiry date of %d coupon(s) (make them permanent)"
+msgstr "清除 %d 張優惠券的到期日(改為永久有效)"
+
+msgid "Click here to apply the coupon automatically"
+msgstr "點此自動套用優惠券"
+
+msgid "Click here to use it now"
+msgstr "點此立即使用"
+
+msgid "Close"
+msgstr "關閉"
+
+msgid "Code"
+msgstr "代碼"
+
+msgid "Code / description keyword (optional)"
+msgstr "代碼 / 描述關鍵字(選填)"
+
+msgid "Code prefix (optional, e.g. SALE-)"
+msgstr "代碼前綴(選填,如 SALE-)"
+
+msgid "Combine the whole cart in the calculation"
+msgstr "整個購物車合併計算"
+
+msgid "Confirm"
+msgstr "確認執行"
+
+msgid "Confirmation has expired or does not exist, please try again."
+msgstr "確認已失效或不存在,請重新操作。"
+
+msgid "Consolidate the coupon setting sections into a single metabox, presented with WooCommerce-style left-hand tabs"
+msgstr "把優惠券各設定區塊集中到單一個 metabox,用 WooCommerce 風格的左側分頁呈現"
+
+msgid "Consolidate the coupon's settings sections (conditions / BOGO / gift / shipping / stacking / URL / front end) into a single WooCommerce-native tabbed settings panel."
+msgstr "把優惠券各設定區塊(條件 / BOGO / 贈品 / 運費 / 疊加 / 網址 / 前台)集中成一個 WooCommerce 原生風格的分頁式設定面板。"
+
+msgid "Control whether the coupon can be combined with other coupons: mutually exclusive coupons, allow / deny lists of coupon codes, checked automatically at checkout."
+msgstr "控制優惠券能否與其他券並用:互斥券、允許 / 禁止並用的券碼清單,結帳時自動檢查。"
+
+msgid "Copied"
+msgstr "已複製"
+
+msgid "Copied %1$s into draft %2$s (the usage count has been reset to zero; you can review it before enabling)."
+msgstr "已將 %1$s 複製為草稿 %2$s(使用次數已歸零,啟用前可先檢查)。"
+
+msgid "Copied as a draft coupon with usage count reset to zero; you can review it before enabling."
+msgstr "已複製為草稿券,使用次數歸零,啟用前可先檢查。"
+
+msgid "Copy"
+msgstr "複製"
+
+msgid "Copy an existing coupon into a new draft (keeping all discount settings and schedule / role / cart conditions, resetting the usage count to zero, and automatically appending -COPY- to the code). Destructive — the call only \"proposes\" it, and it is only created after the user confirms."
+msgstr "把一張既有優惠券複製成一張新草稿(沿用所有折扣設定與排程 / 角色 / 購物車條件,使用次數歸零、代碼自動加上 -COPY-)。破壞性 —— 呼叫只會「提出」,使用者確認後才建立。"
+
+msgid "Copy code %s"
+msgstr "複製代碼 %s"
+
+msgid "Copy coupon"
+msgstr "複製優惠券"
+
+msgid "Copy coupon %s into a new draft (keeping all settings and conditions, resetting the usage count to zero)"
+msgstr "複製優惠券 %s 為新草稿(沿用所有設定與條件,使用次數歸零)"
+
+msgid "Copy failed."
+msgstr "複製失敗。"
+
+msgid "Copy link"
+msgstr "複製連結"
+
+msgid "Core discount features"
+msgstr "核心優惠功能"
+
+msgid "Core features"
+msgstr "核心功能"
+
+msgid "Could not generate a unique coupon code."
+msgstr "無法產生唯一的優惠券代碼。"
+
+msgid "Could not generate a unique new code."
+msgstr "無法產生唯一的新代碼。"
+
+msgid "Could not prepare this operation."
+msgstr "無法準備此操作。"
+
+msgid "Count each product separately"
+msgstr "每件商品各自計算"
+
+msgid "Countdown based on"
+msgstr "倒數依據"
+
+msgid "Countdown to %s"
+msgstr "倒數至 %s"
+
+msgid "Country / region"
+msgstr "國家 / 地區"
+
+msgid "Coupon"
+msgstr "優惠券"
+
+msgid "Coupon URL"
+msgstr "優惠券網址"
+
+msgid "Coupon URL / QR"
+msgstr "優惠券網址 / QR"
+
+msgid "Coupon URL / QR (click or scan to apply)"
+msgstr "優惠券網址 / QR(點擊或掃描即套用)"
+
+msgid "Coupon URL path"
+msgstr "優惠券網址路徑"
+
+msgid "Coupon advanced settings schema"
+msgstr "優惠券進階設定 schema"
+
+msgid "Coupon already applied in cart"
+msgstr "購物車已套用優惠券"
+
+msgid "Coupon applied"
+msgstr "已套用優惠券"
+
+msgid "Coupon campaign report"
+msgstr "優惠券活動報表"
+
+msgid "Coupon cards (front-end display)"
+msgstr "優惠券卡片(前台顯示)"
+
+msgid "Coupon code"
+msgstr "優惠券代碼"
+
+msgid "Coupon code \"%s\" already exists; please use another."
+msgstr "優惠券代碼「%s」已存在,請換一個。"
+
+msgid "Coupon code %s already exists; please use another."
+msgstr "優惠券代碼 %s 已存在,請換一個。"
+
+msgid "Coupon code cannot be empty."
+msgstr "優惠券代碼不可空白。"
+
+msgid "Coupon code or ID"
+msgstr "優惠券代碼或 ID"
+
+msgid "Coupon code or ID of the source coupon to copy"
+msgstr "要複製的來源優惠券代碼或 ID"
+
+msgid "Coupon code or ID to send"
+msgstr "要寄送的優惠券代碼或 ID"
+
+msgid "Coupon code or ID to update"
+msgstr "要更新的優惠券代碼或 ID"
+
+msgid "Coupon code to check"
+msgstr "要檢查的優惠券代碼"
+
+msgid "Coupon code, e.g. BUY2GET1"
+msgstr "優惠券代碼,如 BUY2GET1"
+
+msgid "Coupon code, e.g. PICK3FOR299"
+msgstr "優惠券代碼,如 PICK3FOR299"
+
+msgid "Coupon code, e.g. SECOND60"
+msgstr "優惠券代碼,如 SECOND60"
+
+msgid "Coupon code, e.g. SUMMER25"
+msgstr "優惠券代碼,如 SUMMER25"
+
+msgid "Coupon code: %s"
+msgstr "優惠券代碼:%s"
+
+msgid "Coupon conditions"
+msgstr "優惠券條件"
+
+msgid "Coupon conditions (schedule / role / cart)"
+msgstr "優惠券條件(排程 / 角色 / 購物車)"
+
+msgid "Coupon deleted."
+msgstr "已刪除優惠券。"
+
+msgid "Coupon delivery"
+msgstr "優惠券寄送"
+
+msgid "Coupon description (optional)"
+msgstr "優惠券說明(選填)"
+
+msgid "Coupon disabled."
+msgstr "已停用優惠券。"
+
+msgid "Coupon enabled."
+msgstr "已啟用優惠券。"
+
+msgid "Coupon expiry date"
+msgstr "優惠券到期日"
+
+msgid "Coupon expiry reminder"
+msgstr "優惠券到期提醒"
+
+msgid "Coupon health check"
+msgstr "優惠券健檢"
+
+msgid "Coupon import / export"
+msgstr "優惠券匯入 / 匯出"
+
+msgid "Coupon list enhancements"
+msgstr "優惠券列表增強"
+
+msgid "Coupon list tools"
+msgstr "優惠券列表工具"
+
+msgid "Coupon management menu"
+msgstr "優惠券管理選單"
+
+msgid "Coupon not found."
+msgstr "找不到該優惠券。"
+
+msgid "Coupon order revenue"
+msgstr "帶券訂單營收"
+
+msgid "Coupon orders"
+msgstr "帶券訂單"
+
+msgid "Coupon orders in the last 30 days"
+msgstr "近 30 天帶券訂單"
+
+msgid "Coupon performance report"
+msgstr "優惠券績效報表"
+
+msgid "Coupon report"
+msgstr "優惠券報表"
+
+msgid "Coupon revenue"
+msgstr "帶券營收"
+
+msgid "Coupon revenue overview"
+msgstr "優惠券營收總覽"
+
+msgid "Coupon settings"
+msgstr "優惠券設定"
+
+msgid "Coupon settings icon"
+msgstr "優惠券設定圖示"
+
+msgid "Coupon summary"
+msgstr "優惠券摘要"
+
+msgid "Coupon template"
+msgstr "優惠券範本"
+
+msgid "Coupon template library"
+msgstr "優惠券範本庫"
+
+msgid "Coupon template not found (use list-templates to see available IDs)."
+msgstr "找不到指定的優惠券範本(用 list-templates 查可用 id)。"
+
+msgid "Coupon-backed average order value over the last 30 days is about %1$s. Set \"spend %2$s, get %3$s off\" to push most orders up a tier."
+msgstr "近 30 天帶券客單價約 %1$s。設「滿 %2$s 折 %3$s」把多數訂單往上推一階。"
+
+msgid "Coupon-backed orders in the last 30 days are on the low side. Issue a new-customer first-purchase coupon (e.g. \"10% off first purchase\") together with the front-end coupon wall / auto-apply to attract new customers."
+msgstr "近 30 天帶券訂單偏少。發一張新客首購券(如「首購 9 折」)並搭配前台優惠牆 / 自動套用拉新。"
+
+msgid "Coupons"
+msgstr "券數"
+
+msgid "Coupons with \"Auto-apply\" checked are added automatically once the customer's cart meets the conditions, with no code to enter."
+msgstr "勾選「自動套用」的優惠券,顧客購物車一符合條件就自動帶入,免輸入代碼。"
+
+msgid "Create"
+msgstr "建立"
+
+msgid "Create / query coupons with natural language in the admin (requires the AI Client of WordPress 7.0+ and a configured Connector)."
+msgstr "在後台用自然語言建立 / 查詢優惠券(需 WordPress 7.0+ 的 AI Client 與已設定的 Connector)。"
+
+msgid "Create / query coupons with natural language in the admin, and optionally open them up to external AI tools. All disabled by default; enable when needed."
+msgstr "用自然語言在後台建立 / 查詢優惠券,並可開放給外部 AI 工具。預設全部關閉,需要時再開啟。"
+
+msgid "Create Buy X Get Y coupon %1$s: for every %2$d of the specified items → %3$d gift item(s) %4$s %5$s"
+msgstr "建立買 X 送 Y 優惠券 %1$s:每買 %2$d 件指定商品 → %3$d 件贈品 %4$s %5$s"
+
+msgid "Create a \"Buy X Get Y (BOGO)\" coupon: after the customer buys the specified products / categories in the required quantity, the gift items in the cart can be free / percentage / fixed discount, and it can be set to once or repeatable. Destructive — the call only \"proposes\" it, and it is created only after the user confirms."
+msgstr "建立一張「買 X 送 Y(BOGO)」優惠券:顧客買滿指定商品 / 分類達數量後,購物車中的贈品商品可享免費 / 百分比 / 固定折扣,可設定一次或可重複。破壞性 —— 呼叫只會「提出」,使用者按確認後才建立。"
+
+msgid "Create a \"Mix & Match\" coupon: specify a set of products (or the whole site), the customer picks any N items, and the group is priced at a fixed total or a group percentage discount, repeatable. Example: pick 3 for $299 → qty=3, price_mode=fixed_total, price_value=299; pick 5 at 25% off → qty=5, price_mode=percent, price_value=25. Destructive — the call only \"proposes\"; it is created only after the user confirms."
+msgstr "建立一張「任選優惠(Mix & Match)」優惠券:指定一組商品(或全站),顧客任選 N 件,整組以固定總價或整組百分比折扣結算,可重複。例:任選3件$299 → qty=3、price_mode=fixed_total、price_value=299;任選5件75折 → qty=5、price_mode=percent、price_value=25。破壞性 —— 呼叫只會「提出」,使用者按確認後才建立。"
+
+msgid "Create a 10% off coupon VIP10, list active coupons, mass-generate 50 SALE- coupons for 100 off"
+msgstr "建立 9 折券 VIP10,列出啟用中的優惠券,量產 50 張 SALE- 折 100"
+
+msgid "Create a Buy X Get Y coupon"
+msgstr "建立買 X 送 Y 優惠券"
+
+msgid "Create a Mix & Match coupon"
+msgstr "建立任選優惠優惠券"
+
+msgid "Create a Mix & Match coupon %1$s: %2$s %3$s"
+msgstr "建立任選優惠優惠券 %1$s:%2$s %3$s"
+
+msgid "Create a new WooCommerce coupon. This is a destructive operation — the call only \"proposes\" it, and it is only created after the user clicks \"Confirm\"; you do not need to ask for confirmation yourself."
+msgstr "建立一張新的 WooCommerce 優惠券。這是破壞性操作 —— 呼叫只會「提出」,使用者按「確認執行」後才真正建立,你不需要自己再追問確認。"
+
+msgid "Create a new coupon."
+msgstr "建立一張新的優惠券。"
+
+msgid "Create a percentage coupon that \"gives different discounts by cart threshold\" using a simple tier table (e.g. spend 1000 get 10% off, spend 2000 get 20% off). Destructive — the call only \"proposes\"; it is created only after the user confirms."
+msgstr "用簡單的階梯表建立一張「依購物車門檻給不同折扣」的百分比券(例:滿1000折10%、滿2000折20%)。破壞性 —— 呼叫只會「提出」,使用者確認後才建立。"
+
+msgid "Create a tiered discount coupon"
+msgstr "建立階梯折扣券"
+
+msgid "Create a tiered discount coupon %1$s (%2$d tiers, giving different percentages by cart threshold)"
+msgstr "建立階梯折扣券 %1$s(%2$d 階,依購物車門檻給不同百分比)"
+
+msgid "Create an \"Nth-item discount\" coupon: for the same set of products (or the whole site), every N items qualifies the Nth item for free / percentage / fixed discount per item, once or repeatable. Example: second item 40% off → n=2, reward_mode=percent, reward_value=40. Destructive — the call only \"proposes\"; it is created only after the user confirms."
+msgstr "建立一張「第 N 件折扣」優惠券:同一組商品(或全站)每湊滿 N 件,第 N 件享免費 / 百分比 / 每件固定折扣,可一次或可重複。例:第二件六折 → n=2、reward_mode=percent、reward_value=40。破壞性 —— 呼叫只會「提出」,使用者按確認後才建立。"
+
+msgid "Create an Nth-item discount coupon"
+msgstr "建立第 N 件折扣優惠券"
+
+msgid "Create an Nth-item discount coupon %1$s: for every %2$d items, the Nth item %3$s %4$s"
+msgstr "建立第 N 件折扣優惠券 %1$s:每滿 %2$d 件,第 N 件 %3$s %4$s"
+
+msgid "Create coupon"
+msgstr "建立優惠券"
+
+msgid "Created Mix & Match coupon %s."
+msgstr "已建立任選優惠優惠券 %s。"
+
+msgid "Created Nth-item discount coupon %s."
+msgstr "已建立第 N 件折扣優惠券 %s。"
+
+msgid "Created a draft coupon from the template %1$s (#%2$d); you can review it before enabling."
+msgstr "已依範本建立草稿優惠券 %1$s(#%2$d),啟用前可先檢查。"
+
+msgid "Created coupon %1$s (#%2$d)."
+msgstr "已建立優惠券 %1$s(#%2$d)。"
+
+msgid "Cumulative spend in a category"
+msgstr "某分類累積消費"
+
+msgid "Custom URL slug"
+msgstr "自訂網址代稱"
+
+msgid "Custom user meta"
+msgstr "自訂使用者 Meta"
+
+msgid "Customer conditions"
+msgstr "顧客條件"
+
+msgid "Customer's cumulative spend"
+msgstr "顧客累積消費"
+
+msgid "Customer's past order count"
+msgstr "顧客歷史訂單數"
+
+msgid "Cyber Monday deal"
+msgstr "網購星期一優惠"
+
+msgid "Dashboard"
+msgstr "儀表板"
+
+msgid "Date"
+msgstr "日期"
+
+msgid "Date and time"
+msgstr "日期時間"
+
+msgid "Day and time window"
+msgstr "星期時段"
+
+msgid "Days before expiry to remind"
+msgstr "到期前幾天提醒"
+
+msgid "Dedicated link + server-side QR, one-tap apply for customers"
+msgstr "專屬連結 + 伺服器端 QR,顧客一鍵套用"
+
+msgid "Delete"
+msgstr "刪除"
+
+msgid "Delete a coupon (by default moved to trash; force=true permanently deletes). Destructive and irreversible — the call only \"proposes\" it, and it is only performed after the user confirms."
+msgstr "刪除一張優惠券(預設移到垃圾桶,force=true 永久刪除)。破壞性、不可逆 —— 呼叫只會「提出」,使用者確認後才執行。"
+
+msgid "Delete coupon"
+msgstr "刪除優惠券"
+
+msgid "Delete coupon %1$s (%2$s)"
+msgstr "刪除優惠券 %1$s(%2$s)"
+
+msgid "Delete group"
+msgstr "刪除群組"
+
+msgid "Delete this tier"
+msgstr "刪除此階"
+
+msgid "Deleted"
+msgstr "已刪除"
+
+msgid "Deletion failed."
+msgstr "刪除失敗。"
+
+msgid "Demo advanced-rules AND combination: cart over 600 \"and\" at least 2 items to get 80 off. You can expand further on the \"Advanced rules\" tab."
+msgstr "示範進階規則 AND 組合:購物車滿 600 元「且」滿 2 件才折 80 元。可到「進階規則」分頁再擴充。"
+
+msgid "Description"
+msgstr "說明"
+
+msgid "Disable"
+msgstr "停用"
+
+msgid "Disallowed combinable coupon codes"
+msgstr "禁止並用的券碼"
+
+msgid "Discount"
+msgstr "優惠"
+
+msgid "Discount amount"
+msgstr "折扣值"
+
+msgid "Discount amount cannot be negative."
+msgstr "折扣金額不可為負。"
+
+msgid "Discount amount determined by the tiered table"
+msgstr "折扣值由階梯表決定"
+
+msgid "Discount amount must be a number."
+msgstr "折扣金額須為數字。"
+
+msgid "Discount amount; 0–100 for percent, an amount for fixed_per_item, leave empty for free"
+msgstr "折扣值;percent 為 0–100,fixed_per_item 為金額,free 免填"
+
+msgid "Discount amount; for percent it is a percentage number (25 = 25%)"
+msgstr "折扣量;percent 時為百分比數字(25 = 25%)"
+
+msgid "Discount amount; percent is the discount % (40% off = 40), fixed_per_item is an amount, leave empty for free"
+msgstr "折扣值;percent 為折扣 %(六折=40),fixed_per_item 為金額,free 免填"
+
+msgid "Discount application scope"
+msgstr "折扣套用範圍"
+
+msgid "Discount application scope: cart (whole cart, default) / products / categories"
+msgstr "折扣套用範圍:cart(整車,預設)/ products / categories"
+
+msgid "Discount conversion"
+msgstr "折扣換算"
+
+msgid "Discount one item per how many items (N)"
+msgstr "每幾件折一件(N)"
+
+msgid "Discount one item per how many items, N (at least 2; enter 2 to discount the second item)"
+msgstr "每幾件折一件 N(至少 2;第二件折填 2)"
+
+msgid "Discount type"
+msgstr "折扣方式"
+
+msgid "Discount type filter (optional)"
+msgstr "折扣類型篩選(選填)"
+
+msgid "Discount type must be: %s."
+msgstr "折扣類型須為:%s。"
+
+msgid "Discount type: free / percent / fixed_per_item (fixed amount per item)"
+msgstr "折扣方式:free 免費 / percent 百分比 / fixed_per_item 每件固定額"
+
+msgid "Discount type: free / percent: discount percentage / fixed_per_item: fixed amount per item"
+msgstr "折扣方式:free 免費 / percent 折扣百分比 / fixed_per_item 每件固定額"
+
+msgid "Discount type: percent (percentage) / fixed_cart (fixed cart discount) / fixed_product (fixed product discount)"
+msgstr "折扣類型:percent(百分比)/ fixed_cart(購物車固定額)/ fixed_product(商品固定額)"
+
+msgid "Discount upgraded to %s%%"
+msgstr "折扣升級至 %s%%"
+
+msgid "Display available coupons on the front end, or send coupons to customers."
+msgstr "在前台呈現可用優惠券,或把優惠券寄送給顧客。"
+
+msgid "Display coupons on the front end, send them to customers, and automatically issue win-back coupons after an order is completed."
+msgstr "把優惠券呈現在前台、寄送給顧客,並在訂單完成後自動發放回購券。"
+
+msgid "Double 11 deal"
+msgstr "雙11 優惠"
+
+msgid "Double 11 free shipping"
+msgstr "雙11 免運"
+
+msgid "Double 12 deal"
+msgstr "雙12 優惠"
+
+msgid "Double Tenth National Day deal"
+msgstr "雙十國慶優惠"
+
+msgid "Download CSV"
+msgstr "下載 CSV"
+
+msgid "Download QR (PNG)"
+msgstr "下載 QR (PNG)"
+
+msgid "Draft / pending"
+msgstr "草稿 / 待審"
+
+msgid "Dragon Boat Festival deal"
+msgstr "端午節優惠"
+
+msgid "Dry-run an \"Advanced rules\" tree: return whether there are valid rules, the normalized result, the types used, and any unknown types that were dropped; if sample_cart is given, also return whether it passes. Does not write. Read-only."
+msgstr "對一棵「進階規則」樹做乾跑:回傳是否有有效規則、正規化結果、用到的型別、被丟掉的未知型別;若給 sample_cart 還會回傳是否通過。不寫入。唯讀。"
+
+msgid "Enable"
+msgstr "啟用"
+
+msgid "Enable (publish) or disable (draft) a coupon. Destructive — the call only \"proposes\" it, and it only takes effect after the user confirms."
+msgstr "啟用(publish)或停用(draft)一張優惠券。破壞性 —— 呼叫只會「提出」,使用者確認後才生效。"
+
+msgid "Enable / disable each feature module."
+msgstr "啟用 / 關閉各項功能模組。"
+
+msgid "Enable advanced rules"
+msgstr "啟用進階規則"
+
+msgid "Enable automatic coupon issuance after an order is completed"
+msgstr "啟用訂單完成後自動發券"
+
+msgid "Enable coupon URL"
+msgstr "啟用優惠券網址"
+
+msgid "Enable customer conditions"
+msgstr "啟用顧客條件"
+
+msgid "Enable day / time restrictions"
+msgstr "啟用星期 / 時段限制"
+
+msgid "Enable gift"
+msgstr "啟用贈品"
+
+msgid "Enable payment method restriction"
+msgstr "啟用付款方式限制"
+
+msgid "Enable role restriction"
+msgstr "啟用角色限制"
+
+msgid "Enable schedule"
+msgstr "啟用排程"
+
+msgid "Enable shipping region restriction"
+msgstr "啟用收件地區限制"
+
+msgid "Enable tiered discount"
+msgstr "啟用階梯折扣"
+
+msgid "Enable/disable coupon"
+msgstr "啟用/停用優惠券"
+
+msgid "Enabled features"
+msgstr "已啟用功能"
+
+msgid "End time"
+msgstr "結束時間"
+
+msgid "Ended"
+msgstr "已結束"
+
+msgid "Enter IDs, separated by commas"
+msgstr "輸入 ID,以逗號分隔"
+
+msgid "Enter coupon codes, separated by commas"
+msgstr "輸入優惠券代碼,以逗號分隔"
+
+msgid "Equal to"
+msgstr "等於"
+
+msgid "Equal to ="
+msgstr "等於 ="
+
+msgid "Every completed order"
+msgstr "每筆已完成訂單"
+
+msgid "Example: discount the second item → enter 2."
+msgstr "例:第二件折 → 填 2。"
+
+msgid "Exclude categories"
+msgstr "排除分類"
+
+msgid "Exclude products"
+msgstr "排除商品"
+
+msgid "Exclude the following countries / regions"
+msgstr "排除下列國家 / 地區"
+
+msgid "Exclude the following payment methods"
+msgstr "排除下列付款方式"
+
+msgid "Exclude these roles"
+msgstr "排除這些角色"
+
+msgid "Expire immediately"
+msgstr "立即失效"
+
+msgid "Expired but still enabled; consider disabling or cleaning up."
+msgstr "已過期但仍為啟用狀態,建議停用或清理。"
+
+msgid "Expires %s"
+msgstr "%s 到期"
+
+msgid "Expires within 7 days but has never been used; consider boosting exposure or adjusting the threshold."
+msgstr "7 天內到期但從未被使用,考慮加強曝光或調整門檻。"
+
+msgid "Expires: %s"
+msgstr "到期:%s"
+
+msgid "Expiry date"
+msgstr "到期日"
+
+msgid "Expiry date (optional)"
+msgstr "到期日(選填)"
+
+msgid "Expiry date YYYY-MM-DD (optional)"
+msgstr "到期日 YYYY-MM-DD,可空"
+
+msgid "Export"
+msgstr "匯出"
+
+msgid "Export all coupons (including tiered / advanced rule settings) to CSV, for backup, auditing, or bulk editing."
+msgstr "將所有優惠券(含階梯 / 進階規則設定)匯出成 CSV,可用於備份、稽核或大量編輯。"
+
+msgid "Export coupons to CSV for backup / auditing, or bulk create and update with a CSV"
+msgstr "把優惠券匯出成 CSV 備份 / 稽核,或用 CSV 大量新建與更新"
+
+msgid "Extend / copy the currently most effective coupon"
+msgstr "延長 / 複製目前最有效的券"
+
+msgid "Extend expiry date"
+msgstr "延長到期日"
+
+msgid "Extend the expiry date of %1$d coupons to %2$s"
+msgstr "將 %1$d 張優惠券的到期日延長至 %2$s"
+
+msgid "Extend the expiry date of one or more coupons to a specified date. Destructive — the call only \"proposes\" it, and it only takes effect after the user confirms."
+msgstr "把一或多張優惠券的到期日延長到指定日期。破壞性 —— 呼叫只會「提出」,使用者確認後才生效。"
+
+msgid "External MCP server"
+msgstr "對外 MCP 伺服器"
+
+msgid "Failed to copy the coupon."
+msgstr "複製優惠券失敗。"
+
+msgid "Failed to save the coupon."
+msgstr "優惠券儲存失敗。"
+
+msgid "Failed to toggle status."
+msgstr "切換狀態失敗。"
+
+msgid "Father's Day deal"
+msgstr "父親節優惠"
+
+msgid "Feature settings"
+msgstr "功能設定"
+
+msgid "Find coupons that need attention: expired but still enabled, expiring within 7 days but never used, percentage discount too high (margin risk). Read-only."
+msgstr "揪出需要處理的券:已過期卻仍啟用、7 天內到期但從未使用、百分比折扣過高(毛利風險)。唯讀。"
+
+msgid "First create a normal coupon as the \"template\" (any coupon type / conditions), and enter its code here. The system copies it into a customer-specific unique coupon after the order is completed. We recommend setting the template to \"Limit to one use per customer\"."
+msgstr "先建立一張正常的優惠券當「範本」(任何券型 / 條件都可),把它的代碼填這裡。系統會在訂單完成後複製它成為顧客專屬的唯一券。建議範本設定「每位顧客限用一次」。"
+
+msgid "First purchase only"
+msgstr "僅限首次消費"
+
+msgid "Fixed amount"
+msgstr "固定金額"
+
+msgid "Fixed cart discount"
+msgstr "購物車固定折抵"
+
+msgid "Fixed discount per item"
+msgstr "每件固定折扣"
+
+msgid "Fixed discount per item must be greater than 0."
+msgstr "每件固定折扣需大於 0。"
+
+msgid "Fixed product discount"
+msgstr "商品固定折抵"
+
+msgid "Fixed total: the total price for the group of N items (pick 3 for $299 → enter 299). Percentage: 0–100 (pick 5 at 25% off → enter 25)."
+msgstr "固定總價:整組 N 件的總價(任選3件$299 → 填 299)。百分比:0–100(任選5件75折 → 填 25)。"
+
+msgid "For every 3 items in the cart, get 30% off the cheapest one (after applying, set the specific products / categories on the \"Nth-item discount\" tab)."
+msgstr "購物車每滿 3 件,最便宜的一件打七折(套用後到「第 N 件折扣」分頁指定商品 / 分類)。"
+
+msgid "For every 3 items in the cart, the cheapest one is free (after applying, set the specific products / categories on the \"Nth-item discount\" tab)."
+msgstr "購物車每滿 3 件,最便宜的一件免費(套用後到「第 N 件折扣」分頁指定商品 / 分類)。"
+
+msgid "For example: create a 15% off coupon AUTUMN15"
+msgstr "例如:建立一張 85 折券 AUTUMN15"
+
+msgid "For the goal \"%s\", use list-templates to reference the built-in templates and propose 3 coupon campaign ideas suitable for this store, explaining the setup."
+msgstr "請針對「%s」這個目標,用 list-templates 參考內建範本,提出 3 個適合本店的優惠券活動點子並說明設定。"
+
+msgid "Free"
+msgstr "免費"
+
+msgid "Free (100% off)"
+msgstr "免費(100% 折扣)"
+
+msgid "Free gift"
+msgstr "免費贈品"
+
+msgid "Free gift \"%1$s\": gift %2$s added"
+msgstr "免費贈品「%1$s」:已加入贈品 %2$s"
+
+msgid "Free gift on orders over 1500"
+msgstr "滿 1500 送贈品"
+
+msgid "Free or discounted shipping when the coupon is applied (percentage or fixed amount)"
+msgstr "套用優惠券時免運 / 折運費(百分比或固定額)"
+
+msgid "Free shipping"
+msgstr "免運費"
+
+msgid "Free shipping coupon"
+msgstr "免運券"
+
+msgid "Free shipping for Christmas"
+msgstr "聖誕節免運"
+
+msgid "Free shipping offer"
+msgstr "免運優惠"
+
+msgid "Free shipping on weight over 5kg"
+msgstr "重量滿 5kg 免運"
+
+msgid "Free shipping only when the cart reaches $800, balancing shipping cost and basket building."
+msgstr "購物車滿 800 元才享免運,兼顧運費成本與湊單。"
+
+msgid "Free shipping only when the shipping address is in Taiwan; not applicable overseas."
+msgstr "收件地址為台灣才免運,海外不適用。"
+
+msgid "Free shipping over $800"
+msgstr "滿 800 免運"
+
+msgid "Free shipping threshold"
+msgstr "滿額免運"
+
+msgid "Free shipping to the main island (Taiwan only)"
+msgstr "本島免運(限台灣)"
+
+msgid "Free shipping when the total cart weight reaches 5 kg, suitable for heavy goods such as food / pet food (after applying, adjust the threshold to the actual product weight)."
+msgstr "購物車總重量滿 5 公斤免運,適合食品 / 寵糧等重貨(套用後請依實際商品重量調整門檻)。"
+
+msgid "Free-shipping threshold hint"
+msgstr "免運門檻提示"
+
+msgid "Freely combine conditions with \"groups\" and AND/OR. The whole set can be set to \"match all / any group\", and within each group you can set \"match all / any condition\". This adds an extra check on top of the existing single conditions. The payment method condition is validated at checkout."
+msgstr "用「群組」與 AND/OR 自由組合條件。整體可設「符合全部 / 任一群組」,每個群組內也可設「符合全部 / 任一條件」。在既有的單項條件之外額外把關。付款方式條件於結帳時驗證。"
+
+msgid "Freely combine conditions with groups and AND/OR (subtotal / item count / products / categories / regions / payment / roles / weekday / time…)"
+msgstr "用群組與 AND/OR 自由組合條件(小計 / 件數 / 商品 / 分類 / 地區 / 付款 / 角色 / 星期 / 時間…)"
+
+msgid "Friday"
+msgstr "星期五"
+
+msgid "Front-end and marketing"
+msgstr "前台與行銷"
+
+msgid "Front-end and shipping"
+msgstr "前台與寄送"
+
+msgid "Front-end coupon display"
+msgstr "前台優惠券顯示"
+
+msgid "Front-end coupon wall"
+msgstr "前台優惠牆"
+
+msgid "Front-end description text"
+msgstr "前台說明文字"
+
+msgid "Front-end display"
+msgstr "前台顯示"
+
+msgid "Generate a dedicated URL / QR code that customers can click or scan to automatically apply this coupon to the cart."
+msgstr "產生一個專屬網址 / QR,顧客點擊或掃描即自動把此優惠券套用到購物車。"
+
+msgid "Generate a dedicated link /coupon/code and a server-side QR code for the coupon; customers apply it automatically by clicking or scanning."
+msgstr "為優惠券產生專屬連結 /coupon/代碼 與伺服器端 QR Code,顧客點擊或掃描即自動套用。"
+
+msgid "Get $100 off when the cart reaches $1000."
+msgstr "購物車滿 1000 元即可折抵 100 元。"
+
+msgid "Get $400 off when the cart reaches $3000, boosting order value."
+msgstr "購物車滿 3000 元折抵 400 元,推高客單價。"
+
+msgid "Get %s off"
+msgstr "即可折 %s"
+
+msgid "Get 10% off when the cart has 3 or more items."
+msgstr "購物車滿 3 件商品即享 9 折。"
+
+msgid "Get 12% off when the cart reaches $2000."
+msgstr "購物車滿 2000 元即享 88 折。"
+
+msgid "Get advanced settings schema"
+msgstr "取得進階設定 schema"
+
+msgid "Get coupon share link / QR"
+msgstr "取優惠券分享連結 / QR"
+
+msgid "Get remarketing settings"
+msgstr "查詢再行銷設定"
+
+msgid "Get the \"auto-apply\" share URL and QR code link for a coupon (customers apply the coupon automatically by clicking or scanning). If the coupon has not enabled the URL feature, it returns enabled=false with a hint. Read-only."
+msgstr "取得一張優惠券的「自動套用」分享網址與 QR Code 連結(顧客點擊或掃描即自動套用此券)。若該券尚未開啟網址功能,會回傳 enabled=false 與提示。唯讀。"
+
+msgid "Get the full settings of a single coupon (code, discount type and amount, expiry date, usage count and limit, minimum spend, restricted products, etc.). Provide a code or ID. Read-only."
+msgstr "取單張優惠券的完整設定(代碼、折扣類型與金額、到期日、使用次數與上限、最低消費、限定商品等)。可給代碼或 ID。唯讀。"
+
+msgid "Gift"
+msgstr "贈品"
+
+msgid "Gift / discount (Get Y)"
+msgstr "贈品 / 折扣(送 Y)"
+
+msgid "Gift / discount quantity"
+msgstr "贈送 / 折扣數量"
+
+msgid "Gift / discount quantity M (default 1)"
+msgstr "贈送 / 折扣件數 M(預設 1)"
+
+msgid "Gift pricing"
+msgstr "贈品定價"
+
+msgid "Gift product"
+msgstr "贈品商品"
+
+msgid "Gift product IDs"
+msgstr "贈品商品 ID"
+
+msgid "Gift product category"
+msgstr "贈品商品分類"
+
+msgid "Gift product category term IDs"
+msgstr "贈品商品分類 term ID"
+
+msgid "Give the same percentage coupon different discounts based on cart thresholds (subtotal / item count) (e.g. 10% off below 1000, 20% off at 1000 or more); can be limited to specific products / categories."
+msgstr "同一張百分比優惠券依購物車門檻(小計 / 件數)給不同折扣(例:未滿 1000 折 10%、滿 1000 折 20%),可限定商品 / 分類。"
+
+msgid "Goal, for example raise average order value / acquire new customers"
+msgstr "目標,例如 提高客單價 / 新客獲取"
+
+msgid "Greater than >"
+msgstr "大於 >"
+
+msgid "Greater than or equal to ≥"
+msgstr "大於等於 ≥"
+
+msgid "Group fixed total"
+msgstr "整組固定總價"
+
+msgid "Group percentage discount"
+msgstr "整組百分比折扣"
+
+msgid "Group:"
+msgstr "群組:"
+
+msgid "Guest (not logged in)"
+msgstr "訪客(未登入)"
+
+msgid "Guide coupon creation with a single marketing idea"
+msgstr "用一句行銷想法引導建立優惠券"
+
+msgid "Half-price shipping"
+msgstr "運費半價"
+
+msgid "Halloween deal"
+msgstr "萬聖節優惠"
+
+msgid "Hello, %s is sending you a coupon."
+msgstr "您好,%s 送您一張優惠券。"
+
+msgid "Here are the coupons exclusive to you; you can copy the code or apply it in one click:"
+msgstr "以下是專屬於您的優惠券,可直接複製代碼或一鍵套用:"
+
+msgid "Hi, I'm the Moksa assistant — I can help with coupons, points, membership tiers, and group-buy commissions. Try: \"Create a 20% off coupon SUMMER20 that expires on 8/31\" or \"List active coupons\"."
+msgstr "嗨,我是 Moksa 助理 —— 優惠券、點數、會員等級、團購分潤都能幫你。試試:「建立一張 8 折券 SUMMER20,8/31 到期」或「列出啟用中的優惠券」。"
+
+msgid "High-spend member 20% off"
+msgstr "高消費會員 8 折"
+
+msgid "High-spend member deal"
+msgstr "高消費會員優惠"
+
+msgid "Holiday / seasonal"
+msgstr "節慶・季節"
+
+msgid "Hours since last order"
+msgstr "上次下單後經過小時數"
+
+msgid "Hours since registration"
+msgstr "註冊後經過小時數"
+
+msgid "How many days it is valid after being issued (counted from the moment of issuance). Enter 0 = use the template's own expiry settings."
+msgstr "發出後幾天內有效(自發放當下起算)。填 0 = 沿用範本本身的到期設定。"
+
+msgid "Ignore the 1-hour cache and recalculate"
+msgstr "忽略 1 小時快取重新計算"
+
+msgid "Immediately disable %1$d coupon(s) (expiry date set to %2$s, effective at once)"
+msgstr "立即停用 %1$d 張優惠券(到期日設為 %2$s,即刻失效)"
+
+msgid "Import"
+msgstr "匯入"
+
+msgid "Import / Export"
+msgstr "匯入 / 匯出"
+
+msgid "Import / Export (CSV)"
+msgstr "匯入 / 匯出(CSV)"
+
+msgid "Import / export coupons via CSV (including tiers, advanced rules JSON, and campaigns), for easy backup, auditing, and batch editing."
+msgstr "以 CSV 匯入 / 匯出優惠券(含階梯、進階規則 JSON 與行銷活動),便於備份、稽核與批次編輯。"
+
+msgid "Import CSV"
+msgstr "匯入 CSV"
+
+msgid "Import complete: %1$d created, %2$d updated, %3$d failed."
+msgstr "匯入完成:新建 %1$d、更新 %2$d、失敗 %3$d。"
+
+msgid "Import failed: please choose a valid CSV file."
+msgstr "匯入失敗:請選擇有效的 CSV 檔。"
+
+msgid "In"
+msgstr "屬於"
+
+msgid "In stock"
+msgstr "有庫存"
+
+msgid "Includes free shipping"
+msgstr "含免運"
+
+msgid "Increase order value"
+msgstr "提高客單價"
+
+msgid "Insufficient permissions, cannot run."
+msgstr "權限不符,無法執行。"
+
+msgid "Interface and display"
+msgstr "介面與呈現"
+
+msgid "Invalid expiry date format (use YYYY-MM-DD)."
+msgstr "到期日格式不正確(請用 YYYY-MM-DD)。"
+
+msgid "Invalid expiry date format; use YYYY-MM-DD."
+msgstr "到期日格式無效,請用 YYYY-MM-DD。"
+
+msgid "Issuance conditions"
+msgstr "發放條件"
+
+msgid "JSON schema for the moksafocou advanced settings object for create / update."
+msgstr "create / update 的 moksafocou 進階設定物件 JSON schema。"
+
+msgid "Large-amount discount"
+msgstr "大額滿減"
+
+msgid "Launch a new-customer first-purchase coupon"
+msgstr "啟動新客首購券"
+
+msgid "Layout and display of the admin menu, templates, reports, and the coupon edit page."
+msgstr "管理選單、範本、報表與優惠券編輯頁的版面呈現。"
+
+msgid "Leave blank to generate automatically"
+msgstr "留空將自動產生"
+
+msgid "Leave empty = no limit. The coupon becomes unavailable once the customer's order count exceeds this value."
+msgstr "留空=不限。顧客訂單數超過此值即不可用。"
+
+msgid "Leave empty = no limit. The coupon becomes unavailable once the customer's total spend exceeds this value."
+msgstr "留空=不限。顧客累積消費超過此值即不可用。"
+
+msgid "Leave empty = no limit. The customer's total spend must reach this value."
+msgstr "留空=不限。顧客累積消費金額須達此值。"
+
+msgid "Leave empty = no limit. The number of orders the customer has completed must reach this value."
+msgstr "留空=不限。顧客已完成的訂單數須達此值。"
+
+msgid "Leave the time slot empty = all day. An end earlier than the start is treated as overnight (e.g. 22:00–02:00). No day selected = no limit."
+msgstr "時段留空=整天。結束早於開始視為跨夜(例 22:00–02:00)。星期不選=不限。"
+
+msgid "Less than <"
+msgstr "小於 <"
+
+msgid "Less than or equal to ≤"
+msgstr "小於等於 ≤"
+
+msgid "Let customers apply coupons with one tap using a dedicated link, QR, or query string."
+msgstr "用專屬連結、QR 或查詢字串讓顧客一鍵套用優惠券。"
+
+msgid "Limited to %d use(s)"
+msgstr "限用 %d 次"
+
+msgid "Limited-time flash sale"
+msgstr "限時快閃"
+
+msgid "Link traffic coupon"
+msgstr "連結導流券"
+
+msgid "List advanced rule types"
+msgstr "列出進階規則型別"
+
+msgid "List all 26 condition types available for \"Advanced rules (AND/OR)\", each with its allowed operators (op) and value shape. Check this before building moksafocou.advanced_rules. Read-only."
+msgstr "列出「進階規則(AND/OR)」可用的全部 26 種條件型別、各自允許的運算子(op)與 value 形狀。建構 moksafocou.advanced_rules 前先查它。唯讀。"
+
+msgid "List country codes"
+msgstr "列出國家代碼"
+
+msgid "List coupon templates"
+msgstr "列出優惠券範本"
+
+msgid "List coupons"
+msgstr "列出優惠券"
+
+msgid "List coupons' expiry dates, schedule start/end, and campaign, sorted by expiry date; you can view a single campaign only. Use this when managing multi-stage campaigns or coupons nearing expiry. Read-only."
+msgstr "列出優惠券的到期日、排程起訖與活動分組(campaign),依到期日排序;可只看某 campaign。管理多階段活動或快到期的券時用。唯讀。"
+
+msgid "List coupons, filterable by status (publish = enabled / draft = disabled), discount type, and keyword, returning a compact list (default 20, maximum 50). Read-only."
+msgstr "列出優惠券,可依狀態(publish 啟用 / draft 停用)、折扣類型、關鍵字篩選,回傳精簡清單(預設 20 筆、上限 50)。唯讀。"
+
+msgid "List only a specific category (acquisition/aov/shipping/promo/seasonal/bonus/member)"
+msgstr "只列某分類(acquisition/aov/shipping/promo/seasonal/bonus/member)"
+
+msgid "List only coupons in this campaign"
+msgstr "只列此活動分組的券"
+
+msgid "List payment methods"
+msgstr "列出付款方式"
+
+msgid "List schedule / expiry status"
+msgstr "列出排程 / 到期狀況"
+
+msgid "List shipping zones"
+msgstr "列出運送區域"
+
+msgid "List the ISO codes and names of countries / regions — use the uppercase code (e.g. TW) when setting \"Shipping region conditions\" or a shipping_country rule. Read-only."
+msgstr "列出國家 / 地區的 ISO 代碼與名稱 —— 設定「收件地區條件」或 shipping_country 規則用大寫代碼(如 TW)。唯讀。"
+
+msgid "List the built-in coupon templates (id, name, description, category, discount type, required modules). Pair with apply-template for one-click coupon creation. Read-only."
+msgstr "列出內建的優惠券範本(id、名稱、說明、分類、折扣型別、所需模組)。要一鍵建券時搭配 apply-template。唯讀。"
+
+msgid "List the id and name of WooCommerce shipping zones (including the \"Locations not covered\" zone 0) — use the real id for shipping_zone rules. Read-only."
+msgstr "列出 WooCommerce 運送區域的 id 與名稱(含「其他地區」zone 0)—— shipping_zone 規則用真實 id。唯讀。"
+
+msgid "List the id, name, and enabled status of all payment methods in this store — use the real id when setting \"Payment method conditions\" or a payment_method rule. Read-only."
+msgstr "列出本店所有付款方式的 id、名稱與是否啟用 —— 設定「付款方式條件」或 payment_method 規則時用真實 id。唯讀。"
+
+msgid "Live summary on the edit page"
+msgstr "編輯頁即時摘要"
+
+msgid "Look up a coupon's usage count, total limit and per-user limit, and remaining uses. Read-only."
+msgstr "查某張優惠券的使用次數、總上限與每人上限、剩餘可用次數。唯讀。"
+
+msgid "Look up coupon details"
+msgstr "查優惠券明細"
+
+msgid "Look up coupon usage"
+msgstr "查優惠券用量"
+
+msgid "Lunar New Year red-envelope 200 off"
+msgstr "農曆春節 紅包折 200"
+
+msgid "Lunar New Year red-envelope coupon, 200 off directly."
+msgstr "農曆春節紅包券,直接折抵 200 元。"
+
+msgid "Lunar New Year red-envelope discount"
+msgstr "春節紅包折抵"
+
+msgid "Main-island free shipping"
+msgstr "本島免運"
+
+msgid "Make specific coupon suggestions based on store data (average order value with coupons, slow-moving products, currently most effective coupons, coupon activity), each with parameters you can create directly. Read-only analysis."
+msgstr "依店家數據(帶券客單價、滯銷商品、目前最有效的券、帶券活躍度)提出具體的優惠券建議,每筆附可直接建立的參數。唯讀分析。"
+
+msgid "Manage all coupons, view reports, and adjust settings here in one place."
+msgstr "在這裡集中管理所有優惠券、查看報表與調整設定。"
+
+msgid "Marketing campaign idea, for example \"Site-wide 10% off for the anniversary sale\""
+msgstr "行銷活動想法,例如「週年慶全站 9 折」"
+
+msgid "Marketing description shown on the card (leave empty to use the coupon description)."
+msgstr "顯示在卡片上的行銷說明(留空則用優惠券描述)。"
+
+msgid "Match all"
+msgstr "需全部包含"
+
+msgid "Match any"
+msgstr "含任一即可"
+
+msgid "Maximum discount"
+msgstr "折扣上限"
+
+msgid "Maximum discount amount"
+msgstr "折扣上限金額"
+
+msgid "Maximum discount amount for a percentage discount (e.g. 20% off, up to 500; requires the \"Maximum discount\" module enabled). 0 or empty = no limit"
+msgstr "百分比折扣的最高折抵金額(例:8 折最多折 500;需啟用「折扣上限」模組)。0 或不填=不限"
+
+msgid "Maximum number of past orders"
+msgstr "最多歷史訂單數"
+
+msgid "Maximum number of records (default 20, maximum 50)"
+msgstr "最多幾筆(預設 20,上限 50)"
+
+msgid "Maximum number of results to return (default 20)"
+msgstr "最多回傳幾筆(預設 20)"
+
+msgid "Maximum number to display"
+msgstr "最多顯示張數"
+
+msgid "Maximum total spend"
+msgstr "最高累積消費"
+
+msgid "Maximum-discount protection"
+msgstr "折扣上限保護"
+
+msgid "Members only"
+msgstr "限會員"
+
+msgid "Members-only 10% off"
+msgstr "會員專屬 9 折"
+
+msgid "Members-only deal"
+msgstr "會員專屬優惠"
+
+msgid "Membership / repeat purchase"
+msgstr "會員・回購"
+
+msgid "Message before it starts"
+msgstr "尚未開始的訊息"
+
+msgid "Message shown on conflict"
+msgstr "衝突時顯示的訊息"
+
+msgid "Message shown outside the allowed time slot"
+msgstr "不在時段時的訊息"
+
+msgid "Message shown when excluded products are present"
+msgstr "含排除商品時的訊息"
+
+msgid "Message shown when not met"
+msgstr "不符時顯示訊息"
+
+msgid "Message shown when product conditions are not met"
+msgstr "不符商品條件時的訊息"
+
+msgid "Message to include for the customer (optional)"
+msgstr "附加給顧客的訊息(選填)"
+
+msgid "Message when conditions are not met"
+msgstr "未達條件時的訊息"
+
+msgid "Message when expired"
+msgstr "已過期的訊息"
+
+msgid "Message when not permitted"
+msgstr "無權限時的訊息"
+
+msgid "Meta key"
+msgstr "Meta 鍵"
+
+msgid "Meta value"
+msgstr "Meta 值"
+
+msgid "Mid-Autumn Festival deal"
+msgstr "中秋優惠"
+
+msgid "Minimum / maximum spend must be a number."
+msgstr "最低 / 最高消費須為數字。"
+
+msgid "Minimum cart subtotal"
+msgstr "最低購物車小計"
+
+msgid "Minimum item quantity"
+msgstr "最低商品數量"
+
+msgid "Minimum number of past orders"
+msgstr "最少歷史訂單數"
+
+msgid "Minimum spend %s"
+msgstr "最低消費 %s"
+
+msgid "Minimum total spend"
+msgstr "最低累積消費"
+
+msgid "Mix & Match"
+msgstr "任選優惠(Mix & Match)"
+
+msgid "Moksa Coupon AI — create / look up coupons in one sentence"
+msgstr "Moksa 優惠券 AI — 用一句話建立 / 查詢優惠券"
+
+msgid "Moksa coupon"
+msgstr "Moksa 優惠券"
+
+msgid "Moksa coupon advanced settings (groups: schedule / conditions / BOGO / gift / shipping…)"
+msgstr "Moksa 優惠券進階設定(分組:排程 / 條件 / BOGO / 贈品 / 運費…)"
+
+msgid "Moksa coupon effect"
+msgstr "Moksa 優惠券效果"
+
+msgid "Moksa coupon management"
+msgstr "Moksa 優惠券管理"
+
+msgid "Moksa coupon settings"
+msgstr "Moksa 優惠券設定"
+
+msgid "Moksa coupon settings (ID list)"
+msgstr "Moksa 優惠券設定(ID 清單)"
+
+msgid "Moksa coupon settings (URL slug)"
+msgstr "Moksa 優惠券設定(網址代稱)"
+
+msgid "Moksa coupon settings (advanced rules, JSON)"
+msgstr "Moksa 優惠券設定(進階規則,JSON)"
+
+msgid "Moksa coupon settings (amount / number)"
+msgstr "Moksa 優惠券設定(金額 / 數值)"
+
+msgid "Moksa coupon settings (code list)"
+msgstr "Moksa 優惠券設定(代碼清單)"
+
+msgid "Moksa coupon settings (country code list, uppercase)"
+msgstr "Moksa 優惠券設定(國家代碼清單,大寫)"
+
+msgid "Moksa coupon settings (enable flag yes/empty)"
+msgstr "Moksa 優惠券設定(啟用旗標 yes/空)"
+
+msgid "Moksa coupon settings (integer)"
+msgstr "Moksa 優惠券設定(整數)"
+
+msgid "Moksa coupon settings (mode code)"
+msgstr "Moksa 優惠券設定(模式代碼)"
+
+msgid "Moksa coupon settings (multi-line text)"
+msgstr "Moksa 優惠券設定(多行文字)"
+
+msgid "Moksa coupon settings (schedule time, site time zone)"
+msgstr "Moksa 優惠券設定(排程時間,站台時區)"
+
+msgid "Moksa coupon settings (text)"
+msgstr "Moksa 優惠券設定(文字)"
+
+msgid "Moksa coupon settings (tiered discount, JSON)"
+msgstr "Moksa 優惠券設定(階梯折扣,JSON)"
+
+msgid "Moksa coupon settings (weekday 0–6)"
+msgstr "Moksa 優惠券設定(星期 0–6)"
+
+msgid "Monday"
+msgstr "星期一"
+
+msgid "Mother's Day deal"
+msgstr "母親節優惠"
+
+msgid "Move coupon management into a standalone top-level menu \"Moksa Coupon\" (All coupons / Add / Reports / Settings), no longer buried under WooCommerce."
+msgstr "把優惠券管理收進獨立頂層選單「Moksa 優惠券」(全部券 / 新增 / 報表 / 設定),不再埋在 WooCommerce 之下。"
+
+msgid "Move coupon management into its own top-level menu (bringing together all coupons / add / reports / settings)"
+msgstr "把優惠券管理收進獨立頂層選單(收編全部券 / 新增 / 報表 / 設定)"
+
+msgid "Move to trash"
+msgstr "移到垃圾桶"
+
+msgid "Mutually exclusive coupons, allowed / disallowed combinable coupon code lists"
+msgstr "互斥券、允許 / 禁止並用的券碼清單"
+
+msgid "My Account coupons"
+msgstr "會員中心優惠券"
+
+msgid "My coupons"
+msgstr "我的優惠券"
+
+msgid "N must be at least 2 (from the second item)."
+msgstr "N 至少為 2(第二件起)。"
+
+msgid "New Year deal"
+msgstr "新年優惠"
+
+msgid "New customer acquisition"
+msgstr "新客獲取"
+
+msgid "New customer first-purchase offer"
+msgstr "新客首購優惠"
+
+msgid "New customer welcome discount"
+msgstr "新客迎新折抵"
+
+msgid "New customers get $150 off orders over $600 to encourage first-purchase basket building (one use per person)."
+msgstr "新顧客滿 600 元現折 150 元,鼓勵首購湊單(每人限一次)。"
+
+msgid "New customers get 10% off their first order (limited to one use per customer)."
+msgstr "新顧客的第一筆訂單享 9 折(每位顧客限用一次)。"
+
+msgid "New customers' first purchase only"
+msgstr "限新客首購"
+
+msgid "New expiry date YYYY-MM-DD"
+msgstr "新的到期日 YYYY-MM-DD"
+
+msgid "New expiry date YYYY-MM-DD; leave empty = clear the expiry date"
+msgstr "新的到期日 YYYY-MM-DD;留空 = 清除到期日"
+
+msgid "No"
+msgstr "否"
+
+msgid "No coupon settings sections are enabled yet."
+msgstr "尚未啟用任何優惠券設定區塊。"
+
+msgid "No coupon usage records yet."
+msgstr "尚無優惠券使用紀錄。"
+
+msgid "No expiry date"
+msgstr "無到期日"
+
+msgid "No fields to update."
+msgstr "沒有可更新的欄位。"
+
+msgid "No limit"
+msgstr "不限"
+
+msgid "No matching coupons found."
+msgstr "找不到任何符合的優惠券。"
+
+msgid "No matching templates found."
+msgstr "找不到符合的範本。"
+
+msgid "No override"
+msgstr "不覆寫"
+
+msgid "Not equal to"
+msgstr "不等於"
+
+msgid "Not equal to ≠"
+msgstr "不等於 ≠"
+
+msgid "Not in"
+msgstr "不屬於"
+
+msgid "Not valid on sale items"
+msgstr "特價商品不適用"
+
+msgid "Note: this differs in meaning from WooCommerce's native \"minimum spend\" (you can choose whether tax is included), so do not set both at the same time."
+msgstr "注意:此與 WooCommerce 原生「最低消費」語意不同(可選含稅與否),請勿同時設定兩者。"
+
+msgid "Notice"
+msgstr "提醒"
+
+msgid "Nth-item discount"
+msgstr "第 N 件折扣"
+
+msgid "Number of coupons to generate (1–500)"
+msgstr "要量產的張數(1–500)"
+
+msgid "Number of items to pick (N)"
+msgstr "任選件數(N)"
+
+msgid "Number of items to pick, N (at least 1)"
+msgstr "任選件數 N(至少 1)"
+
+msgid "Number of recent days to analyze (1–365, default 30)"
+msgstr "統計近幾天(1–365,預設 30)"
+
+msgid "Number of times this coupon has been used (can restrict to the first N)"
+msgstr "此券已被使用次數(可做前 N 名限定)"
+
+msgid "Numeric ID of the deleted coupon"
+msgstr "已刪除優惠券的數字 ID"
+
+msgid "Off-peak offer"
+msgstr "離峰時段優惠"
+
+msgid "On backorder"
+msgstr "可延期交貨"
+
+msgid "On or after"
+msgstr "在(含)之後"
+
+msgid "On or before"
+msgstr "在(含)之前"
+
+msgid "Only %d left"
+msgstr "僅剩 %d 張"
+
+msgid "Only allow the following countries / regions"
+msgstr "只允許下列國家 / 地區"
+
+msgid "Only allow the following payment methods"
+msgstr "只允許下列付款方式"
+
+msgid "Only allow these roles"
+msgstr "僅允許這些角色"
+
+msgid "Only customers who have not completed any order can use it. Note: guests who are not logged in are treated as first-time buyers (returning customers checking out as guests may bypass this)."
+msgstr "只有尚未完成過任何訂單的顧客可使用。注意:未登入訪客視為首購(以訪客結帳的回頭客可能繞過)。"
+
+msgid "Only effective when \"Cannot be combined\" above is checked: coupon codes in the list can still be used together with this coupon. Separate with commas or line breaks."
+msgstr "僅在勾選上方「不可並用」時生效:清單內的券碼仍可與此券一起使用。以逗號或換行分隔。"
+
+msgid "Only one special-discount coupon (Buy X Get Y / Nth-item discount / Mix & Match) can be used at a time."
+msgstr "每次只能使用一張特惠折扣型(買 X 送 Y / 第 N 件折扣 / 任選優惠)優惠券。"
+
+msgid "Only the customer's first order (customer must be logged in)"
+msgstr "僅顧客首筆訂單(需登入顧客)"
+
+msgid "Open up coupon capabilities to external AI tools (MCP). Disabled by default."
+msgstr "把優惠券能力開放給外部 AI 工具(MCP)。預設關閉。"
+
+msgid "Optional fine-tuning"
+msgstr "可選微調"
+
+msgid "Optional scenario (subtotal/qty/products/categories/country/payment/roles/weight…) used to test whether it passes"
+msgstr "可選的情境(subtotal/qty/products/categories/country/payment/roles/weight…),用來試算是否通過"
+
+msgid "Optional. Leave blank to use the coupon code. Must be unique per coupon."
+msgstr "選填。留空則用優惠券代碼。每張券需唯一。"
+
+msgid "Optional. You can use the variables {coupon_code} {coupon_applied} {coupon_error}. Leave blank to redirect to the cart."
+msgstr "選填。可用變數 {coupon_code} {coupon_applied} {coupon_error}。留空則導向購物車。"
+
+msgid "Order amount reaches a threshold"
+msgstr "訂單金額達門檻"
+
+msgid "Order amount threshold"
+msgstr "訂單金額門檻"
+
+msgid "Orders used"
+msgstr "使用訂單數"
+
+msgid "Orders used and total discount for each coupon (paid orders only), sorted by discount amount from high to low. Read-only."
+msgstr "每張優惠券的使用訂單數與折抵總額(只算已付款訂單),依折抵金額由高到低排序。唯讀。"
+
+msgid "Orders used and total discount per coupon (separate admin page)"
+msgstr "每張券的使用訂單數與折抵總額(獨立後台頁)"
+
+msgid "Original page"
+msgstr "原頁面"
+
+msgid "Other"
+msgstr "其他"
+
+msgid "Other regions (not covered)"
+msgstr "其他地區(未涵蓋)"
+
+msgid "Out of stock"
+msgstr "無庫存"
+
+msgid "Overrides the shipping cost of all shipping methods when this coupon is applied. Different from WooCommerce's native \"Allow free shipping\" (which only enables dedicated free-shipping methods)."
+msgstr "套用此優惠券時改寫所有運送方式的運費。與 WooCommerce 原生「提供免費運送」不同(那只啟用專屬的免運方式)。"
+
+msgid "Payment method"
+msgstr "付款方式"
+
+msgid "Payment-method discount"
+msgstr "付款方式專屬折抵"
+
+msgid "Percentage %"
+msgstr "百分比 %"
+
+msgid "Percentage discount"
+msgstr "百分比折扣"
+
+msgid "Percentage discount cannot exceed 100."
+msgstr "百分比折扣不可超過 100。"
+
+msgid "Percentage is the \"discount %\": second item 40% off → enter 40 (40% off, pay 60%). Fixed per item: amount. Leave empty for free."
+msgstr "百分比為「折扣 %」:第二件六折 → 填 40(折 40%、付 60%)。每件固定:金額。免費免填。"
+
+msgid "Percentage: 0–100; Fixed: discount amount. Not required when \"Free shipping\" or \"No override\" is selected."
+msgstr "百分比:0–100;固定:折抵金額。選「免運費」或「不覆寫」時免填。"
+
+msgid "Percentage: 0–100; fixed per item: an amount. Leave empty when \"Free\" is selected."
+msgstr "百分比:0–100;每件固定:金額。選「免費」時免填。"
+
+msgid "Percentage: 0–100; fixed per item: discount amount. Leave empty when \"Free\" is selected."
+msgstr "百分比:0–100;每件固定:折抵金額。選「免費」時免填。"
+
+msgid "Permanently delete"
+msgstr "永久刪除"
+
+msgid "Pick %1$d items for %2$s"
+msgstr "任選 %1$d 件,整組 %2$s 元"
+
+msgid "Pick %1$d items, %2$s%% off the group"
+msgstr "任選 %1$d 件,整組折 %2$s%%"
+
+msgid "Pick 3 items → enter 3."
+msgstr "任選 3 件 → 填 3。"
+
+msgid "Pick N for $X / N items at Y% off: pick and combine specific products for a special price, repeatable"
+msgstr "任選 N 件 $X / 任選 N 件 Y 折:指定商品任選湊組享優惠價,可重複"
+
+msgid "Pick a template to create a draft coupon in one click."
+msgstr "挑一個範本一鍵建立草稿券。"
+
+msgid "Pick a template to quickly create a coupon. Click \"Apply\" to first fine-tune the code, discount amount and expiry date, then create a draft coupon in one click."
+msgstr "挑一個範本即可快速建立優惠券。點「套用」可先微調代碼、折扣值與到期日,再一鍵建立草稿券。"
+
+msgid "Pick any %d items to enjoy the special price."
+msgstr "任選 %d 件即可享優惠價。"
+
+msgid "Please create a coupon with the moksafocou tools based on this marketing idea: \"%s\". First use find-coupon-by-code to confirm the code is not duplicated; when advanced conditions are needed, use list-rule-types / get-settings-schema to check the details, then call create-coupon or create-tiered-coupon."
+msgstr "請依這個行銷想法用 moksafocou 工具建立一張優惠券:「%s」。先用 find-coupon-by-code 確認代碼不重複;需要進階條件時用 list-rule-types / get-settings-schema 查清楚,再呼叫 create-coupon 或 create-tiered-coupon。"
+
+msgid "Please log in to view your coupons."
+msgstr "請先登入以查看您的優惠券。"
+
+msgid "Please provide at least one tier."
+msgstr "請至少提供一階折扣(tiers)。"
+
+msgid "Please save the coupon first."
+msgstr "請先儲存優惠券。"
+
+msgid "Please set the trigger and reward on the \"Buy X Get Y\" tab"
+msgstr "請到「買 X 送 Y」分頁設定觸發與獎勵"
+
+msgid "Please specify the gift products or categories."
+msgstr "請指定贈品的商品或分類。"
+
+msgid "Please specify the purchase-condition products or categories."
+msgstr "請指定購買條件的商品或分類。"
+
+msgid "Price / discount amount"
+msgstr "價格 / 折扣值"
+
+msgid "Pricing method"
+msgstr "定價方式"
+
+msgid "Processing"
+msgstr "處理中"
+
+msgid "Product conditions"
+msgstr "商品條件"
+
+msgid "Product discount"
+msgstr "商品折抵"
+
+msgid "Product match type"
+msgstr "商品比對方式"
+
+msgid "Promotion / limited-time"
+msgstr "促銷・限時"
+
+msgid "Prompt message (when the gift is not added)"
+msgstr "提示訊息(贈品未加入時)"
+
+msgid "Provide a [moksafocou_coupons] shortcode that displays the available coupons the merchant selected as cards on the front end (with copy and apply)."
+msgstr "提供 [moksafocou_coupons] 短代碼,在前台以卡片顯示商家勾選的可用優惠券(含複製與套用)。"
+
+msgid "Purchase condition (Buy X)"
+msgstr "購買條件(買 X)"
+
+msgid "Purchase-condition product IDs (use either categories or both)"
+msgstr "購買條件商品 ID(與分類擇一或併用)"
+
+msgid "Purchase-condition product category term IDs"
+msgstr "購買條件商品分類 term ID"
+
+msgid "Purchased a specific product"
+msgstr "買過特定商品"
+
+msgid "Purchased in a category"
+msgstr "買過某分類"
+
+msgid "QR content cannot be empty."
+msgstr "QR 內容不可為空。"
+
+msgid "QR content is too long to generate."
+msgstr "QR 內容過長,無法產生。"
+
+msgid "Qixi Valentine's Day deal"
+msgstr "七夕情人節優惠"
+
+msgid "Quantity"
+msgstr "件數"
+
+msgid "Quantity N to purchase (default 1)"
+msgstr "需購買的件數 N(預設 1)"
+
+msgid "Quantity of a specific product"
+msgstr "特定商品的件數"
+
+msgid "Raise average order value with a spend-threshold coupon"
+msgstr "用滿額券拉高客單價"
+
+msgid "Read the current \"automatically issue a coupon after order completion\" settings: template coupon, issuance conditions, amount threshold, validity days, and whether to send an email. Read-only."
+msgstr "讀取「訂單完成後自動發券」目前的設定:範本券、發放條件、金額門檻、有效天數、是否寄信。唯讀。"
+
+msgid "Ready-made coupon templates, create a draft coupon in one click"
+msgstr "預設好的優惠券範本,一鍵建立草稿券"
+
+msgid "Recently used"
+msgstr "最近使用"
+
+msgid "Recipient Email"
+msgstr "收件人 Email"
+
+msgid "Recipient email is invalid."
+msgstr "收件人 Email 無效。"
+
+msgid "Redirect URL after applying"
+msgstr "套用後導向網址"
+
+msgid "Redirect after query-string apply"
+msgstr "查詢字串套用後導向"
+
+msgid "Refresh"
+msgstr "重新整理"
+
+msgid "Remaining-quantity hint threshold"
+msgstr "剩餘張數提示門檻"
+
+msgid "Remarketing / win-back coupon"
+msgstr "再行銷 / 回購券"
+
+msgid "Remarketing settings updated."
+msgstr "再行銷設定已更新。"
+
+msgid "Reminder: %1$s's exclusive coupon expires on %2$s, don't forget to use it before the deadline!"
+msgstr "提醒您,%1$s 的專屬優惠券將於 %2$s 到期,別忘了在期限前使用!"
+
+msgid "Repeat limit"
+msgstr "重複上限"
+
+msgid "Repeat limit (0 = no limit, applies to repeat only)"
+msgstr "重複上限(0=不限,僅 repeat 有效)"
+
+msgid "Repeatable (apply again for every N items)"
+msgstr "可重複(每滿 N 件再套一次)"
+
+msgid "Repeatable (discount one item for every N items)"
+msgstr "可重複(每滿 N 件折一件)"
+
+msgid "Repeatable (give one set for each qualifying set in the cart)"
+msgstr "可重複(購物車滿足幾組就送幾組)"
+
+msgid "Required categories"
+msgstr "需含分類"
+
+msgid "Required products"
+msgstr "需含商品"
+
+msgid "Required purchase quantity"
+msgstr "需購買數量"
+
+msgid "Required-category discount"
+msgstr "必含指定分類折扣"
+
+msgid "Requires WordPress 7.0 and an AI key set under Settings → Connectors"
+msgstr "需 WordPress 7.0 並在「設定 → Connectors」設定 AI 金鑰"
+
+msgid "Restore a coupon from the trash as a draft (provide the numeric ID). Destructive — the call only \"proposes\"; it is restored only after the user confirms."
+msgstr "把垃圾桶中的優惠券還原為草稿(提供數字 ID)。破壞性 —— 呼叫只會「提出」,使用者確認後才還原。"
+
+msgid "Restore coupon %s from the trash as a draft (you can review it before enabling)"
+msgstr "從垃圾桶還原優惠券 %s 為草稿(啟用前可先檢查)"
+
+msgid "Restore deleted coupon"
+msgstr "還原刪除的優惠券"
+
+msgid "Restore failed."
+msgstr "還原失敗。"
+
+msgid "Restored from the trash as a draft."
+msgstr "已從垃圾桶還原為草稿。"
+
+msgid "Restrict the payment methods this coupon can be used with. The payment method is only determined at checkout, so it is validated at checkout (blocks checkout if not met)."
+msgstr "限制此優惠券可搭配的付款方式。付款方式在結帳時才確定,因此於結帳驗證(不符會擋下結帳)。"
+
+msgid "Restrict this coupon by the \"country of the shipping address\" (validated at the cart stage). Unlike \"Shipping override\" — that changes shipping, this restricts the region."
+msgstr "依「收件地址的國家」限制此優惠券(購物車階段即驗證)。與「運費覆寫」不同——那是改運費,這是限地區。"
+
+msgid "Restrict use by the customer's order history / total spend (applies only to logged-in customers; guests are treated as having no purchase history)."
+msgstr "依顧客的歷史訂單數 / 累積消費限制使用(僅對登入顧客生效;訪客視為無消費紀錄)。"
+
+msgid "Restriction type"
+msgstr "限制方式"
+
+msgid "Return the complete JSON schema of the moksafocou advanced settings object for create-coupon / update-coupon (schedule / conditions / tiers / advanced rules / BOGO / gift / shipping…). Read-only."
+msgstr "回傳 create-coupon / update-coupon 的 moksafocou 進階設定物件完整 JSON schema(排程 / 條件 / 階梯 / 進階規則 / BOGO / 贈品 / 運費…)。唯讀。"
+
+msgid "Return to the source page after applying"
+msgstr "套用後返回來源頁"
+
+msgid "Return-visit gift for no purchase in the last 30 days"
+msgstr "近 30 天未購回訪禮"
+
+msgid "Return-visit win-back gift"
+msgstr "回訪喚回禮"
+
+msgid "Returning customers whose last order was more than 30 days ago get 100 off, to win back dormant customers (logged-in members only; guests have no purchase history)."
+msgstr "老顧客距上次下單超過 30 天即可折 100 元,喚回沉睡客(限已登入會員,訪客無購買紀錄)。"
+
+msgid "Revenue"
+msgstr "營收"
+
+msgid "Revenue, total discount, order count, and average order value of paid orders with coupons over the last N days, plus a daily trend. Answers \"how much business coupons brought in\". Read-only."
+msgstr "近 N 天內帶券已付款訂單的營收、折抵總額、訂單數、平均客單價,以及每日趨勢。回答「優惠券帶來多少生意」。唯讀。"
+
+msgid "Role restriction"
+msgstr "角色限制"
+
+msgid "Rule tree object or its JSON string"
+msgstr "規則樹物件或其 JSON 字串"
+
+msgid "Rules JSON (advanced / fallback)"
+msgstr "規則 JSON(進階 / 後備)"
+
+msgid "Running…"
+msgstr "執行中…"
+
+msgid "Saturday"
+msgstr "星期六"
+
+msgid "Save settings"
+msgstr "儲存設定"
+
+msgid "Schedule"
+msgstr "排程"
+
+msgid "Schedule start and end, role restrictions, minimum subtotal / quantity, customer history, products / categories, days / time slots"
+msgstr "排程起訖、角色限制、最低小計 / 數量、顧客歷史、商品 / 分類、星期 / 時段"
+
+msgid "Scheduled end time"
+msgstr "排程結束時間"
+
+msgid "Search categories…"
+msgstr "搜尋分類…"
+
+msgid "Search products…"
+msgstr "搜尋商品…"
+
+msgid "Search templates"
+msgstr "搜尋範本"
+
+msgid "Search templates (name / description)…"
+msgstr "搜尋範本(名稱 / 說明)…"
+
+msgid "Second item 40% off / Nth-item discount: for the same set of products, every N items qualifies the Nth item for a discount, repeatable"
+msgstr "第二件6折 / 第 N 件折扣:同組商品每滿 N 件,第 N 件享折扣,可重複"
+
+msgid "Second item half price"
+msgstr "第二件半價"
+
+msgid "Select a country / region…"
+msgstr "選擇國家 / 地區…"
+
+msgid "Select a payment method…"
+msgstr "選擇付款方式…"
+
+msgid "Selectable product IDs (leave empty + no categories = whole site)"
+msgstr "可任選商品 ID(留空 + 無分類 = 全站)"
+
+msgid "Selectable product category term IDs"
+msgstr "可任選商品分類 term ID"
+
+msgid "Selectable products (leave empty = whole site)"
+msgstr "可任選的商品(留空 = 全站)"
+
+msgid "Select…"
+msgstr "選擇…"
+
+msgid "Send"
+msgstr "送出"
+
+msgid "Send a coupon to a customer in natural language, optionally locked to that Email only"
+msgstr "用自然語言把優惠券寄給顧客,可鎖定只限該 Email 使用"
+
+msgid "Send an existing coupon to a specified Email (optionally locked to that Email only). Destructive — the call only \"proposes\"; it is sent only after the user confirms."
+msgstr "把一張既有優惠券寄到指定 Email(可選擇鎖定只限該 Email 使用)。破壞性 —— 呼叫只會「提出」,使用者確認後才寄送。"
+
+msgid "Send coupon"
+msgstr "寄送優惠券"
+
+msgid "Send coupon %1$s to %2$s%3$s"
+msgstr "將優惠券 %1$s 寄送至 %2$s%3$s"
+
+msgid "Send failed (please check the site email settings)."
+msgstr "寄送失敗(請檢查站台郵件設定)。"
+
+msgid "Send the reminder a number of days before the coupon's expiry date (1–60, default 3)."
+msgstr "在優惠券到期日的前幾天寄出提醒(1–60,預設 3)。"
+
+msgid "Sent the coupon to %s."
+msgstr "已將優惠券寄送至 %s。"
+
+msgid "Set \"automatically issue a coupon after order completion\": template coupon code, issuance conditions (all / first_order / min_total), amount threshold, validity days, and whether to send an email. Validates that the template coupon exists."
+msgstr "設定「訂單完成後自動發券」:範本券代碼、發放條件(all / first_order / min_total)、金額門檻、有效天數、是否寄信。會驗證範本券是否存在。"
+
+msgid "Set %d coupon(s) to expire immediately."
+msgstr "已將 %d 張優惠券設為立即失效。"
+
+msgid "Set a maximum discount amount for a percentage discount (e.g. 20% off, at most 500)"
+msgstr "百分比折扣設定最高折抵金額(例:8 折最多折 500)"
+
+msgid "Set a maximum discount amount for percentage-discount coupons (e.g. 20% off, but at most 500)."
+msgstr "為百分比折扣優惠券設定最高折抵金額(例:打 8 折,但最多折 500)。"
+
+msgid "Set one or more coupons to expire immediately (expiry date set to yesterday). Ends a campaign \"right now\" more explicitly than disabling. Destructive — the call only \"proposes\"; it takes effect only after the user confirms."
+msgstr "把一或多張優惠券立即設為失效(到期日設為昨天)。比停用更明確地「立刻結束活動」。破壞性 —— 呼叫只會「提出」,使用者確認後才生效。"
+
+msgid "Set remarketing rules"
+msgstr "設定再行銷規則"
+
+msgid "Set the expiry date of %1$d coupon(s) to %2$s"
+msgstr "將 %1$d 張優惠券的到期日設為 %2$s"
+
+msgid "Set the expiry date of multiple coupons to the same day at once (leave date_expires empty = clear the expiry date to make them permanent). Handy for extending or ending campaigns early. Destructive — the call only \"proposes\"; it takes effect only after the user confirms."
+msgstr "一次把多張優惠券的到期日設為同一天(date_expires 留空 = 清除到期日改永久)。管理活動延期 / 提前結束很方便。破壞性 —— 呼叫只會「提出」,使用者確認後才生效。"
+
+msgid "Settings"
+msgstr "設定"
+
+msgid "Settings saved."
+msgstr "設定已儲存。"
+
+msgid "Share link"
+msgstr "分享連結"
+
+msgid "Shipping"
+msgstr "運費"
+
+msgid "Shipping adjustment"
+msgstr "運費調整"
+
+msgid "Shipping country / region"
+msgstr "收件國家 / 地區"
+
+msgid "Shipping discount"
+msgstr "運費折扣"
+
+msgid "Shipping discount %1$s%2$s"
+msgstr "運費折抵 %1$s%2$s"
+
+msgid "Shipping discount %s%%"
+msgstr "運費折扣 %s%%"
+
+msgid "Shipping discount / free shipping"
+msgstr "運費折抵 / 免運"
+
+msgid "Shipping fixed discount"
+msgstr "運費固定折扣"
+
+msgid "Shipping offer"
+msgstr "運費優惠"
+
+msgid "Shipping override"
+msgstr "運費覆寫"
+
+msgid "Shipping override \"%1$s\": %2$s (order shipping %3$s)"
+msgstr "運費覆寫「%1$s」:%2$s(本單運費 %3$s)"
+
+msgid "Shipping override type"
+msgstr "運費覆寫方式"
+
+msgid "Shipping percentage discount"
+msgstr "運費百分比折扣"
+
+msgid "Shipping region"
+msgstr "收件地區"
+
+msgid "Shipping zone"
+msgstr "運送區域(Zone)"
+
+msgid "Short-term limited-time promotion (after applying, set the start and end times on the \"Schedule\" tab to automatically go live and expire)."
+msgstr "短期限時促銷(套用後到「排程」分頁設定起訖時間即自動上下架)。"
+
+msgid "Show \"Only N left\" based on the usage limit (requires a usage limit to be set first)."
+msgstr "依「使用次數上限」顯示「僅剩 N 張」(需先設定使用次數上限)。"
+
+msgid "Show \"Spend NT$X more for free shipping\" in the cart / checkout to boost order value"
+msgstr "在購物車 / 結帳顯示「再買 NT$X 免運」,推動客單價"
+
+msgid "Show \"Spend NT$X more for free shipping\" in the cart / checkout to drive up order value (reads the store's configured free-shipping threshold)."
+msgstr "在購物車 / 結帳顯示「再買 NT$X 即可免運」,推動客單價(讀取店家設定的免運門檻)。"
+
+msgid "Show a \"You saved a total of NT$X\" hint in the cart / checkout to reinforce the sense of the discount."
+msgstr "在購物車 / 結帳顯示「您總共省了 NT$X」的提示,強化折扣感受。"
+
+msgid "Show a \"You saved a total of NT$X\" summary in the cart and checkout to reinforce the sense of savings"
+msgstr "在購物車與結帳頁顯示「您總共省了 NT$X」彙總,強化省錢感受"
+
+msgid "Show a countdown-to-expiry timer on the card (requires an expiry date or a scheduled end time)."
+msgstr "在卡片上顯示倒數到期計時器(需設定到期日或排程結束)。"
+
+msgid "Show a live effect summary and conflict warnings while editing the coupon"
+msgstr "編輯優惠券時即時顯示效果摘要與條件衝突提醒"
+
+msgid "Show a live summary panel on the coupon edit page: discount mechanics, enabled features, and conflict warnings, updating in real time as you type."
+msgstr "在優惠券編輯頁顯示即時摘要面板:折扣機制、已啟用功能與衝突警告,隨輸入即時更新。"
+
+msgid "Show countdown timer"
+msgstr "顯示倒數計時"
+
+msgid "Show customer-exclusive coupons in WooCommerce \"My Account\", with copy or one-click apply"
+msgstr "在 WooCommerce「我的帳戶」顯示顧客專屬優惠券,可複製或一鍵套用"
+
+msgid "Show in the front-end coupon list"
+msgstr "在前台優惠券清單顯示"
+
+msgid "Show only when the remaining quantity is at or below this number (0 or empty = always show)."
+msgstr "剩餘張數低於或等於此數時才顯示(0 或留空 = 一律顯示)。"
+
+msgid "Show remaining quantity"
+msgstr "顯示剩餘張數"
+
+msgid "Site-wide promotion"
+msgstr "全站促銷"
+
+msgid "Sort: discount (default) / orders (order count)"
+msgstr "排序:discount(折抵,預設)/ orders(訂單數)"
+
+msgid "Specific categories"
+msgstr "指定商品分類"
+
+msgid "Specific categories only"
+msgstr "只限指定分類"
+
+msgid "Specific payment methods only"
+msgstr "限特定付款方式"
+
+msgid "Specific products"
+msgstr "指定商品"
+
+msgid "Specific products only"
+msgstr "只限指定商品"
+
+msgid "Specific shipping regions only"
+msgstr "限特定收件地區"
+
+msgid "Spend %s"
+msgstr "滿 %s"
+
+msgid "Spend %s more to get free shipping!"
+msgstr "再買 %s 即可享免運!"
+
+msgid "Spend-and-quantity discount"
+msgstr "滿額且滿件折抵"
+
+msgid "Spend-threshold gift"
+msgstr "滿額贈品"
+
+msgid "Stacking control"
+msgstr "疊加控制"
+
+msgid "Standalone coupon management menu"
+msgstr "獨立優惠券管理選單"
+
+msgid "Standalone settings panel"
+msgstr "獨立設定面板"
+
+msgid "Start time"
+msgstr "開始時間"
+
+msgid "Status"
+msgstr "狀態"
+
+msgid "Status: publish (enabled) / draft (disabled) / any. Not given = all"
+msgstr "狀態:publish(啟用)/ draft(停用)/ any。不給=全部"
+
+msgid "Store-wide free-shipping coupon for Double 11 (via shipping override)."
+msgstr "雙十一全站免運券(透過運費覆寫)。"
+
+msgid "Store-wide free-shipping coupon for the Christmas season (via shipping override)."
+msgstr "聖誕檔期全站免運券(透過運費覆寫)。"
+
+msgid "Success message"
+msgstr "成功套用訊息"
+
+msgid "Suggest coupons"
+msgstr "建議優惠券"
+
+msgid "Sunday"
+msgstr "星期日"
+
+msgid "Taiwanese \"zhe\" discount conversion (always compute step by step with the formula, never by intuition): a \"zhe\" figure is the proportion of the price still paid after the discount, and the percent coupon's amount = 100 minus that payment percentage. For a single-digit \"N-zhe\", the payment percentage = N*10, so amount = 100 - N*10: 9-zhe -> pay 90 -> amount = 10; 8-zhe -> amount = 20; 7-zhe -> amount = 30; 5-zhe -> amount = 50. For a two-digit \"NN-zhe\", the payment percentage = NN, so amount = 100 - NN: 85-zhe -> amount = 15; 79-zhe -> amount = 21. Note in particular: the amount for \"9-zhe\" is always 10, not 9 and not 1. Only when the user states the discount directly (\"N% off\", \"a discount of N%\", \"save N%\") or a fixed amount (\"N off\") should you fill it in literally."
+msgstr "台灣折扣換算(務必照公式逐步計算,不要憑直覺):「N 折」是折後要付的價格比例,percent 的 amount = 100 減去付款百分比。個位數「N 折」的付款百分比 = N×10,所以 amount = 100 − N×10:9 折→付 90→amount = 10;8 折→amount = 20;7 折→amount = 30;5 折→amount = 50。兩位數「NN 折」的付款百分比 = NN,所以 amount = 100 − NN:85 折→amount = 15;79 折→amount = 21。特別記住:「9 折」的 amount 一定是 10,不是 9、也不是 1。只有當使用者直接講折扣本身(「折 N%」「打 N% 的折扣」「省 N%」)或固定金額(「折 N 元」)時,才照字面填。"
+
+msgid "Takes effect when the issuance condition is \"reaches a threshold\": the order total must be ≥ this amount."
+msgstr "發放條件選「達門檻」時生效:訂單總額需 ≥ 此金額。"
+
+msgid "Taxonomy slug"
+msgstr "分類法代稱"
+
+msgid "Template coupon code"
+msgstr "範本優惠券代碼"
+
+msgid "Template coupon code (will be copied into a customer-exclusive coupon)"
+msgstr "範本優惠券代碼(會複製成顧客專屬券)"
+
+msgid "Template id (from list-templates)"
+msgstr "範本 id(來自 list-templates)"
+
+msgid "Term IDs (comma-separated)"
+msgstr "詞彙 ID(逗號)"
+
+msgid "Thank you for your order! Here is a coupon you can use on your next purchase."
+msgstr "感謝您的訂購!送您下次購物可用的優惠券。"
+
+msgid "The \"%s\" module must be enabled first"
+msgstr "需先啟用「%s」模組"
+
+msgid "The cart contains products that are not eligible for this coupon."
+msgstr "購物車包含不適用此優惠券的商品。"
+
+msgid "The cart does not meet this coupon's product conditions."
+msgstr "購物車不符合此優惠券的商品條件。"
+
+msgid "The cart minimum amount is greater than the maximum amount, so this coupon will never be usable."
+msgstr "購物車最低金額大於最高金額,此券將永遠無法使用。"
+
+msgid "The cart must contain the following products / categories to use this coupon (unlike WooCommerce's native \"applicable products\": this is a usage requirement, not the discount scope). Leave empty = no limit."
+msgstr "購物車需含下列商品 / 分類才能使用此券(與 WooCommerce 原生「適用商品」不同:這是使用門檻,不是折扣範圍)。留空=不限。"
+
+msgid "The cart must have at least %d item(s) to use this coupon."
+msgstr "購物車需至少 %d 件商品才能使用此優惠券。"
+
+msgid "The cart subtotal must reach %s to use this coupon."
+msgstr "購物車小計需達 %s 才能使用此優惠券。"
+
+msgid "The coupon's discount mechanics and checkout validation. Each is disabled by default; enable only what you need."
+msgstr "優惠券的折扣機制與結帳驗證。每項預設關閉,需要才開。"
+
+msgid "The discount type cannot be set when applying a template."
+msgstr "套用範本時無法設定折扣類型。"
+
+msgid "The extended expiry date cannot be earlier than today."
+msgstr "延長的到期日不可早於今天。"
+
+msgid "The fixed total must be greater than 0."
+msgstr "固定總價需大於 0。"
+
+msgid "The gift quantity cannot be changed."
+msgstr "贈品數量無法變更。"
+
+msgid "The leading path segment of the dedicated link, e.g. coupon → /coupon/code. Permalinks are refreshed after a change."
+msgstr "專屬連結的路徑前段,例如 coupon → /coupon/代碼。變更後會重整永久連結。"
+
+msgid "The maximum discount amount for a percentage discount (e.g. 20% off, but at most 500). Leave empty = no limit."
+msgstr "百分比折扣的最高折抵金額(例:打 8 折,但最多折 500)。留空 = 不限。"
+
+msgid "The number of items to pick must be at least 1."
+msgstr "任選件數至少為 1。"
+
+msgid "The percent amount for \"%1$s off\" is %2$s"
+msgstr "「%1$s 折」的 percent amount 是 %2$s"
+
+msgid "The percentage discount is as high as %s%%; confirm your margin can absorb it."
+msgstr "百分比折扣高達 %s%%,確認毛利是否能負擔。"
+
+msgid "The quantity must be 1–500."
+msgstr "數量須為 1–500。"
+
+msgid "The same coupon gives different discounts by cart threshold (e.g. under 1000 get 10% off, over 1000 get 20% off)"
+msgstr "同一張券依購物車門檻給不同折扣(例:未滿 1000 折 10%、滿 1000 折 20%)"
+
+msgid "The same coupon gives different discounts by tier according to the \"Tier basis\" (cart subtotal / quantity / weight); each tier can be a percentage or a fixed amount, and they can be mixed. Once enabled, the discount is calculated entirely from the table below and the coupon's original discount amount is ignored."
+msgstr "同一張優惠券依「階梯依據」(購物車小計 / 件數 / 重量)分級給不同折扣;每一階可選百分比或固定金額,也可以混用。啟用後完全依下表計算,優惠券原本的折扣值會被忽略。"
+
+msgid "The specified coupon template was not found."
+msgstr "找不到指定的優惠券範本。"
+
+msgid "The specified coupon was not found in the trash; please provide the numeric ID of a deleted coupon."
+msgstr "找不到垃圾桶中的該優惠券,請提供已刪除優惠券的數字 ID。"
+
+msgid "The specified template coupon code was not found."
+msgstr "找不到指定的範本優惠券代碼。"
+
+msgid "The threshold is always judged by the whole cart's \"Tier basis\"; the \"Discount application scope\" only determines which products the discount applies to (a fixed amount is distributed proportionally across the products in scope). For user role restrictions, use the \"Conditions\" tab."
+msgstr "門檻一律以整車的「階梯依據」判斷;「折扣套用範圍」只決定折扣算在哪些商品上(固定金額會按比例分攤到範圍內的商品)。會員角色限制請用「條件」分頁。"
+
+msgid "The tier applies only when the threshold is reached; when multiple tiers match, the one with the \"largest discount amount\" is used. Leave the discount amount empty = that tier is disabled. Enter 10 for percentage = 10% off; enter 200 for fixed amount = 200 off."
+msgstr "門檻達到才套用該階;同時符合多階時,取「折抵金額最大」的一階。折扣值留空 = 該階不啟用。百分比填 10 = 折 10%(9 折);固定金額填 200 = 折 200 元。"
+
+msgid "The tool failed to run; please try again later."
+msgstr "工具執行失敗,請稍後再試。"
+
+msgid "There are no available coupons right now."
+msgstr "目前沒有可用的優惠券。"
+
+msgid "These coupon codes cannot be used together with this coupon (regardless of whether \"Cannot be combined\" is checked). Separate with commas or line breaks."
+msgstr "這些券碼不可與此券一起使用(不論是否勾選「不可並用」)。以逗號或換行分隔。"
+
+msgid "These products have had no sales in the last 60 days: %s. You could run \"20% off specific products\" or \"buy one get one\" for them to drive sales."
+msgstr "這些商品近 60 天沒有銷售:%s。可針對它們做「指定商品 8 折」或「買一送一」帶動。"
+
+msgid "This coupon can only be used on the following days and time slots (site time zone)."
+msgstr "僅在下列星期與時段(站台時區)可使用此優惠券。"
+
+msgid "This coupon can only be used within the start and end times below (site time zone)."
+msgstr "僅在下方起訖時間內(站台時區)可使用此優惠券。"
+
+msgid "This coupon cannot be used together with \"%s\"."
+msgstr "此優惠券無法與「%s」一起使用。"
+
+msgid "This coupon cannot be used when the cart \"contains\" the following products / categories (e.g. certain items are not eligible)."
+msgstr "購物車「含」下列商品 / 分類時不可使用此券(例:特定品不適用)。"
+
+msgid "This coupon does not apply to your account."
+msgstr "此優惠券不適用於您的帳號。"
+
+msgid "This coupon does not apply to your selected payment method."
+msgstr "此優惠券不適用於您選擇的付款方式。"
+
+msgid "This coupon does not apply to your shipping region."
+msgstr "此優惠券不適用於您的收件地區。"
+
+msgid "This coupon does not meet the usage conditions."
+msgstr "此優惠券不符合使用條件。"
+
+msgid "This coupon has not enabled URL apply yet. Check the \"Enable\" box on the coupon's \"Coupon URL\" tab, or turn on \"Apply via URL query string\" in the settings."
+msgstr "此優惠券尚未開啟網址套用。請在優惠券的「優惠券網址」分頁勾選啟用,或在設定開啟「以網址查詢字串套用」。"
+
+msgid "This coupon has not started yet."
+msgstr "此優惠券尚未開始。"
+
+msgid "This coupon is currently outside its usable time slot."
+msgstr "此優惠券目前不在可使用的時段。"
+
+msgid "This coupon is invalid or unavailable."
+msgstr "此優惠券無效或無法使用。"
+
+msgid "This coupon is only for first-time customers."
+msgstr "此優惠券僅限首次消費的顧客使用。"
+
+msgid "This coupon is past its usable time."
+msgstr "此優惠券已超出可使用的時間。"
+
+msgid "This group matches:"
+msgstr "此群組條件:"
+
+msgid "This template requires the \"%s\" feature module to be enabled first."
+msgstr "此範本需先啟用「%s」功能模組。"
+
+msgid "Threshold"
+msgstr "門檻"
+
+msgid "Threshold amount when the condition is min_total"
+msgstr "條件為 min_total 時的金額門檻"
+
+msgid "Threshold discount"
+msgstr "滿額折抵"
+
+msgid "Threshold ≥ (%s)"
+msgstr "門檻 ≥(%s)"
+
+msgid "Threshold ≥ (per the basis above)"
+msgstr "門檻 ≥(依上方依據)"
+
+msgid "Thursday"
+msgstr "星期四"
+
+msgid "Tier"
+msgstr "階梯"
+
+msgid "Tier basis"
+msgstr "階梯依據"
+
+msgid "Tier basis: subtotal (default) / quantity / weight"
+msgstr "階梯依據:subtotal 小計(預設)/ quantity 件數 / weight 重量"
+
+msgid "Tier rows, each { threshold, kind percent|fixed, value }. For percent the value is a 0-100 percentage (10 = 10% off); for fixed the value is a fixed discount amount. They can be mixed."
+msgstr "階梯列,每階 { threshold 門檻, kind percent|fixed, value }。percent 的 value 是 0-100 百分比(10=折10%=9折);fixed 的 value 是固定折抵金額。可混用。"
+
+msgid "Tiered discount"
+msgstr "階梯折扣"
+
+msgid "Tiered discount by cumulative spend"
+msgstr "累積消費分級折扣"
+
+msgid "Tiered discount only applies to \"Percentage discount\"; the current discount type does not match."
+msgstr "階梯折扣僅適用「百分比折扣」,目前折扣類型不符。"
+
+msgid "Tiered discount rows. Tiers are measured by moksafocou.tiers.basis (subtotal / quantity / weight, default subtotal). Each row: { threshold, kind percent|fixed, value (percent is 0-100, fixed is a fixed amount) }. Percent and fixed can be mixed; among matching tiers the one with the largest discount is used."
+msgstr "階梯折扣列。階梯依 moksafocou.tiers.basis(subtotal 小計 / quantity 件數 / weight 重量,預設 subtotal)衡量。每列:{ threshold 門檻, kind percent|fixed, value(percent 為 0-100 百分比、fixed 為固定金額)}。可混用 percent 與 fixed,符合的階梯中取折抵金額最大者。"
+
+msgid "Tiered discount table"
+msgstr "階梯折扣設定表"
+
+msgid "Time (hour:minute)"
+msgstr "時間(時:分)"
+
+msgid "Today's date is %s. When the user gives only a month / day or a relative date (such as \"December 31\" or \"end of next month\"), always resolve it to this year; only use next year if that date has already passed this year. Never use a past year."
+msgstr "今天的日期是 %s。使用者只給月 / 日或相對日期(如「12 月 31 日」「下個月底」)時,一律解析成今年;若該日期今年已過才用明年。絕對不要使用過去的年份。"
+
+msgid "Total coupons"
+msgstr "優惠券總數"
+
+msgid "Total discount"
+msgstr "折抵總額"
+
+msgid "Total item count"
+msgstr "商品總件數"
+
+msgid "Total usage limit"
+msgstr "總使用次數上限"
+
+msgid "Track each coupon's orders used and total discount (embedded in the dashboard when the standalone menu is enabled)."
+msgstr "統計每張券的使用訂單數與折抵總額(啟用獨立選單時內嵌於儀表板)。"
+
+msgid "Track orders used and total discount per coupon based on paid orders (cached hourly)."
+msgstr "依已付款訂單統計每張優惠券的使用訂單數與折抵總額(每小時快取一次)。"
+
+msgid "Tuesday"
+msgstr "星期二"
+
+msgid "Type"
+msgstr "類型"
+
+msgid "URL / QR"
+msgstr "網址 / QR"
+
+msgid "URL / QR apply"
+msgstr "網址 / QR 套用"
+
+msgid "URL coupon"
+msgstr "網址套券"
+
+msgid "Unsupported operation."
+msgstr "不支援的操作。"
+
+msgid "Update"
+msgstr "更新"
+
+msgid "Update coupon"
+msgstr "更新優惠券"
+
+msgid "Update the fields of an existing coupon (discount, expiry date, usage limit, etc.; the code cannot be changed). Destructive — the call only \"proposes\" it, and it only takes effect after the user confirms."
+msgstr "更新一張既有優惠券的欄位(折扣、到期日、使用上限等;代碼不可改)。破壞性 —— 呼叫只會「提出」,使用者確認後才生效。"
+
+msgid "Updated coupon %s."
+msgstr "已更新優惠券 %s。"
+
+msgid "Updated the expiry date of %d coupon(s)."
+msgstr "已更新 %d 張優惠券的到期日。"
+
+msgid "Upload a CSV in the same format. Matching is done by the \"code\" column: existing coupons are updated, new ones are created as drafts."
+msgstr "上傳同格式的 CSV。以「code」欄比對:已存在則更新,不存在則新建為草稿。"
+
+msgid "Urgency (limited time / limited quantity)"
+msgstr "急迫感(限時 / 限量)"
+
+msgid "Usage count"
+msgstr "套用次數"
+
+msgid "Usage count / limit"
+msgstr "使用次數 / 上限"
+
+msgid "Usage limit"
+msgstr "使用次數上限"
+
+msgid "Usage limit per user"
+msgstr "每人使用上限"
+
+msgid "Use list-templates to reference the built-in templates and propose 3 coupon campaign ideas suitable for this store, explaining the setup."
+msgstr "請用 list-templates 參考內建範本,提出 3 個適合本店的優惠券活動點子並說明設定。"
+
+msgid "Use the [moksafocou_coupons] shortcode to display available coupon cards on the front end"
+msgstr "用 [moksafocou_coupons] 短代碼在前台顯示可用優惠券卡片"
+
+msgid "User role"
+msgstr "會員角色"
+
+msgid "VIP non-stackable 20% off"
+msgstr "VIP 不可疊加 8 折"
+
+msgid "VIP-exclusive non-stackable"
+msgstr "VIP 專屬不可疊加"
+
+msgid "Valentine's Day deal"
+msgstr "情人節優惠"
+
+msgid "Valid until %s"
+msgstr "有效期限至 %s"
+
+msgid "Validate advanced rule tree"
+msgstr "驗證進階規則樹"
+
+msgid "Value"
+msgstr "數值"
+
+msgid "View field contents"
+msgstr "查看欄位內容"
+
+msgid "View, edit, and search all coupons."
+msgstr "檢視、編輯與搜尋所有優惠券。"
+
+msgid "Wednesday"
+msgstr "星期三"
+
+msgid "Weekday"
+msgstr "星期"
+
+msgid "Weekday / time window"
+msgstr "星期 / 時段"
+
+msgid "Weekend promotion"
+msgstr "週末促銷"
+
+msgid "Weight kg"
+msgstr "重量 kg"
+
+msgid "Weight-based free shipping"
+msgstr "重量免運"
+
+msgid "When an order's status changes to \"Completed\", issue a win-back coupon according to the settings below."
+msgstr "訂單狀態變為「已完成」時,依下列設定發放回購券。"
+
+msgid "When checked, the customer is returned to the page they were originally on after the coupon is applied (ideal for buttons placed in posts / banners)."
+msgstr "勾選後,套用優惠券後返回顧客原本所在的頁面(適合放在文章 / 橫幅的按鈕)。"
+
+msgid "When checked, this coupon appears in the card list of the [moksafocou_coupons] shortcode."
+msgstr "勾選後,此優惠券會出現在 [moksafocou_coupons] 短代碼的卡片清單中。"
+
+msgid "When checked, this coupon calculates the discount according to the tiers below."
+msgstr "勾選後此優惠券依下方階梯計算折扣。"
+
+msgid "When checked, this coupon cannot be applied if the cart already has other coupons (and vice versa); the \"Allow combining\" list below is the exception."
+msgstr "勾選後,購物車已有其他優惠券時無法再套用此券(反向亦然);下方「允許並用」清單為例外。"
+
+msgid "When the coupon is issued, also send the customer an email containing the code and a one-click apply link (requires working site email settings)."
+msgstr "發券時一併寄送含代碼與一鍵套用連結的 Email 給顧客(需站台郵件設定正常)。"
+
+msgid "When this coupon is applied, automatically add the gift below to the cart (customers cannot change the quantity or remove it; it is withdrawn automatically when the coupon is removed)."
+msgstr "套用此優惠券時,自動把下方贈品加入購物車(顧客無法改數量或移除;移除優惠券時自動撤回)。"
+
+msgid "Where to redirect the customer after a successful ?coupon= apply."
+msgstr "以 ?coupon= 套用成功後要把顧客導向哪裡。"
+
+msgid "Whether it cannot be combined with other coupons (mutually exclusive coupon; requires the \"Stacking control\" module enabled)"
+msgstr "是否不可與其他優惠券並用(互斥券;需啟用「疊加控制」模組)"
+
+msgid "Whether to auto-apply (added automatically when the customer reaches the cart; requires the \"Auto-apply\" module enabled, and the coupon has no usage or email limit)"
+msgstr "是否自動套用(顧客進購物車自動帶入;需啟用「自動套用」模組,且券無使用次數 / Email 限制)"
+
+msgid "Whether to enable automatic coupon issuance"
+msgstr "是否啟用自動發券"
+
+msgid "Whether to lock this coupon to that Email only (writes WooCommerce's Email restriction)"
+msgstr "是否鎖定此優惠券只限該 Email 使用(寫入 WooCommerce 的 Email 限制)"
+
+msgid "Which completed orders should issue a coupon."
+msgstr "哪些已完成訂單要發券。"
+
+msgid "While editing the fields, this shows a live effect summary and conflict warnings for this coupon."
+msgstr "編輯欄位時,這裡會即時顯示這張券的效果與衝突提醒。"
+
+msgid "Whole cart"
+msgstr "整張購物車"
+
+msgid "Win-back coupon validity days"
+msgstr "回購券有效天數"
+
+msgid "Win-back coupon validity in days (0 = use template expiry)"
+msgstr "回購券有效天數(0 = 沿用範本到期)"
+
+msgid "Win-back deal"
+msgstr "回購優惠"
+
+msgid "Win-back gift 12% off"
+msgstr "回購禮 88 折"
+
+msgid "Women's Day (3.8) deal"
+msgstr "38 婦女節優惠"
+
+msgid "WooCommerce coupon creation, lookup and management capabilities"
+msgstr "WooCommerce 優惠券建立、查詢與管理能力"
+
+msgid "Yes"
+msgstr "是"
+
+msgid "You are the \"coupon assistant\" for a WooCommerce merchant. Common tools: list-coupons to list, get-coupon for details, find-coupon-by-code to check whether a code is a duplicate, coupon-usage-summary for usage, get-coupon-report for performance reports (all read-only); create-coupon to create, update-coupon to update, toggle-coupon to enable or disable, delete-coupon to delete, bulk-generate-coupons for mass generation, extend-expiry to extend the expiry date, duplicate-coupon to duplicate, create-tiered-coupon to create a tiered coupon, apply-template to apply a template (all destructive). Destructive operations are only \"proposed\"; the system asks the user to click \"Confirm\" before they take effect, so you do not need to ask for confirmation again. When creating a coupon: the discount types are only percent (percentage), fixed_cart (fixed cart amount), and fixed_product (fixed product amount); the amount for percent is a percentage number and cannot exceed 100; use YYYY-MM-DD for the expiry date."
+msgstr "你是 WooCommerce 商家的「優惠券助手」。常用工具:list-coupons 列出、get-coupon 查明細、find-coupon-by-code 查代碼是否重複、coupon-usage-summary 查用量、get-coupon-report 查績效報表(以上唯讀);create-coupon 建立、update-coupon 更新、toggle-coupon 啟用停用、delete-coupon 刪除、bulk-generate-coupons 量產、extend-expiry 延長到期、duplicate-coupon 複製、create-tiered-coupon 建階梯券、apply-template 套用範本(以上破壞性)。破壞性操作只會「提出」,系統會要使用者按「確認執行」才生效,你不必再追問確認。建立優惠券時:折扣類型只有 percent(百分比)、fixed_cart(購物車固定額)、fixed_product(商品固定額);percent 的 amount 是百分比數字,不可超過 100;到期日用 YYYY-MM-DD。"
+
+msgid "You can adjust the following fields first, then create a coupon draft."
+msgstr "可先調整以下欄位,再建立優惠券草稿。"
+
+msgid "You can use {bogo_qty} {coupon_code}. Leave empty to use the default message."
+msgstr "可用 {bogo_qty} {coupon_code}。留空用預設訊息。"
+
+msgid "You can use {mixmatch_qty} {coupon_code}. Leave empty to use the default message."
+msgstr "可用 {mixmatch_qty} {coupon_code}。留空用預設訊息。"
+
+msgid "You can use {nth_n} {coupon_code}. Leave empty to use the default message."
+msgstr "可用 {nth_n} {coupon_code}。留空用預設訊息。"
+
+msgid "You currently have no exclusive coupons."
+msgstr "您目前沒有專屬優惠券。"
+
+msgid "You do not have permission to do this."
+msgstr "權限不足。"
+
+msgid "You do not have permission to edit this coupon's advanced settings."
+msgstr "沒有權限修改此優惠券的進階設定。"
+
+msgid "You qualify for the Buy X Get Y offer on \"%s\" — add the gift to your cart to get the discount."
+msgstr "您已符合「%s」的買 X 送 Y 資格 —— 把贈品加入購物車即可享有折扣。"
+
+msgid "You saved a total of"
+msgstr "您總共省了"
+
+msgid "Your accumulated spend does not qualify you for this coupon."
+msgstr "您的累積消費金額不符合此優惠券的使用資格。"
+
+msgid "Your coupon \"%s\" is about to expire"
+msgstr "您的優惠券「%s」即將到期"
+
+msgid "Your coupon: %s"
+msgstr "您的優惠券:%s"
+
+msgid "Your current account does not have permission to use this coupon."
+msgstr "您目前的帳號沒有使用此優惠券的權限。"
+
+msgid "Your order history does not qualify you for this coupon."
+msgstr "您的歷史訂單數不符合此優惠券的使用資格。"
+
+msgid "cart: combine the whole cart / product: count each product separately (default cart)"
+msgstr "cart 整車合併 / product 每件商品各自計(預設 cart)"
+
+msgid "fixed_total is the group total; percent is the discount % (0–100)"
+msgstr "fixed_total 為整組總價;percent 為折扣 %(0–100)"
+
+msgid "fixed_total: group fixed total / percent: group discount percentage"
+msgstr "fixed_total 整組固定總價 / percent 整組折扣百分比"
+
+msgid "once (only once) / repeat (repeatable) (default once)"
+msgstr "once 只一次 / repeat 可重複(預設 once)"
+
+msgid "once = one time only / repeat = repeatable (default repeat)"
+msgstr "once 只一次 / repeat 可重複(預設 repeat)"
+
+msgid "true = enable, false = disable"
+msgstr "true=啟用、false=停用"
+
+msgid "true = permanently delete, false = move to trash (default)"
+msgstr "true=永久刪除、false=移到垃圾桶(預設)"

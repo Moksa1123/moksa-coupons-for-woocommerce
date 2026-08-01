@@ -1,0 +1,32 @@
+/* Moksa AI Launcher — single floating admin assistant. */
+.moksa-ai-btn{position:fixed;right:24px;bottom:24px;z-index:99980;width:52px;height:52px;border-radius:50%;border:0;
+	background:#2271b1;color:#fff;font-size:22px;line-height:1;cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.25)}
+.moksa-ai-btn:hover{background:#135e96}
+.moksa-ai-panel{position:fixed;right:24px;bottom:88px;z-index:99981;width:360px;max-width:calc(100vw - 48px);
+	max-height:70vh;display:flex;flex-direction:column;background:#fff;border:1px solid #dcdcde;border-radius:12px;
+	box-shadow:0 8px 30px rgba(0,0,0,.22);overflow:hidden}
+.moksa-ai-head{display:flex;align-items:center;justify-content:space-between;padding:12px 14px;border-bottom:1px solid #f0f0f1;background:#f6f7f7}
+.moksa-ai-head strong{font-size:14px}
+.moksa-ai-close{border:0;background:none;font-size:20px;line-height:1;cursor:pointer;color:#646970}
+.moksa-ai-search{margin:10px 14px 4px;padding:7px 10px;border:1px solid #dcdcde;border-radius:6px;font-size:13px}
+.moksa-ai-body{overflow:auto;padding:6px 10px 10px;flex:1}
+.moksa-ai-group{margin:6px 0}
+.moksa-ai-group-h{font-size:11px;text-transform:uppercase;letter-spacing:.04em;color:#646970;margin:8px 4px 4px;font-weight:600}
+.moksa-ai-item{display:block;width:100%;text-align:left;border:1px solid #f0f0f1;border-radius:8px;background:#fff;
+	padding:8px 10px;margin:4px 0;cursor:pointer}
+.moksa-ai-item:hover{border-color:#2271b1;background:#f6faff}
+.moksa-ai-item .t{display:block;font-size:13px;font-weight:600;color:#1d2327}
+.moksa-ai-item .d{display:block;font-size:12px;color:#646970;margin-top:2px}
+.moksa-ai-item.is-destructive .t::after{content:" ⚠";color:#b32d2e}
+.moksa-ai-empty{color:#646970;font-size:13px;padding:14px;text-align:center}
+.moksa-ai-out{border-top:1px solid #f0f0f1;max-height:40vh;overflow:auto}
+.moksa-ai-form{padding:10px 14px}
+.moksa-ai-form-h{font-weight:600;font-size:13px;margin-bottom:6px}
+.moksa-ai-field{display:block;margin:6px 0}
+.moksa-ai-field span{display:block;font-size:12px;color:#646970;margin-bottom:2px}
+.moksa-ai-field input{width:100%;padding:6px 8px;border:1px solid #dcdcde;border-radius:6px}
+.moksa-ai-go{margin-top:8px}
+.moksa-ai-go.is-confirm{background:#b32d2e;border-color:#b32d2e}
+.moksa-ai-result{padding:10px 14px;font-size:12px}
+.moksa-ai-result.is-err{color:#b32d2e}
+.moksa-ai-result pre{white-space:pre-wrap;word-break:break-word;background:#f6f7f7;padding:8px;border-radius:6px;margin:0}

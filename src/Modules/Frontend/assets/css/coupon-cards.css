@@ -1,0 +1,178 @@
+.moksafocou-coupons {
+	display: grid;
+	grid-template-columns: repeat( auto-fill, minmax( 220px, 1fr ) );
+	gap: 16px;
+	margin: 16px 0;
+}
+
+.moksafocou-coupons--empty {
+	display: block;
+	padding: 16px;
+	color: #666;
+	font-style: italic;
+}
+
+.moksafocou-coupon {
+	position: relative;
+	border: 1px dashed #c9c9c9;
+	border-radius: 10px;
+	padding: 18px 16px 16px;
+	background: #fff;
+	box-shadow: 0 1px 3px rgba( 0, 0, 0, 0.06 );
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+
+.moksafocou-coupon__badge {
+	align-self: flex-start;
+	font-size: 12px;
+	font-weight: 600;
+	color: #fff;
+	background: #6b7280;
+	border-radius: 999px;
+	padding: 2px 10px;
+}
+
+.moksafocou-coupon--percent .moksafocou-coupon__badge { background: #2563eb; }
+.moksafocou-coupon--fixed_cart .moksafocou-coupon__badge { background: #059669; }
+.moksafocou-coupon--fixed_product .moksafocou-coupon__badge { background: #0891b2; }
+.moksafocou-coupon--moksafocou_bogo .moksafocou-coupon__badge { background: #d97706; }
+
+.moksafocou-coupon__discount {
+	font-size: 22px;
+	font-weight: 700;
+	color: #111827;
+}
+
+.moksafocou-coupon__label {
+	font-size: 13px;
+	color: #4b5563;
+}
+
+.moksafocou-coupon__hints {
+	list-style: none;
+	margin: 2px 0 0;
+	padding: 0;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 5px;
+}
+
+.moksafocou-coupon__hints li {
+	font-size: 11px;
+	color: #92400e;
+	background: #fef3c7;
+	border-radius: 4px;
+	padding: 1px 7px;
+	line-height: 1.6;
+}
+
+.moksafocou-coupon__code {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	/* Pin the code + copy / expiry / apply block to the bottom so that, on equal-height cards,
+	   the action buttons line up regardless of how much label / hint text sits above. */
+	margin-top: auto;
+}
+
+.moksafocou-coupon__code code {
+	flex: 1;
+	font-size: 15px;
+	font-weight: 700;
+	letter-spacing: 1px;
+	background: #f3f4f6;
+	border-radius: 6px;
+	padding: 6px 10px;
+	text-align: center;
+}
+
+.moksafocou-coupon__copy {
+	cursor: pointer;
+	border: 1px solid #2563eb;
+	color: #2563eb;
+	background: #fff;
+	border-radius: 6px;
+	padding: 6px 12px;
+	font-size: 13px;
+}
+
+.moksafocou-coupon__copy.is-copied {
+	background: #2563eb;
+	color: #fff;
+}
+
+.moksafocou-coupon__expires {
+	font-size: 12px;
+	color: #9ca3af;
+}
+
+.moksafocou-coupon__apply {
+	margin-top: 4px;
+	text-align: center;
+	background: #2563eb;
+	color: #fff;
+	border-radius: 6px;
+	padding: 8px 12px;
+	text-decoration: none;
+	font-weight: 600;
+}
+
+/* Visible keyboard focus for interactive elements. */
+.moksafocou-coupon__copy:focus-visible,
+.moksafocou-coupon__apply:focus-visible {
+	outline: 2px solid #1d4ed8;
+	outline-offset: 2px;
+}
+
+/* Screen-reader-only live region for the copy announcement. */
+.moksafocou-sr-only {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	margin: -1px;
+	padding: 0;
+	overflow: hidden;
+	clip: rect( 0 0 0 0 );
+	clip-path: inset( 50% );
+	white-space: nowrap;
+	border: 0;
+}
+
+/* Phones: single column, tighter padding, let the code + copy row wrap. */
+@media (max-width: 480px) {
+	.moksafocou-coupons {
+		grid-template-columns: 1fr;
+		gap: 12px;
+	}
+
+	.moksafocou-coupon {
+		padding: 14px 12px 12px;
+	}
+
+	.moksafocou-coupon__code {
+		flex-wrap: wrap;
+	}
+
+	.moksafocou-coupon__copy {
+		flex: 1 0 auto;
+	}
+}
+
+.moksafocou-coupon__countdown {
+	display: inline-block;
+	align-self: flex-start;
+	font-size: 13px;
+	font-weight: 600;
+	font-variant-numeric: tabular-nums;
+	color: #b3261e;
+	background: #fdecea;
+	border-radius: 6px;
+	padding: 3px 8px;
+}
+
+.moksafocou-coupon__countdown.is-ended {
+	color: #666;
+	background: #f0f0f0;
+}

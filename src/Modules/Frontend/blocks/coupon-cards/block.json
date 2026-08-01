@@ -1,0 +1,20 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "moksafocou/coupon-cards",
+	"version": "1.0.0",
+	"title": "Moksa 優惠券卡片",
+	"category": "widgets",
+	"icon": "tickets-alt",
+	"description": "顯示目前可用的優惠券卡片(等同 [moksafocou_coupons] 短代碼)。",
+	"keywords": [ "coupon", "優惠券", "moksafocou" ],
+	"textdomain": "moksafocou",
+	"attributes": {
+		"limit": { "type": "number", "default": 20 }
+	},
+	"supports": {
+		"html": false,
+		"align": [ "wide", "full" ]
+	},
+	"editorScript": "moksafocou-coupon-cards-editor"
+}
