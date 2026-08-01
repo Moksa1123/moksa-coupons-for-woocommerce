@@ -1,8 +1,8 @@
 <?php
 /**
  * Plugin Name:        Moksa Coupons for WooCommerce
- * Plugin URI:         https://moksaweb.com/moksafocou
- * Description:        AI-powered WooCommerce coupon toolkit. Create coupons with natural language, plus BOGO, cart conditions, role restrictions, scheduling and URL coupons. Exposes coupon abilities to the WordPress Abilities API, AI Client and MCP.
+ * Plugin URI:         https://github.com/Moksa1123/moksa-coupons-for-woocommerce
+ * Description:        A free, modular WooCommerce coupon toolkit: BOGO, cart conditions, role limits, scheduling, URL coupons and one-click templates, every feature off by default. Coupon actions are also WordPress Abilities, usable from an optional in-dashboard AI assistant, the REST API and MCP.
  * Version:            1.0.0
  * Requires at least:  7.0
  * Tested up to:       7.0
