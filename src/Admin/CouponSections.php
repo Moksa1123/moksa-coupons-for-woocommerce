@@ -86,7 +86,7 @@ final class CouponSections {
 	public static function add_box(): void {
 		add_meta_box(
 			self::BOX_ID,
-			__( 'Moksa coupon settings', 'moksafocou' ),
+			__( 'Moksa coupon settings', 'moksa-coupons-for-woocommerce' ),
 			array( self::class, 'render_box' ),
 			'shop_coupon',
 			'normal',
@@ -121,7 +121,7 @@ final class CouponSections {
 		}
 
 		if ( array() === $sections ) {
-			echo '<p class="description">' . esc_html__( 'No coupon settings sections are enabled yet.', 'moksafocou' ) . '</p>';
+			echo '<p class="description">' . esc_html__( 'No coupon settings sections are enabled yet.', 'moksa-coupons-for-woocommerce' ) . '</p>';
 			return;
 		}
 

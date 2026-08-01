@@ -53,7 +53,7 @@ final class Rest {
 	public static function share( \WP_REST_Request $request ): \WP_REST_Response {
 		$coupon = self::resolve( (string) $request['ref'] );
 		if ( ! $coupon instanceof \WC_Coupon ) {
-			return new \WP_REST_Response( array( 'message' => __( 'Coupon not found.', 'moksafocou' ) ), 404 );
+			return new \WP_REST_Response( array( 'message' => __( 'Coupon not found.', 'moksa-coupons-for-woocommerce' ) ), 404 );
 		}
 
 		$info = ShareService::info( $coupon );
@@ -84,7 +84,7 @@ final class Rest {
 	public static function qr( \WP_REST_Request $request ): ?\WP_REST_Response {
 		$coupon = self::resolve( (string) $request['ref'] );
 		if ( ! $coupon instanceof \WC_Coupon ) {
-			return new \WP_REST_Response( array( 'message' => __( 'Coupon not found.', 'moksafocou' ) ), 404 );
+			return new \WP_REST_Response( array( 'message' => __( 'Coupon not found.', 'moksa-coupons-for-woocommerce' ) ), 404 );
 		}
 		$info = ShareService::info( $coupon );
 		if ( ! $info['enabled'] ) {

@@ -70,7 +70,7 @@ final class Shortcode {
 		$items = Catalog::query( $limit );
 
 		if ( array() === $items ) {
-			$empty = '<div class="moksafocou-coupons moksafocou-coupons--empty">' . esc_html__( 'There are no available coupons right now.', 'moksafocou' ) . '</div>';
+			$empty = '<div class="moksafocou-coupons moksafocou-coupons--empty">' . esc_html__( 'There are no available coupons right now.', 'moksa-coupons-for-woocommerce' ) . '</div>';
 			if ( $cacheable ) {
 				CardsCache::set( $limit, $empty, CardsCache::ttl_for( array(), time() ) );
 			}

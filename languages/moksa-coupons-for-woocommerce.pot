@@ -12,7 +12,7 @@ msgstr ""
 "POT-Creation-Date: 2026-08-01T07:04:55+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
-"X-Domain: moksafocou\n"
+"X-Domain: moksa-coupons-for-woocommerce\n"
 
 #. Plugin Name of the plugin
 #: moksafocou.php

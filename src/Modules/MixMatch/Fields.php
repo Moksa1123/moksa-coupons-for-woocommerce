@@ -33,7 +33,7 @@ final class Fields {
 		return array(
 			array(
 				'id'     => 'moksafocou_mixmatch',
-				'title'  => __( 'Mix & Match', 'moksafocou' ),
+				'title'  => __( 'Mix & Match', 'moksa-coupons-for-woocommerce' ),
 				'class'  => array( 'moksafocou_mixmatch_tab' ),
 				'render' => function (): void {
 					$this->render_panel();
@@ -50,9 +50,9 @@ final class Fields {
 		$cfg = MixMatchMeta::read( (int) $post->ID );
 
 		echo '<div class="options_group">';
-		echo '<p class="form-field"><strong>' . esc_html__( 'Selectable products (leave empty = whole site)', 'moksafocou' ) . '</strong></p>';
-		FieldsHelpers::product_select( Keys::MIXMATCH_PRODUCT_IDS, __( 'Specific products', 'moksafocou' ), $cfg['product_ids'] );
-		FieldsHelpers::category_select( Keys::MIXMATCH_CATEGORY_IDS, __( 'Specific categories', 'moksafocou' ), $cfg['category_ids'] );
+		echo '<p class="form-field"><strong>' . esc_html__( 'Selectable products (leave empty = whole site)', 'moksa-coupons-for-woocommerce' ) . '</strong></p>';
+		FieldsHelpers::product_select( Keys::MIXMATCH_PRODUCT_IDS, __( 'Specific products', 'moksa-coupons-for-woocommerce' ), $cfg['product_ids'] );
+		FieldsHelpers::category_select( Keys::MIXMATCH_CATEGORY_IDS, __( 'Specific categories', 'moksa-coupons-for-woocommerce' ), $cfg['category_ids'] );
 		echo '</div>';
 
 		echo '<div class="options_group">';
@@ -60,24 +60,24 @@ final class Fields {
 			array(
 				'id'                => Keys::MIXMATCH_QTY,
 				'value'             => $cfg['qty'],
-				'label'             => __( 'Number of items to pick (N)', 'moksafocou' ),
+				'label'             => __( 'Number of items to pick (N)', 'moksa-coupons-for-woocommerce' ),
 				'type'              => 'number',
 				'custom_attributes' => array(
 					'min'  => '1',
 					'step' => '1',
 				),
 				'desc_tip'          => true,
-				'description'       => __( 'Pick 3 items → enter 3.', 'moksafocou' ),
+				'description'       => __( 'Pick 3 items → enter 3.', 'moksa-coupons-for-woocommerce' ),
 			)
 		);
 		woocommerce_wp_select(
 			array(
 				'id'      => Keys::MIXMATCH_PRICE_MODE,
 				'value'   => $cfg['price_mode'],
-				'label'   => __( 'Pricing method', 'moksafocou' ),
+				'label'   => __( 'Pricing method', 'moksa-coupons-for-woocommerce' ),
 				'options' => array(
-					'fixed_total' => __( 'Group fixed total', 'moksafocou' ),
-					'percent'     => __( 'Group percentage discount', 'moksafocou' ),
+					'fixed_total' => __( 'Group fixed total', 'moksa-coupons-for-woocommerce' ),
+					'percent'     => __( 'Group percentage discount', 'moksa-coupons-for-woocommerce' ),
 				),
 			)
 		);
@@ -85,9 +85,9 @@ final class Fields {
 			array(
 				'id'                => Keys::MIXMATCH_PRICE_VALUE,
 				'value'             => $cfg['price_value'],
-				'label'             => __( 'Price / discount amount', 'moksafocou' ),
+				'label'             => __( 'Price / discount amount', 'moksa-coupons-for-woocommerce' ),
 				'desc_tip'          => true,
-				'description'       => __( 'Fixed total: the total price for the group of N items (pick 3 for $299 → enter 299). Percentage: 0–100 (pick 5 at 25% off → enter 25).', 'moksafocou' ),
+				'description'       => __( 'Fixed total: the total price for the group of N items (pick 3 for $299 → enter 299). Percentage: 0–100 (pick 5 at 25% off → enter 25).', 'moksa-coupons-for-woocommerce' ),
 				'type'              => 'number',
 				'custom_attributes' => array(
 					'min'  => '0',
@@ -102,10 +102,10 @@ final class Fields {
 			array(
 				'id'      => Keys::MIXMATCH_DEAL_MODE,
 				'value'   => $cfg['deal_mode'],
-				'label'   => __( 'Usage count', 'moksafocou' ),
+				'label'   => __( 'Usage count', 'moksa-coupons-for-woocommerce' ),
 				'options' => array(
-					'repeat' => __( 'Repeatable (apply again for every N items)', 'moksafocou' ),
-					'once'   => __( 'Apply only once', 'moksafocou' ),
+					'repeat' => __( 'Repeatable (apply again for every N items)', 'moksa-coupons-for-woocommerce' ),
+					'once'   => __( 'Apply only once', 'moksa-coupons-for-woocommerce' ),
 				),
 			)
 		);
@@ -113,9 +113,9 @@ final class Fields {
 			array(
 				'id'                => Keys::MIXMATCH_REPEAT_LIMIT,
 				'value'             => $cfg['repeat_limit'],
-				'label'             => __( 'Repeat limit', 'moksafocou' ),
+				'label'             => __( 'Repeat limit', 'moksa-coupons-for-woocommerce' ),
 				'desc_tip'          => true,
-				'description'       => __( '0 = no limit. Applies only when "repeatable".', 'moksafocou' ),
+				'description'       => __( '0 = no limit. Applies only when "repeatable".', 'moksa-coupons-for-woocommerce' ),
 				'type'              => 'number',
 				'custom_attributes' => array(
 					'min'  => '0',
@@ -127,9 +127,9 @@ final class Fields {
 			array(
 				'id'          => Keys::MIXMATCH_NOTICE_MSG,
 				'value'       => $cfg['notice_msg'],
-				'label'       => __( 'Add-more prompt message', 'moksafocou' ),
+				'label'       => __( 'Add-more prompt message', 'moksa-coupons-for-woocommerce' ),
 				'desc_tip'    => true,
-				'description' => __( 'You can use {mixmatch_qty} {coupon_code}. Leave empty to use the default message.', 'moksafocou' ),
+				'description' => __( 'You can use {mixmatch_qty} {coupon_code}. Leave empty to use the default message.', 'moksa-coupons-for-woocommerce' ),
 			)
 		);
 		echo '</div>';

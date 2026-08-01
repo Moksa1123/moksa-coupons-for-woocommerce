@@ -35,7 +35,7 @@ final class Fields {
 		return array(
 			array(
 				'id'     => 'moksafocou_tiers',
-				'title'  => __( 'Tiered discount', 'moksafocou' ),
+				'title'  => __( 'Tiered discount', 'moksa-coupons-for-woocommerce' ),
 				'render' => function (): void {
 					$this->render_panel();
 				},
@@ -52,15 +52,15 @@ final class Fields {
 		$tiers = Tiers::parse( (string) get_post_meta( $id, Keys::TIERS, true ) );
 
 		echo '<p class="description" style="margin:8px 0;">'
-			. esc_html__( 'The same coupon gives different discounts by tier according to the "Tier basis" (cart subtotal / quantity / weight); each tier can be a percentage or a fixed amount, and they can be mixed. Once enabled, the discount is calculated entirely from the table below and the coupon\'s original discount amount is ignored.', 'moksafocou' )
+			. esc_html__( 'The same coupon gives different discounts by tier according to the "Tier basis" (cart subtotal / quantity / weight); each tier can be a percentage or a fixed amount, and they can be mixed. Once enabled, the discount is calculated entirely from the table below and the coupon\'s original discount amount is ignored.', 'moksa-coupons-for-woocommerce' )
 			. '</p>';
 
 		woocommerce_wp_checkbox(
 			array(
 				'id'          => Keys::TIERS_ENABLED,
 				'value'       => get_post_meta( $id, Keys::TIERS_ENABLED, true ),
-				'label'       => __( 'Enable tiered discount', 'moksafocou' ),
-				'description' => __( 'When checked, this coupon calculates the discount according to the tiers below.', 'moksafocou' ),
+				'label'       => __( 'Enable tiered discount', 'moksa-coupons-for-woocommerce' ),
+				'description' => __( 'When checked, this coupon calculates the discount according to the tiers below.', 'moksa-coupons-for-woocommerce' ),
 			)
 		);
 
@@ -68,23 +68,23 @@ final class Fields {
 			array(
 				'id'      => Keys::TIERS_BASIS,
 				'value'   => Tiers::basis( get_post_meta( $id, Keys::TIERS_BASIS, true ) ),
-				'label'   => __( 'Tier basis', 'moksafocou' ),
+				'label'   => __( 'Tier basis', 'moksa-coupons-for-woocommerce' ),
 				'options' => array(
-					'subtotal' => __( 'Cart subtotal', 'moksafocou' ),
-					'quantity' => __( 'Cart quantity', 'moksafocou' ),
-					'weight'   => __( 'Cart weight (kg)', 'moksafocou' ),
+					'subtotal' => __( 'Cart subtotal', 'moksa-coupons-for-woocommerce' ),
+					'quantity' => __( 'Cart quantity', 'moksa-coupons-for-woocommerce' ),
+					'weight'   => __( 'Cart weight (kg)', 'moksa-coupons-for-woocommerce' ),
 				),
 			)
 		);
 
 		echo '<div class="moksafocou-tiers-builder">';
 		echo '<table class="widefat striped moksafocou-tiers-table" style="margin:8px 0;width:100%;">'
-			. '<caption class="screen-reader-text">' . esc_html__( 'Tiered discount table', 'moksafocou' ) . '</caption><thead><tr>'
-			. '<th scope="col" style="width:42px;">' . esc_html__( 'Tier', 'moksafocou' ) . '</th>'
-			. '<th scope="col" class="moksafocou-tier-th-threshold">' . esc_html__( 'Threshold ≥ (per the basis above)', 'moksafocou' ) . '</th>'
-			. '<th scope="col" style="width:120px;">' . esc_html__( 'Discount type', 'moksafocou' ) . '</th>'
-			. '<th scope="col">' . esc_html__( 'Discount amount', 'moksafocou' ) . '</th>'
-			. '<th scope="col" style="width:36px;"><span class="screen-reader-text">' . esc_html__( 'Action', 'moksafocou' ) . '</span></th>'
+			. '<caption class="screen-reader-text">' . esc_html__( 'Tiered discount table', 'moksa-coupons-for-woocommerce' ) . '</caption><thead><tr>'
+			. '<th scope="col" style="width:42px;">' . esc_html__( 'Tier', 'moksa-coupons-for-woocommerce' ) . '</th>'
+			. '<th scope="col" class="moksafocou-tier-th-threshold">' . esc_html__( 'Threshold ≥ (per the basis above)', 'moksa-coupons-for-woocommerce' ) . '</th>'
+			. '<th scope="col" style="width:120px;">' . esc_html__( 'Discount type', 'moksa-coupons-for-woocommerce' ) . '</th>'
+			. '<th scope="col">' . esc_html__( 'Discount amount', 'moksa-coupons-for-woocommerce' ) . '</th>'
+			. '<th scope="col" style="width:36px;"><span class="screen-reader-text">' . esc_html__( 'Action', 'moksa-coupons-for-woocommerce' ) . '</span></th>'
 			. '</tr></thead><tbody class="moksafocou-tiers-rows">';
 
 		$render_rows = $tiers;
@@ -105,7 +105,7 @@ final class Fields {
 		}
 		echo '</tbody></table>';
 		echo '<p style="margin:0 0 10px;"><button type="button" class="button moksafocou-tier-add">'
-			. esc_html__( '+ Add tier', 'moksafocou' ) . '</button></p>';
+			. esc_html__( '+ Add tier', 'moksa-coupons-for-woocommerce' ) . '</button></p>';
 		// Inert template the script clones to add a row (its contents are never submitted).
 		echo '<template class="moksafocou-tier-template">';
 		$this->print_tier_row(
@@ -119,25 +119,25 @@ final class Fields {
 		echo '</template>';
 		echo '</div>';
 		echo '<p class="description" style="margin:0 0 8px;">'
-			. esc_html__( 'The tier applies only when the threshold is reached; when multiple tiers match, the one with the "largest discount amount" is used. Leave the discount amount empty = that tier is disabled. Enter 10 for percentage = 10% off; enter 200 for fixed amount = 200 off.', 'moksafocou' )
+			. esc_html__( 'The tier applies only when the threshold is reached; when multiple tiers match, the one with the "largest discount amount" is used. Leave the discount amount empty = that tier is disabled. Enter 10 for percentage = 10% off; enter 200 for fixed amount = 200 off.', 'moksa-coupons-for-woocommerce' )
 			. '</p>';
 
 		woocommerce_wp_select(
 			array(
 				'id'      => Keys::TIERS_TARGET_MODE,
 				'value'   => (string) get_post_meta( $id, Keys::TIERS_TARGET_MODE, true ),
-				'label'   => __( 'Discount application scope', 'moksafocou' ),
+				'label'   => __( 'Discount application scope', 'moksa-coupons-for-woocommerce' ),
 				'options' => array(
-					'all'        => __( 'Whole cart', 'moksafocou' ),
-					'products'   => __( 'Specific products only', 'moksafocou' ),
-					'categories' => __( 'Specific categories only', 'moksafocou' ),
+					'all'        => __( 'Whole cart', 'moksa-coupons-for-woocommerce' ),
+					'products'   => __( 'Specific products only', 'moksa-coupons-for-woocommerce' ),
+					'categories' => __( 'Specific categories only', 'moksa-coupons-for-woocommerce' ),
 				),
 			)
 		);
-		FieldsHelpers::product_select( Keys::TIERS_TARGET_PRODUCTS, __( 'Specific products', 'moksafocou' ), FieldsHelpers::int_list( get_post_meta( $id, Keys::TIERS_TARGET_PRODUCTS, true ) ) );
-		FieldsHelpers::category_select( Keys::TIERS_TARGET_CATEGORIES, __( 'Specific categories', 'moksafocou' ), FieldsHelpers::int_list( get_post_meta( $id, Keys::TIERS_TARGET_CATEGORIES, true ) ) );
+		FieldsHelpers::product_select( Keys::TIERS_TARGET_PRODUCTS, __( 'Specific products', 'moksa-coupons-for-woocommerce' ), FieldsHelpers::int_list( get_post_meta( $id, Keys::TIERS_TARGET_PRODUCTS, true ) ) );
+		FieldsHelpers::category_select( Keys::TIERS_TARGET_CATEGORIES, __( 'Specific categories', 'moksa-coupons-for-woocommerce' ), FieldsHelpers::int_list( get_post_meta( $id, Keys::TIERS_TARGET_CATEGORIES, true ) ) );
 		echo '<p class="description" style="margin:8px 0;">'
-			. esc_html__( 'The threshold is always judged by the whole cart\'s "Tier basis"; the "Discount application scope" only determines which products the discount applies to (a fixed amount is distributed proportionally across the products in scope). For user role restrictions, use the "Conditions" tab.', 'moksafocou' )
+			. esc_html__( 'The threshold is always judged by the whole cart\'s "Tier basis"; the "Discount application scope" only determines which products the discount applies to (a fixed amount is distributed proportionally across the products in scope). For user role restrictions, use the "Conditions" tab.', 'moksa-coupons-for-woocommerce' )
 			. '</p>';
 	}
 
@@ -163,15 +163,15 @@ final class Fields {
 			(int) $index,
 			esc_attr( $threshold ),
 			selected( $kind, 'percent', false ),
-			esc_html__( 'Percentage %', 'moksafocou' ),
+			esc_html__( 'Percentage %', 'moksa-coupons-for-woocommerce' ),
 			selected( $kind, 'fixed', false ),
-			esc_html__( 'Fixed amount', 'moksafocou' ),
+			esc_html__( 'Fixed amount', 'moksa-coupons-for-woocommerce' ),
 			esc_attr( $value ),
-			esc_attr__( '10 = 10% off / 200 = 200 off', 'moksafocou' ),
-			esc_attr__( 'Delete this tier', 'moksafocou' ),
-			esc_attr__( 'Threshold', 'moksafocou' ),
-			esc_attr__( 'Discount type', 'moksafocou' ),
-			esc_attr__( 'Discount amount', 'moksafocou' )
+			esc_attr__( '10 = 10% off / 200 = 200 off', 'moksa-coupons-for-woocommerce' ),
+			esc_attr__( 'Delete this tier', 'moksa-coupons-for-woocommerce' ),
+			esc_attr__( 'Threshold', 'moksa-coupons-for-woocommerce' ),
+			esc_attr__( 'Discount type', 'moksa-coupons-for-woocommerce' ),
+			esc_attr__( 'Discount amount', 'moksa-coupons-for-woocommerce' )
 		);
 	}
 
@@ -193,11 +193,11 @@ final class Fields {
 				'basisId'      => Keys::TIERS_BASIS,
 				'thresholdHdr' => array(
 					/* translators: %s: the basis unit (cart subtotal). */
-					'subtotal' => sprintf( __( 'Threshold ≥ (%s)', 'moksafocou' ), __( 'Cart subtotal', 'moksafocou' ) ),
+					'subtotal' => sprintf( __( 'Threshold ≥ (%s)', 'moksa-coupons-for-woocommerce' ), __( 'Cart subtotal', 'moksa-coupons-for-woocommerce' ) ),
 					/* translators: %s: the basis unit (item count). */
-					'quantity' => sprintf( __( 'Threshold ≥ (%s)', 'moksafocou' ), __( 'Quantity', 'moksafocou' ) ),
+					'quantity' => sprintf( __( 'Threshold ≥ (%s)', 'moksa-coupons-for-woocommerce' ), __( 'Quantity', 'moksa-coupons-for-woocommerce' ) ),
 					/* translators: %s: the basis unit (weight kg). */
-					'weight'   => sprintf( __( 'Threshold ≥ (%s)', 'moksafocou' ), __( 'Weight kg', 'moksafocou' ) ),
+					'weight'   => sprintf( __( 'Threshold ≥ (%s)', 'moksa-coupons-for-woocommerce' ), __( 'Weight kg', 'moksa-coupons-for-woocommerce' ) ),
 				),
 			)
 		);

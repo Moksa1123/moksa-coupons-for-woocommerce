@@ -29,7 +29,7 @@ final class Applier {
 	public static function apply( string $template_id, array $overrides = array() ) {
 		$tpl = Catalog::get( $template_id );
 		if ( null === $tpl ) {
-			return new \WP_Error( 'moksafocou_template_unknown', __( 'The specified coupon template was not found.', 'moksafocou' ) );
+			return new \WP_Error( 'moksafocou_template_unknown', __( 'The specified coupon template was not found.', 'moksa-coupons-for-woocommerce' ) );
 		}
 
 		$missing = array();
@@ -43,7 +43,7 @@ final class Applier {
 				'moksafocou_template_requires',
 				sprintf(
 					/* translators: %s: comma-separated required feature module labels. */
-					__( 'This template requires the "%s" feature module to be enabled first.', 'moksafocou' ),
+					__( 'This template requires the "%s" feature module to be enabled first.', 'moksa-coupons-for-woocommerce' ),
 					implode( '、', $missing )
 				)
 			);
@@ -62,7 +62,7 @@ final class Applier {
 				return new \WP_Error(
 					'moksafocou_template_code_exists',
 					/* translators: %s: the coupon code. */
-					sprintf( __( 'Coupon code "%s" already exists; please use another.', 'moksafocou' ), $code )
+					sprintf( __( 'Coupon code "%s" already exists; please use another.', 'moksa-coupons-for-woocommerce' ), $code )
 				);
 			}
 			$fields['code'] = $code;
@@ -125,7 +125,7 @@ final class Applier {
 			$coupon->set_discount_type( $type );
 			if ( ! $coupon->save() ) {
 				wp_delete_post( $id, true );
-				return new \WP_Error( 'moksafocou_template_type_failed', __( 'The discount type cannot be set when applying a template.', 'moksafocou' ) );
+				return new \WP_Error( 'moksafocou_template_type_failed', __( 'The discount type cannot be set when applying a template.', 'moksa-coupons-for-woocommerce' ) );
 			}
 		}
 

@@ -23,7 +23,7 @@ final class Module extends AbstractModule {
 	}
 
 	public function label(): string {
-		return __( 'My Account coupons', 'moksafocou' );
+		return __( 'My Account coupons', 'moksa-coupons-for-woocommerce' );
 	}
 
 	public function category(): string {
@@ -31,7 +31,7 @@ final class Module extends AbstractModule {
 	}
 
 	public function tagline(): string {
-		return __( 'Show customer-exclusive coupons in WooCommerce "My Account", with copy or one-click apply', 'moksafocou' );
+		return __( 'Show customer-exclusive coupons in WooCommerce "My Account", with copy or one-click apply', 'moksa-coupons-for-woocommerce' );
 	}
 
 	public function boot(): void {

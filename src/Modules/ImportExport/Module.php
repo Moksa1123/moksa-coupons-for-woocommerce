@@ -20,7 +20,7 @@ final class Module extends AbstractModule {
 	}
 
 	public function label(): string {
-		return __( 'CSV import / export', 'moksafocou' );
+		return __( 'CSV import / export', 'moksa-coupons-for-woocommerce' );
 	}
 
 	public function category(): string {
@@ -28,7 +28,7 @@ final class Module extends AbstractModule {
 	}
 
 	public function tagline(): string {
-		return __( 'Export coupons to CSV for backup / auditing, or bulk create and update with a CSV', 'moksafocou' );
+		return __( 'Export coupons to CSV for backup / auditing, or bulk create and update with a CSV', 'moksa-coupons-for-woocommerce' );
 	}
 
 	public function boot(): void {

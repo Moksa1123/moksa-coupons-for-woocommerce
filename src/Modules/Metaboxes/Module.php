@@ -25,7 +25,7 @@ final class Module extends AbstractModule {
 	}
 
 	public function label(): string {
-		return __( 'Centralized settings metabox', 'moksafocou' );
+		return __( 'Centralized settings metabox', 'moksa-coupons-for-woocommerce' );
 	}
 
 	public function category(): string {
@@ -33,7 +33,7 @@ final class Module extends AbstractModule {
 	}
 
 	public function tagline(): string {
-		return __( 'Consolidate the coupon setting sections into a single metabox, presented with WooCommerce-style left-hand tabs', 'moksafocou' );
+		return __( 'Consolidate the coupon setting sections into a single metabox, presented with WooCommerce-style left-hand tabs', 'moksa-coupons-for-woocommerce' );
 	}
 
 	public function boot(): void {

@@ -33,7 +33,7 @@ final class Nudge {
 		wc_print_notice(
 			sprintf(
 				/* translators: %s: remaining amount. */
-				__( 'Spend %s more to get free shipping!', 'moksafocou' ),
+				__( 'Spend %s more to get free shipping!', 'moksa-coupons-for-woocommerce' ),
 				wp_strip_all_tags( wc_price( self::remaining( $subtotal, $threshold ) ) )
 			),
 			'notice'

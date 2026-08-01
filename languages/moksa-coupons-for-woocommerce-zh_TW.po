@@ -3,14 +3,14 @@
 # This file is distributed under the GPLv3 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: moksafocou\n"
+"Project-Id-Version: moksa-coupons-for-woocommerce\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/moksafocou\n"
 "Language: zh_TW\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Domain: moksafocou\n"
+"X-Domain: moksa-coupons-for-woocommerce\n"
 
 msgid " (and lock it to this Email only)"
 msgstr "(並鎖定只限此 Email 使用)"

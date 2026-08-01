@@ -40,7 +40,7 @@ final class CouponService {
 		$code = isset( $input['code'] ) ? sanitize_text_field( (string) $input['code'] ) : '';
 		$code = trim( $code );
 		if ( ! $is_update && '' === $code ) {
-			return new \WP_Error( 'moksafocou_invalid_code', __( 'Coupon code cannot be empty.', 'moksafocou' ) );
+			return new \WP_Error( 'moksafocou_invalid_code', __( 'Coupon code cannot be empty.', 'moksa-coupons-for-woocommerce' ) );
 		}
 		if ( '' !== $code ) {
 			$fields['code'] = $code;
@@ -53,7 +53,7 @@ final class CouponService {
 					'moksafocou_invalid_type',
 					sprintf(
 						/* translators: %s: comma-separated list of valid discount types. */
-						__( 'Discount type must be: %s.', 'moksafocou' ),
+						__( 'Discount type must be: %s.', 'moksa-coupons-for-woocommerce' ),
 						implode( ', ', self::DISCOUNT_TYPES )
 					)
 				);
@@ -64,15 +64,15 @@ final class CouponService {
 		if ( isset( $input['amount'] ) || ! $is_update ) {
 			$amount = isset( $input['amount'] ) ? $input['amount'] : 0;
 			if ( ! is_numeric( $amount ) ) {
-				return new \WP_Error( 'moksafocou_invalid_amount', __( 'Discount amount must be a number.', 'moksafocou' ) );
+				return new \WP_Error( 'moksafocou_invalid_amount', __( 'Discount amount must be a number.', 'moksa-coupons-for-woocommerce' ) );
 			}
 			$amount = (float) $amount;
 			if ( $amount < 0 ) {
-				return new \WP_Error( 'moksafocou_invalid_amount', __( 'Discount amount cannot be negative.', 'moksafocou' ) );
+				return new \WP_Error( 'moksafocou_invalid_amount', __( 'Discount amount cannot be negative.', 'moksa-coupons-for-woocommerce' ) );
 			}
 			$type_for_amount = $fields['discount_type'] ?? ( isset( $input['discount_type'] ) ? (string) $input['discount_type'] : '' );
 			if ( 'percent' === $type_for_amount && $amount > 100 ) {
-				return new \WP_Error( 'moksafocou_invalid_amount', __( 'Percentage discount cannot exceed 100.', 'moksafocou' ) );
+				return new \WP_Error( 'moksafocou_invalid_amount', __( 'Percentage discount cannot exceed 100.', 'moksa-coupons-for-woocommerce' ) );
 			}
 			$fields['amount'] = $amount;
 		}
@@ -104,7 +104,7 @@ final class CouponService {
 		foreach ( [ 'minimum_amount', 'maximum_amount' ] as $money_field ) {
 			if ( array_key_exists( $money_field, $input ) && '' !== $input[ $money_field ] && null !== $input[ $money_field ] ) {
 				if ( ! is_numeric( $input[ $money_field ] ) ) {
-					return new \WP_Error( 'moksafocou_invalid_amount', __( 'Minimum / maximum spend must be a number.', 'moksafocou' ) );
+					return new \WP_Error( 'moksafocou_invalid_amount', __( 'Minimum / maximum spend must be a number.', 'moksa-coupons-for-woocommerce' ) );
 				}
 				$fields[ $money_field ] = (string) (float) $input[ $money_field ];
 			}
@@ -134,7 +134,7 @@ final class CouponService {
 		$raw = sanitize_text_field( (string) $value );
 		$ts  = strtotime( $raw );
 		if ( false === $ts ) {
-			return new \WP_Error( 'moksafocou_invalid_date', __( 'Invalid expiry date format; use YYYY-MM-DD.', 'moksafocou' ) );
+			return new \WP_Error( 'moksafocou_invalid_date', __( 'Invalid expiry date format; use YYYY-MM-DD.', 'moksa-coupons-for-woocommerce' ) );
 		}
 		return gmdate( 'Y-m-d', $ts );
 	}
@@ -200,7 +200,7 @@ final class CouponService {
 		$parts = [
 			sprintf(
 				/* translators: 1: verb, 2: coupon code, 3: type label, 4: amount. */
-				__( '%1$sCoupon %2$s: %3$s %4$s', 'moksafocou' ),
+				__( '%1$sCoupon %2$s: %3$s %4$s', 'moksa-coupons-for-woocommerce' ),
 				$verb,
 				$code,
 				$type_label,
@@ -209,19 +209,19 @@ final class CouponService {
 		];
 
 		if ( ! empty( $fields['free_shipping'] ) ) {
-			$parts[] = __( 'Includes free shipping', 'moksafocou' );
+			$parts[] = __( 'Includes free shipping', 'moksa-coupons-for-woocommerce' );
 		}
 		if ( ! empty( $fields['date_expires'] ) ) {
 			/* translators: %s: expiry date. */
-			$parts[] = sprintf( __( 'Expires %s', 'moksafocou' ), $fields['date_expires'] );
+			$parts[] = sprintf( __( 'Expires %s', 'moksa-coupons-for-woocommerce' ), $fields['date_expires'] );
 		}
 		if ( ! empty( $fields['usage_limit'] ) ) {
 			/* translators: %d: usage limit. */
-			$parts[] = sprintf( __( 'Limited to %d use(s)', 'moksafocou' ), (int) $fields['usage_limit'] );
+			$parts[] = sprintf( __( 'Limited to %d use(s)', 'moksa-coupons-for-woocommerce' ), (int) $fields['usage_limit'] );
 		}
 		if ( ! empty( $fields['minimum_amount'] ) ) {
 			/* translators: %s: minimum spend. */
-			$parts[] = sprintf( __( 'Minimum spend %s', 'moksafocou' ), $fields['minimum_amount'] );
+			$parts[] = sprintf( __( 'Minimum spend %s', 'moksa-coupons-for-woocommerce' ), $fields['minimum_amount'] );
 		}
 
 		return implode( '、', $parts );
@@ -251,12 +251,12 @@ final class CouponService {
 			}
 			$amount_str = rtrim( rtrim( sprintf( '%.2f', $amount ), '0' ), '.' );
 			/* translators: 1: the 折 number as written, 2: the percent discount amount. */
-			$parts[] = sprintf( __( 'The percent amount for "%1$s off" is %2$s', 'moksafocou' ), $raw, $amount_str );
+			$parts[] = sprintf( __( 'The percent amount for "%1$s off" is %2$s', 'moksa-coupons-for-woocommerce' ), $raw, $amount_str );
 		}
 		if ( [] === $parts ) {
 			return '';
 		}
-		return ' (' . __( 'Discount conversion', 'moksafocou' ) . ':' . implode( '、', $parts ) . ')';
+		return ' (' . __( 'Discount conversion', 'moksa-coupons-for-woocommerce' ) . ':' . implode( '、', $parts ) . ')';
 	}
 
 	/**
@@ -440,7 +440,7 @@ final class CouponService {
 
 		$id = $coupon->save();
 		if ( ! $id ) {
-			return new \WP_Error( 'moksafocou_save_failed', __( 'Failed to save the coupon.', 'moksafocou' ) );
+			return new \WP_Error( 'moksafocou_save_failed', __( 'Failed to save the coupon.', 'moksa-coupons-for-woocommerce' ) );
 		}
 		/**
 		 * Fires after a coupon is created or updated through the plugin's service (admin form,
@@ -530,10 +530,10 @@ final class CouponService {
 	public static function duplicate( int $source_id, string $new_code, bool $publish ) {
 		$src = new \WC_Coupon( $source_id );
 		if ( ! $src->get_id() ) {
-			return new \WP_Error( 'moksafocou_not_found', __( 'Coupon not found.', 'moksafocou' ) );
+			return new \WP_Error( 'moksafocou_not_found', __( 'Coupon not found.', 'moksa-coupons-for-woocommerce' ) );
 		}
 		if ( '' === $new_code ) {
-			return new \WP_Error( 'moksafocou_duplicate_failed', __( 'Could not generate a unique new code.', 'moksafocou' ) );
+			return new \WP_Error( 'moksafocou_duplicate_failed', __( 'Could not generate a unique new code.', 'moksa-coupons-for-woocommerce' ) );
 		}
 
 		$new = new \WC_Coupon( 0 );
@@ -544,7 +544,7 @@ final class CouponService {
 		$new->set_usage_count( 0 );
 		$new_id = $new->save();
 		if ( ! $new_id ) {
-			return new \WP_Error( 'moksafocou_duplicate_failed', __( 'Copy failed.', 'moksafocou' ) );
+			return new \WP_Error( 'moksafocou_duplicate_failed', __( 'Copy failed.', 'moksa-coupons-for-woocommerce' ) );
 		}
 
 		self::set_status( (int) $new_id, $publish );

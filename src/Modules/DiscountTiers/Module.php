@@ -22,7 +22,7 @@ final class Module extends AbstractModule {
 	}
 
 	public function label(): string {
-		return __( 'Tiered discount', 'moksafocou' );
+		return __( 'Tiered discount', 'moksa-coupons-for-woocommerce' );
 	}
 
 	public function category(): string {
@@ -30,7 +30,7 @@ final class Module extends AbstractModule {
 	}
 
 	public function tagline(): string {
-		return __( 'The same coupon gives different discounts by cart threshold (e.g. under 1000 get 10% off, over 1000 get 20% off)', 'moksafocou' );
+		return __( 'The same coupon gives different discounts by cart threshold (e.g. under 1000 get 10% off, over 1000 get 20% off)', 'moksa-coupons-for-woocommerce' );
 	}
 
 	public function boot(): void {

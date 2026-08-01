@@ -95,24 +95,24 @@ final class Runtime {
 		$apply   = CouponPresenter::apply_url( $coupon );
 
 		/* translators: %s: coupon code. */
-		$subject = sprintf( __( 'Your coupon "%s" is about to expire', 'moksafocou' ), $code );
+		$subject = sprintf( __( 'Your coupon "%s" is about to expire', 'moksa-coupons-for-woocommerce' ), $code );
 
 		$parts   = array();
 		$parts[] = '<p>' . esc_html(
 			sprintf(
 				/* translators: 1: site name, 2: expiry date. */
-				__( 'Reminder: %1$s\'s exclusive coupon expires on %2$s, don\'t forget to use it before the deadline!', 'moksafocou' ),
+				__( 'Reminder: %1$s\'s exclusive coupon expires on %2$s, don\'t forget to use it before the deadline!', 'moksa-coupons-for-woocommerce' ),
 				$site,
 				$date
 			)
 		) . '</p>';
 		/* translators: %s: coupon code. */
-		$parts[] = '<p><strong>' . esc_html( sprintf( __( 'Coupon code: %s', 'moksafocou' ), $code ) ) . '</strong></p>';
+		$parts[] = '<p><strong>' . esc_html( sprintf( __( 'Coupon code: %s', 'moksa-coupons-for-woocommerce' ), $code ) ) . '</strong></p>';
 		if ( '' !== trim( $summary ) ) {
 			$parts[] = '<p>' . esc_html( $summary ) . '</p>';
 		}
 		if ( '' !== $apply ) {
-			$parts[] = '<p><a href="' . esc_url( $apply ) . '">' . esc_html__( 'Click here to use it now', 'moksafocou' ) . '</a></p>';
+			$parts[] = '<p><a href="' . esc_url( $apply ) . '">' . esc_html__( 'Click here to use it now', 'moksa-coupons-for-woocommerce' ) . '</a></p>';
 		}
 
 		return (bool) wp_mail(

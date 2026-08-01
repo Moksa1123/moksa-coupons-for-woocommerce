@@ -60,5 +60,5 @@ wp_clear_scheduled_hook( 'moksafocou_cron_hourly' );
 
 // Action Scheduler group cleanup (safe no-op if unused).
 if ( function_exists( 'as_unschedule_all_actions' ) ) {
-	as_unschedule_all_actions( '', array(), 'moksafocou' );
+	as_unschedule_all_actions( '', array(), 'moksa-coupons-for-woocommerce' );
 }

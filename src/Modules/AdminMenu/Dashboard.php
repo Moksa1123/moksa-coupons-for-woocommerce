@@ -31,48 +31,48 @@ final class Dashboard {
 		$pending   = isset( $counts->pending ) ? (int) $counts->pending : 0;
 		$total     = $published + $draft + $pending;
 
-		echo '<div class="wrap"><div class="mowp-shell" data-ns="moksafocou">';
-		echo '<div class="mowp-intro"><h1>' . esc_html__( 'Moksa coupon management', 'moksafocou' ) . '</h1>';
-		echo '<p>' . esc_html__( 'Manage all coupons, view reports, and adjust settings here in one place.', 'moksafocou' ) . '</p>';
+		echo '<div class="wrap"><div class="mowp-shell" data-ns="moksa-coupons-for-woocommerce">';
+		echo '<div class="mowp-intro"><h1>' . esc_html__( 'Moksa coupon management', 'moksa-coupons-for-woocommerce' ) . '</h1>';
+		echo '<p>' . esc_html__( 'Manage all coupons, view reports, and adjust settings here in one place.', 'moksa-coupons-for-woocommerce' ) . '</p>';
 		echo '<p><a href="' . esc_url( admin_url( 'post-new.php?post_type=shop_coupon' ) ) . '" class="button button-primary">'
-			. esc_html__( 'Add coupon', 'moksafocou' ) . '</a></p></div>';
+			. esc_html__( 'Add coupon', 'moksa-coupons-for-woocommerce' ) . '</a></p></div>';
 
 		// Stat tiles.
 		echo '<div class="mowp-tiles">';
-		self::stat_tile( __( 'Total coupons', 'moksafocou' ), (string) $total );
-		self::stat_tile( __( 'Active', 'moksafocou' ), (string) $published );
-		self::stat_tile( __( 'Draft / pending', 'moksafocou' ), (string) ( $draft + $pending ) );
+		self::stat_tile( __( 'Total coupons', 'moksa-coupons-for-woocommerce' ), (string) $total );
+		self::stat_tile( __( 'Active', 'moksa-coupons-for-woocommerce' ), (string) $published );
+		self::stat_tile( __( 'Draft / pending', 'moksa-coupons-for-woocommerce' ), (string) ( $draft + $pending ) );
 		echo '</div>';
 
 		// Quick links.
 		echo '<div class="mowp-linkcards">';
 		self::link_card(
 			admin_url( 'edit.php?post_type=shop_coupon' ),
-			__( 'All coupons', 'moksafocou' ),
-			__( 'View, edit, and search all coupons.', 'moksafocou' )
+			__( 'All coupons', 'moksa-coupons-for-woocommerce' ),
+			__( 'View, edit, and search all coupons.', 'moksa-coupons-for-woocommerce' )
 		);
 		self::link_card(
 			admin_url( 'post-new.php?post_type=shop_coupon' ),
-			__( 'Add coupon', 'moksafocou' ),
-			__( 'Create a new coupon.', 'moksafocou' )
+			__( 'Add coupon', 'moksa-coupons-for-woocommerce' ),
+			__( 'Create a new coupon.', 'moksa-coupons-for-woocommerce' )
 		);
 		if ( Plugin::instance()->modules()->is_enabled( 'templates' ) ) {
 			self::link_card(
 				admin_url( 'admin.php?page=' . TemplatePage::slug() ),
-				__( 'Coupon template', 'moksafocou' ),
-				__( 'Pick a template to create a draft coupon in one click.', 'moksafocou' )
+				__( 'Coupon template', 'moksa-coupons-for-woocommerce' ),
+				__( 'Pick a template to create a draft coupon in one click.', 'moksa-coupons-for-woocommerce' )
 			);
 		}
 		self::link_card(
 			SettingsScreen::url(),
-			__( 'Coupon settings', 'moksafocou' ),
-			__( 'Enable / disable each feature module.', 'moksafocou' )
+			__( 'Coupon settings', 'moksa-coupons-for-woocommerce' ),
+			__( 'Enable / disable each feature module.', 'moksa-coupons-for-woocommerce' )
 		);
 		echo '</div>';
 
 		// Coupon reports now live here on the dashboard (instead of a separate page).
 		if ( Plugin::instance()->modules()->is_enabled( 'reports' ) && current_user_can( 'manage_woocommerce' ) ) {
-			echo '<h2 class="mowp-h2">' . esc_html__( 'Coupon report', 'moksafocou' ) . '</h2>';
+			echo '<h2 class="mowp-h2">' . esc_html__( 'Coupon report', 'moksa-coupons-for-woocommerce' ) . '</h2>';
 			ReportsPage::render_table( admin_url( 'admin.php?page=' . Menu::TOPLEVEL ) );
 		}
 

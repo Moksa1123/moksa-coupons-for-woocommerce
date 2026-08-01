@@ -37,7 +37,7 @@ final class Frontend {
 		if ( $total <= 0.0 ) {
 			return;
 		}
-		$label = (string) apply_filters( 'moksafocou_cart_savings_label', __( 'You saved a total of', 'moksafocou' ) );
+		$label = (string) apply_filters( 'moksafocou_cart_savings_label', __( 'You saved a total of', 'moksa-coupons-for-woocommerce' ) );
 		printf(
 			'<tr class="moksafocou-savings-total"><th>%1$s</th><td data-title="%1$s">%2$s</td></tr>',
 			esc_html( $label ),

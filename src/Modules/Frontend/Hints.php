@@ -27,41 +27,41 @@ final class Hints {
 		if ( $min > 0 ) {
 			$hints[] = sprintf(
 				/* translators: %s: formatted minimum amount. */
-				__( 'Spend %s', 'moksafocou' ),
+				__( 'Spend %s', 'moksa-coupons-for-woocommerce' ),
 				self::price( $min )
 			);
 		}
 
 		if ( 'yes' === $coupon->get_meta( Keys::ROLE_ENABLED, true ) && 'allowed' === $coupon->get_meta( Keys::ROLE_TYPE, true ) ) {
-			$hints[] = __( 'Members only', 'moksafocou' );
+			$hints[] = __( 'Members only', 'moksa-coupons-for-woocommerce' );
 		}
 
 		if ( 'yes' === $coupon->get_meta( Keys::CUST_ENABLED, true ) && 'yes' === $coupon->get_meta( Keys::CUST_FIRST_ONLY, true ) ) {
-			$hints[] = __( 'New customers\' first purchase only', 'moksafocou' );
+			$hints[] = __( 'New customers\' first purchase only', 'moksa-coupons-for-woocommerce' );
 		}
 
 		if ( array() !== $coupon->get_product_ids() || array() !== $coupon->get_product_categories() ) {
-			$hints[] = __( 'Specific products only', 'moksafocou' );
+			$hints[] = __( 'Specific products only', 'moksa-coupons-for-woocommerce' );
 		}
 
 		if ( 'yes' === $coupon->get_meta( Keys::SHIPREGION_ENABLED, true ) ) {
-			$hints[] = __( 'Specific shipping regions only', 'moksafocou' );
+			$hints[] = __( 'Specific shipping regions only', 'moksa-coupons-for-woocommerce' );
 		}
 
 		if ( 'yes' === $coupon->get_meta( Keys::PAYMENT_ENABLED, true ) ) {
-			$hints[] = __( 'Specific payment methods only', 'moksafocou' );
+			$hints[] = __( 'Specific payment methods only', 'moksa-coupons-for-woocommerce' );
 		}
 
 		if ( $coupon->get_free_shipping() ) {
-			$hints[] = __( 'Includes free shipping', 'moksafocou' );
+			$hints[] = __( 'Includes free shipping', 'moksa-coupons-for-woocommerce' );
 		}
 
 		if ( $coupon->get_individual_use() ) {
-			$hints[] = __( 'Cannot be combined with other coupons', 'moksafocou' );
+			$hints[] = __( 'Cannot be combined with other coupons', 'moksa-coupons-for-woocommerce' );
 		}
 
 		if ( $coupon->get_exclude_sale_items() ) {
-			$hints[] = __( 'Not valid on sale items', 'moksafocou' );
+			$hints[] = __( 'Not valid on sale items', 'moksa-coupons-for-woocommerce' );
 		}
 
 		// "Only N left" urgency badge, derived from the native usage limit (display only — WC
@@ -71,7 +71,7 @@ final class Hints {
 			if ( Urgency::should_show_stock( $remaining, (int) $coupon->get_meta( Keys::STOCK_THRESHOLD, true ) ) ) {
 				$hints[] = sprintf(
 					/* translators: %d: remaining redemptions. */
-					__( 'Only %d left', 'moksafocou' ),
+					__( 'Only %d left', 'moksa-coupons-for-woocommerce' ),
 					(int) $remaining
 				);
 			}

@@ -24,7 +24,7 @@ final class Panel {
 	public static function add(): void {
 		add_meta_box(
 			'moksafocou-summary',
-			__( 'Coupon summary', 'moksafocou' ),
+			__( 'Coupon summary', 'moksa-coupons-for-woocommerce' ),
 			array( self::class, 'render' ),
 			'shop_coupon',
 			'side',
@@ -34,7 +34,7 @@ final class Panel {
 
 	public static function render(): void {
 		echo '<div id="moksafocou-summary-panel" class="moksafocou-summary">'
-			. '<p class="mfc-sum-empty">' . esc_html__( 'While editing the fields, this shows a live effect summary and conflict warnings for this coupon.', 'moksafocou' ) . '</p>'
+			. '<p class="mfc-sum-empty">' . esc_html__( 'While editing the fields, this shows a live effect summary and conflict warnings for this coupon.', 'moksa-coupons-for-woocommerce' ) . '</p>'
 			. '</div>';
 	}
 
@@ -67,18 +67,18 @@ final class Panel {
 	 */
 	private static function features(): array {
 		$map = array(
-			Keys::SCHEDULE_ENABLED   => __( 'Schedule', 'moksafocou' ),
-			Keys::CUST_ENABLED       => __( 'Customer conditions', 'moksafocou' ),
-			Keys::ROLE_ENABLED       => __( 'User role', 'moksafocou' ),
-			Keys::DAYTIME_ENABLED    => __( 'Day and time window', 'moksafocou' ),
-			Keys::TIERS_ENABLED      => __( 'Tiered discount', 'moksafocou' ),
-			Keys::RULES_ENABLED      => __( 'Advanced rules', 'moksafocou' ),
-			Keys::SHIPREGION_ENABLED => __( 'Shipping region', 'moksafocou' ),
-			Keys::PAYMENT_ENABLED    => __( 'Payment method', 'moksafocou' ),
-			Keys::AUTO_APPLY         => __( 'Auto-apply', 'moksafocou' ),
-			Keys::GIFT_ENABLED       => __( 'Free gift', 'moksafocou' ),
-			Keys::STACK_EXCLUDE      => __( 'Cannot be stacked', 'moksafocou' ),
-			Keys::URL_ENABLED        => __( 'URL coupon', 'moksafocou' ),
+			Keys::SCHEDULE_ENABLED   => __( 'Schedule', 'moksa-coupons-for-woocommerce' ),
+			Keys::CUST_ENABLED       => __( 'Customer conditions', 'moksa-coupons-for-woocommerce' ),
+			Keys::ROLE_ENABLED       => __( 'User role', 'moksa-coupons-for-woocommerce' ),
+			Keys::DAYTIME_ENABLED    => __( 'Day and time window', 'moksa-coupons-for-woocommerce' ),
+			Keys::TIERS_ENABLED      => __( 'Tiered discount', 'moksa-coupons-for-woocommerce' ),
+			Keys::RULES_ENABLED      => __( 'Advanced rules', 'moksa-coupons-for-woocommerce' ),
+			Keys::SHIPREGION_ENABLED => __( 'Shipping region', 'moksa-coupons-for-woocommerce' ),
+			Keys::PAYMENT_ENABLED    => __( 'Payment method', 'moksa-coupons-for-woocommerce' ),
+			Keys::AUTO_APPLY         => __( 'Auto-apply', 'moksa-coupons-for-woocommerce' ),
+			Keys::GIFT_ENABLED       => __( 'Free gift', 'moksa-coupons-for-woocommerce' ),
+			Keys::STACK_EXCLUDE      => __( 'Cannot be stacked', 'moksa-coupons-for-woocommerce' ),
+			Keys::URL_ENABLED        => __( 'URL coupon', 'moksa-coupons-for-woocommerce' ),
 		);
 		$out = array();
 		foreach ( $map as $key => $label ) {
@@ -95,30 +95,30 @@ final class Panel {
 	 */
 	private static function i18n(): array {
 		return array(
-			'percent'             => __( 'Percentage discount', 'moksafocou' ),
-			'fixed_cart'          => __( 'Fixed cart discount', 'moksafocou' ),
-			'fixed_product'       => __( 'Fixed product discount', 'moksafocou' ),
-			'bogo'                => __( 'Buy X Get Y', 'moksafocou' ),
-			'moksafocou_cashback' => __( 'Cashback', 'moksafocou' ),
-			'cashbackTab'         => __( 'Apply cashback based on the "Cashback" tab settings after the order is paid', 'moksafocou' ),
-			'discountHead'        => __( 'Discount type', 'moksafocou' ),
-			'featuresHead'        => __( 'Enabled features', 'moksafocou' ),
-			'conflictsHead'       => __( 'Notice', 'moksafocou' ),
+			'percent'             => __( 'Percentage discount', 'moksa-coupons-for-woocommerce' ),
+			'fixed_cart'          => __( 'Fixed cart discount', 'moksa-coupons-for-woocommerce' ),
+			'fixed_product'       => __( 'Fixed product discount', 'moksa-coupons-for-woocommerce' ),
+			'bogo'                => __( 'Buy X Get Y', 'moksa-coupons-for-woocommerce' ),
+			'moksafocou_cashback' => __( 'Cashback', 'moksa-coupons-for-woocommerce' ),
+			'cashbackTab'         => __( 'Apply cashback based on the "Cashback" tab settings after the order is paid', 'moksa-coupons-for-woocommerce' ),
+			'discountHead'        => __( 'Discount type', 'moksa-coupons-for-woocommerce' ),
+			'featuresHead'        => __( 'Enabled features', 'moksa-coupons-for-woocommerce' ),
+			'conflictsHead'       => __( 'Notice', 'moksa-coupons-for-woocommerce' ),
 			/* translators: %s: discount expressed as a Taiwan 折 number. */
-			'zhe'                 => __( 'Approx. %s off', 'moksafocou' ),
+			'zhe'                 => __( 'Approx. %s off', 'moksa-coupons-for-woocommerce' ),
 			/* translators: %s: percentage off. */
-			'percentOff'          => __( '%s%% off', 'moksafocou' ),
+			'percentOff'          => __( '%s%% off', 'moksa-coupons-for-woocommerce' ),
 			/* translators: %s: fixed amount off. */
-			'amountOff'           => __( '%s off', 'moksafocou' ),
-			'noExpiry'            => __( 'No expiry date', 'moksafocou' ),
+			'amountOff'           => __( '%s off', 'moksa-coupons-for-woocommerce' ),
+			'noExpiry'            => __( 'No expiry date', 'moksa-coupons-for-woocommerce' ),
 			/* translators: %s: expiry date. */
-			'expiresOn'           => __( 'Expires: %s', 'moksafocou' ),
-			'tiersDrive'          => __( 'Discount amount determined by the tiered table', 'moksafocou' ),
-			'bogoTab'             => __( 'Please set the trigger and reward on the "Buy X Get Y" tab', 'moksafocou' ),
-			'cTiersType'          => __( 'Tiered discount only applies to "Percentage discount"; the current discount type does not match.', 'moksafocou' ),
-			'cMinMax'             => __( 'The cart minimum amount is greater than the maximum amount, so this coupon will never be usable.', 'moksafocou' ),
-			'cPercentRange'       => __( 'Percentage discount cannot exceed 100.', 'moksafocou' ),
-			'none'                => __( '(Not set yet)', 'moksafocou' ),
+			'expiresOn'           => __( 'Expires: %s', 'moksa-coupons-for-woocommerce' ),
+			'tiersDrive'          => __( 'Discount amount determined by the tiered table', 'moksa-coupons-for-woocommerce' ),
+			'bogoTab'             => __( 'Please set the trigger and reward on the "Buy X Get Y" tab', 'moksa-coupons-for-woocommerce' ),
+			'cTiersType'          => __( 'Tiered discount only applies to "Percentage discount"; the current discount type does not match.', 'moksa-coupons-for-woocommerce' ),
+			'cMinMax'             => __( 'The cart minimum amount is greater than the maximum amount, so this coupon will never be usable.', 'moksa-coupons-for-woocommerce' ),
+			'cPercentRange'       => __( 'Percentage discount cannot exceed 100.', 'moksa-coupons-for-woocommerce' ),
+			'none'                => __( '(Not set yet)', 'moksa-coupons-for-woocommerce' ),
 		);
 	}
 

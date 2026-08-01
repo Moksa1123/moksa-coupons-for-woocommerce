@@ -39,13 +39,13 @@ final class BogoOps {
 			return $fields;
 		}
 		if ( empty( $fields['code'] ) ) {
-			return new \WP_Error( 'moksafocou_invalid_code', __( 'Coupon code cannot be empty.', 'moksafocou' ) );
+			return new \WP_Error( 'moksafocou_invalid_code', __( 'Coupon code cannot be empty.', 'moksa-coupons-for-woocommerce' ) );
 		}
 		if ( CouponService::find_id_by_code( $fields['code'] ) > 0 ) {
 			return new \WP_Error(
 				'moksafocou_duplicate',
 				/* translators: %s: coupon code. */
-				sprintf( __( 'Coupon code %s already exists; please use another.', 'moksafocou' ), $fields['code'] )
+				sprintf( __( 'Coupon code %s already exists; please use another.', 'moksa-coupons-for-woocommerce' ), $fields['code'] )
 			);
 		}
 		$fields['discount_type'] = BogoMeta::TYPE;
@@ -84,7 +84,7 @@ final class BogoOps {
 			'id'    => $coupon->get_id(),
 			'reply' => sprintf(
 				/* translators: %s: coupon code. */
-				__( 'Buy X Get Y coupon %s created.', 'moksafocou' ),
+				__( 'Buy X Get Y coupon %s created.', 'moksa-coupons-for-woocommerce' ),
 				$coupon->get_code()
 			),
 		);
@@ -100,16 +100,16 @@ final class BogoOps {
 		$has_reward  = array() !== $cfg['reward_product_ids'] || array() !== $cfg['reward_category_ids'];
 
 		if ( ! $has_trigger ) {
-			return new \WP_Error( 'moksafocou_bogo_no_trigger', __( 'Please specify the purchase-condition products or categories.', 'moksafocou' ) );
+			return new \WP_Error( 'moksafocou_bogo_no_trigger', __( 'Please specify the purchase-condition products or categories.', 'moksa-coupons-for-woocommerce' ) );
 		}
 		if ( ! $has_reward ) {
-			return new \WP_Error( 'moksafocou_bogo_no_reward', __( 'Please specify the gift products or categories.', 'moksafocou' ) );
+			return new \WP_Error( 'moksafocou_bogo_no_reward', __( 'Please specify the gift products or categories.', 'moksa-coupons-for-woocommerce' ) );
 		}
 		if ( 'percent' === $cfg['reward_mode'] && $cfg['reward_value'] > 100 ) {
-			return new \WP_Error( 'moksafocou_bogo_bad_value', __( 'Percentage discount cannot exceed 100.', 'moksafocou' ) );
+			return new \WP_Error( 'moksafocou_bogo_bad_value', __( 'Percentage discount cannot exceed 100.', 'moksa-coupons-for-woocommerce' ) );
 		}
 		if ( 'fixed_per_item' === $cfg['reward_mode'] && $cfg['reward_value'] <= 0 ) {
-			return new \WP_Error( 'moksafocou_bogo_bad_value', __( 'Fixed discount per item must be greater than 0.', 'moksafocou' ) );
+			return new \WP_Error( 'moksafocou_bogo_bad_value', __( 'Fixed discount per item must be greater than 0.', 'moksa-coupons-for-woocommerce' ) );
 		}
 		return $cfg;
 	}
@@ -121,19 +121,19 @@ final class BogoOps {
 	private static function build_summary( string $code, array $cfg ): string {
 		$mode = (string) $cfg['reward_mode'];
 		if ( 'free' === $mode ) {
-			$reward = __( 'Free', 'moksafocou' );
+			$reward = __( 'Free', 'moksa-coupons-for-woocommerce' );
 		} elseif ( 'fixed_per_item' === $mode ) {
 			/* translators: %s: per-item discount amount. */
-			$reward = sprintf( __( '%s off per item', 'moksafocou' ), (string) $cfg['reward_value'] );
+			$reward = sprintf( __( '%s off per item', 'moksa-coupons-for-woocommerce' ), (string) $cfg['reward_value'] );
 		} else {
 			/* translators: %s: percent discount. */
-			$reward = sprintf( __( '%s%% off', 'moksafocou' ), (string) $cfg['reward_value'] );
+			$reward = sprintf( __( '%s%% off', 'moksa-coupons-for-woocommerce' ), (string) $cfg['reward_value'] );
 		}
-		$repeat = 'repeat' === $cfg['deal_mode'] ? __( '(repeatable)', 'moksafocou' ) : __( '(one time only)', 'moksafocou' );
+		$repeat = 'repeat' === $cfg['deal_mode'] ? __( '(repeatable)', 'moksa-coupons-for-woocommerce' ) : __( '(one time only)', 'moksa-coupons-for-woocommerce' );
 
 		return sprintf(
 			/* translators: 1: code, 2: trigger qty, 3: reward qty, 4: reward desc, 5: repeat note. */
-			__( 'Create Buy X Get Y coupon %1$s: for every %2$d of the specified items → %3$d gift item(s) %4$s %5$s', 'moksafocou' ),
+			__( 'Create Buy X Get Y coupon %1$s: for every %2$d of the specified items → %3$d gift item(s) %4$s %5$s', 'moksa-coupons-for-woocommerce' ),
 			$code,
 			(int) $cfg['trigger_qty'],
 			(int) $cfg['reward_qty'],

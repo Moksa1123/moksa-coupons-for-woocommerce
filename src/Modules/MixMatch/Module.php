@@ -21,7 +21,7 @@ final class Module extends AbstractModule {
 	}
 
 	public function label(): string {
-		return __( 'Mix & Match', 'moksafocou' );
+		return __( 'Mix & Match', 'moksa-coupons-for-woocommerce' );
 	}
 
 	public function category(): string {
@@ -29,7 +29,7 @@ final class Module extends AbstractModule {
 	}
 
 	public function tagline(): string {
-		return __( 'Pick N for $X / N items at Y% off: pick and combine specific products for a special price, repeatable', 'moksafocou' );
+		return __( 'Pick N for $X / N items at Y% off: pick and combine specific products for a special price, repeatable', 'moksa-coupons-for-woocommerce' );
 	}
 
 	public function boot(): void {

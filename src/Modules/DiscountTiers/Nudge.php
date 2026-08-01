@@ -58,24 +58,24 @@ final class Nudge {
 			$deal = 'fixed' === $next['kind']
 				? sprintf(
 					/* translators: %s: fixed discount amount. */
-					__( 'Get %s off', 'moksafocou' ),
+					__( 'Get %s off', 'moksa-coupons-for-woocommerce' ),
 					wp_kses_post( wc_price( (float) $next['value'] ) )
 				)
 				: sprintf(
 					/* translators: %s: discount percent. */
-					__( 'Discount upgraded to %s%%', 'moksafocou' ),
+					__( 'Discount upgraded to %s%%', 'moksa-coupons-for-woocommerce' ),
 					esc_html( self::trim( (float) $next['value'] ) )
 				);
 
 			$msg = sprintf(
 				/* translators: 1: amount/qty/weight to add, 2: the upgraded deal. */
-				__( '%1$s,%2$s!', 'moksafocou' ),
+				__( '%1$s,%2$s!', 'moksa-coupons-for-woocommerce' ),
 				esc_html( self::gap_text( $basis, (float) $next['gap'] ) ),
 				$deal
 			);
 			printf(
 				'<tr class="moksafocou-tier-nudge"><th>%1$s</th><td data-title="%1$s">%2$s</td></tr>',
-				esc_html__( 'Tiered discount', 'moksafocou' ),
+				esc_html__( 'Tiered discount', 'moksa-coupons-for-woocommerce' ),
 				wp_kses_post( $msg )
 			);
 			return; // one nudge is enough.
@@ -86,14 +86,14 @@ final class Nudge {
 	private static function gap_text( string $basis, float $gap ): string {
 		if ( 'quantity' === $basis ) {
 			/* translators: %s: number of additional items. */
-			return sprintf( __( 'Add %s more item(s) to the cart', 'moksafocou' ), self::trim( ceil( $gap ) ) );
+			return sprintf( __( 'Add %s more item(s) to the cart', 'moksa-coupons-for-woocommerce' ), self::trim( ceil( $gap ) ) );
 		}
 		if ( 'weight' === $basis ) {
 			/* translators: %s: additional weight in kg. */
-			return sprintf( __( 'Add %s more kg to the cart', 'moksafocou' ), self::trim( $gap ) );
+			return sprintf( __( 'Add %s more kg to the cart', 'moksa-coupons-for-woocommerce' ), self::trim( $gap ) );
 		}
 		/* translators: %s: additional spend (price HTML). */
-		return sprintf( __( 'Add %s more to the cart', 'moksafocou' ), html_entity_decode( wp_strip_all_tags( wc_price( $gap ) ), ENT_QUOTES, 'UTF-8' ) );
+		return sprintf( __( 'Add %s more to the cart', 'moksa-coupons-for-woocommerce' ), html_entity_decode( wp_strip_all_tags( wc_price( $gap ) ), ENT_QUOTES, 'UTF-8' ) );
 	}
 
 	private static function trim( float $value ): string {

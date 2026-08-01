@@ -59,7 +59,7 @@ final class OrderCouponNote {
 			return;
 		}
 		// add_order_note() defaults to a private note (not customer-facing).
-		$order->add_order_note( __( 'Moksa coupon effect', 'moksafocou' ) . ":\n• " . implode( "\n• ", $lines ) );
+		$order->add_order_note( __( 'Moksa coupon effect', 'moksa-coupons-for-woocommerce' ) . ":\n• " . implode( "\n• ", $lines ) );
 		$order->update_meta_data( self::DONE_META, 'yes' );
 		$order->save();
 	}
@@ -90,7 +90,7 @@ final class OrderCouponNote {
 			if ( is_numeric( $bogo_saving ) && (float) $bogo_saving > 0 ) {
 				$lines[] = sprintf(
 					/* translators: 1: coupon code, 2: formatted saving. */
-					__( 'Buy X Get Y "%1$s": gift offer, save %2$s', 'moksafocou' ),
+					__( 'Buy X Get Y "%1$s": gift offer, save %2$s', 'moksa-coupons-for-woocommerce' ),
 					$code,
 					self::money( (float) $bogo_saving )
 				);
@@ -108,7 +108,7 @@ final class OrderCouponNote {
 			if ( $ship_on && ! $ship_shown && '' !== $ship_mode && 'none' !== $ship_mode ) {
 				$lines[] = sprintf(
 					/* translators: 1: coupon code, 2: effect description, 3: this order's shipping. */
-					__( 'Shipping override "%1$s": %2$s (order shipping %3$s)', 'moksafocou' ),
+					__( 'Shipping override "%1$s": %2$s (order shipping %3$s)', 'moksa-coupons-for-woocommerce' ),
 					$code,
 					self::ship_label( $ship_mode, (string) $coupon->get_meta( Keys::SHIP_VALUE ), $symbol ),
 					self::money( (float) $order->get_shipping_total() )
@@ -123,7 +123,7 @@ final class OrderCouponNote {
 					$product = wc_get_product( $gift_id );
 					$lines[] = sprintf(
 						/* translators: 1: coupon code, 2: gift product name. */
-						__( 'Free gift "%1$s": gift %2$s added', 'moksafocou' ),
+						__( 'Free gift "%1$s": gift %2$s added', 'moksa-coupons-for-woocommerce' ),
 						$code,
 						$product ? $product->get_name() : ( '#' . $gift_id )
 					);
@@ -144,15 +144,15 @@ final class OrderCouponNote {
 	public static function ship_label( string $mode, string $value, string $symbol ): string {
 		switch ( $mode ) {
 			case 'free':
-				return __( 'Free shipping', 'moksafocou' );
+				return __( 'Free shipping', 'moksa-coupons-for-woocommerce' );
 			case 'percent':
 				/* translators: %s: percent off shipping. */
-				return sprintf( __( 'Shipping discount %s%%', 'moksafocou' ), $value );
+				return sprintf( __( 'Shipping discount %s%%', 'moksa-coupons-for-woocommerce' ), $value );
 			case 'fixed':
 				/* translators: 1: currency symbol, 2: fixed amount off shipping. */
-				return sprintf( __( 'Shipping discount %1$s%2$s', 'moksafocou' ), $symbol, $value );
+				return sprintf( __( 'Shipping discount %1$s%2$s', 'moksa-coupons-for-woocommerce' ), $symbol, $value );
 			default:
-				return __( 'Shipping adjustment', 'moksafocou' );
+				return __( 'Shipping adjustment', 'moksa-coupons-for-woocommerce' );
 		}
 	}
 

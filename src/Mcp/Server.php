@@ -122,7 +122,7 @@ final class Server {
 							'prompts'   => array( 'listChanged' => false ),
 						),
 						'serverInfo'      => array(
-							'name'    => 'moksafocou',
+							'name'    => 'moksa-coupons-for-woocommerce',
 							'title'   => 'Moksa Coupons',
 							'version' => MOKSAFOCOU_VERSION,
 						),
@@ -280,7 +280,7 @@ final class Server {
 
 		$perm = $ability->check_permissions( $args );
 		if ( is_wp_error( $perm ) || false === $perm ) {
-			return self::tool_error( $id, __( 'You do not have permission to do this.', 'moksafocou' ) );
+			return self::tool_error( $id, __( 'You do not have permission to do this.', 'moksa-coupons-for-woocommerce' ) );
 		}
 
 		try {
@@ -288,7 +288,7 @@ final class Server {
 		} catch ( \Throwable $e ) {
 			$message = ( defined( 'WP_DEBUG' ) && WP_DEBUG )
 				? $e->getMessage()
-				: __( 'The tool failed to run; please try again later.', 'moksafocou' );
+				: __( 'The tool failed to run; please try again later.', 'moksa-coupons-for-woocommerce' );
 			return self::tool_error( $id, $message );
 		}
 		if ( is_wp_error( $result ) ) {
@@ -324,20 +324,20 @@ final class Server {
 		return array(
 			array(
 				'uri'         => 'moksafocou://rule-types',
-				'name'        => __( 'Advanced rule types', 'moksafocou' ),
-				'description' => __( '26 AND/OR advanced rule types, operators, and value shapes.', 'moksafocou' ),
+				'name'        => __( 'Advanced rule types', 'moksa-coupons-for-woocommerce' ),
+				'description' => __( '26 AND/OR advanced rule types, operators, and value shapes.', 'moksa-coupons-for-woocommerce' ),
 				'mimeType'    => 'application/json',
 			),
 			array(
 				'uri'         => 'moksafocou://settings-schema',
-				'name'        => __( 'Coupon advanced settings schema', 'moksafocou' ),
-				'description' => __( 'JSON schema for the moksafocou advanced settings object for create / update.', 'moksafocou' ),
+				'name'        => __( 'Coupon advanced settings schema', 'moksa-coupons-for-woocommerce' ),
+				'description' => __( 'JSON schema for the moksafocou advanced settings object for create / update.', 'moksa-coupons-for-woocommerce' ),
 				'mimeType'    => 'application/json',
 			),
 			array(
 				'uri'         => 'moksafocou://templates',
-				'name'        => __( 'Coupon template library', 'moksafocou' ),
-				'description' => __( 'Built-in coupon templates (id / name / description / category / type).', 'moksafocou' ),
+				'name'        => __( 'Coupon template library', 'moksa-coupons-for-woocommerce' ),
+				'description' => __( 'Built-in coupon templates (id / name / description / category / type).', 'moksa-coupons-for-woocommerce' ),
 				'mimeType'    => 'application/json',
 			),
 		);
@@ -404,22 +404,22 @@ final class Server {
 		return array(
 			array(
 				'name'        => 'create-coupon-from-idea',
-				'description' => __( 'Guide coupon creation with a single marketing idea', 'moksafocou' ),
+				'description' => __( 'Guide coupon creation with a single marketing idea', 'moksa-coupons-for-woocommerce' ),
 				'arguments'   => array(
 					array(
 						'name'        => 'idea',
-						'description' => __( 'Marketing campaign idea, for example "Site-wide 10% off for the anniversary sale"', 'moksafocou' ),
+						'description' => __( 'Marketing campaign idea, for example "Site-wide 10% off for the anniversary sale"', 'moksa-coupons-for-woocommerce' ),
 						'required'    => true,
 					),
 				),
 			),
 			array(
 				'name'        => 'campaign-ideas',
-				'description' => __( 'Brainstorm coupon campaign ideas based on the store context', 'moksafocou' ),
+				'description' => __( 'Brainstorm coupon campaign ideas based on the store context', 'moksa-coupons-for-woocommerce' ),
 				'arguments'   => array(
 					array(
 						'name'        => 'goal',
-						'description' => __( 'Goal, for example raise average order value / acquire new customers', 'moksafocou' ),
+						'description' => __( 'Goal, for example raise average order value / acquire new customers', 'moksa-coupons-for-woocommerce' ),
 						'required'    => false,
 					),
 				),
@@ -440,7 +440,7 @@ final class Server {
 			$idea = isset( $args['idea'] ) ? (string) $args['idea'] : '';
 			$text = sprintf(
 				/* translators: %s: the marketing idea. */
-				__( 'Please create a coupon with the moksafocou tools based on this marketing idea: "%s". First use find-coupon-by-code to confirm the code is not duplicated; when advanced conditions are needed, use list-rule-types / get-settings-schema to check the details, then call create-coupon or create-tiered-coupon.', 'moksafocou' ),
+				__( 'Please create a coupon with the moksafocou tools based on this marketing idea: "%s". First use find-coupon-by-code to confirm the code is not duplicated; when advanced conditions are needed, use list-rule-types / get-settings-schema to check the details, then call create-coupon or create-tiered-coupon.', 'moksa-coupons-for-woocommerce' ),
 				$idea
 			);
 		} elseif ( 'campaign-ideas' === $name ) {
@@ -448,10 +448,10 @@ final class Server {
 			$text = '' !== $goal
 				? sprintf(
 					/* translators: %s: the campaign goal. */
-					__( 'For the goal "%s", use list-templates to reference the built-in templates and propose 3 coupon campaign ideas suitable for this store, explaining the setup.', 'moksafocou' ),
+					__( 'For the goal "%s", use list-templates to reference the built-in templates and propose 3 coupon campaign ideas suitable for this store, explaining the setup.', 'moksa-coupons-for-woocommerce' ),
 					$goal
 				)
-				: __( 'Use list-templates to reference the built-in templates and propose 3 coupon campaign ideas suitable for this store, explaining the setup.', 'moksafocou' );
+				: __( 'Use list-templates to reference the built-in templates and propose 3 coupon campaign ideas suitable for this store, explaining the setup.', 'moksa-coupons-for-woocommerce' );
 		} else {
 			return self::rpc_error( $id, -32602, 'Unknown prompt: ' . $name );
 		}

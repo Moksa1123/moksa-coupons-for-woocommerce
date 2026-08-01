@@ -21,7 +21,7 @@ final class Module extends AbstractModule {
 	}
 
 	public function label(): string {
-		return __( 'Coupon expiry reminder', 'moksafocou' );
+		return __( 'Coupon expiry reminder', 'moksa-coupons-for-woocommerce' );
 	}
 
 	public function category(): string {
@@ -29,7 +29,7 @@ final class Module extends AbstractModule {
 	}
 
 	public function tagline(): string {
-		return __( 'Automatically email customers each day to remind them their "exclusive coupon is about to expire", encouraging use before the deadline', 'moksafocou' );
+		return __( 'Automatically email customers each day to remind them their "exclusive coupon is about to expire", encouraging use before the deadline', 'moksa-coupons-for-woocommerce' );
 	}
 
 	public function boot(): void {

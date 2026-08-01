@@ -145,7 +145,7 @@ final class Engine {
 
 	private static function message( \WC_Coupon $coupon ): string {
 		$message = (string) $coupon->get_meta( Keys::RULES_MSG, true );
-		return '' !== trim( $message ) ? $message : __( 'This coupon does not meet the usage conditions.', 'moksafocou' );
+		return '' !== trim( $message ) ? $message : __( 'This coupon does not meet the usage conditions.', 'moksa-coupons-for-woocommerce' );
 	}
 
 	/** @return array<int,string> */

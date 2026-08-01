@@ -36,7 +36,7 @@ final class Agent {
 	 */
 	public static function run( string $user_text, array $abilities, string $system, array $prior = [] ): array {
 		if ( ! function_exists( 'wp_ai_client_prompt' ) || empty( $abilities ) ) {
-			return self::err( __( 'AI Client is not available (requires WordPress 7.0).', 'moksafocou' ) );
+			return self::err( __( 'AI Client is not available (requires WordPress 7.0).', 'moksa-coupons-for-woocommerce' ) );
 		}
 
 		$resolver = new \WP_AI_Client_Ability_Function_Resolver( ...$abilities );
@@ -71,7 +71,7 @@ final class Agent {
 				$last_err = $attempt->get_error_message();
 			}
 			if ( null === $result ) {
-				return self::err( '' !== $last_err ? $last_err : __( 'AI is temporarily unavailable, please try again later.', 'moksafocou' ) );
+				return self::err( '' !== $last_err ? $last_err : __( 'AI is temporarily unavailable, please try again later.', 'moksa-coupons-for-woocommerce' ) );
 			}
 
 			$assistant = $result->toMessage();
@@ -117,7 +117,7 @@ final class Agent {
 			$current       = $tool_response;
 		}
 
-		return self::err( __( 'AI could not complete after several attempts; please rephrase your request.', 'moksafocou' ) );
+		return self::err( __( 'AI could not complete after several attempts; please rephrase your request.', 'moksa-coupons-for-woocommerce' ) );
 	}
 
 	/**
@@ -193,7 +193,7 @@ final class Agent {
 	private static function prepare_confirm( string $ability, array $args ): array {
 		$handlers = Config::destructive_handlers();
 		if ( ! isset( $handlers[ $ability ]['prepare'] ) || ! is_callable( $handlers[ $ability ]['prepare'] ) ) {
-			return self::err( __( 'Unsupported operation.', 'moksafocou' ) );
+			return self::err( __( 'Unsupported operation.', 'moksa-coupons-for-woocommerce' ) );
 		}
 
 		$prepared = call_user_func( $handlers[ $ability ]['prepare'], $args );
@@ -201,7 +201,7 @@ final class Agent {
 			return self::err( $prepared->get_error_message() );
 		}
 		if ( ! is_array( $prepared ) || empty( $prepared['summary'] ) ) {
-			return self::err( __( 'Could not prepare this operation.', 'moksafocou' ) );
+			return self::err( __( 'Could not prepare this operation.', 'moksa-coupons-for-woocommerce' ) );
 		}
 
 		$token = wp_generate_password( 24, false, false );
@@ -247,26 +247,26 @@ final class Agent {
 		}
 		if ( ! empty( $prepared['settings'] ) ) {
 			$rows[] = [
-				'key'   => __( 'Advanced settings', 'moksafocou' ),
-				'value' => __( 'Yes', 'moksafocou' ),
+				'key'   => __( 'Advanced settings', 'moksa-coupons-for-woocommerce' ),
+				'value' => __( 'Yes', 'moksa-coupons-for-woocommerce' ),
 			];
 		}
 		if ( array_key_exists( 'auto_apply', $prepared ) ) {
 			$rows[] = [
-				'key'   => __( 'Auto-apply', 'moksafocou' ),
-				'value' => $prepared['auto_apply'] ? __( 'Yes', 'moksafocou' ) : __( 'No', 'moksafocou' ),
+				'key'   => __( 'Auto-apply', 'moksa-coupons-for-woocommerce' ),
+				'value' => $prepared['auto_apply'] ? __( 'Yes', 'moksa-coupons-for-woocommerce' ) : __( 'No', 'moksa-coupons-for-woocommerce' ),
 			];
 		}
 		if ( isset( $prepared['discount_cap'] ) && (float) $prepared['discount_cap'] > 0 ) {
 			$rows[] = [
-				'key'   => __( 'Maximum discount', 'moksafocou' ),
+				'key'   => __( 'Maximum discount', 'moksa-coupons-for-woocommerce' ),
 				'value' => (string) $prepared['discount_cap'],
 			];
 		}
 		if ( ! empty( $prepared['exclude_coupons'] ) ) {
 			$rows[] = [
-				'key'   => __( 'Cannot be combined with other coupons', 'moksafocou' ),
-				'value' => __( 'Yes', 'moksafocou' ),
+				'key'   => __( 'Cannot be combined with other coupons', 'moksa-coupons-for-woocommerce' ),
+				'value' => __( 'Yes', 'moksa-coupons-for-woocommerce' ),
 			];
 		}
 		return $rows;
@@ -277,21 +277,21 @@ final class Agent {
 	 */
 	private static function field_labels(): array {
 		return [
-			'code'                        => __( 'Code', 'moksafocou' ),
-			'discount_type'               => __( 'Discount type', 'moksafocou' ),
-			'amount'                      => __( 'Discount amount', 'moksafocou' ),
-			'description'                 => __( 'Description', 'moksafocou' ),
-			'date_expires'                => __( 'Expiry date', 'moksafocou' ),
-			'usage_limit'                 => __( 'Usage limit', 'moksafocou' ),
-			'usage_limit_per_user'        => __( 'Usage limit per user', 'moksafocou' ),
-			'minimum_amount'              => __( 'Cart minimum', 'moksafocou' ),
-			'maximum_amount'              => __( 'Cart maximum', 'moksafocou' ),
-			'individual_use'              => __( 'Cannot be combined with other coupons', 'moksafocou' ),
-			'free_shipping'               => __( 'Includes free shipping', 'moksafocou' ),
-			'product_ids'                 => __( 'Specific products', 'moksafocou' ),
-			'excluded_product_ids'        => __( 'Exclude products', 'moksafocou' ),
-			'product_categories'          => __( 'Specific categories', 'moksafocou' ),
-			'excluded_product_categories' => __( 'Exclude categories', 'moksafocou' ),
+			'code'                        => __( 'Code', 'moksa-coupons-for-woocommerce' ),
+			'discount_type'               => __( 'Discount type', 'moksa-coupons-for-woocommerce' ),
+			'amount'                      => __( 'Discount amount', 'moksa-coupons-for-woocommerce' ),
+			'description'                 => __( 'Description', 'moksa-coupons-for-woocommerce' ),
+			'date_expires'                => __( 'Expiry date', 'moksa-coupons-for-woocommerce' ),
+			'usage_limit'                 => __( 'Usage limit', 'moksa-coupons-for-woocommerce' ),
+			'usage_limit_per_user'        => __( 'Usage limit per user', 'moksa-coupons-for-woocommerce' ),
+			'minimum_amount'              => __( 'Cart minimum', 'moksa-coupons-for-woocommerce' ),
+			'maximum_amount'              => __( 'Cart maximum', 'moksa-coupons-for-woocommerce' ),
+			'individual_use'              => __( 'Cannot be combined with other coupons', 'moksa-coupons-for-woocommerce' ),
+			'free_shipping'               => __( 'Includes free shipping', 'moksa-coupons-for-woocommerce' ),
+			'product_ids'                 => __( 'Specific products', 'moksa-coupons-for-woocommerce' ),
+			'excluded_product_ids'        => __( 'Exclude products', 'moksa-coupons-for-woocommerce' ),
+			'product_categories'          => __( 'Specific categories', 'moksa-coupons-for-woocommerce' ),
+			'excluded_product_categories' => __( 'Exclude categories', 'moksa-coupons-for-woocommerce' ),
 		];
 	}
 
@@ -304,7 +304,7 @@ final class Agent {
 			return \Moksafocou\Support\CouponType::label( (string) $value );
 		}
 		if ( is_bool( $value ) ) {
-			return $value ? __( 'Yes', 'moksafocou' ) : __( 'No', 'moksafocou' );
+			return $value ? __( 'Yes', 'moksa-coupons-for-woocommerce' ) : __( 'No', 'moksa-coupons-for-woocommerce' );
 		}
 		if ( is_array( $value ) ) {
 			return implode( ', ', array_map( 'strval', $value ) );

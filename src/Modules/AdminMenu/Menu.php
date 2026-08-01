@@ -25,7 +25,7 @@ defined( 'ABSPATH' ) || exit;
 final class Menu {
 
 	/** Top-level menu slug (also the Dashboard landing page). */
-	public const TOPLEVEL = 'moksafocou';
+	public const TOPLEVEL = 'moksa-coupons-for-woocommerce';
 
 	/** Capability required to see/manage the coupon menu (same as the CPT). */
 	private const CAP = 'edit_shop_coupons';
@@ -64,8 +64,8 @@ final class Menu {
 	 */
 	public static function register(): void {
 		add_menu_page(
-			__( 'Moksa coupon', 'moksafocou' ),
-			__( 'Coupon', 'moksafocou' ),
+			__( 'Moksa coupon', 'moksa-coupons-for-woocommerce' ),
+			__( 'Coupon', 'moksa-coupons-for-woocommerce' ),
 			self::CAP,
 			self::TOPLEVEL,
 			'',
@@ -77,8 +77,8 @@ final class Menu {
 		// suppresses the auto-generated duplicate first item.
 		add_submenu_page(
 			self::TOPLEVEL,
-			__( 'Dashboard', 'moksafocou' ),
-			__( 'Dashboard', 'moksafocou' ),
+			__( 'Dashboard', 'moksa-coupons-for-woocommerce' ),
+			__( 'Dashboard', 'moksa-coupons-for-woocommerce' ),
 			self::CAP,
 			self::TOPLEVEL,
 			array( Dashboard::class, 'render' ),
@@ -88,8 +88,8 @@ final class Menu {
 		// Reparented CPT screens (core no longer adds these — show_in_menu is false).
 		add_submenu_page(
 			self::TOPLEVEL,
-			__( 'All coupons', 'moksafocou' ),
-			__( 'All coupons', 'moksafocou' ),
+			__( 'All coupons', 'moksa-coupons-for-woocommerce' ),
+			__( 'All coupons', 'moksa-coupons-for-woocommerce' ),
 			self::CAP,
 			'edit.php?post_type=shop_coupon',
 			'',
@@ -97,8 +97,8 @@ final class Menu {
 		);
 		add_submenu_page(
 			self::TOPLEVEL,
-			__( 'Add coupon', 'moksafocou' ),
-			__( 'Add coupon', 'moksafocou' ),
+			__( 'Add coupon', 'moksa-coupons-for-woocommerce' ),
+			__( 'Add coupon', 'moksa-coupons-for-woocommerce' ),
 			self::CAP,
 			'post-new.php?post_type=shop_coupon',
 			'',
@@ -109,8 +109,8 @@ final class Menu {
 		if ( Plugin::instance()->modules()->is_enabled( 'templates' ) ) {
 			add_submenu_page(
 				self::TOPLEVEL,
-				__( 'Coupon template', 'moksafocou' ),
-				__( 'Coupon template', 'moksafocou' ),
+				__( 'Coupon template', 'moksa-coupons-for-woocommerce' ),
+				__( 'Coupon template', 'moksa-coupons-for-woocommerce' ),
 				self::CAP,
 				TemplatePage::slug(),
 				array( TemplatePage::class, 'render' ),

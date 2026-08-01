@@ -34,8 +34,8 @@ final class TemplatePage {
 	public static function register(): void {
 		add_submenu_page(
 			'woocommerce',
-			__( 'Coupon template', 'moksafocou' ),
-			__( 'Coupon template', 'moksafocou' ),
+			__( 'Coupon template', 'moksa-coupons-for-woocommerce' ),
+			__( 'Coupon template', 'moksa-coupons-for-woocommerce' ),
 			self::CAP,
 			self::SLUG,
 			array( self::class, 'render' )
@@ -59,9 +59,9 @@ final class TemplatePage {
 		}
 		$recent = self::recent_templates();
 
-		echo '<div class="wrap"><div class="mowp-shell moksafocou-templates" data-ns="moksafocou">';
-		echo '<div class="mowp-intro"><h1>' . esc_html__( 'Coupon template', 'moksafocou' ) . '</h1>';
-		echo '<p>' . esc_html__( 'Pick a template to quickly create a coupon. Click "Apply" to first fine-tune the code, discount amount and expiry date, then create a draft coupon in one click.', 'moksafocou' ) . '</p></div>';
+		echo '<div class="wrap"><div class="mowp-shell moksafocou-templates" data-ns="moksa-coupons-for-woocommerce">';
+		echo '<div class="mowp-intro"><h1>' . esc_html__( 'Coupon template', 'moksa-coupons-for-woocommerce' ) . '</h1>';
+		echo '<p>' . esc_html__( 'Pick a template to quickly create a coupon. Click "Apply" to first fine-tune the code, discount amount and expiry date, then create a draft coupon in one click.', 'moksa-coupons-for-woocommerce' ) . '</p></div>';
 
 		if ( '' !== $notice ) {
 			echo '<div class="notice notice-error is-dismissible" role="alert"><p>' . esc_html( $notice ) . '</p></div>';
@@ -70,7 +70,7 @@ final class TemplatePage {
 		// ── 最近使用 ───────────────────────────────────────────────────
 		if ( ! empty( $recent ) ) {
 			echo '<section class="moksafocou-tpl-recent">';
-			echo '<h2 class="moksafocou-tpl-h2">' . esc_html__( 'Recently used', 'moksafocou' ) . '</h2>';
+			echo '<h2 class="moksafocou-tpl-h2">' . esc_html__( 'Recently used', 'moksa-coupons-for-woocommerce' ) . '</h2>';
 			echo '<div class="moksafocou-tpl-grid">';
 			foreach ( $recent as $tpl ) {
 				self::card( $tpl );
@@ -81,7 +81,7 @@ final class TemplatePage {
 
 		// ── 可用範本:左分類側欄 + 右卡片 ──────────────────────────────
 		echo '<section class="moksafocou-tpl-available">';
-		echo '<h2 class="moksafocou-tpl-h2">' . esc_html__( 'Available templates', 'moksafocou' ) . '</h2>';
+		echo '<h2 class="moksafocou-tpl-h2">' . esc_html__( 'Available templates', 'moksa-coupons-for-woocommerce' ) . '</h2>';
 		echo '<div class="moksafocou-tpl-layout">';
 
 		self::sidebar( $by_cat, count( $all ) );
@@ -89,14 +89,14 @@ final class TemplatePage {
 		echo '<div class="moksafocou-tpl-main">';
 		echo '<div class="moksafocou-tpl-search" style="margin:0 0 14px;">'
 			. '<input type="search" class="regular-text" style="width:100%;max-width:420px;" placeholder="'
-			. esc_attr__( 'Search templates (name / description)…', 'moksafocou' ) . '" aria-label="'
-			. esc_attr__( 'Search templates', 'moksafocou' ) . '"></div>';
+			. esc_attr__( 'Search templates (name / description)…', 'moksa-coupons-for-woocommerce' ) . '" aria-label="'
+			. esc_attr__( 'Search templates', 'moksa-coupons-for-woocommerce' ) . '"></div>';
 		echo '<div class="moksafocou-tpl-grid">';
 		foreach ( $all as $tpl ) {
 			self::card( $tpl );
 		}
 		echo '</div>';
-		echo '<p class="moksafocou-tpl-empty" hidden>' . esc_html__( 'No matching templates found.', 'moksafocou' ) . '</p>';
+		echo '<p class="moksafocou-tpl-empty" hidden>' . esc_html__( 'No matching templates found.', 'moksa-coupons-for-woocommerce' ) . '</p>';
 		echo '</div>'; // .moksafocou-tpl-main
 
 		echo '</div>'; // .moksafocou-tpl-layout
@@ -117,7 +117,7 @@ final class TemplatePage {
 		echo '<aside class="moksafocou-tpl-cats">';
 		echo '<ul>';
 		echo '<li><a href="#" class="current" data-filter="all">'
-			. esc_html__( 'All', 'moksafocou' )
+			. esc_html__( 'All', 'moksa-coupons-for-woocommerce' )
 			. ' <span class="count">' . esc_html( (string) $total ) . '</span></a></li>';
 
 		foreach ( Catalog::categories() as $cat_key => $cat_label ) {
@@ -174,11 +174,11 @@ final class TemplatePage {
 			echo '<p class="req">' . esc_html(
 				sprintf(
 					/* translators: %s: comma-separated required module labels. */
-					__( 'The "%s" module must be enabled first', 'moksafocou' ),
+					__( 'The "%s" module must be enabled first', 'moksa-coupons-for-woocommerce' ),
 					implode( '、', $missing )
 				)
 			) . '</p>';
-			echo '<button class="button" disabled>' . esc_html__( 'Apply this template', 'moksafocou' ) . '</button>';
+			echo '<button class="button" disabled>' . esc_html__( 'Apply this template', 'moksa-coupons-for-woocommerce' ) . '</button>';
 		} else {
 			printf(
 				'<button type="button" class="button button-primary moksafocou-tpl-apply"'
@@ -195,7 +195,7 @@ final class TemplatePage {
 				esc_attr( $usage_pu ),
 				esc_attr( $individual ),
 				esc_attr( $description ),
-				esc_html__( 'Apply this template', 'moksafocou' )
+				esc_html__( 'Apply this template', 'moksa-coupons-for-woocommerce' )
 			);
 		}
 
@@ -208,7 +208,7 @@ final class TemplatePage {
 		echo '<div class="moksafocou-tpl-backdrop"></div>';
 		echo '<div class="moksafocou-tpl-dialog" role="dialog" aria-modal="true" aria-labelledby="moksafocou-tpl-modal-title">';
 		echo '<h2 id="moksafocou-tpl-modal-title"></h2>';
-		echo '<p class="description">' . esc_html__( 'You can adjust the following fields first, then create a coupon draft.', 'moksafocou' ) . '</p>';
+		echo '<p class="description">' . esc_html__( 'You can adjust the following fields first, then create a coupon draft.', 'moksa-coupons-for-woocommerce' ) . '</p>';
 
 		echo '<form method="post" action="' . esc_url( admin_url( 'admin-post.php' ) ) . '">';
 		echo '<input type="hidden" name="action" value="' . esc_attr( self::ACTION ) . '">';
@@ -217,36 +217,36 @@ final class TemplatePage {
 
 		echo '<div class="moksafocou-tpl-fields">';
 
-		echo '<div class="f"><label for="moksafocou-tpl-code">' . esc_html__( 'Coupon code', 'moksafocou' ) . '</label>';
+		echo '<div class="f"><label for="moksafocou-tpl-code">' . esc_html__( 'Coupon code', 'moksa-coupons-for-woocommerce' ) . '</label>';
 		echo '<input type="text" id="moksafocou-tpl-code" name="code" autocomplete="off" placeholder="'
-			. esc_attr__( 'Leave blank to generate automatically', 'moksafocou' ) . '"></div>';
+			. esc_attr__( 'Leave blank to generate automatically', 'moksa-coupons-for-woocommerce' ) . '"></div>';
 
-		echo '<div class="f f-amount"><label for="moksafocou-tpl-amount">' . esc_html__( 'Discount amount', 'moksafocou' ) . ' <span class="unit"></span></label>';
+		echo '<div class="f f-amount"><label for="moksafocou-tpl-amount">' . esc_html__( 'Discount amount', 'moksa-coupons-for-woocommerce' ) . ' <span class="unit"></span></label>';
 		echo '<input type="number" id="moksafocou-tpl-amount" name="amount" min="0" step="0.01"></div>';
 
 		echo '<div class="f-row">';
-		echo '<div class="f"><label for="moksafocou-tpl-ul">' . esc_html__( 'Total usage limit', 'moksafocou' ) . '</label>';
+		echo '<div class="f"><label for="moksafocou-tpl-ul">' . esc_html__( 'Total usage limit', 'moksa-coupons-for-woocommerce' ) . '</label>';
 		echo '<input type="number" id="moksafocou-tpl-ul" name="usage_limit" min="0" step="1" placeholder="'
-			. esc_attr__( 'No limit', 'moksafocou' ) . '"></div>';
-		echo '<div class="f"><label for="moksafocou-tpl-ulpu">' . esc_html__( 'Usage limit per user', 'moksafocou' ) . '</label>';
+			. esc_attr__( 'No limit', 'moksa-coupons-for-woocommerce' ) . '"></div>';
+		echo '<div class="f"><label for="moksafocou-tpl-ulpu">' . esc_html__( 'Usage limit per user', 'moksa-coupons-for-woocommerce' ) . '</label>';
 		echo '<input type="number" id="moksafocou-tpl-ulpu" name="usage_limit_per_user" min="0" step="1" placeholder="'
-			. esc_attr__( 'No limit', 'moksafocou' ) . '"></div>';
+			. esc_attr__( 'No limit', 'moksa-coupons-for-woocommerce' ) . '"></div>';
 		echo '</div>';
 
-		echo '<div class="f"><label for="moksafocou-tpl-exp">' . esc_html__( 'Expiry date (optional)', 'moksafocou' ) . '</label>';
+		echo '<div class="f"><label for="moksafocou-tpl-exp">' . esc_html__( 'Expiry date (optional)', 'moksa-coupons-for-woocommerce' ) . '</label>';
 		echo '<input type="date" id="moksafocou-tpl-exp" name="date_expires"></div>';
 
-		echo '<div class="f"><label for="moksafocou-tpl-desc">' . esc_html__( 'Coupon description (optional)', 'moksafocou' ) . '</label>';
+		echo '<div class="f"><label for="moksafocou-tpl-desc">' . esc_html__( 'Coupon description (optional)', 'moksa-coupons-for-woocommerce' ) . '</label>';
 		echo '<textarea id="moksafocou-tpl-desc" name="description" rows="2"></textarea></div>';
 
 		echo '<div class="f f-check"><label><input type="checkbox" name="individual_use" value="yes"> '
-			. esc_html__( 'Cannot be combined with other coupons', 'moksafocou' ) . '</label></div>';
+			. esc_html__( 'Cannot be combined with other coupons', 'moksa-coupons-for-woocommerce' ) . '</label></div>';
 
 		echo '</div>'; // .moksafocou-tpl-fields
 
 		echo '<p class="moksafocou-tpl-actions">';
-		echo '<button type="submit" class="button button-primary">' . esc_html__( 'Create coupon', 'moksafocou' ) . '</button> ';
-		echo '<button type="button" class="button moksafocou-tpl-cancel">' . esc_html__( 'Cancel', 'moksafocou' ) . '</button>';
+		echo '<button type="submit" class="button button-primary">' . esc_html__( 'Create coupon', 'moksa-coupons-for-woocommerce' ) . '</button> ';
+		echo '<button type="button" class="button moksafocou-tpl-cancel">' . esc_html__( 'Cancel', 'moksa-coupons-for-woocommerce' ) . '</button>';
 		echo '</p>';
 		echo '</form>';
 		echo '</div>'; // dialog
@@ -256,7 +256,7 @@ final class TemplatePage {
 	/** admin_post handler: validate, create the draft coupon, record recent, redirect. */
 	public static function handle(): void {
 		if ( ! current_user_can( self::CAP ) ) {
-			wp_die( esc_html__( 'You do not have permission to do this.', 'moksafocou' ) );
+			wp_die( esc_html__( 'You do not have permission to do this.', 'moksa-coupons-for-woocommerce' ) );
 		}
 		check_admin_referer( self::NONCE );
 
@@ -332,7 +332,7 @@ final class TemplatePage {
 
 	private static function type_label( string $type_key ): string {
 		$labels = \Moksafocou\Support\CouponType::labels();
-		return $labels[ $type_key ] ?? __( 'Other', 'moksafocou' );
+		return $labels[ $type_key ] ?? __( 'Other', 'moksa-coupons-for-woocommerce' );
 	}
 
 	private static function css(): string {
@@ -391,6 +391,6 @@ final class TemplatePage {
 		$rel = 'src/Modules/Templates/assets/js/templates-admin.js';
 		$ver = file_exists( MOKSAFOCOU_PLUGIN_DIR . $rel ) ? (string) filemtime( MOKSAFOCOU_PLUGIN_DIR . $rel ) : MOKSAFOCOU_VERSION;
 		wp_enqueue_script( 'moksafocou-templates-admin', MOKSAFOCOU_PLUGIN_URL . $rel, array(), $ver, true );
-		wp_localize_script( 'moksafocou-templates-admin', 'moksafocouTpl', array( 'autoGen' => __( 'Leave blank to generate automatically', 'moksafocou' ) ) );
+		wp_localize_script( 'moksafocou-templates-admin', 'moksafocouTpl', array( 'autoGen' => __( 'Leave blank to generate automatically', 'moksa-coupons-for-woocommerce' ) ) );
 	}
 }

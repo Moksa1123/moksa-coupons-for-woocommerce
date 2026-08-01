@@ -20,7 +20,7 @@ final class Module extends AbstractModule {
 	}
 
 	public function label(): string {
-		return __( 'Live summary on the edit page', 'moksafocou' );
+		return __( 'Live summary on the edit page', 'moksa-coupons-for-woocommerce' );
 	}
 
 	public function category(): string {
@@ -28,7 +28,7 @@ final class Module extends AbstractModule {
 	}
 
 	public function tagline(): string {
-		return __( 'Show a live effect summary and conflict warnings while editing the coupon', 'moksafocou' );
+		return __( 'Show a live effect summary and conflict warnings while editing the coupon', 'moksa-coupons-for-woocommerce' );
 	}
 
 	public function boot(): void {

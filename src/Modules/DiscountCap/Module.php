@@ -19,7 +19,7 @@ final class Module extends AbstractModule {
 	}
 
 	public function label(): string {
-		return __( 'Maximum discount', 'moksafocou' );
+		return __( 'Maximum discount', 'moksa-coupons-for-woocommerce' );
 	}
 
 	public function category(): string {
@@ -27,7 +27,7 @@ final class Module extends AbstractModule {
 	}
 
 	public function tagline(): string {
-		return __( 'Set a maximum discount amount for a percentage discount (e.g. 20% off, at most 500)', 'moksafocou' );
+		return __( 'Set a maximum discount amount for a percentage discount (e.g. 20% off, at most 500)', 'moksa-coupons-for-woocommerce' );
 	}
 
 	public function boot(): void {

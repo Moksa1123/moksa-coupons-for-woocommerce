@@ -56,7 +56,7 @@ final class OrderCouponPreview {
 			// (once — attribute the order's shipping cut to the first shipping coupon).
 			if ( $amount <= 0.0 && ! $ship_shown && $ship_saving > 0.0 && self::is_shipping_coupon( $code ) ) {
 				$amount     = $ship_saving;
-				$note       = __( 'Shipping', 'moksafocou' );
+				$note       = __( 'Shipping', 'moksa-coupons-for-woocommerce' );
 				$ship_shown = true;
 			}
 			$items[] = array(
@@ -158,7 +158,7 @@ final class OrderCouponPreview {
 			return '';
 		}
 		$heading = '<tr class="moksafocou-preview-coupon-heading"><td colspan="3" style="padding-top:1em;border-top:1px solid #e0e0e0;font-weight:600;color:#646970">'
-			. esc_html__( 'Coupon applied', 'moksafocou' ) . '</td></tr>';
+			. esc_html__( 'Coupon applied', 'moksa-coupons-for-woocommerce' ) . '</td></tr>';
 		return $heading . $rows;
 	}
 }

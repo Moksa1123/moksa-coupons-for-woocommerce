@@ -76,7 +76,7 @@ final class Runtime {
 		$code   = ( new \WC_Coupon( $new_id ) )->get_code();
 
 		if ( $cfg['email'] && '' !== $email && is_email( $email ) && class_exists( SendService::class ) ) {
-			SendService::send( $new_id, $email, __( 'Thank you for your order! Here is a coupon you can use on your next purchase.', 'moksafocou' ), false );
+			SendService::send( $new_id, $email, __( 'Thank you for your order! Here is a coupon you can use on your next purchase.', 'moksa-coupons-for-woocommerce' ), false );
 		}
 
 		OrderOnce::mark( $order, self::ORDER_META, $code );

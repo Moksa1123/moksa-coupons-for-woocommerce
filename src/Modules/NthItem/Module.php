@@ -21,7 +21,7 @@ final class Module extends AbstractModule {
 	}
 
 	public function label(): string {
-		return __( 'Nth-item discount', 'moksafocou' );
+		return __( 'Nth-item discount', 'moksa-coupons-for-woocommerce' );
 	}
 
 	public function category(): string {
@@ -29,7 +29,7 @@ final class Module extends AbstractModule {
 	}
 
 	public function tagline(): string {
-		return __( 'Second item 40% off / Nth-item discount: for the same set of products, every N items qualifies the Nth item for a discount, repeatable', 'moksafocou' );
+		return __( 'Second item 40% off / Nth-item discount: for the same set of products, every N items qualifies the Nth item for a discount, repeatable', 'moksa-coupons-for-woocommerce' );
 	}
 
 	public function boot(): void {

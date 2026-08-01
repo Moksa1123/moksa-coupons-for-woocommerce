@@ -23,7 +23,7 @@ final class Module extends AbstractModule {
 	}
 
 	public function label(): string {
-		return __( 'Stacking control', 'moksafocou' );
+		return __( 'Stacking control', 'moksa-coupons-for-woocommerce' );
 	}
 
 	public function category(): string {
@@ -31,7 +31,7 @@ final class Module extends AbstractModule {
 	}
 
 	public function tagline(): string {
-		return __( 'Mutually exclusive coupons, allowed / disallowed combinable coupon code lists', 'moksafocou' );
+		return __( 'Mutually exclusive coupons, allowed / disallowed combinable coupon code lists', 'moksa-coupons-for-woocommerce' );
 	}
 
 	public function boot(): void {

@@ -89,15 +89,15 @@ final class QrEncoder {
 	public static function encode( string $data ) {
 		$len = strlen( $data );
 		if ( 0 === $len ) {
-			return new \WP_Error( 'moksafocou_qr_empty', __( 'QR content cannot be empty.', 'moksafocou' ) );
+			return new \WP_Error( 'moksafocou_qr_empty', __( 'QR content cannot be empty.', 'moksa-coupons-for-woocommerce' ) );
 		}
 		if ( $len > self::MAX_BYTES ) {
-			return new \WP_Error( 'moksafocou_qr_too_long', __( 'QR content is too long to generate.', 'moksafocou' ) );
+			return new \WP_Error( 'moksafocou_qr_too_long', __( 'QR content is too long to generate.', 'moksa-coupons-for-woocommerce' ) );
 		}
 
 		$version = self::pick_version( $len );
 		if ( null === $version ) {
-			return new \WP_Error( 'moksafocou_qr_too_long', __( 'QR content is too long to generate.', 'moksafocou' ) );
+			return new \WP_Error( 'moksafocou_qr_too_long', __( 'QR content is too long to generate.', 'moksa-coupons-for-woocommerce' ) );
 		}
 
 		$self          = new self();

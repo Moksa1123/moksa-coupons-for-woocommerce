@@ -44,21 +44,21 @@ final class SendService {
 	 */
 	public static function build_email( string $code, string $summary, string $apply_url, string $note, string $site_name ): array {
 		/* translators: %s: coupon code. */
-		$subject = sprintf( __( 'Your coupon: %s', 'moksafocou' ), $code );
+		$subject = sprintf( __( 'Your coupon: %s', 'moksa-coupons-for-woocommerce' ), $code );
 
 		$parts = array();
 		/* translators: %s: site name. */
-		$parts[] = '<p>' . esc_html( sprintf( __( 'Hello, %s is sending you a coupon.', 'moksafocou' ), $site_name ) ) . '</p>';
+		$parts[] = '<p>' . esc_html( sprintf( __( 'Hello, %s is sending you a coupon.', 'moksa-coupons-for-woocommerce' ), $site_name ) ) . '</p>';
 		if ( '' !== trim( $note ) ) {
 			$parts[] = '<p>' . esc_html( $note ) . '</p>';
 		}
 		/* translators: %s: coupon code. */
-		$parts[] = '<p><strong>' . esc_html( sprintf( __( 'Coupon code: %s', 'moksafocou' ), $code ) ) . '</strong></p>';
+		$parts[] = '<p><strong>' . esc_html( sprintf( __( 'Coupon code: %s', 'moksa-coupons-for-woocommerce' ), $code ) ) . '</strong></p>';
 		if ( '' !== trim( $summary ) ) {
 			$parts[] = '<p>' . esc_html( $summary ) . '</p>';
 		}
 		if ( '' !== trim( $apply_url ) ) {
-			$parts[] = '<p><a href="' . esc_url( $apply_url ) . '">' . esc_html__( 'Click here to apply the coupon automatically', 'moksafocou' ) . '</a></p>';
+			$parts[] = '<p><a href="' . esc_url( $apply_url ) . '">' . esc_html__( 'Click here to apply the coupon automatically', 'moksa-coupons-for-woocommerce' ) . '</a></p>';
 		}
 		return array(
 			'subject' => $subject,
@@ -75,11 +75,11 @@ final class SendService {
 	public static function send( int $coupon_id, string $email, string $note = '', bool $restrict = false ) {
 		$email = sanitize_email( $email );
 		if ( '' === $email || ! is_email( $email ) ) {
-			return new \WP_Error( 'moksafocou_bad_email', __( 'Recipient email is invalid.', 'moksafocou' ) );
+			return new \WP_Error( 'moksafocou_bad_email', __( 'Recipient email is invalid.', 'moksa-coupons-for-woocommerce' ) );
 		}
 		$coupon = new \WC_Coupon( $coupon_id );
 		if ( ! $coupon->get_id() ) {
-			return new \WP_Error( 'moksafocou_not_found', __( 'Coupon not found.', 'moksafocou' ) );
+			return new \WP_Error( 'moksafocou_not_found', __( 'Coupon not found.', 'moksa-coupons-for-woocommerce' ) );
 		}
 
 		if ( $restrict ) {
@@ -99,7 +99,7 @@ final class SendService {
 			array( 'Content-Type: text/html; charset=UTF-8' )
 		);
 		if ( ! $sent ) {
-			return new \WP_Error( 'moksafocou_send_failed', __( 'Send failed (please check the site email settings).', 'moksafocou' ) );
+			return new \WP_Error( 'moksafocou_send_failed', __( 'Send failed (please check the site email settings).', 'moksa-coupons-for-woocommerce' ) );
 		}
 		return true;
 	}

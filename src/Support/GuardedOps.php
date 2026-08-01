@@ -20,6 +20,6 @@ trait GuardedOps {
 
 	/** The standard "insufficient permission" result returned by a failed capability check. */
 	private static function denied(): \WP_Error {
-		return new \WP_Error( 'moksafocou_forbidden', __( 'You do not have permission to do this.', 'moksafocou' ) );
+		return new \WP_Error( 'moksafocou_forbidden', __( 'You do not have permission to do this.', 'moksa-coupons-for-woocommerce' ) );
 	}
 }

@@ -21,7 +21,7 @@ final class Module extends AbstractModule {
 	}
 
 	public function label(): string {
-		return __( 'Front-end coupon display', 'moksafocou' );
+		return __( 'Front-end coupon display', 'moksa-coupons-for-woocommerce' );
 	}
 
 	public function category(): string {
@@ -29,7 +29,7 @@ final class Module extends AbstractModule {
 	}
 
 	public function tagline(): string {
-		return __( 'Use the [moksafocou_coupons] shortcode to display available coupon cards on the front end', 'moksafocou' );
+		return __( 'Use the [moksafocou_coupons] shortcode to display available coupon cards on the front end', 'moksa-coupons-for-woocommerce' );
 	}
 
 	public function boot(): void {

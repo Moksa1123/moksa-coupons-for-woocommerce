@@ -30,7 +30,7 @@ final class PersonalCoupon {
 	public static function issue( int $source_id, string $code_prefix, int $user_id, string $email, int $expiry_days ) {
 		$code = CouponService::unique_code( $code_prefix );
 		if ( '' === $code ) {
-			return new \WP_Error( 'moksafocou_no_code', __( 'Could not generate a unique coupon code.', 'moksafocou' ) );
+			return new \WP_Error( 'moksafocou_no_code', __( 'Could not generate a unique coupon code.', 'moksa-coupons-for-woocommerce' ) );
 		}
 		$new_id = CouponService::duplicate( $source_id, $code, true );
 		if ( is_wp_error( $new_id ) ) {

@@ -39,7 +39,7 @@ final class Fields {
 		return array(
 			array(
 				'id'     => 'moksafocou_bogo',
-				'title'  => __( 'Buy X Get Y', 'moksafocou' ),
+				'title'  => __( 'Buy X Get Y', 'moksa-coupons-for-woocommerce' ),
 				'class'  => array( 'moksafocou_bogo_tab' ),
 				'render' => function (): void {
 					$this->render_bogo_panel();
@@ -56,14 +56,14 @@ final class Fields {
 		$cfg = BogoMeta::read( (int) $post->ID );
 
 		echo '<div class="options_group">';
-		echo '<p class="form-field"><strong>' . esc_html__( 'Purchase condition (Buy X)', 'moksafocou' ) . '</strong></p>';
-		FieldsHelpers::product_select( Keys::BOGO_TRIGGER_PRODUCT_IDS, __( 'Specific products', 'moksafocou' ), $cfg['trigger_product_ids'] );
-		FieldsHelpers::category_select( Keys::BOGO_TRIGGER_CATEGORY_IDS, __( 'Specific categories', 'moksafocou' ), $cfg['trigger_category_ids'] );
+		echo '<p class="form-field"><strong>' . esc_html__( 'Purchase condition (Buy X)', 'moksa-coupons-for-woocommerce' ) . '</strong></p>';
+		FieldsHelpers::product_select( Keys::BOGO_TRIGGER_PRODUCT_IDS, __( 'Specific products', 'moksa-coupons-for-woocommerce' ), $cfg['trigger_product_ids'] );
+		FieldsHelpers::category_select( Keys::BOGO_TRIGGER_CATEGORY_IDS, __( 'Specific categories', 'moksa-coupons-for-woocommerce' ), $cfg['trigger_category_ids'] );
 		woocommerce_wp_text_input(
 			array(
 				'id'                => Keys::BOGO_TRIGGER_QTY,
 				'value'             => $cfg['trigger_qty'],
-				'label'             => __( 'Required purchase quantity', 'moksafocou' ),
+				'label'             => __( 'Required purchase quantity', 'moksa-coupons-for-woocommerce' ),
 				'type'              => 'number',
 				'custom_attributes' => array(
 					'min'  => '1',
@@ -74,14 +74,14 @@ final class Fields {
 		echo '</div>';
 
 		echo '<div class="options_group">';
-		echo '<p class="form-field"><strong>' . esc_html__( 'Gift / discount (Get Y)', 'moksafocou' ) . '</strong></p>';
-		FieldsHelpers::product_select( Keys::BOGO_REWARD_PRODUCT_IDS, __( 'Gift product', 'moksafocou' ), $cfg['reward_product_ids'] );
-		FieldsHelpers::category_select( Keys::BOGO_REWARD_CATEGORY_IDS, __( 'Gift product category', 'moksafocou' ), $cfg['reward_category_ids'] );
+		echo '<p class="form-field"><strong>' . esc_html__( 'Gift / discount (Get Y)', 'moksa-coupons-for-woocommerce' ) . '</strong></p>';
+		FieldsHelpers::product_select( Keys::BOGO_REWARD_PRODUCT_IDS, __( 'Gift product', 'moksa-coupons-for-woocommerce' ), $cfg['reward_product_ids'] );
+		FieldsHelpers::category_select( Keys::BOGO_REWARD_CATEGORY_IDS, __( 'Gift product category', 'moksa-coupons-for-woocommerce' ), $cfg['reward_category_ids'] );
 		woocommerce_wp_text_input(
 			array(
 				'id'                => Keys::BOGO_REWARD_QTY,
 				'value'             => $cfg['reward_qty'],
-				'label'             => __( 'Gift / discount quantity', 'moksafocou' ),
+				'label'             => __( 'Gift / discount quantity', 'moksa-coupons-for-woocommerce' ),
 				'type'              => 'number',
 				'custom_attributes' => array(
 					'min'  => '1',
@@ -93,11 +93,11 @@ final class Fields {
 			array(
 				'id'      => Keys::BOGO_REWARD_MODE,
 				'value'   => $cfg['reward_mode'],
-				'label'   => __( 'Discount type', 'moksafocou' ),
+				'label'   => __( 'Discount type', 'moksa-coupons-for-woocommerce' ),
 				'options' => array(
-					'free'           => __( 'Free (100% off)', 'moksafocou' ),
-					'percent'        => __( 'Percentage discount', 'moksafocou' ),
-					'fixed_per_item' => __( 'Fixed discount per item', 'moksafocou' ),
+					'free'           => __( 'Free (100% off)', 'moksa-coupons-for-woocommerce' ),
+					'percent'        => __( 'Percentage discount', 'moksa-coupons-for-woocommerce' ),
+					'fixed_per_item' => __( 'Fixed discount per item', 'moksa-coupons-for-woocommerce' ),
 				),
 			)
 		);
@@ -105,9 +105,9 @@ final class Fields {
 			array(
 				'id'                => Keys::BOGO_REWARD_VALUE,
 				'value'             => $cfg['reward_value'],
-				'label'             => __( 'Discount amount', 'moksafocou' ),
+				'label'             => __( 'Discount amount', 'moksa-coupons-for-woocommerce' ),
 				'desc_tip'          => true,
-				'description'       => __( 'Percentage: 0–100; fixed per item: an amount. Leave empty when "Free" is selected.', 'moksafocou' ),
+				'description'       => __( 'Percentage: 0–100; fixed per item: an amount. Leave empty when "Free" is selected.', 'moksa-coupons-for-woocommerce' ),
 				'type'              => 'number',
 				'custom_attributes' => array(
 					'min'  => '0',
@@ -122,10 +122,10 @@ final class Fields {
 			array(
 				'id'      => Keys::BOGO_DEAL_MODE,
 				'value'   => $cfg['deal_mode'],
-				'label'   => __( 'Usage count', 'moksafocou' ),
+				'label'   => __( 'Usage count', 'moksa-coupons-for-woocommerce' ),
 				'options' => array(
-					'once'   => __( 'Apply only once', 'moksafocou' ),
-					'repeat' => __( 'Repeatable (give one set for each qualifying set in the cart)', 'moksafocou' ),
+					'once'   => __( 'Apply only once', 'moksa-coupons-for-woocommerce' ),
+					'repeat' => __( 'Repeatable (give one set for each qualifying set in the cart)', 'moksa-coupons-for-woocommerce' ),
 				),
 			)
 		);
@@ -133,9 +133,9 @@ final class Fields {
 			array(
 				'id'                => Keys::BOGO_REPEAT_LIMIT,
 				'value'             => $cfg['repeat_limit'],
-				'label'             => __( 'Repeat limit', 'moksafocou' ),
+				'label'             => __( 'Repeat limit', 'moksa-coupons-for-woocommerce' ),
 				'desc_tip'          => true,
-				'description'       => __( '0 = no limit. Applies only when "repeatable".', 'moksafocou' ),
+				'description'       => __( '0 = no limit. Applies only when "repeatable".', 'moksa-coupons-for-woocommerce' ),
 				'type'              => 'number',
 				'custom_attributes' => array(
 					'min'  => '0',
@@ -147,9 +147,9 @@ final class Fields {
 			array(
 				'id'          => Keys::BOGO_NOTICE_MSG,
 				'value'       => $cfg['notice_msg'],
-				'label'       => __( 'Prompt message (when the gift is not added)', 'moksafocou' ),
+				'label'       => __( 'Prompt message (when the gift is not added)', 'moksa-coupons-for-woocommerce' ),
 				'desc_tip'    => true,
-				'description' => __( 'You can use {bogo_qty} {coupon_code}. Leave empty to use the default message.', 'moksafocou' ),
+				'description' => __( 'You can use {bogo_qty} {coupon_code}. Leave empty to use the default message.', 'moksa-coupons-for-woocommerce' ),
 			)
 		);
 		echo '</div>';

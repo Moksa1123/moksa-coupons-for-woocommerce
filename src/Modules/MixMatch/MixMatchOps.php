@@ -37,13 +37,13 @@ final class MixMatchOps {
 			return $fields;
 		}
 		if ( empty( $fields['code'] ) ) {
-			return new \WP_Error( 'moksafocou_invalid_code', __( 'Coupon code cannot be empty.', 'moksafocou' ) );
+			return new \WP_Error( 'moksafocou_invalid_code', __( 'Coupon code cannot be empty.', 'moksa-coupons-for-woocommerce' ) );
 		}
 		if ( CouponService::find_id_by_code( $fields['code'] ) > 0 ) {
 			return new \WP_Error(
 				'moksafocou_duplicate',
 				/* translators: %s: coupon code. */
-				sprintf( __( 'Coupon code %s already exists; please use another.', 'moksafocou' ), $fields['code'] )
+				sprintf( __( 'Coupon code %s already exists; please use another.', 'moksa-coupons-for-woocommerce' ), $fields['code'] )
 			);
 		}
 		$fields['discount_type'] = MixMatchMeta::TYPE;
@@ -82,7 +82,7 @@ final class MixMatchOps {
 			'id'    => $coupon->get_id(),
 			'reply' => sprintf(
 				/* translators: %s: coupon code. */
-				__( 'Created Mix & Match coupon %s.', 'moksafocou' ),
+				__( 'Created Mix & Match coupon %s.', 'moksa-coupons-for-woocommerce' ),
 				$coupon->get_code()
 			),
 		);
@@ -96,14 +96,14 @@ final class MixMatchOps {
 		// Validate the RAW value before sanitize clamps it, so an out-of-range request returns an
 		// explicit error to the AI/MCP caller instead of being silently rewritten to qty=1.
 		if ( (int) ( $input['qty'] ?? 0 ) < 1 ) {
-			return new \WP_Error( 'moksafocou_mixmatch_bad_qty', __( 'The number of items to pick must be at least 1.', 'moksafocou' ) );
+			return new \WP_Error( 'moksafocou_mixmatch_bad_qty', __( 'The number of items to pick must be at least 1.', 'moksa-coupons-for-woocommerce' ) );
 		}
 		$cfg = MixMatchMeta::sanitize( $input );
 		if ( 'percent' === $cfg['price_mode'] && $cfg['price_value'] > 100 ) {
-			return new \WP_Error( 'moksafocou_mixmatch_bad_value', __( 'Percentage discount cannot exceed 100.', 'moksafocou' ) );
+			return new \WP_Error( 'moksafocou_mixmatch_bad_value', __( 'Percentage discount cannot exceed 100.', 'moksa-coupons-for-woocommerce' ) );
 		}
 		if ( 'fixed_total' === $cfg['price_mode'] && $cfg['price_value'] <= 0 ) {
-			return new \WP_Error( 'moksafocou_mixmatch_bad_value', __( 'The fixed total must be greater than 0.', 'moksafocou' ) );
+			return new \WP_Error( 'moksafocou_mixmatch_bad_value', __( 'The fixed total must be greater than 0.', 'moksa-coupons-for-woocommerce' ) );
 		}
 		return $cfg;
 	}
@@ -115,16 +115,16 @@ final class MixMatchOps {
 	private static function build_summary( string $code, array $cfg ): string {
 		if ( 'percent' === $cfg['price_mode'] ) {
 			/* translators: 1: N, 2: percent. */
-			$deal = sprintf( __( 'Pick %1$d items, %2$s%% off the group', 'moksafocou' ), (int) $cfg['qty'], (string) $cfg['price_value'] );
+			$deal = sprintf( __( 'Pick %1$d items, %2$s%% off the group', 'moksa-coupons-for-woocommerce' ), (int) $cfg['qty'], (string) $cfg['price_value'] );
 		} else {
 			/* translators: 1: N, 2: total price. */
-			$deal = sprintf( __( 'Pick %1$d items for %2$s', 'moksafocou' ), (int) $cfg['qty'], (string) $cfg['price_value'] );
+			$deal = sprintf( __( 'Pick %1$d items for %2$s', 'moksa-coupons-for-woocommerce' ), (int) $cfg['qty'], (string) $cfg['price_value'] );
 		}
-		$repeat = 'repeat' === $cfg['deal_mode'] ? __( '(repeatable)', 'moksafocou' ) : __( '(one time only)', 'moksafocou' );
+		$repeat = 'repeat' === $cfg['deal_mode'] ? __( '(repeatable)', 'moksa-coupons-for-woocommerce' ) : __( '(one time only)', 'moksa-coupons-for-woocommerce' );
 
 		return sprintf(
 			/* translators: 1: code, 2: deal desc, 3: repeat note. */
-			__( 'Create a Mix & Match coupon %1$s: %2$s %3$s', 'moksafocou' ),
+			__( 'Create a Mix & Match coupon %1$s: %2$s %3$s', 'moksa-coupons-for-woocommerce' ),
 			$code,
 			$deal,
 			$repeat

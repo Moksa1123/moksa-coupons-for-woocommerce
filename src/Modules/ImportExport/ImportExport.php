@@ -60,9 +60,9 @@ final class ImportExport {
 
 	public static function menu(): void {
 		add_submenu_page(
-			'moksafocou',
-			__( 'Import / Export', 'moksafocou' ),
-			__( 'Import / Export', 'moksafocou' ),
+			'moksa-coupons-for-woocommerce',
+			__( 'Import / Export', 'moksa-coupons-for-woocommerce' ),
+			__( 'Import / Export', 'moksa-coupons-for-woocommerce' ),
 			self::CAP,
 			self::SLUG,
 			array( self::class, 'render' )
@@ -79,26 +79,26 @@ final class ImportExport {
 		if ( ! current_user_can( self::CAP ) ) {
 			return;
 		}
-		echo '<div class="wrap"><div class="mowp-shell" data-ns="moksafocou">';
-		echo '<div class="mowp-intro"><h1>' . esc_html__( 'Coupon import / export', 'moksafocou' ) . '</h1>';
-		echo '<p>' . esc_html__( 'Back up, audit, or bulk-edit coupons: export to CSV, or upload a CSV to create / update many coupons at once.', 'moksafocou' ) . '</p></div>';
+		echo '<div class="wrap"><div class="mowp-shell" data-ns="moksa-coupons-for-woocommerce">';
+		echo '<div class="mowp-intro"><h1>' . esc_html__( 'Coupon import / export', 'moksa-coupons-for-woocommerce' ) . '</h1>';
+		echo '<p>' . esc_html__( 'Back up, audit, or bulk-edit coupons: export to CSV, or upload a CSV to create / update many coupons at once.', 'moksa-coupons-for-woocommerce' ) . '</p></div>';
 
-		echo '<div class="mowp-panel mowp-panel--wide"><div class="mowp-panel__head">' . esc_html__( 'Export', 'moksafocou' ) . '</div><div class="mowp-panel__body">';
-		echo '<p class="description">' . esc_html__( 'Export all coupons (including tiered / advanced rule settings) to CSV, for backup, auditing, or bulk editing.', 'moksafocou' ) . '</p>';
+		echo '<div class="mowp-panel mowp-panel--wide"><div class="mowp-panel__head">' . esc_html__( 'Export', 'moksa-coupons-for-woocommerce' ) . '</div><div class="mowp-panel__body">';
+		echo '<p class="description">' . esc_html__( 'Export all coupons (including tiered / advanced rule settings) to CSV, for backup, auditing, or bulk editing.', 'moksa-coupons-for-woocommerce' ) . '</p>';
 		echo '<form method="post" action="' . esc_url( admin_url( 'admin-post.php' ) ) . '">';
 		echo '<input type="hidden" name="action" value="moksafocou_export_coupons">';
 		wp_nonce_field( self::NONCE_EXPORT );
-		submit_button( __( 'Download CSV', 'moksafocou' ), 'primary', 'submit', false );
+		submit_button( __( 'Download CSV', 'moksa-coupons-for-woocommerce' ), 'primary', 'submit', false );
 		echo '</form>';
 		echo '</div></div>';
 
-		echo '<div class="mowp-panel mowp-panel--wide"><div class="mowp-panel__head">' . esc_html__( 'Import', 'moksafocou' ) . '</div><div class="mowp-panel__body">';
-		echo '<p class="description">' . esc_html__( 'Upload a CSV in the same format. Matching is done by the "code" column: existing coupons are updated, new ones are created as drafts.', 'moksafocou' ) . '</p>';
+		echo '<div class="mowp-panel mowp-panel--wide"><div class="mowp-panel__head">' . esc_html__( 'Import', 'moksa-coupons-for-woocommerce' ) . '</div><div class="mowp-panel__body">';
+		echo '<p class="description">' . esc_html__( 'Upload a CSV in the same format. Matching is done by the "code" column: existing coupons are updated, new ones are created as drafts.', 'moksa-coupons-for-woocommerce' ) . '</p>';
 		echo '<form method="post" enctype="multipart/form-data" action="' . esc_url( admin_url( 'admin-post.php' ) ) . '">';
 		echo '<input type="hidden" name="action" value="moksafocou_import_coupons">';
 		wp_nonce_field( self::NONCE_IMPORT );
 		echo '<input type="file" name="csv" accept=".csv,text/csv" required> ';
-		submit_button( __( 'Import CSV', 'moksafocou' ), 'secondary', 'submit', false );
+		submit_button( __( 'Import CSV', 'moksa-coupons-for-woocommerce' ), 'secondary', 'submit', false );
 		echo '</form>';
 		echo '</div></div>';
 
@@ -109,7 +109,7 @@ final class ImportExport {
 
 	public static function handle_export(): void {
 		if ( ! current_user_can( self::CAP ) ) {
-			wp_die( esc_html__( 'You do not have permission to do this.', 'moksafocou' ) );
+			wp_die( esc_html__( 'You do not have permission to do this.', 'moksa-coupons-for-woocommerce' ) );
 		}
 		check_admin_referer( self::NONCE_EXPORT );
 
@@ -205,7 +205,7 @@ final class ImportExport {
 
 	public static function handle_import(): void {
 		if ( ! current_user_can( self::CAP ) ) {
-			wp_die( esc_html__( 'You do not have permission to do this.', 'moksafocou' ) );
+			wp_die( esc_html__( 'You do not have permission to do this.', 'moksa-coupons-for-woocommerce' ) );
 		}
 		check_admin_referer( self::NONCE_IMPORT );
 		$back = add_query_arg( 'page', self::SLUG, admin_url( 'admin.php' ) );
@@ -401,14 +401,14 @@ final class ImportExport {
 			echo '<div class="notice notice-success is-dismissible"><p>' . esc_html(
 				sprintf(
 					/* translators: 1: created count, 2: updated count, 3: failed count. */
-					__( 'Import complete: %1$d created, %2$d updated, %3$d failed.', 'moksafocou' ),
+					__( 'Import complete: %1$d created, %2$d updated, %3$d failed.', 'moksa-coupons-for-woocommerce' ),
 					$created,
 					$updated,
 					$failed
 				)
 			) . '</p></div>';
 		} else {
-			echo '<div class="notice notice-error is-dismissible"><p>' . esc_html__( 'Import failed: please choose a valid CSV file.', 'moksafocou' ) . '</p></div>';
+			echo '<div class="notice notice-error is-dismissible"><p>' . esc_html__( 'Import failed: please choose a valid CSV file.', 'moksa-coupons-for-woocommerce' ) . '</p></div>';
 		}
 		// phpcs:enable WordPress.Security.NonceVerification.Recommended
 	}

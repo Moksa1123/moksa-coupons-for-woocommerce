@@ -129,10 +129,10 @@ final class Rest {
 		$data  = get_transient( $key );
 
 		if ( ! is_array( $data ) ) {
-			return rest_ensure_response( [ 'error' => __( 'Confirmation has expired or does not exist, please try again.', 'moksafocou' ) ] );
+			return rest_ensure_response( [ 'error' => __( 'Confirmation has expired or does not exist, please try again.', 'moksa-coupons-for-woocommerce' ) ] );
 		}
 		if ( (int) ( $data['user'] ?? 0 ) !== get_current_user_id() ) {
-			return rest_ensure_response( [ 'error' => __( 'Insufficient permissions, cannot run.', 'moksafocou' ) ] );
+			return rest_ensure_response( [ 'error' => __( 'Insufficient permissions, cannot run.', 'moksa-coupons-for-woocommerce' ) ] );
 		}
 
 		delete_transient( $key );
@@ -140,7 +140,7 @@ final class Rest {
 		$ability  = (string) ( $data['ability'] ?? '' );
 		$handlers = Config::destructive_handlers();
 		if ( ! isset( $handlers[ $ability ]['apply'] ) || ! is_callable( $handlers[ $ability ]['apply'] ) ) {
-			return rest_ensure_response( [ 'error' => __( 'Unsupported operation.', 'moksafocou' ) ] );
+			return rest_ensure_response( [ 'error' => __( 'Unsupported operation.', 'moksa-coupons-for-woocommerce' ) ] );
 		}
 
 		$result = call_user_func( $handlers[ $ability ]['apply'], (array) ( $data['params'] ?? [] ) );

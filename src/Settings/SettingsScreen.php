@@ -45,8 +45,8 @@ final class SettingsScreen {
 	public static function register_fallback(): void {
 		add_submenu_page(
 			'woocommerce',
-			__( 'Coupon settings', 'moksafocou' ),
-			__( 'Coupon settings', 'moksafocou' ),
+			__( 'Coupon settings', 'moksa-coupons-for-woocommerce' ),
+			__( 'Coupon settings', 'moksa-coupons-for-woocommerce' ),
 			self::CAP,
 			self::SLUG,
 			array( self::class, 'render' )
@@ -71,12 +71,12 @@ final class SettingsScreen {
 	 */
 	public static function tabs(): array {
 		return array(
-			'core'        => __( 'Core features', 'moksafocou' ),
-			'url'         => __( 'URL / QR', 'moksafocou' ),
-			'admin'       => __( 'Interface and display', 'moksafocou' ),
-			'ai'          => __( 'AI and openness', 'moksafocou' ),
-			'frontend'    => __( 'Front-end and shipping', 'moksafocou' ),
-			'remarketing' => __( 'Remarketing / win-back coupon', 'moksafocou' ),
+			'core'        => __( 'Core features', 'moksa-coupons-for-woocommerce' ),
+			'url'         => __( 'URL / QR', 'moksa-coupons-for-woocommerce' ),
+			'admin'       => __( 'Interface and display', 'moksa-coupons-for-woocommerce' ),
+			'ai'          => __( 'AI and openness', 'moksa-coupons-for-woocommerce' ),
+			'frontend'    => __( 'Front-end and shipping', 'moksa-coupons-for-woocommerce' ),
+			'remarketing' => __( 'Remarketing / win-back coupon', 'moksa-coupons-for-woocommerce' ),
 		);
 	}
 
@@ -93,17 +93,17 @@ final class SettingsScreen {
 		return array(
 			'main'      => array(
 				'slug'  => self::SLUG,
-				'label' => __( 'Feature settings', 'moksafocou' ),
-				'menu'  => __( 'Settings', 'moksafocou' ),
-				'desc'  => __( 'Choose the coupon features you want to enable. Click a section heading to collapse it, so you can focus on the settings you need.', 'moksafocou' ),
+				'label' => __( 'Feature settings', 'moksa-coupons-for-woocommerce' ),
+				'menu'  => __( 'Settings', 'moksa-coupons-for-woocommerce' ),
+				'desc'  => __( 'Choose the coupon features you want to enable. Click a section heading to collapse it, so you can focus on the settings you need.', 'moksa-coupons-for-woocommerce' ),
 				'cb'    => array( self::class, 'render' ),
 				'tabs'  => array( 'core', 'url', 'admin', 'ai' ),
 			),
 			'marketing' => array(
 				'slug'  => self::SLUG . '-marketing',
-				'label' => __( 'Front-end and marketing', 'moksafocou' ),
-				'menu'  => __( 'Front-end and marketing', 'moksafocou' ),
-				'desc'  => __( 'Display coupons on the front end, send them to customers, and automatically issue win-back coupons after an order is completed.', 'moksafocou' ),
+				'label' => __( 'Front-end and marketing', 'moksa-coupons-for-woocommerce' ),
+				'menu'  => __( 'Front-end and marketing', 'moksa-coupons-for-woocommerce' ),
+				'desc'  => __( 'Display coupons on the front end, send them to customers, and automatically issue win-back coupons after an order is completed.', 'moksa-coupons-for-woocommerce' ),
 				'cb'    => array( self::class, 'render_marketing' ),
 				'tabs'  => array( 'frontend', 'remarketing' ),
 			),
@@ -127,136 +127,136 @@ final class SettingsScreen {
 		return array(
 			array(
 				'tab'    => 'core',
-				'title'  => __( 'Core discount features', 'moksafocou' ),
-				'desc'   => __( 'The coupon\'s discount mechanics and checkout validation. Each is disabled by default; enable only what you need.', 'moksafocou' ),
+				'title'  => __( 'Core discount features', 'moksa-coupons-for-woocommerce' ),
+				'desc'   => __( 'The coupon\'s discount mechanics and checkout validation. Each is disabled by default; enable only what you need.', 'moksa-coupons-for-woocommerce' ),
 				'fields' => array(
-					self::toggle( 'moksafocou_conditions_enabled', __( 'Coupon conditions', 'moksafocou' ), __( 'Add conditions to the coupon edit page such as schedule, role restrictions, minimum cart total, products / categories, shipping region, payment method, and day / time slots, and check them automatically at checkout.', 'moksafocou' ) ),
-					self::toggle( 'moksafocou_advrules_enabled', __( 'Advanced rules (AND/OR)', 'moksafocou' ), __( 'An advanced rule builder that freely combines conditions with groups and AND/OR (subtotal / item count / products / categories / region / payment / role / weekday / time), gatekeeping beyond individual conditions.', 'moksafocou' ) ),
-					self::toggle( 'moksafocou_discountcap_enabled', __( 'Maximum discount', 'moksafocou' ), __( 'Set a maximum discount amount for percentage-discount coupons (e.g. 20% off, but at most 500).', 'moksafocou' ) ),
-					self::toggle( 'moksafocou_discounttiers_enabled', __( 'Tiered discount', 'moksafocou' ), __( 'Give the same percentage coupon different discounts based on cart thresholds (subtotal / item count) (e.g. 10% off below 1000, 20% off at 1000 or more); can be limited to specific products / categories.', 'moksafocou' ) ),
-					self::toggle( 'moksafocou_shipping_enabled', __( 'Shipping discount / free shipping', 'moksafocou' ), __( 'Adjust shipping when the coupon is applied: free shipping, a shipping discount, or a fixed amount off (this replaces the shipping cost of all original shipping methods).', 'moksafocou' ) ),
-					self::toggle( 'moksafocou_freegift_enabled', __( 'Add-on / free gift', 'moksafocou' ), __( 'Automatically add a specified gift to the cart when the coupon is applied (free or discounted); customers cannot change the quantity or remove it.', 'moksafocou' ) ),
-					self::toggle( 'moksafocou_bogo_enabled', __( 'Buy X Get Y (BOGO)', 'moksafocou' ), __( 'Add a "Buy X Get Y" discount type: buy a set quantity of specified products / categories to get the gift free / discounted. Can be created with natural language.', 'moksafocou' ) ),
-					self::toggle( 'moksafocou_nthitem_enabled', __( 'Nth-item discount', 'moksafocou' ), __( 'Add an "Nth-item discount" type: for the same group of products (or the whole store), every N items qualifies the Nth item for free / percentage / fixed-per-item discount (e.g. 40% off the second item), repeatable. Can be created with natural language.', 'moksafocou' ) ),
-					self::toggle( 'moksafocou_mixmatch_enabled', __( 'Mix & Match', 'moksafocou' ), __( 'Add a "Mix & Match" discount type: for a specified group of products (or the whole store), pick any N items settled at a fixed group total or a group percentage discount (e.g. any 3 for $299), repeatable. Can be created with natural language.', 'moksafocou' ) ),
-					self::toggle( 'moksafocou_stacking_enabled', __( 'Stacking control', 'moksafocou' ), __( 'Control whether the coupon can be combined with other coupons: mutually exclusive coupons, allow / deny lists of coupon codes, checked automatically at checkout.', 'moksafocou' ) ),
-					self::toggle( 'moksafocou_autoapply_enabled', __( 'Auto-apply coupon', 'moksafocou' ), __( 'Coupons with "Auto-apply" checked are added automatically once the customer\'s cart meets the conditions, with no code to enter.', 'moksafocou' ) ),
+					self::toggle( 'moksafocou_conditions_enabled', __( 'Coupon conditions', 'moksa-coupons-for-woocommerce' ), __( 'Add conditions to the coupon edit page such as schedule, role restrictions, minimum cart total, products / categories, shipping region, payment method, and day / time slots, and check them automatically at checkout.', 'moksa-coupons-for-woocommerce' ) ),
+					self::toggle( 'moksafocou_advrules_enabled', __( 'Advanced rules (AND/OR)', 'moksa-coupons-for-woocommerce' ), __( 'An advanced rule builder that freely combines conditions with groups and AND/OR (subtotal / item count / products / categories / region / payment / role / weekday / time), gatekeeping beyond individual conditions.', 'moksa-coupons-for-woocommerce' ) ),
+					self::toggle( 'moksafocou_discountcap_enabled', __( 'Maximum discount', 'moksa-coupons-for-woocommerce' ), __( 'Set a maximum discount amount for percentage-discount coupons (e.g. 20% off, but at most 500).', 'moksa-coupons-for-woocommerce' ) ),
+					self::toggle( 'moksafocou_discounttiers_enabled', __( 'Tiered discount', 'moksa-coupons-for-woocommerce' ), __( 'Give the same percentage coupon different discounts based on cart thresholds (subtotal / item count) (e.g. 10% off below 1000, 20% off at 1000 or more); can be limited to specific products / categories.', 'moksa-coupons-for-woocommerce' ) ),
+					self::toggle( 'moksafocou_shipping_enabled', __( 'Shipping discount / free shipping', 'moksa-coupons-for-woocommerce' ), __( 'Adjust shipping when the coupon is applied: free shipping, a shipping discount, or a fixed amount off (this replaces the shipping cost of all original shipping methods).', 'moksa-coupons-for-woocommerce' ) ),
+					self::toggle( 'moksafocou_freegift_enabled', __( 'Add-on / free gift', 'moksa-coupons-for-woocommerce' ), __( 'Automatically add a specified gift to the cart when the coupon is applied (free or discounted); customers cannot change the quantity or remove it.', 'moksa-coupons-for-woocommerce' ) ),
+					self::toggle( 'moksafocou_bogo_enabled', __( 'Buy X Get Y (BOGO)', 'moksa-coupons-for-woocommerce' ), __( 'Add a "Buy X Get Y" discount type: buy a set quantity of specified products / categories to get the gift free / discounted. Can be created with natural language.', 'moksa-coupons-for-woocommerce' ) ),
+					self::toggle( 'moksafocou_nthitem_enabled', __( 'Nth-item discount', 'moksa-coupons-for-woocommerce' ), __( 'Add an "Nth-item discount" type: for the same group of products (or the whole store), every N items qualifies the Nth item for free / percentage / fixed-per-item discount (e.g. 40% off the second item), repeatable. Can be created with natural language.', 'moksa-coupons-for-woocommerce' ) ),
+					self::toggle( 'moksafocou_mixmatch_enabled', __( 'Mix & Match', 'moksa-coupons-for-woocommerce' ), __( 'Add a "Mix & Match" discount type: for a specified group of products (or the whole store), pick any N items settled at a fixed group total or a group percentage discount (e.g. any 3 for $299), repeatable. Can be created with natural language.', 'moksa-coupons-for-woocommerce' ) ),
+					self::toggle( 'moksafocou_stacking_enabled', __( 'Stacking control', 'moksa-coupons-for-woocommerce' ), __( 'Control whether the coupon can be combined with other coupons: mutually exclusive coupons, allow / deny lists of coupon codes, checked automatically at checkout.', 'moksa-coupons-for-woocommerce' ) ),
+					self::toggle( 'moksafocou_autoapply_enabled', __( 'Auto-apply coupon', 'moksa-coupons-for-woocommerce' ), __( 'Coupons with "Auto-apply" checked are added automatically once the customer\'s cart meets the conditions, with no code to enter.', 'moksa-coupons-for-woocommerce' ) ),
 				),
 			),
 			array(
 				'tab'    => 'url',
-				'title'  => __( 'URL / QR apply', 'moksafocou' ),
-				'desc'   => __( 'Let customers apply coupons with one tap using a dedicated link, QR, or query string.', 'moksafocou' ),
+				'title'  => __( 'URL / QR apply', 'moksa-coupons-for-woocommerce' ),
+				'desc'   => __( 'Let customers apply coupons with one tap using a dedicated link, QR, or query string.', 'moksa-coupons-for-woocommerce' ),
 				'fields' => array(
-					self::toggle( 'moksafocou_url_enabled', __( 'Coupon URL / QR', 'moksafocou' ), __( 'Generate a dedicated link /coupon/code and a server-side QR code for the coupon; customers apply it automatically by clicking or scanning.', 'moksafocou' ) ),
+					self::toggle( 'moksafocou_url_enabled', __( 'Coupon URL / QR', 'moksa-coupons-for-woocommerce' ), __( 'Generate a dedicated link /coupon/code and a server-side QR code for the coupon; customers apply it automatically by clicking or scanning.', 'moksa-coupons-for-woocommerce' ) ),
 					array(
 						'id'       => 'moksafocou_url_endpoint',
 						'type'     => 'text',
 						'default'  => 'coupon',
 						'sanitize' => 'slug',
-						'title'    => __( 'Coupon URL path', 'moksafocou' ),
-						'desc'     => __( 'The leading path segment of the dedicated link, e.g. coupon → /coupon/code. Permalinks are refreshed after a change.', 'moksafocou' ),
+						'title'    => __( 'Coupon URL path', 'moksa-coupons-for-woocommerce' ),
+						'desc'     => __( 'The leading path segment of the dedicated link, e.g. coupon → /coupon/code. Permalinks are refreshed after a change.', 'moksa-coupons-for-woocommerce' ),
 					),
-					self::toggle( 'moksafocou_url_query_enabled', __( 'Allow apply via query string', 'moksafocou' ), __( 'Allow appending ?coupon=code to any page URL to apply the coupon. Disabled by default.', 'moksafocou' ) ),
+					self::toggle( 'moksafocou_url_query_enabled', __( 'Allow apply via query string', 'moksa-coupons-for-woocommerce' ), __( 'Allow appending ?coupon=code to any page URL to apply the coupon. Disabled by default.', 'moksa-coupons-for-woocommerce' ) ),
 					array(
 						'id'      => 'moksafocou_url_query_redirect',
 						'type'    => 'select',
 						'default' => 'same_page',
-						'title'   => __( 'Redirect after query-string apply', 'moksafocou' ),
-						'desc'    => __( 'Where to redirect the customer after a successful ?coupon= apply.', 'moksafocou' ),
+						'title'   => __( 'Redirect after query-string apply', 'moksa-coupons-for-woocommerce' ),
+						'desc'    => __( 'Where to redirect the customer after a successful ?coupon= apply.', 'moksa-coupons-for-woocommerce' ),
 						'options' => array(
-							'same_page' => __( 'Original page', 'moksafocou' ),
-							'cart'      => __( 'Cart', 'moksafocou' ),
-							'checkout'  => __( 'Checkout page', 'moksafocou' ),
+							'same_page' => __( 'Original page', 'moksa-coupons-for-woocommerce' ),
+							'cart'      => __( 'Cart', 'moksa-coupons-for-woocommerce' ),
+							'checkout'  => __( 'Checkout page', 'moksa-coupons-for-woocommerce' ),
 						),
 					),
 				),
 			),
 			array(
 				'tab'    => 'admin',
-				'title'  => __( 'Admin interface and display', 'moksafocou' ),
-				'desc'   => __( 'Layout and display of the admin menu, templates, reports, and the coupon edit page.', 'moksafocou' ),
+				'title'  => __( 'Admin interface and display', 'moksa-coupons-for-woocommerce' ),
+				'desc'   => __( 'Layout and display of the admin menu, templates, reports, and the coupon edit page.', 'moksa-coupons-for-woocommerce' ),
 				'fields' => array(
-					self::toggle( 'moksafocou_adminmenu_enabled', __( 'Standalone coupon management menu', 'moksafocou' ), __( 'Move coupon management into a standalone top-level menu "Moksa Coupon" (All coupons / Add / Reports / Settings), no longer buried under WooCommerce.', 'moksafocou' ) ),
-					self::toggle( 'moksafocou_templates_enabled', __( 'Coupon template', 'moksafocou' ), __( 'Add a "Coupon templates" page offering ready-made coupon templates (new-customer first purchase / spend-threshold discount / free shipping / buy two get one…) to create draft coupons in one click.', 'moksafocou' ) ),
-					self::toggle( 'moksafocou_reports_enabled', __( 'Coupon report', 'moksafocou' ), __( 'Track each coupon\'s orders used and total discount (embedded in the dashboard when the standalone menu is enabled).', 'moksafocou' ) ),
-					self::toggle( 'moksafocou_tabicons_enabled', __( 'Coupon settings icon', 'moksafocou' ), __( 'Add uniform single-color icons to each settings section of the coupon edit page (schedule / role / cart / shipping…), suitable for both the tabbed and centralized panel layouts.', 'moksafocou' ) ),
-					self::toggle( 'moksafocou_metaboxes_enabled', __( 'Standalone settings panel', 'moksafocou' ), __( 'Consolidate the coupon\'s settings sections (conditions / BOGO / gift / shipping / stacking / URL / front end) into a single WooCommerce-native tabbed settings panel.', 'moksafocou' ) ),
-					self::toggle( 'moksafocou_couponlist_enabled', __( 'Coupon list tools', 'moksafocou' ), __( 'Add management tools to the coupon list such as an enable / disable status column, batch enable/disable, and one-click copy.', 'moksafocou' ) ),
-					self::toggle( 'moksafocou_importexport_enabled', __( 'Import / Export (CSV)', 'moksafocou' ), __( 'Import / export coupons via CSV (including tiers, advanced rules JSON, and campaigns), for easy backup, auditing, and batch editing.', 'moksafocou' ) ),
-					self::toggle( 'moksafocou_summary_enabled', __( 'Live summary on the edit page', 'moksafocou' ), __( 'Show a live summary panel on the coupon edit page: discount mechanics, enabled features, and conflict warnings, updating in real time as you type.', 'moksafocou' ) ),
+					self::toggle( 'moksafocou_adminmenu_enabled', __( 'Standalone coupon management menu', 'moksa-coupons-for-woocommerce' ), __( 'Move coupon management into a standalone top-level menu "Moksa Coupon" (All coupons / Add / Reports / Settings), no longer buried under WooCommerce.', 'moksa-coupons-for-woocommerce' ) ),
+					self::toggle( 'moksafocou_templates_enabled', __( 'Coupon template', 'moksa-coupons-for-woocommerce' ), __( 'Add a "Coupon templates" page offering ready-made coupon templates (new-customer first purchase / spend-threshold discount / free shipping / buy two get one…) to create draft coupons in one click.', 'moksa-coupons-for-woocommerce' ) ),
+					self::toggle( 'moksafocou_reports_enabled', __( 'Coupon report', 'moksa-coupons-for-woocommerce' ), __( 'Track each coupon\'s orders used and total discount (embedded in the dashboard when the standalone menu is enabled).', 'moksa-coupons-for-woocommerce' ) ),
+					self::toggle( 'moksafocou_tabicons_enabled', __( 'Coupon settings icon', 'moksa-coupons-for-woocommerce' ), __( 'Add uniform single-color icons to each settings section of the coupon edit page (schedule / role / cart / shipping…), suitable for both the tabbed and centralized panel layouts.', 'moksa-coupons-for-woocommerce' ) ),
+					self::toggle( 'moksafocou_metaboxes_enabled', __( 'Standalone settings panel', 'moksa-coupons-for-woocommerce' ), __( 'Consolidate the coupon\'s settings sections (conditions / BOGO / gift / shipping / stacking / URL / front end) into a single WooCommerce-native tabbed settings panel.', 'moksa-coupons-for-woocommerce' ) ),
+					self::toggle( 'moksafocou_couponlist_enabled', __( 'Coupon list tools', 'moksa-coupons-for-woocommerce' ), __( 'Add management tools to the coupon list such as an enable / disable status column, batch enable/disable, and one-click copy.', 'moksa-coupons-for-woocommerce' ) ),
+					self::toggle( 'moksafocou_importexport_enabled', __( 'Import / Export (CSV)', 'moksa-coupons-for-woocommerce' ), __( 'Import / export coupons via CSV (including tiers, advanced rules JSON, and campaigns), for easy backup, auditing, and batch editing.', 'moksa-coupons-for-woocommerce' ) ),
+					self::toggle( 'moksafocou_summary_enabled', __( 'Live summary on the edit page', 'moksa-coupons-for-woocommerce' ), __( 'Show a live summary panel on the coupon edit page: discount mechanics, enabled features, and conflict warnings, updating in real time as you type.', 'moksa-coupons-for-woocommerce' ) ),
 				),
 			),
 			array(
 				'tab'    => 'frontend',
-				'title'  => __( 'Front-end and shipping', 'moksafocou' ),
-				'desc'   => __( 'Display available coupons on the front end, or send coupons to customers.', 'moksafocou' ),
+				'title'  => __( 'Front-end and shipping', 'moksa-coupons-for-woocommerce' ),
+				'desc'   => __( 'Display available coupons on the front end, or send coupons to customers.', 'moksa-coupons-for-woocommerce' ),
 				'fields' => array(
-					self::toggle( 'moksafocou_frontend_enabled', __( 'Front-end coupon display', 'moksafocou' ), __( 'Provide a [moksafocou_coupons] shortcode that displays the available coupons the merchant selected as cards on the front end (with copy and apply).', 'moksafocou' ) ),
-					self::toggle( 'moksafocou_savings_enabled', __( 'Cart savings hint', 'moksafocou' ), __( 'Show a "You saved a total of NT$X" hint in the cart / checkout to reinforce the sense of the discount.', 'moksafocou' ) ),
-					self::toggle( 'moksafocou_nudge_enabled', __( 'Free-shipping threshold hint', 'moksafocou' ), __( 'Show "Spend NT$X more for free shipping" in the cart / checkout to drive up order value (reads the store\'s configured free-shipping threshold).', 'moksafocou' ) ),
-					self::toggle( 'moksafocou_send_enabled', __( 'Coupon delivery', 'moksafocou' ), __( 'Add a "Send coupon" ability: send a coupon to a customer\'s email using natural language, and optionally lock it to that email only.', 'moksafocou' ) ),
-					self::toggle( 'moksafocou_myaccount_enabled', __( 'My Account coupons', 'moksafocou' ), __( 'Add a "My coupons" tab under WooCommerce "My Account" that lists the dedicated coupons issued to that customer (bound to their account or email), which can be copied or applied in one click.', 'moksafocou' ) ),
+					self::toggle( 'moksafocou_frontend_enabled', __( 'Front-end coupon display', 'moksa-coupons-for-woocommerce' ), __( 'Provide a [moksafocou_coupons] shortcode that displays the available coupons the merchant selected as cards on the front end (with copy and apply).', 'moksa-coupons-for-woocommerce' ) ),
+					self::toggle( 'moksafocou_savings_enabled', __( 'Cart savings hint', 'moksa-coupons-for-woocommerce' ), __( 'Show a "You saved a total of NT$X" hint in the cart / checkout to reinforce the sense of the discount.', 'moksa-coupons-for-woocommerce' ) ),
+					self::toggle( 'moksafocou_nudge_enabled', __( 'Free-shipping threshold hint', 'moksa-coupons-for-woocommerce' ), __( 'Show "Spend NT$X more for free shipping" in the cart / checkout to drive up order value (reads the store\'s configured free-shipping threshold).', 'moksa-coupons-for-woocommerce' ) ),
+					self::toggle( 'moksafocou_send_enabled', __( 'Coupon delivery', 'moksa-coupons-for-woocommerce' ), __( 'Add a "Send coupon" ability: send a coupon to a customer\'s email using natural language, and optionally lock it to that email only.', 'moksa-coupons-for-woocommerce' ) ),
+					self::toggle( 'moksafocou_myaccount_enabled', __( 'My Account coupons', 'moksa-coupons-for-woocommerce' ), __( 'Add a "My coupons" tab under WooCommerce "My Account" that lists the dedicated coupons issued to that customer (bound to their account or email), which can be copied or applied in one click.', 'moksa-coupons-for-woocommerce' ) ),
 				),
 			),
 			array(
 				'tab'    => 'remarketing',
-				'title'  => __( 'Remarketing / win-back coupon', 'moksafocou' ),
-				'desc'   => __( 'After an order is completed, automatically copy a "template coupon" into a customer-specific coupon (reusing the template\'s discount and all conditions), place it in the customer\'s My Account, and optionally send it out to encourage repeat purchases. You must also enable "My Account coupons" above for it to be visible.', 'moksafocou' ),
+				'title'  => __( 'Remarketing / win-back coupon', 'moksa-coupons-for-woocommerce' ),
+				'desc'   => __( 'After an order is completed, automatically copy a "template coupon" into a customer-specific coupon (reusing the template\'s discount and all conditions), place it in the customer\'s My Account, and optionally send it out to encourage repeat purchases. You must also enable "My Account coupons" above for it to be visible.', 'moksa-coupons-for-woocommerce' ),
 				'fields' => array(
-					self::toggle( 'moksafocou_remarketing_enabled', __( 'Enable automatic coupon issuance after an order is completed', 'moksafocou' ), __( 'When an order\'s status changes to "Completed", issue a win-back coupon according to the settings below.', 'moksafocou' ) ),
+					self::toggle( 'moksafocou_remarketing_enabled', __( 'Enable automatic coupon issuance after an order is completed', 'moksa-coupons-for-woocommerce' ), __( 'When an order\'s status changes to "Completed", issue a win-back coupon according to the settings below.', 'moksa-coupons-for-woocommerce' ) ),
 					array(
 						'id'      => 'moksafocou_remarketing_source',
 						'type'    => 'text',
 						'default' => '',
-						'title'   => __( 'Template coupon code', 'moksafocou' ),
-						'desc'    => __( 'First create a normal coupon as the "template" (any coupon type / conditions), and enter its code here. The system copies it into a customer-specific unique coupon after the order is completed. We recommend setting the template to "Limit to one use per customer".', 'moksafocou' ),
+						'title'   => __( 'Template coupon code', 'moksa-coupons-for-woocommerce' ),
+						'desc'    => __( 'First create a normal coupon as the "template" (any coupon type / conditions), and enter its code here. The system copies it into a customer-specific unique coupon after the order is completed. We recommend setting the template to "Limit to one use per customer".', 'moksa-coupons-for-woocommerce' ),
 					),
 					array(
 						'id'      => 'moksafocou_remarketing_condition',
 						'type'    => 'select',
 						'default' => 'all',
-						'title'   => __( 'Issuance conditions', 'moksafocou' ),
-						'desc'    => __( 'Which completed orders should issue a coupon.', 'moksafocou' ),
+						'title'   => __( 'Issuance conditions', 'moksa-coupons-for-woocommerce' ),
+						'desc'    => __( 'Which completed orders should issue a coupon.', 'moksa-coupons-for-woocommerce' ),
 						'options' => array(
-							'all'         => __( 'Every completed order', 'moksafocou' ),
-							'first_order' => __( 'Only the customer\'s first order (customer must be logged in)', 'moksafocou' ),
-							'min_total'   => __( 'Order amount reaches a threshold', 'moksafocou' ),
+							'all'         => __( 'Every completed order', 'moksa-coupons-for-woocommerce' ),
+							'first_order' => __( 'Only the customer\'s first order (customer must be logged in)', 'moksa-coupons-for-woocommerce' ),
+							'min_total'   => __( 'Order amount reaches a threshold', 'moksa-coupons-for-woocommerce' ),
 						),
 					),
 					array(
 						'id'      => 'moksafocou_remarketing_min_total',
 						'type'    => 'text',
 						'default' => '0',
-						'title'   => __( 'Order amount threshold', 'moksafocou' ),
-						'desc'    => __( 'Takes effect when the issuance condition is "reaches a threshold": the order total must be ≥ this amount.', 'moksafocou' ),
+						'title'   => __( 'Order amount threshold', 'moksa-coupons-for-woocommerce' ),
+						'desc'    => __( 'Takes effect when the issuance condition is "reaches a threshold": the order total must be ≥ this amount.', 'moksa-coupons-for-woocommerce' ),
 					),
 					array(
 						'id'      => 'moksafocou_remarketing_expiry_days',
 						'type'    => 'text',
 						'default' => '30',
-						'title'   => __( 'Win-back coupon validity days', 'moksafocou' ),
-						'desc'    => __( 'How many days it is valid after being issued (counted from the moment of issuance). Enter 0 = use the template\'s own expiry settings.', 'moksafocou' ),
+						'title'   => __( 'Win-back coupon validity days', 'moksa-coupons-for-woocommerce' ),
+						'desc'    => __( 'How many days it is valid after being issued (counted from the moment of issuance). Enter 0 = use the template\'s own expiry settings.', 'moksa-coupons-for-woocommerce' ),
 					),
-					self::toggle( 'moksafocou_remarketing_email', __( 'Also notify the customer by email', 'moksafocou' ), __( 'When the coupon is issued, also send the customer an email containing the code and a one-click apply link (requires working site email settings).', 'moksafocou' ) ),
-					self::toggle( 'moksafocou_expiry_enabled', __( 'Coupon expiry reminder', 'moksafocou' ), __( 'Check customers\' dedicated coupons automatically every day, and email a reminder when they are about to expire, encouraging use before the deadline.', 'moksafocou' ) ),
+					self::toggle( 'moksafocou_remarketing_email', __( 'Also notify the customer by email', 'moksa-coupons-for-woocommerce' ), __( 'When the coupon is issued, also send the customer an email containing the code and a one-click apply link (requires working site email settings).', 'moksa-coupons-for-woocommerce' ) ),
+					self::toggle( 'moksafocou_expiry_enabled', __( 'Coupon expiry reminder', 'moksa-coupons-for-woocommerce' ), __( 'Check customers\' dedicated coupons automatically every day, and email a reminder when they are about to expire, encouraging use before the deadline.', 'moksa-coupons-for-woocommerce' ) ),
 					array(
 						'id'      => 'moksafocou_expiry_days',
 						'type'    => 'text',
 						'default' => '3',
-						'title'   => __( 'Days before expiry to remind', 'moksafocou' ),
-						'desc'    => __( 'Send the reminder a number of days before the coupon\'s expiry date (1–60, default 3).', 'moksafocou' ),
+						'title'   => __( 'Days before expiry to remind', 'moksa-coupons-for-woocommerce' ),
+						'desc'    => __( 'Send the reminder a number of days before the coupon\'s expiry date (1–60, default 3).', 'moksa-coupons-for-woocommerce' ),
 					),
 				),
 			),
 			array(
 				'tab'    => 'ai',
-				'title'  => __( 'AI and external openness (MCP)', 'moksafocou' ),
-				'desc'   => __( 'Create / query coupons with natural language in the admin, and optionally open them up to external AI tools. All disabled by default; enable when needed.', 'moksafocou' ),
+				'title'  => __( 'AI and external openness (MCP)', 'moksa-coupons-for-woocommerce' ),
+				'desc'   => __( 'Create / query coupons with natural language in the admin, and optionally open them up to external AI tools. All disabled by default; enable when needed.', 'moksa-coupons-for-woocommerce' ),
 				'fields' => array(
-					self::toggle( 'moksafocou_ai_enabled', __( 'AI coupon assistant', 'moksafocou' ), __( 'Create / query coupons with natural language in the admin (requires the AI Client of WordPress 7.0+ and a configured Connector).', 'moksafocou' ) ),
-					self::toggle( 'moksafocou_mcp_server_enabled', __( 'External MCP server', 'moksafocou' ), __( 'Open up coupon capabilities to external AI tools (MCP). Disabled by default.', 'moksafocou' ) ),
-					self::toggle( 'moksafocou_mcp_expose_destructive', __( 'Allow external MCP to make changes', 'moksafocou' ), __( 'Allow destructive capabilities (create / update / delete coupons) to be exposed to external MCP. Disabled by default (read-only).', 'moksafocou' ) ),
+					self::toggle( 'moksafocou_ai_enabled', __( 'AI coupon assistant', 'moksa-coupons-for-woocommerce' ), __( 'Create / query coupons with natural language in the admin (requires the AI Client of WordPress 7.0+ and a configured Connector).', 'moksa-coupons-for-woocommerce' ) ),
+					self::toggle( 'moksafocou_mcp_server_enabled', __( 'External MCP server', 'moksa-coupons-for-woocommerce' ), __( 'Open up coupon capabilities to external AI tools (MCP). Disabled by default.', 'moksa-coupons-for-woocommerce' ) ),
+					self::toggle( 'moksafocou_mcp_expose_destructive', __( 'Allow external MCP to make changes', 'moksa-coupons-for-woocommerce' ), __( 'Allow destructive capabilities (create / update / delete coupons) to be exposed to external MCP. Disabled by default (read-only).', 'moksa-coupons-for-woocommerce' ) ),
 				),
 			),
 		);
@@ -309,7 +309,7 @@ final class SettingsScreen {
 
 		$flag = isset( $_GET['moksafocou_saved'] ) ? sanitize_text_field( wp_unslash( (string) $_GET['moksafocou_saved'] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 		if ( isset( self::NOTICES[ $flag ] ) ) {
-			echo '<div class="notice notice-success is-dismissible"><p>' . esc_html__( 'Settings saved.', 'moksafocou' ) . '</p></div>';
+			echo '<div class="notice notice-success is-dismissible"><p>' . esc_html__( 'Settings saved.', 'moksa-coupons-for-woocommerce' ) . '</p></div>';
 		}
 
 		echo '<form method="post" action="' . esc_url( admin_url( 'admin-post.php' ) ) . '">';
@@ -317,7 +317,7 @@ final class SettingsScreen {
 		echo '<input type="hidden" name="moksafocou_scope" value="' . esc_attr( $page ) . '">';
 		wp_nonce_field( self::NONCE );
 
-		echo '<div class="mowp-shell" data-ns="moksafocou">';
+		echo '<div class="mowp-shell" data-ns="moksa-coupons-for-woocommerce">';
 		echo '<div class="mowp-intro"><h1>' . esc_html( (string) $spec['label'] ) . '</h1>'
 			. '<p>' . esc_html( (string) $spec['desc'] ) . '</p></div>';
 
@@ -358,7 +358,7 @@ final class SettingsScreen {
 		}
 
 		echo '<p class="submit mowp-save"><button type="submit" class="button button-primary button-hero">'
-			. esc_html__( 'Save settings', 'moksafocou' ) . '</button></p>';
+			. esc_html__( 'Save settings', 'moksa-coupons-for-woocommerce' ) . '</button></p>';
 		echo '</div>'; // .mowp-shell
 		echo '</form>';
 
@@ -372,7 +372,7 @@ final class SettingsScreen {
 			echo '<div class="mowp-note mowp-note--warn">' . esc_html(
 				sprintf(
 					/* translators: 1: enabled module name, 2: comma-separated names of the modules it needs. */
-					__( '"%1$s" is enabled; we recommend also enabling "%2$s", otherwise some features will not take effect.', 'moksafocou' ),
+					__( '"%1$s" is enabled; we recommend also enabling "%2$s", otherwise some features will not take effect.', 'moksa-coupons-for-woocommerce' ),
 					(string) $gap['module'],
 					implode( '、', $gap['missing'] )
 				)
@@ -484,7 +484,7 @@ final class SettingsScreen {
 	/** admin_post handler: verify, whitelist-save the submitting sub-page's fields, redirect with notice. */
 	public static function handle(): void {
 		if ( ! current_user_can( self::CAP ) ) {
-			wp_die( esc_html__( 'You do not have permission to do this.', 'moksafocou' ) );
+			wp_die( esc_html__( 'You do not have permission to do this.', 'moksa-coupons-for-woocommerce' ) );
 		}
 		check_admin_referer( self::NONCE );
 

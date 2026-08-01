@@ -16,7 +16,7 @@ final class AdminMenuTest extends TestCase {
 		// We manage shop_coupon's menu ourselves, so core must place nothing.
 		$this->assertFalse( Menu::cpt_show_in_menu( 'shop_coupon', 'woocommerce' ) );
 		$this->assertFalse( Menu::cpt_show_in_menu( 'shop_coupon', true ) );
-		$this->assertSame( 'moksafocou', Menu::TOPLEVEL );
+		$this->assertSame( 'moksa-coupons-for-woocommerce', Menu::TOPLEVEL );
 	}
 
 	public function test_other_post_types_keep_their_menu(): void {

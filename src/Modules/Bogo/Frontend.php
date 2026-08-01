@@ -138,7 +138,7 @@ final class Frontend {
 		$msg = trim( (string) ( $cfg['notice_msg'] ?? '' ) );
 		if ( '' === $msg ) {
 			/* translators: %s: coupon code. */
-			$msg = sprintf( __( 'You qualify for the Buy X Get Y offer on "%s" — add the gift to your cart to get the discount.', 'moksafocou' ), $coupon->get_code() );
+			$msg = sprintf( __( 'You qualify for the Buy X Get Y offer on "%s" — add the gift to your cart to get the discount.', 'moksa-coupons-for-woocommerce' ), $coupon->get_code() );
 		}
 		return str_replace(
 			array( '{bogo_qty}', '{coupon_code}' ),

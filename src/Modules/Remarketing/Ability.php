@@ -17,7 +17,7 @@ defined( 'ABSPATH' ) || exit;
 final class Ability {
 
 	private const CAP      = 'manage_woocommerce';
-	private const CATEGORY = 'moksafocou';
+	private const CATEGORY = 'moksa-coupons-for-woocommerce';
 
 	public static function register(): void {
 		if ( ! function_exists( 'wp_register_ability' ) ) {
@@ -27,8 +27,8 @@ final class Ability {
 		wp_register_ability(
 			'moksafocou/get-remarketing-config',
 			array(
-				'label'               => __( 'Get remarketing settings', 'moksafocou' ),
-				'description'         => __( 'Read the current "automatically issue a coupon after order completion" settings: template coupon, issuance conditions, amount threshold, validity days, and whether to send an email. Read-only.', 'moksafocou' ),
+				'label'               => __( 'Get remarketing settings', 'moksa-coupons-for-woocommerce' ),
+				'description'         => __( 'Read the current "automatically issue a coupon after order completion" settings: template coupon, issuance conditions, amount threshold, validity days, and whether to send an email. Read-only.', 'moksa-coupons-for-woocommerce' ),
 				'category'            => self::CATEGORY,
 				'input_schema'        => AbilityMeta::empty_input(),
 				'output_schema'       => array(
@@ -51,36 +51,36 @@ final class Ability {
 		wp_register_ability(
 			'moksafocou/set-remarketing-config',
 			array(
-				'label'               => __( 'Set remarketing rules', 'moksafocou' ),
-				'description'         => __( 'Set "automatically issue a coupon after order completion": template coupon code, issuance conditions (all / first_order / min_total), amount threshold, validity days, and whether to send an email. Validates that the template coupon exists.', 'moksafocou' ),
+				'label'               => __( 'Set remarketing rules', 'moksa-coupons-for-woocommerce' ),
+				'description'         => __( 'Set "automatically issue a coupon after order completion": template coupon code, issuance conditions (all / first_order / min_total), amount threshold, validity days, and whether to send an email. Validates that the template coupon exists.', 'moksa-coupons-for-woocommerce' ),
 				'category'            => self::CATEGORY,
 				'input_schema'        => array(
 					'type'                 => 'object',
 					'properties'           => array(
 						'enabled'     => array(
 							'type'        => 'boolean',
-							'description' => __( 'Whether to enable automatic coupon issuance', 'moksafocou' ),
+							'description' => __( 'Whether to enable automatic coupon issuance', 'moksa-coupons-for-woocommerce' ),
 						),
 						'source'      => array(
 							'type'        => 'string',
-							'description' => __( 'Template coupon code (will be copied into a customer-exclusive coupon)', 'moksafocou' ),
+							'description' => __( 'Template coupon code (will be copied into a customer-exclusive coupon)', 'moksa-coupons-for-woocommerce' ),
 						),
 						'condition'   => array(
 							'type'        => 'string',
 							'enum'        => Rules::CONDITIONS,
-							'description' => __( 'Issuance conditions', 'moksafocou' ),
+							'description' => __( 'Issuance conditions', 'moksa-coupons-for-woocommerce' ),
 						),
 						'min_total'   => array(
 							'type'        => 'number',
-							'description' => __( 'Threshold amount when the condition is min_total', 'moksafocou' ),
+							'description' => __( 'Threshold amount when the condition is min_total', 'moksa-coupons-for-woocommerce' ),
 						),
 						'expiry_days' => array(
 							'type'        => 'integer',
-							'description' => __( 'Win-back coupon validity in days (0 = use template expiry)', 'moksafocou' ),
+							'description' => __( 'Win-back coupon validity in days (0 = use template expiry)', 'moksa-coupons-for-woocommerce' ),
 						),
 						'email'       => array(
 							'type'        => 'boolean',
-							'description' => __( 'Also notify the customer by email', 'moksafocou' ),
+							'description' => __( 'Also notify the customer by email', 'moksa-coupons-for-woocommerce' ),
 						),
 					),
 					'required'             => array(),
@@ -122,14 +122,14 @@ final class Ability {
 	 */
 	public static function set_config( $input ) {
 		if ( ! self::can_manage() ) {
-			return new \WP_Error( 'moksafocou_forbidden', __( 'You do not have permission to do this.', 'moksafocou' ) );
+			return new \WP_Error( 'moksafocou_forbidden', __( 'You do not have permission to do this.', 'moksa-coupons-for-woocommerce' ) );
 		}
 		$input = is_array( $input ) ? $input : array();
 
 		if ( isset( $input['source'] ) ) {
 			$src = trim( (string) $input['source'] );
 			if ( '' !== $src && ! CouponService::resolve_id( $src ) ) {
-				return new \WP_Error( 'moksafocou_not_found', __( 'The specified template coupon code was not found.', 'moksafocou' ) );
+				return new \WP_Error( 'moksafocou_not_found', __( 'The specified template coupon code was not found.', 'moksa-coupons-for-woocommerce' ) );
 			}
 			update_option( 'moksafocou_remarketing_source', $src );
 		}
@@ -149,6 +149,6 @@ final class Ability {
 			update_option( 'moksafocou_remarketing_email', $input['email'] ? 'yes' : 'no' );
 		}
 
-		return array( 'summary' => __( 'Remarketing settings updated.', 'moksafocou' ) );
+		return array( 'summary' => __( 'Remarketing settings updated.', 'moksa-coupons-for-woocommerce' ) );
 	}
 }

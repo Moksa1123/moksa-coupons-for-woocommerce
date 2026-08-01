@@ -22,7 +22,7 @@ final class Module extends AbstractModule {
 	}
 
 	public function label(): string {
-		return __( 'Advanced rules (AND/OR)', 'moksafocou' );
+		return __( 'Advanced rules (AND/OR)', 'moksa-coupons-for-woocommerce' );
 	}
 
 	public function category(): string {
@@ -30,7 +30,7 @@ final class Module extends AbstractModule {
 	}
 
 	public function tagline(): string {
-		return __( 'Freely combine conditions with groups and AND/OR (subtotal / item count / products / categories / regions / payment / roles / weekday / time…)', 'moksafocou' );
+		return __( 'Freely combine conditions with groups and AND/OR (subtotal / item count / products / categories / regions / payment / roles / weekday / time…)', 'moksa-coupons-for-woocommerce' );
 	}
 
 	public function boot(): void {

@@ -125,7 +125,7 @@ final class Frontend {
 		$msg = trim( (string) ( $cfg['notice_msg'] ?? '' ) );
 		if ( '' === $msg ) {
 			/* translators: %d: required item count N. */
-			$msg = sprintf( __( 'Buy %d items to enjoy the Nth-item discount.', 'moksafocou' ), (int) ( $cfg['n'] ?? 2 ) );
+			$msg = sprintf( __( 'Buy %d items to enjoy the Nth-item discount.', 'moksa-coupons-for-woocommerce' ), (int) ( $cfg['n'] ?? 2 ) );
 		}
 		return str_replace(
 			array( '{nth_n}', '{coupon_code}' ),

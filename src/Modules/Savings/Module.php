@@ -21,7 +21,7 @@ final class Module extends AbstractModule {
 	}
 
 	public function label(): string {
-		return __( 'Checkout savings hint', 'moksafocou' );
+		return __( 'Checkout savings hint', 'moksa-coupons-for-woocommerce' );
 	}
 
 	public function category(): string {
@@ -29,7 +29,7 @@ final class Module extends AbstractModule {
 	}
 
 	public function tagline(): string {
-		return __( 'Show a "You saved a total of NT$X" summary in the cart and checkout to reinforce the sense of savings', 'moksafocou' );
+		return __( 'Show a "You saved a total of NT$X" summary in the cart and checkout to reinforce the sense of savings', 'moksa-coupons-for-woocommerce' );
 	}
 
 	public function boot(): void {

@@ -21,7 +21,7 @@ final class Module extends AbstractModule {
 	}
 
 	public function label(): string {
-		return __( 'Add-on / free gift', 'moksafocou' );
+		return __( 'Add-on / free gift', 'moksa-coupons-for-woocommerce' );
 	}
 
 	public function category(): string {
@@ -29,7 +29,7 @@ final class Module extends AbstractModule {
 	}
 
 	public function tagline(): string {
-		return __( 'Automatically add a gift (free or discounted) when the coupon is applied; quantity is locked and withdrawn when the coupon is removed', 'moksafocou' );
+		return __( 'Automatically add a gift (free or discounted) when the coupon is applied; quantity is locked and withdrawn when the coupon is removed', 'moksa-coupons-for-woocommerce' );
 	}
 
 	public function boot(): void {

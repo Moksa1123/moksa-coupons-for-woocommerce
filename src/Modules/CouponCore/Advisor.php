@@ -31,10 +31,10 @@ final class Advisor {
 			$threshold = max( 100, (int) ( ceil( ( $aov * 1.25 ) / 100 ) * 100 ) );
 			$reward    = max( 1, (int) round( $threshold * 0.1 ) );
 			$out[]     = array(
-				'title'   => __( 'Raise average order value with a spend-threshold coupon', 'moksafocou' ),
+				'title'   => __( 'Raise average order value with a spend-threshold coupon', 'moksa-coupons-for-woocommerce' ),
 				'detail'  => sprintf(
 					/* translators: 1: AOV, 2: threshold, 3: reward. */
-					__( 'Coupon-backed average order value over the last 30 days is about %1$s. Set "spend %2$s, get %3$s off" to push most orders up a tier.', 'moksafocou' ),
+					__( 'Coupon-backed average order value over the last 30 days is about %1$s. Set "spend %2$s, get %3$s off" to push most orders up a tier.', 'moksa-coupons-for-woocommerce' ),
 					self::money( $aov ),
 					self::money( (float) $threshold ),
 					self::money( (float) $reward )
@@ -52,10 +52,10 @@ final class Advisor {
 		if ( array() !== $rows && (float) $rows[0]['discount'] > 0.0 ) {
 			$top   = $rows[0];
 			$out[] = array(
-				'title'   => __( 'Extend / copy the currently most effective coupon', 'moksafocou' ),
+				'title'   => __( 'Extend / copy the currently most effective coupon', 'moksa-coupons-for-woocommerce' ),
 				'detail'  => sprintf(
 					/* translators: 1: code, 2: type, 3: orders, 4: discount. */
-					__( '"%1$s" (%2$s) has driven %3$d order(s) and %4$s in discounts, and is currently the most effective coupon. You can extend its expiry or copy it into a new campaign.', 'moksafocou' ),
+					__( '"%1$s" (%2$s) has driven %3$d order(s) and %4$s in discounts, and is currently the most effective coupon. You can extend its expiry or copy it into a new campaign.', 'moksa-coupons-for-woocommerce' ),
 					(string) $top['code'],
 					CouponType::label( (string) $top['type'] ),
 					(int) $top['orders'],
@@ -73,10 +73,10 @@ final class Advisor {
 				$names[] = $p['name'];
 			}
 			$out[] = array(
-				'title'   => __( 'Clear out slow-moving products', 'moksafocou' ),
+				'title'   => __( 'Clear out slow-moving products', 'moksa-coupons-for-woocommerce' ),
 				'detail'  => sprintf(
 					/* translators: %s: comma-separated product names. */
-					__( 'These products have had no sales in the last 60 days: %s. You could run "20% off specific products" or "buy one get one" for them to drive sales.', 'moksafocou' ),
+					__( 'These products have had no sales in the last 60 days: %s. You could run "20% off specific products" or "buy one get one" for them to drive sales.', 'moksa-coupons-for-woocommerce' ),
 					implode( '、', array_slice( $names, 0, 5 ) )
 				),
 				'suggest' => array(
@@ -90,8 +90,8 @@ final class Advisor {
 		// 4) Acquisition push when coupon activity is low.
 		if ( (int) $ov['coupon_orders'] < 3 ) {
 			$out[] = array(
-				'title'   => __( 'Launch a new-customer first-purchase coupon', 'moksafocou' ),
-				'detail'  => __( 'Coupon-backed orders in the last 30 days are on the low side. Issue a new-customer first-purchase coupon (e.g. "10% off first purchase") together with the front-end coupon wall / auto-apply to attract new customers.', 'moksafocou' ),
+				'title'   => __( 'Launch a new-customer first-purchase coupon', 'moksa-coupons-for-woocommerce' ),
+				'detail'  => __( 'Coupon-backed orders in the last 30 days are on the low side. Issue a new-customer first-purchase coupon (e.g. "10% off first purchase") together with the front-end coupon wall / auto-apply to attract new customers.', 'moksa-coupons-for-woocommerce' ),
 				'suggest' => array(
 					'discount_type' => 'percent',
 					'amount'        => 10,
@@ -130,7 +130,7 @@ final class Advisor {
 				$issues[] = array(
 					'code'   => $code,
 					'issue'  => 'expired_live',
-					'detail' => __( 'Expired but still enabled; consider disabling or cleaning up.', 'moksafocou' ),
+					'detail' => __( 'Expired but still enabled; consider disabling or cleaning up.', 'moksa-coupons-for-woocommerce' ),
 				);
 				continue;
 			}
@@ -138,7 +138,7 @@ final class Advisor {
 				$issues[] = array(
 					'code'   => $code,
 					'issue'  => 'expiring_unused',
-					'detail' => __( 'Expires within 7 days but has never been used; consider boosting exposure or adjusting the threshold.', 'moksafocou' ),
+					'detail' => __( 'Expires within 7 days but has never been used; consider boosting exposure or adjusting the threshold.', 'moksa-coupons-for-woocommerce' ),
 				);
 				continue;
 			}
@@ -148,7 +148,7 @@ final class Advisor {
 					'issue'  => 'over_discount',
 					'detail' => sprintf(
 						/* translators: %s: percent. */
-						__( 'The percentage discount is as high as %s%%; confirm your margin can absorb it.', 'moksafocou' ),
+						__( 'The percentage discount is as high as %s%%; confirm your margin can absorb it.', 'moksa-coupons-for-woocommerce' ),
 						rtrim( rtrim( number_format( (float) $coupon->get_amount(), 2, '.', '' ), '0' ), '.' )
 					),
 				);

@@ -86,7 +86,7 @@ final class CouponRest {
 	public static function get( \WP_REST_Request $request ): \WP_REST_Response {
 		$data = CouponService::get( (string) $request['ref'] );
 		if ( null === $data ) {
-			return new \WP_REST_Response( [ 'message' => __( 'Coupon not found.', 'moksafocou' ) ], 404 );
+			return new \WP_REST_Response( [ 'message' => __( 'Coupon not found.', 'moksa-coupons-for-woocommerce' ) ], 404 );
 		}
 		return new \WP_REST_Response( $data, 200 );
 	}

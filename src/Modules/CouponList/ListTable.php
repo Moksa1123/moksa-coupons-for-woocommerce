@@ -42,12 +42,12 @@ final class ListTable {
 		foreach ( $cols as $key => $label ) {
 			$out[ $key ] = $label;
 			if ( 'coupon_amount' === $key ) {
-				$out['moksafocou_status'] = __( 'Status', 'moksafocou' );
+				$out['moksafocou_status'] = __( 'Status', 'moksa-coupons-for-woocommerce' );
 				$placed                   = true;
 			}
 		}
 		if ( ! $placed ) {
-			$out['moksafocou_status'] = __( 'Status', 'moksafocou' );
+			$out['moksafocou_status'] = __( 'Status', 'moksa-coupons-for-woocommerce' );
 		}
 		return $out;
 	}
@@ -67,7 +67,7 @@ final class ListTable {
 		printf(
 			'<span class="moksafocou-status" style="display:inline-block;padding:2px 9px;border-radius:10px;font-size:11px;font-weight:600;%1$s">%2$s</span>',
 			esc_attr( $style ),
-			esc_html( $enabled ? __( 'Enable', 'moksafocou' ) : __( 'Disable', 'moksafocou' ) )
+			esc_html( $enabled ? __( 'Enable', 'moksa-coupons-for-woocommerce' ) : __( 'Disable', 'moksa-coupons-for-woocommerce' ) )
 		);
 	}
 
@@ -83,7 +83,7 @@ final class ListTable {
 				admin_url( 'admin-post.php?action=moksafocou_dup_coupon&id=' . (int) $post->ID ),
 				self::NONCE
 			);
-			$actions['moksafocou_dup'] = '<a href="' . esc_url( $url ) . '">' . esc_html__( 'Copy', 'moksafocou' ) . '</a>';
+			$actions['moksafocou_dup'] = '<a href="' . esc_url( $url ) . '">' . esc_html__( 'Copy', 'moksa-coupons-for-woocommerce' ) . '</a>';
 		}
 		return $actions;
 	}
@@ -94,8 +94,8 @@ final class ListTable {
 	 */
 	public static function bulk_actions( $actions ): array {
 		$actions                       = is_array( $actions ) ? $actions : array();
-		$actions['moksafocou_enable']  = __( 'Enable', 'moksafocou' );
-		$actions['moksafocou_disable'] = __( 'Disable', 'moksafocou' );
+		$actions['moksafocou_enable']  = __( 'Enable', 'moksa-coupons-for-woocommerce' );
+		$actions['moksafocou_disable'] = __( 'Disable', 'moksa-coupons-for-woocommerce' );
 		return $actions;
 	}
 
@@ -125,7 +125,7 @@ final class ListTable {
 
 	public static function handle_duplicate(): void {
 		if ( ! current_user_can( self::CAP ) ) {
-			wp_die( esc_html__( 'You do not have permission to do this.', 'moksafocou' ) );
+			wp_die( esc_html__( 'You do not have permission to do this.', 'moksa-coupons-for-woocommerce' ) );
 		}
 		check_admin_referer( self::NONCE );
 		$id   = isset( $_GET['id'] ) ? (int) $_GET['id'] : 0;
@@ -158,19 +158,19 @@ final class ListTable {
 		if ( isset( $_GET['moksafocou_dup'] ) ) {
 			$dup = sanitize_key( wp_unslash( $_GET['moksafocou_dup'] ) );
 			if ( 'ok' === $dup ) {
-				echo '<div class="notice notice-success is-dismissible"><p>' . esc_html__( 'Copied as a draft coupon with usage count reset to zero; you can review it before enabling.', 'moksafocou' ) . '</p></div>';
+				echo '<div class="notice notice-success is-dismissible"><p>' . esc_html__( 'Copied as a draft coupon with usage count reset to zero; you can review it before enabling.', 'moksa-coupons-for-woocommerce' ) . '</p></div>';
 			} elseif ( 'err' === $dup ) {
-				echo '<div class="notice notice-error is-dismissible"><p>' . esc_html__( 'Failed to copy the coupon.', 'moksafocou' ) . '</p></div>';
+				echo '<div class="notice notice-error is-dismissible"><p>' . esc_html__( 'Failed to copy the coupon.', 'moksa-coupons-for-woocommerce' ) . '</p></div>';
 			}
 		}
 		if ( isset( $_GET['moksafocou_bulk'] ) ) {
 			$parts = explode( '-', sanitize_key( wp_unslash( $_GET['moksafocou_bulk'] ) ) );
 			$count = isset( $parts[1] ) ? (int) $parts[1] : 0;
-			$label = ( 'on' === ( $parts[0] ?? '' ) ) ? __( 'Enable', 'moksafocou' ) : __( 'Disable', 'moksafocou' );
+			$label = ( 'on' === ( $parts[0] ?? '' ) ) ? __( 'Enable', 'moksa-coupons-for-woocommerce' ) : __( 'Disable', 'moksa-coupons-for-woocommerce' );
 			echo '<div class="notice notice-success is-dismissible"><p>' . esc_html(
 				sprintf(
 					/* translators: 1: number of coupons, 2: 啟用/停用 label. */
-					__( '%2$s %1$d coupon(s).', 'moksafocou' ),
+					__( '%2$s %1$d coupon(s).', 'moksa-coupons-for-woocommerce' ),
 					$count,
 					$label
 				)

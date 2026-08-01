@@ -43,10 +43,10 @@ final class Fields {
 			array(
 				'id'            => Keys::DISCOUNT_CAP,
 				'value'         => get_post_meta( $coupon_id, Keys::DISCOUNT_CAP, true ),
-				'label'         => __( 'Maximum discount amount', 'moksafocou' ),
+				'label'         => __( 'Maximum discount amount', 'moksa-coupons-for-woocommerce' ),
 				'data_type'     => 'price',
 				'desc_tip'      => true,
-				'description'   => __( 'The maximum discount amount for a percentage discount (e.g. 20% off, but at most 500). Leave empty = no limit.', 'moksafocou' ),
+				'description'   => __( 'The maximum discount amount for a percentage discount (e.g. 20% off, but at most 500). Leave empty = no limit.', 'moksa-coupons-for-woocommerce' ),
 				'wrapper_class' => 'show_if_percent',
 			)
 		);

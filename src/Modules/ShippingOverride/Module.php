@@ -22,7 +22,7 @@ final class Module extends AbstractModule {
 	}
 
 	public function label(): string {
-		return __( 'Shipping override', 'moksafocou' );
+		return __( 'Shipping override', 'moksa-coupons-for-woocommerce' );
 	}
 
 	public function category(): string {
@@ -30,7 +30,7 @@ final class Module extends AbstractModule {
 	}
 
 	public function tagline(): string {
-		return __( 'Free or discounted shipping when the coupon is applied (percentage or fixed amount)', 'moksafocou' );
+		return __( 'Free or discounted shipping when the coupon is applied (percentage or fixed amount)', 'moksa-coupons-for-woocommerce' );
 	}
 
 	public function boot(): void {

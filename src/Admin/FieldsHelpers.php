@@ -23,7 +23,7 @@ final class FieldsHelpers {
 	 */
 	public static function product_select( string $id, string $label, array $selected ): void {
 		echo '<p class="form-field"><label for="' . esc_attr( $id ) . '">' . esc_html( $label ) . '</label>';
-		echo '<select class="wc-product-search" multiple="multiple" style="width:50%;" id="' . esc_attr( $id ) . '" name="' . esc_attr( $id ) . '[]" data-placeholder="' . esc_attr__( 'Search products…', 'moksafocou' ) . '" data-action="woocommerce_json_search_products_and_variations">';
+		echo '<select class="wc-product-search" multiple="multiple" style="width:50%;" id="' . esc_attr( $id ) . '" name="' . esc_attr( $id ) . '[]" data-placeholder="' . esc_attr__( 'Search products…', 'moksa-coupons-for-woocommerce' ) . '" data-action="woocommerce_json_search_products_and_variations">';
 		foreach ( $selected as $pid ) {
 			$product = function_exists( 'wc_get_product' ) ? wc_get_product( $pid ) : null;
 			if ( $product ) {
@@ -42,7 +42,7 @@ final class FieldsHelpers {
 	 */
 	public static function category_select( string $id, string $label, array $selected ): void {
 		echo '<p class="form-field"><label for="' . esc_attr( $id ) . '">' . esc_html( $label ) . '</label>';
-		echo '<select class="wc-category-search" multiple="multiple" style="width:50%;" id="' . esc_attr( $id ) . '" name="' . esc_attr( $id ) . '[]" data-placeholder="' . esc_attr__( 'Search categories…', 'moksafocou' ) . '" data-action="woocommerce_json_search_categories">';
+		echo '<select class="wc-category-search" multiple="multiple" style="width:50%;" id="' . esc_attr( $id ) . '" name="' . esc_attr( $id ) . '[]" data-placeholder="' . esc_attr__( 'Search categories…', 'moksa-coupons-for-woocommerce' ) . '" data-action="woocommerce_json_search_categories">';
 		foreach ( $selected as $tid ) {
 			$term = get_term( $tid, 'product_cat' );
 			if ( $term instanceof \WP_Term ) {

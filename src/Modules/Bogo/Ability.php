@@ -17,7 +17,7 @@ defined( 'ABSPATH' ) || exit;
  */
 final class Ability {
 
-	public const CATEGORY = 'moksafocou';
+	public const CATEGORY = 'moksa-coupons-for-woocommerce';
 
 	public static function register(): void {
 		if ( ! function_exists( 'wp_register_ability' ) ) {
@@ -26,65 +26,65 @@ final class Ability {
 		wp_register_ability(
 			'moksafocou/create-bogo-coupon',
 			array(
-				'label'               => __( 'Create a Buy X Get Y coupon', 'moksafocou' ),
-				'description'         => __( 'Create a "Buy X Get Y (BOGO)" coupon: after the customer buys the specified products / categories in the required quantity, the gift items in the cart can be free / percentage / fixed discount, and it can be set to once or repeatable. Destructive — the call only "proposes" it, and it is created only after the user confirms.', 'moksafocou' ),
+				'label'               => __( 'Create a Buy X Get Y coupon', 'moksa-coupons-for-woocommerce' ),
+				'description'         => __( 'Create a "Buy X Get Y (BOGO)" coupon: after the customer buys the specified products / categories in the required quantity, the gift items in the cart can be free / percentage / fixed discount, and it can be set to once or repeatable. Destructive — the call only "proposes" it, and it is created only after the user confirms.', 'moksa-coupons-for-woocommerce' ),
 				'category'            => self::CATEGORY,
 				'input_schema'        => array(
 					'type'                 => 'object',
 					'properties'           => array(
 						'code'                 => array(
 							'type'        => 'string',
-							'description' => __( 'Coupon code, e.g. BUY2GET1', 'moksafocou' ),
+							'description' => __( 'Coupon code, e.g. BUY2GET1', 'moksa-coupons-for-woocommerce' ),
 						),
 						'trigger_product_ids'  => array(
 							'type'        => 'array',
 							'items'       => array( 'type' => 'integer' ),
-							'description' => __( 'Purchase-condition product IDs (use either categories or both)', 'moksafocou' ),
+							'description' => __( 'Purchase-condition product IDs (use either categories or both)', 'moksa-coupons-for-woocommerce' ),
 						),
 						'trigger_category_ids' => array(
 							'type'        => 'array',
 							'items'       => array( 'type' => 'integer' ),
-							'description' => __( 'Purchase-condition product category term IDs', 'moksafocou' ),
+							'description' => __( 'Purchase-condition product category term IDs', 'moksa-coupons-for-woocommerce' ),
 						),
 						'trigger_qty'          => array(
 							'type'        => 'integer',
-							'description' => __( 'Quantity N to purchase (default 1)', 'moksafocou' ),
+							'description' => __( 'Quantity N to purchase (default 1)', 'moksa-coupons-for-woocommerce' ),
 						),
 						'reward_product_ids'   => array(
 							'type'        => 'array',
 							'items'       => array( 'type' => 'integer' ),
-							'description' => __( 'Gift product IDs', 'moksafocou' ),
+							'description' => __( 'Gift product IDs', 'moksa-coupons-for-woocommerce' ),
 						),
 						'reward_category_ids'  => array(
 							'type'        => 'array',
 							'items'       => array( 'type' => 'integer' ),
-							'description' => __( 'Gift product category term IDs', 'moksafocou' ),
+							'description' => __( 'Gift product category term IDs', 'moksa-coupons-for-woocommerce' ),
 						),
 						'reward_qty'           => array(
 							'type'        => 'integer',
-							'description' => __( 'Gift / discount quantity M (default 1)', 'moksafocou' ),
+							'description' => __( 'Gift / discount quantity M (default 1)', 'moksa-coupons-for-woocommerce' ),
 						),
 						'reward_mode'          => array(
 							'type'        => 'string',
 							'enum'        => array( 'free', 'percent', 'fixed_per_item' ),
-							'description' => __( 'Discount type: free / percent / fixed_per_item (fixed amount per item)', 'moksafocou' ),
+							'description' => __( 'Discount type: free / percent / fixed_per_item (fixed amount per item)', 'moksa-coupons-for-woocommerce' ),
 						),
 						'reward_value'         => array(
 							'type'        => 'number',
-							'description' => __( 'Discount amount; 0–100 for percent, an amount for fixed_per_item, leave empty for free', 'moksafocou' ),
+							'description' => __( 'Discount amount; 0–100 for percent, an amount for fixed_per_item, leave empty for free', 'moksa-coupons-for-woocommerce' ),
 						),
 						'deal_mode'            => array(
 							'type'        => 'string',
 							'enum'        => array( 'once', 'repeat' ),
-							'description' => __( 'once (only once) / repeat (repeatable) (default once)', 'moksafocou' ),
+							'description' => __( 'once (only once) / repeat (repeatable) (default once)', 'moksa-coupons-for-woocommerce' ),
 						),
 						'repeat_limit'         => array(
 							'type'        => 'integer',
-							'description' => __( 'Repeat limit (0 = no limit, applies to repeat only)', 'moksafocou' ),
+							'description' => __( 'Repeat limit (0 = no limit, applies to repeat only)', 'moksa-coupons-for-woocommerce' ),
 						),
 						'date_expires'         => array(
 							'type'        => 'string',
-							'description' => __( 'Expiry date YYYY-MM-DD (optional)', 'moksafocou' ),
+							'description' => __( 'Expiry date YYYY-MM-DD (optional)', 'moksa-coupons-for-woocommerce' ),
 						),
 						'usage_limit'          => array( 'type' => 'integer' ),
 						'individual_use'       => array( 'type' => 'boolean' ),

@@ -242,7 +242,7 @@ final class UrlHandler {
 
 	private static function redirect_invalid(): void {
 		wc_clear_notices();
-		wc_add_notice( __( 'This coupon is invalid or unavailable.', 'moksafocou' ), 'error' );
+		wc_add_notice( __( 'This coupon is invalid or unavailable.', 'moksa-coupons-for-woocommerce' ), 'error' );
 		self::safe_redirect( wc_get_cart_url() );
 	}
 

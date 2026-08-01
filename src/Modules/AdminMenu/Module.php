@@ -21,7 +21,7 @@ final class Module extends AbstractModule {
 	}
 
 	public function label(): string {
-		return __( 'Coupon management menu', 'moksafocou' );
+		return __( 'Coupon management menu', 'moksa-coupons-for-woocommerce' );
 	}
 
 	public function category(): string {
@@ -29,7 +29,7 @@ final class Module extends AbstractModule {
 	}
 
 	public function tagline(): string {
-		return __( 'Move coupon management into its own top-level menu (bringing together all coupons / add / reports / settings)', 'moksafocou' );
+		return __( 'Move coupon management into its own top-level menu (bringing together all coupons / add / reports / settings)', 'moksa-coupons-for-woocommerce' );
 	}
 
 	public function boot(): void {

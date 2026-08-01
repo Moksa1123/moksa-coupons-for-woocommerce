@@ -21,7 +21,7 @@ final class Module extends AbstractModule {
 	}
 
 	public function label(): string {
-		return __( 'Moksa Coupon AI — create / look up coupons in one sentence', 'moksafocou' );
+		return __( 'Moksa Coupon AI — create / look up coupons in one sentence', 'moksa-coupons-for-woocommerce' );
 	}
 
 	public function category(): string {
@@ -33,7 +33,7 @@ final class Module extends AbstractModule {
 	}
 
 	public function tagline(): string {
-		return __( 'Requires WordPress 7.0 and an AI key set under Settings → Connectors', 'moksafocou' );
+		return __( 'Requires WordPress 7.0 and an AI key set under Settings → Connectors', 'moksa-coupons-for-woocommerce' );
 	}
 
 	public function boot(): void {
@@ -117,7 +117,7 @@ final class Module extends AbstractModule {
 	}
 
 	public static function add_platform_prompt( string $prompt ): string {
-		return $prompt . ' ' . __( 'Besides coupons, you can also look up a customer\'s points balance, membership tier and benefits, and group-buy / KOL commissions (use the available tools to query; these are read-only). Call the corresponding tool directly when needed.', 'moksafocou' );
+		return $prompt . ' ' . __( 'Besides coupons, you can also look up a customer\'s points balance, membership tier and benefits, and group-buy / KOL commissions (use the available tools to query; these are read-only). Call the corresponding tool directly when needed.', 'moksa-coupons-for-woocommerce' );
 	}
 
 	/**
@@ -142,11 +142,11 @@ final class Module extends AbstractModule {
 
 		$greeting = (string) get_option(
 			'moksafocou_ai_greeting',
-			__( 'Hi, I\'m the Moksa assistant — I can help with coupons, points, membership tiers, and group-buy commissions. Try: "Create a 20% off coupon SUMMER20 that expires on 8/31" or "List active coupons".', 'moksafocou' )
+			__( 'Hi, I\'m the Moksa assistant — I can help with coupons, points, membership tiers, and group-buy commissions. Try: "Create a 20% off coupon SUMMER20 that expires on 8/31" or "List active coupons".', 'moksa-coupons-for-woocommerce' )
 		);
 		$ex_raw   = (string) get_option(
 			'moksafocou_ai_examples',
-			__( 'Create a 10% off coupon VIP10, list active coupons, mass-generate 50 SALE- coupons for 100 off', 'moksafocou' )
+			__( 'Create a 10% off coupon VIP10, list active coupons, mass-generate 50 SALE- coupons for 100 off', 'moksa-coupons-for-woocommerce' )
 		);
 		$examples = array_values( array_filter( array_map( 'trim', explode( ',', $ex_raw ) ) ) );
 
@@ -157,19 +157,19 @@ final class Module extends AbstractModule {
 				'name'        => Config::NAME,
 				'userId'      => get_current_user_id(),
 				'greeting'    => $greeting,
-				'placeholder' => __( 'For example: create a 15% off coupon AUTUMN15', 'moksafocou' ),
+				'placeholder' => __( 'For example: create a 15% off coupon AUTUMN15', 'moksa-coupons-for-woocommerce' ),
 				'examples'    => $examples,
-				'sendLabel'   => __( 'Send', 'moksafocou' ),
-				'closeLabel'  => __( 'Close', 'moksafocou' ),
-				'diffLabel'   => __( 'View field contents', 'moksafocou' ),
-				'thinking'    => __( 'Processing', 'moksafocou' ),
-				'clearLabel'  => __( 'Clear', 'moksafocou' ),
-				'errorPrefix' => __( 'An error occurred', 'moksafocou' ),
-				'emptyReply'  => __( '(No reply)', 'moksafocou' ),
-				'confirmYes'  => __( 'Confirm', 'moksafocou' ),
-				'confirmNo'   => __( 'Cancel', 'moksafocou' ),
-				'cancelled'   => __( 'Cancelled.', 'moksafocou' ),
-				'running'     => __( 'Running…', 'moksafocou' ),
+				'sendLabel'   => __( 'Send', 'moksa-coupons-for-woocommerce' ),
+				'closeLabel'  => __( 'Close', 'moksa-coupons-for-woocommerce' ),
+				'diffLabel'   => __( 'View field contents', 'moksa-coupons-for-woocommerce' ),
+				'thinking'    => __( 'Processing', 'moksa-coupons-for-woocommerce' ),
+				'clearLabel'  => __( 'Clear', 'moksa-coupons-for-woocommerce' ),
+				'errorPrefix' => __( 'An error occurred', 'moksa-coupons-for-woocommerce' ),
+				'emptyReply'  => __( '(No reply)', 'moksa-coupons-for-woocommerce' ),
+				'confirmYes'  => __( 'Confirm', 'moksa-coupons-for-woocommerce' ),
+				'confirmNo'   => __( 'Cancel', 'moksa-coupons-for-woocommerce' ),
+				'cancelled'   => __( 'Cancelled.', 'moksa-coupons-for-woocommerce' ),
+				'running'     => __( 'Running…', 'moksa-coupons-for-woocommerce' ),
 			]
 		);
 	}

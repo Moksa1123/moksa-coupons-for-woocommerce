@@ -43,21 +43,21 @@ final class CouponCard {
 		}
 		$html .= '<div class="moksafocou-coupon__code"><code>' . esc_html( $code ) . '</code>';
 		$html .= '<button type="button" class="moksafocou-coupon__copy" data-code="' . esc_attr( $code ) . '"'
-			. ' data-copied="' . esc_attr__( 'Copied', 'moksafocou' ) . '" aria-label="'
+			. ' data-copied="' . esc_attr__( 'Copied', 'moksa-coupons-for-woocommerce' ) . '" aria-label="'
 			. esc_attr(
 				sprintf(
 					/* translators: %s: coupon code. */
-					__( 'Copy code %s', 'moksafocou' ),
+					__( 'Copy code %s', 'moksa-coupons-for-woocommerce' ),
 					$code
 				)
 			)
-			. '">' . esc_html__( 'Copy', 'moksafocou' ) . '</button></div>';
+			. '">' . esc_html__( 'Copy', 'moksa-coupons-for-woocommerce' ) . '</button></div>';
 
 		if ( $expires ) {
 			$html .= '<div class="moksafocou-coupon__expires">' . esc_html(
 				sprintf(
 					/* translators: %s: expiry date. */
-					__( 'Valid until %s', 'moksafocou' ),
+					__( 'Valid until %s', 'moksa-coupons-for-woocommerce' ),
 					$expires->date_i18n( get_option( 'date_format' ) )
 				)
 			) . '</div>';
@@ -67,7 +67,7 @@ final class CouponCard {
 
 		$apply = self::apply_url( $coupon );
 		if ( '' !== $apply ) {
-			$html .= '<a class="moksafocou-coupon__apply" href="' . esc_url( $apply ) . '">' . esc_html__( 'Apply now', 'moksafocou' ) . '</a>';
+			$html .= '<a class="moksafocou-coupon__apply" href="' . esc_url( $apply ) . '">' . esc_html__( 'Apply now', 'moksa-coupons-for-woocommerce' ) . '</a>';
 		}
 
 		$html .= '</div>';
@@ -76,35 +76,35 @@ final class CouponCard {
 
 	private static function badge( string $type_key ): string {
 		$slug = DiscountTypeRegistry::type_key( $type_key );
-		return 'other' === $slug ? __( 'Discount', 'moksafocou' ) : DiscountTypeRegistry::badge( $slug );
+		return 'other' === $slug ? __( 'Discount', 'moksa-coupons-for-woocommerce' ) : DiscountTypeRegistry::badge( $slug );
 	}
 
 	private static function discount_text( \WC_Coupon $coupon ): string {
 		// Tiered / cashback coupons carry their value in feature meta, not the base amount, so the
 		// raw amount (often 0) would read "0% OFF". Describe the mechanic instead.
 		if ( 'yes' === (string) $coupon->get_meta( '_moksafocou_tiers_enabled', true ) ) {
-			return __( 'Tiered discount', 'moksafocou' );
+			return __( 'Tiered discount', 'moksa-coupons-for-woocommerce' );
 		}
 		$type = (string) $coupon->get_discount_type();
 		if ( 'moksafocou_cashback' === $type ) {
-			return __( 'Cashback', 'moksafocou' );
+			return __( 'Cashback', 'moksa-coupons-for-woocommerce' );
 		}
 		$amount = (float) $coupon->get_amount();
 		switch ( $type ) {
 			case 'percent':
 				/* translators: %s: percent number. */
-				return sprintf( __( '%s%% OFF', 'moksafocou' ), Catalog::percent_display( $amount ) );
+				return sprintf( __( '%s%% OFF', 'moksa-coupons-for-woocommerce' ), Catalog::percent_display( $amount ) );
 			case 'fixed_cart':
 			case 'fixed_product':
 				return wp_strip_all_tags( wc_price( $amount ) );
 			case 'moksafocou_bogo':
-				return __( 'Buy and get a gift', 'moksafocou' );
+				return __( 'Buy and get a gift', 'moksa-coupons-for-woocommerce' );
 			case 'moksafocou_nth_item':
-				return __( 'Nth-item discount', 'moksafocou' );
+				return __( 'Nth-item discount', 'moksa-coupons-for-woocommerce' );
 			case 'moksafocou_mixmatch':
-				return __( 'Mix & Match', 'moksafocou' );
+				return __( 'Mix & Match', 'moksa-coupons-for-woocommerce' );
 			default:
-				return $coupon->get_free_shipping() ? __( 'Free shipping', 'moksafocou' ) : __( 'Discount', 'moksafocou' );
+				return $coupon->get_free_shipping() ? __( 'Free shipping', 'moksa-coupons-for-woocommerce' ) : __( 'Discount', 'moksa-coupons-for-woocommerce' );
 		}
 	}
 
@@ -132,11 +132,11 @@ final class CouponCard {
 			return '';
 		}
 		return '<div class="moksafocou-coupon__countdown" data-deadline="' . esc_attr( (string) ( $deadline * 1000 ) ) . '"'
-			. ' data-ended="' . esc_attr__( 'Ended', 'moksafocou' ) . '">'
+			. ' data-ended="' . esc_attr__( 'Ended', 'moksa-coupons-for-woocommerce' ) . '">'
 			. esc_html(
 				sprintf(
 					/* translators: %s: deadline date-time. */
-					__( 'Countdown to %s', 'moksafocou' ),
+					__( 'Countdown to %s', 'moksa-coupons-for-woocommerce' ),
 					wp_date( get_option( 'date_format' ) . ' H:i', $deadline )
 				)
 			) . '</div>';

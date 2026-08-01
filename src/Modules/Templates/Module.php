@@ -21,7 +21,7 @@ final class Module extends AbstractModule {
 	}
 
 	public function label(): string {
-		return __( 'Coupon template', 'moksafocou' );
+		return __( 'Coupon template', 'moksa-coupons-for-woocommerce' );
 	}
 
 	public function category(): string {
@@ -29,7 +29,7 @@ final class Module extends AbstractModule {
 	}
 
 	public function tagline(): string {
-		return __( 'Ready-made coupon templates, create a draft coupon in one click', 'moksafocou' );
+		return __( 'Ready-made coupon templates, create a draft coupon in one click', 'moksa-coupons-for-woocommerce' );
 	}
 
 	public function boot(): void {

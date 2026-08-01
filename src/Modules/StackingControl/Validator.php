@@ -50,7 +50,7 @@ final class Validator {
 			? $cfg['msg']
 			: sprintf(
 				/* translators: %s: the conflicting coupon code. */
-				__( 'This coupon cannot be used together with "%s".', 'moksafocou' ),
+				__( 'This coupon cannot be used together with "%s".', 'moksa-coupons-for-woocommerce' ),
 				$conflict
 			);
 		self::$last_error[ $id ] = $msg;

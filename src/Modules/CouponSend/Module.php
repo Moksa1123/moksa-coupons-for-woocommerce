@@ -24,7 +24,7 @@ final class Module extends AbstractModule {
 	}
 
 	public function label(): string {
-		return __( 'Coupon delivery', 'moksafocou' );
+		return __( 'Coupon delivery', 'moksa-coupons-for-woocommerce' );
 	}
 
 	public function category(): string {
@@ -32,7 +32,7 @@ final class Module extends AbstractModule {
 	}
 
 	public function tagline(): string {
-		return __( 'Send a coupon to a customer in natural language, optionally locked to that Email only', 'moksafocou' );
+		return __( 'Send a coupon to a customer in natural language, optionally locked to that Email only', 'moksa-coupons-for-woocommerce' );
 	}
 
 	public function boot(): void {
@@ -50,27 +50,27 @@ final class Module extends AbstractModule {
 		wp_register_ability(
 			self::ABILITY,
 			array(
-				'label'               => __( 'Send coupon', 'moksafocou' ),
-				'description'         => __( 'Send an existing coupon to a specified Email (optionally locked to that Email only). Destructive — the call only "proposes"; it is sent only after the user confirms.', 'moksafocou' ),
-				'category'            => 'moksafocou',
+				'label'               => __( 'Send coupon', 'moksa-coupons-for-woocommerce' ),
+				'description'         => __( 'Send an existing coupon to a specified Email (optionally locked to that Email only). Destructive — the call only "proposes"; it is sent only after the user confirms.', 'moksa-coupons-for-woocommerce' ),
+				'category'            => 'moksa-coupons-for-woocommerce',
 				'input_schema'        => array(
 					'type'                 => 'object',
 					'properties'           => array(
 						'code_or_id'        => array(
 							'type'        => 'string',
-							'description' => __( 'Coupon code or ID to send', 'moksafocou' ),
+							'description' => __( 'Coupon code or ID to send', 'moksa-coupons-for-woocommerce' ),
 						),
 						'email'             => array(
 							'type'        => 'string',
-							'description' => __( 'Recipient Email', 'moksafocou' ),
+							'description' => __( 'Recipient Email', 'moksa-coupons-for-woocommerce' ),
 						),
 						'note'              => array(
 							'type'        => 'string',
-							'description' => __( 'Message to include for the customer (optional)', 'moksafocou' ),
+							'description' => __( 'Message to include for the customer (optional)', 'moksa-coupons-for-woocommerce' ),
 						),
 						'restrict_to_email' => array(
 							'type'        => 'boolean',
-							'description' => __( 'Whether to lock this coupon to that Email only (writes WooCommerce\'s Email restriction)', 'moksafocou' ),
+							'description' => __( 'Whether to lock this coupon to that Email only (writes WooCommerce\'s Email restriction)', 'moksa-coupons-for-woocommerce' ),
 						),
 					),
 					'required'             => array( 'code_or_id', 'email' ),

@@ -23,7 +23,7 @@ final class Module extends AbstractModule {
 	}
 
 	public function label(): string {
-		return __( 'Coupon conditions (schedule / role / cart)', 'moksafocou' );
+		return __( 'Coupon conditions (schedule / role / cart)', 'moksa-coupons-for-woocommerce' );
 	}
 
 	public function category(): string {
@@ -31,7 +31,7 @@ final class Module extends AbstractModule {
 	}
 
 	public function tagline(): string {
-		return __( 'Schedule start and end, role restrictions, minimum subtotal / quantity, customer history, products / categories, days / time slots', 'moksafocou' );
+		return __( 'Schedule start and end, role restrictions, minimum subtotal / quantity, customer history, products / categories, days / time slots', 'moksa-coupons-for-woocommerce' );
 	}
 
 	public function boot(): void {

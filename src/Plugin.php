@@ -77,7 +77,7 @@ final class Plugin {
 		$settings_link = sprintf(
 			'<a href="%s">%s</a>',
 			esc_url( Settings\SettingsScreen::url() ),
-			esc_html__( 'Settings', 'moksafocou' )
+			esc_html__( 'Settings', 'moksa-coupons-for-woocommerce' )
 		);
 		array_unshift( $links, $settings_link );
 		return $links;

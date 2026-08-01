@@ -132,10 +132,10 @@ final class Validator {
 		$end     = SiteTime::to_timestamp( (string) $coupon->get_meta( Keys::SCHEDULE_END, true ) );
 		$verdict = self::schedule_verdict( $start, $end, time() );
 		if ( 'start' === $verdict ) {
-			return self::msg( $coupon, Keys::SCHEDULE_MSG_START, __( 'This coupon has not started yet.', 'moksafocou' ) );
+			return self::msg( $coupon, Keys::SCHEDULE_MSG_START, __( 'This coupon has not started yet.', 'moksa-coupons-for-woocommerce' ) );
 		}
 		if ( 'expire' === $verdict ) {
-			return self::msg( $coupon, Keys::SCHEDULE_MSG_END, __( 'This coupon is past its usable time.', 'moksafocou' ) );
+			return self::msg( $coupon, Keys::SCHEDULE_MSG_END, __( 'This coupon is past its usable time.', 'moksa-coupons-for-woocommerce' ) );
 		}
 		return null;
 	}
@@ -167,7 +167,7 @@ final class Validator {
 		$user_roles = ( $user && $user->ID ) ? (array) $user->roles : array( 'guest' );
 
 		if ( self::role_is_blocked( $type, $roles, $user_roles ) ) {
-			return self::msg( $coupon, Keys::ROLE_MSG, __( 'Your current account does not have permission to use this coupon.', 'moksafocou' ) );
+			return self::msg( $coupon, Keys::ROLE_MSG, __( 'Your current account does not have permission to use this coupon.', 'moksa-coupons-for-woocommerce' ) );
 		}
 		return null;
 	}
@@ -210,7 +210,7 @@ final class Validator {
 					Keys::CART_MSG,
 					sprintf(
 						/* translators: %s: formatted minimum subtotal. */
-						__( 'The cart subtotal must reach %s to use this coupon.', 'moksafocou' ),
+						__( 'The cart subtotal must reach %s to use this coupon.', 'moksa-coupons-for-woocommerce' ),
 						wp_strip_all_tags( wc_price( (float) $min_subtotal ) )
 					)
 				);
@@ -230,7 +230,7 @@ final class Validator {
 					Keys::CART_MSG,
 					sprintf(
 						/* translators: %d: minimum item count. */
-						__( 'The cart must have at least %d item(s) to use this coupon.', 'moksafocou' ),
+						__( 'The cart must have at least %d item(s) to use this coupon.', 'moksa-coupons-for-woocommerce' ),
 						$min_qty
 					)
 				);
@@ -365,12 +365,12 @@ final class Validator {
 
 		$verdict = self::product_verdict( $req_products, $p_mode, $req_categories, $c_mode, $cart_products, $cart_categories );
 		if ( null !== $verdict ) {
-			return self::msg( $coupon, Keys::PRODUCT_MSG, __( 'The cart does not meet this coupon\'s product conditions.', 'moksafocou' ) );
+			return self::msg( $coupon, Keys::PRODUCT_MSG, __( 'The cart does not meet this coupon\'s product conditions.', 'moksa-coupons-for-woocommerce' ) );
 		}
 
 		$excluded = self::exclude_verdict( $excl_products, $excl_categories, $cart_products, $cart_categories );
 		if ( null !== $excluded ) {
-			return self::msg( $coupon, Keys::EXCL_MSG, __( 'The cart contains products that are not eligible for this coupon.', 'moksafocou' ) );
+			return self::msg( $coupon, Keys::EXCL_MSG, __( 'The cart contains products that are not eligible for this coupon.', 'moksa-coupons-for-woocommerce' ) );
 		}
 		return null;
 	}
@@ -472,7 +472,7 @@ final class Validator {
 		}
 		$mode = 'disallow' === $coupon->get_meta( Keys::SHIPREGION_MODE, true ) ? 'disallow' : 'allow';
 		if ( self::region_is_blocked( $mode, $countries, $dest ) ) {
-			return self::msg( $coupon, Keys::SHIPREGION_MSG, __( 'This coupon does not apply to your shipping region.', 'moksafocou' ) );
+			return self::msg( $coupon, Keys::SHIPREGION_MSG, __( 'This coupon does not apply to your shipping region.', 'moksa-coupons-for-woocommerce' ) );
 		}
 		return null;
 	}
@@ -557,7 +557,7 @@ final class Validator {
 		}
 		$mode = 'disallow' === $coupon->get_meta( Keys::PAYMENT_MODE, true ) ? 'disallow' : 'allow';
 		if ( self::payment_is_blocked( $mode, $methods, $chosen ) ) {
-			return self::msg( $coupon, Keys::PAYMENT_MSG, __( 'This coupon does not apply to your selected payment method.', 'moksafocou' ) );
+			return self::msg( $coupon, Keys::PAYMENT_MSG, __( 'This coupon does not apply to your selected payment method.', 'moksa-coupons-for-woocommerce' ) );
 		}
 		return null;
 	}
@@ -629,7 +629,7 @@ final class Validator {
 		if ( null === $verdict ) {
 			return null;
 		}
-		return self::msg( $coupon, Keys::DAYTIME_MSG, __( 'This coupon is currently outside its usable time slot.', 'moksafocou' ) );
+		return self::msg( $coupon, Keys::DAYTIME_MSG, __( 'This coupon is currently outside its usable time slot.', 'moksa-coupons-for-woocommerce' ) );
 	}
 
 	/**
@@ -697,12 +697,12 @@ final class Validator {
 	private static function customer_default_message( string $verdict ): string {
 		switch ( $verdict ) {
 			case 'first_only':
-				return __( 'This coupon is only for first-time customers.', 'moksafocou' );
+				return __( 'This coupon is only for first-time customers.', 'moksa-coupons-for-woocommerce' );
 			case 'min_orders':
 			case 'max_orders':
-				return __( 'Your order history does not qualify you for this coupon.', 'moksafocou' );
+				return __( 'Your order history does not qualify you for this coupon.', 'moksa-coupons-for-woocommerce' );
 			default:
-				return __( 'Your accumulated spend does not qualify you for this coupon.', 'moksafocou' );
+				return __( 'Your accumulated spend does not qualify you for this coupon.', 'moksa-coupons-for-woocommerce' );
 		}
 	}
 

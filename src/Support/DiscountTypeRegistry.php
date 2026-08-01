@@ -29,39 +29,39 @@ final class DiscountTypeRegistry {
 		return array(
 			array(
 				'slug'  => 'percent',
-				'label' => __( 'Percentage discount', 'moksafocou' ),
+				'label' => __( 'Percentage discount', 'moksa-coupons-for-woocommerce' ),
 			),
 			array(
 				'slug'  => 'fixed_cart',
-				'label' => __( 'Fixed cart discount', 'moksafocou' ),
-				'badge' => __( 'Cart discount', 'moksafocou' ),
+				'label' => __( 'Fixed cart discount', 'moksa-coupons-for-woocommerce' ),
+				'badge' => __( 'Cart discount', 'moksa-coupons-for-woocommerce' ),
 			),
 			array(
 				'slug'  => 'fixed_product',
-				'label' => __( 'Fixed product discount', 'moksafocou' ),
-				'badge' => __( 'Product discount', 'moksafocou' ),
+				'label' => __( 'Fixed product discount', 'moksa-coupons-for-woocommerce' ),
+				'badge' => __( 'Product discount', 'moksa-coupons-for-woocommerce' ),
 			),
 			array(
 				'slug'    => 'moksafocou_bogo',
-				'label'   => __( 'Buy X Get Y', 'moksafocou' ),
-				'admin'   => __( 'Buy X Get Y (BOGO)', 'moksafocou' ),
+				'label'   => __( 'Buy X Get Y', 'moksa-coupons-for-woocommerce' ),
+				'admin'   => __( 'Buy X Get Y (BOGO)', 'moksa-coupons-for-woocommerce' ),
 				'special' => true,
 			),
 			array(
 				'slug'    => 'moksafocou_nth_item',
-				'label'   => __( 'Nth-item discount', 'moksafocou' ),
+				'label'   => __( 'Nth-item discount', 'moksa-coupons-for-woocommerce' ),
 				'special' => true,
 			),
 			array(
 				'slug'    => 'moksafocou_mixmatch',
-				'label'   => __( 'Mix & Match', 'moksafocou' ),
-				'admin'   => __( 'Mix & Match', 'moksafocou' ),
+				'label'   => __( 'Mix & Match', 'moksa-coupons-for-woocommerce' ),
+				'admin'   => __( 'Mix & Match', 'moksa-coupons-for-woocommerce' ),
 				'special' => true,
 			),
 			array(
 				'slug'  => 'moksafocou_cashback',
-				'label' => __( 'Cashback', 'moksafocou' ),
-				'admin' => __( 'Cashback / points (Cashback)', 'moksafocou' ),
+				'label' => __( 'Cashback', 'moksa-coupons-for-woocommerce' ),
+				'admin' => __( 'Cashback / points (Cashback)', 'moksa-coupons-for-woocommerce' ),
 			),
 		);
 	}

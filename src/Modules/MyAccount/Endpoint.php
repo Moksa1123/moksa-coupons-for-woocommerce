@@ -35,12 +35,12 @@ final class Endpoint {
 		$out = array();
 		foreach ( $items as $key => $label ) {
 			if ( 'customer-logout' === $key && ! isset( $out[ self::SLUG ] ) ) {
-				$out[ self::SLUG ] = __( 'My coupons', 'moksafocou' );
+				$out[ self::SLUG ] = __( 'My coupons', 'moksa-coupons-for-woocommerce' );
 			}
 			$out[ $key ] = $label;
 		}
 		if ( ! isset( $out[ self::SLUG ] ) ) {
-			$out[ self::SLUG ] = __( 'My coupons', 'moksafocou' );
+			$out[ self::SLUG ] = __( 'My coupons', 'moksa-coupons-for-woocommerce' );
 		}
 		return $out;
 	}
@@ -49,7 +49,7 @@ final class Endpoint {
 	public static function render(): void {
 		$user = wp_get_current_user();
 		if ( ! $user || 0 === (int) $user->ID ) {
-			echo '<p>' . esc_html__( 'Please log in to view your coupons.', 'moksafocou' ) . '</p>';
+			echo '<p>' . esc_html__( 'Please log in to view your coupons.', 'moksa-coupons-for-woocommerce' ) . '</p>';
 			return;
 		}
 
@@ -71,11 +71,11 @@ final class Endpoint {
 		}
 
 		if ( '' === $cards ) {
-			echo '<p class="moksafocou-myaccount-empty">' . esc_html__( 'You currently have no exclusive coupons.', 'moksafocou' ) . '</p>';
+			echo '<p class="moksafocou-myaccount-empty">' . esc_html__( 'You currently have no exclusive coupons.', 'moksa-coupons-for-woocommerce' ) . '</p>';
 			return;
 		}
 
-		echo '<p class="moksafocou-myaccount-intro">' . esc_html__( 'Here are the coupons exclusive to you; you can copy the code or apply it in one click:', 'moksafocou' ) . '</p>';
+		echo '<p class="moksafocou-myaccount-intro">' . esc_html__( 'Here are the coupons exclusive to you; you can copy the code or apply it in one click:', 'moksa-coupons-for-woocommerce' ) . '</p>';
 		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- CouponCard::render() escapes every dynamic value; the surrounding markup is static.
 		echo '<div class="moksafocou-coupons moksafocou-myaccount-coupons">' . $cards . '</div>';
 	}

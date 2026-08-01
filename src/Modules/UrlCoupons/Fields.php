@@ -33,7 +33,7 @@ final class Fields {
 		return array(
 			array(
 				'id'     => 'moksafocou_url',
-				'title'  => __( 'Coupon URL', 'moksafocou' ),
+				'title'  => __( 'Coupon URL', 'moksa-coupons-for-woocommerce' ),
 				'render' => function (): void {
 					$this->render_url_panel();
 				},
@@ -52,48 +52,48 @@ final class Fields {
 			array(
 				'id'          => Keys::URL_ENABLED,
 				'value'       => get_post_meta( $id, Keys::URL_ENABLED, true ),
-				'label'       => __( 'Enable coupon URL', 'moksafocou' ),
-				'description' => __( 'Generate a dedicated URL / QR code that customers can click or scan to automatically apply this coupon to the cart.', 'moksafocou' ),
+				'label'       => __( 'Enable coupon URL', 'moksa-coupons-for-woocommerce' ),
+				'description' => __( 'Generate a dedicated URL / QR code that customers can click or scan to automatically apply this coupon to the cart.', 'moksa-coupons-for-woocommerce' ),
 			)
 		);
 		woocommerce_wp_text_input(
 			array(
 				'id'          => Keys::URL_SLUG,
 				'value'       => get_post_meta( $id, Keys::URL_SLUG, true ),
-				'label'       => __( 'Custom URL slug', 'moksafocou' ),
+				'label'       => __( 'Custom URL slug', 'moksa-coupons-for-woocommerce' ),
 				'desc_tip'    => true,
-				'description' => __( 'Optional. Leave blank to use the coupon code. Must be unique per coupon.', 'moksafocou' ),
+				'description' => __( 'Optional. Leave blank to use the coupon code. Must be unique per coupon.', 'moksa-coupons-for-woocommerce' ),
 			)
 		);
 		woocommerce_wp_text_input(
 			array(
 				'id'          => Keys::URL_REDIRECT,
 				'value'       => get_post_meta( $id, Keys::URL_REDIRECT, true ),
-				'label'       => __( 'Redirect URL after applying', 'moksafocou' ),
+				'label'       => __( 'Redirect URL after applying', 'moksa-coupons-for-woocommerce' ),
 				'desc_tip'    => true,
-				'description' => __( 'Optional. You can use the variables {coupon_code} {coupon_applied} {coupon_error}. Leave blank to redirect to the cart.', 'moksafocou' ),
+				'description' => __( 'Optional. You can use the variables {coupon_code} {coupon_applied} {coupon_error}. Leave blank to redirect to the cart.', 'moksa-coupons-for-woocommerce' ),
 			)
 		);
 		woocommerce_wp_text_input(
 			array(
 				'id'    => Keys::URL_SUCCESS_MSG,
 				'value' => get_post_meta( $id, Keys::URL_SUCCESS_MSG, true ),
-				'label' => __( 'Success message', 'moksafocou' ),
+				'label' => __( 'Success message', 'moksa-coupons-for-woocommerce' ),
 			)
 		);
 		woocommerce_wp_checkbox(
 			array(
 				'id'          => Keys::URL_REDIRECT_ORIGIN,
 				'value'       => get_post_meta( $id, Keys::URL_REDIRECT_ORIGIN, true ),
-				'label'       => __( 'Return to the source page after applying', 'moksafocou' ),
-				'description' => __( 'When checked, the customer is returned to the page they were originally on after the coupon is applied (ideal for buttons placed in posts / banners).', 'moksafocou' ),
+				'label'       => __( 'Return to the source page after applying', 'moksa-coupons-for-woocommerce' ),
+				'description' => __( 'When checked, the customer is returned to the page they were originally on after the coupon is applied (ideal for buttons placed in posts / banners).', 'moksa-coupons-for-woocommerce' ),
 			)
 		);
 
 		// QR + share-link preview mount (filled by qr-admin.js for saved, URL-enabled coupons).
 		echo '<div class="options_group">';
 		echo '<div id="moksafocou-url-share" data-coupon="' . esc_attr( (string) $id ) . '" style="padding:9px 12px;">';
-		echo '<p class="description">' . esc_html__( 'After saving, the share link and QR code will appear here.', 'moksafocou' ) . '</p>';
+		echo '<p class="description">' . esc_html__( 'After saving, the share link and QR code will appear here.', 'moksa-coupons-for-woocommerce' ) . '</p>';
 		echo '</div></div>';
 	}
 

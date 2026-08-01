@@ -17,7 +17,7 @@ defined( 'ABSPATH' ) || exit;
  */
 final class ShareAbility {
 
-	public const CATEGORY = 'moksafocou';
+	public const CATEGORY = 'moksa-coupons-for-woocommerce';
 	public const CAP      = 'manage_woocommerce';
 
 	public static function register(): void {
@@ -27,15 +27,15 @@ final class ShareAbility {
 		wp_register_ability(
 			'moksafocou/get-coupon-share',
 			array(
-				'label'               => __( 'Get coupon share link / QR', 'moksafocou' ),
-				'description'         => __( 'Get the "auto-apply" share URL and QR code link for a coupon (customers apply the coupon automatically by clicking or scanning). If the coupon has not enabled the URL feature, it returns enabled=false with a hint. Read-only.', 'moksafocou' ),
+				'label'               => __( 'Get coupon share link / QR', 'moksa-coupons-for-woocommerce' ),
+				'description'         => __( 'Get the "auto-apply" share URL and QR code link for a coupon (customers apply the coupon automatically by clicking or scanning). If the coupon has not enabled the URL feature, it returns enabled=false with a hint. Read-only.', 'moksa-coupons-for-woocommerce' ),
 				'category'            => self::CATEGORY,
 				'input_schema'        => array(
 					'type'                 => 'object',
 					'properties'           => array(
 						'code_or_id' => array(
 							'type'        => 'string',
-							'description' => __( 'Coupon code or ID', 'moksafocou' ),
+							'description' => __( 'Coupon code or ID', 'moksa-coupons-for-woocommerce' ),
 						),
 					),
 					'required'             => array( 'code_or_id' ),
@@ -83,7 +83,7 @@ final class ShareAbility {
 				'enabled'   => false,
 				'share_url' => '',
 				'qr_url'    => '',
-				'reason'    => __( 'You do not have permission to do this.', 'moksafocou' ),
+				'reason'    => __( 'You do not have permission to do this.', 'moksa-coupons-for-woocommerce' ),
 			);
 		}
 		$ref = is_array( $input ) && isset( $input['code_or_id'] ) ? (string) $input['code_or_id'] : '';
@@ -93,7 +93,7 @@ final class ShareAbility {
 				'enabled'   => false,
 				'share_url' => '',
 				'qr_url'    => '',
-				'reason'    => __( 'Coupon not found.', 'moksafocou' ),
+				'reason'    => __( 'Coupon not found.', 'moksa-coupons-for-woocommerce' ),
 			);
 		}
 		$coupon = new \WC_Coupon( $id );

@@ -14,7 +14,7 @@
  * Author URI:         https://moksaweb.com/
  * License:            GPLv3 or later
  * License URI:        https://www.gnu.org/licenses/gpl-3.0.html
- * Text Domain:        moksafocou
+ * Text Domain:        moksa-coupons-for-woocommerce
  * Domain Path:        /languages
  *
  * @package Moksafocou
@@ -29,7 +29,7 @@ const MOKSAFOCOU_VERSION    = '1.0.0';
 const MOKSAFOCOU_MIN_PHP    = '8.2';
 const MOKSAFOCOU_MIN_WP     = '7.0';
 const MOKSAFOCOU_MIN_WC     = '10.7';
-const MOKSAFOCOU_TEXTDOMAIN = 'moksafocou';
+const MOKSAFOCOU_TEXTDOMAIN = 'moksa-coupons-for-woocommerce';
 
 define( 'MOKSAFOCOU_PLUGIN_FILE', __FILE__ );
 define( 'MOKSAFOCOU_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
@@ -67,7 +67,7 @@ add_filter(
 	static function ( array $sections ): array {
 		$sections[] = array(
 			'id'        => 'coupon',
-			'label'     => __( 'Coupon', 'moksafocou' ),
+			'label'     => __( 'Coupon', 'moksa-coupons-for-woocommerce' ),
 			'icon'      => 'tickets-alt',
 			'namespace' => 'moksafocou/',
 		);

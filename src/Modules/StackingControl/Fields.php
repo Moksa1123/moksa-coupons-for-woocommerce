@@ -32,7 +32,7 @@ final class Fields {
 		return array(
 			array(
 				'id'     => 'moksafocou_stacking',
-				'title'  => __( 'Stacking control', 'moksafocou' ),
+				'title'  => __( 'Stacking control', 'moksa-coupons-for-woocommerce' ),
 				'render' => function (): void {
 					$this->render_stacking_panel();
 				},
@@ -51,33 +51,33 @@ final class Fields {
 			array(
 				'id'          => Keys::STACK_EXCLUDE,
 				'value'       => get_post_meta( $id, Keys::STACK_EXCLUDE, true ),
-				'label'       => __( 'Cannot be combined with other coupons', 'moksafocou' ),
-				'description' => __( 'When checked, this coupon cannot be applied if the cart already has other coupons (and vice versa); the "Allow combining" list below is the exception.', 'moksafocou' ),
+				'label'       => __( 'Cannot be combined with other coupons', 'moksa-coupons-for-woocommerce' ),
+				'description' => __( 'When checked, this coupon cannot be applied if the cart already has other coupons (and vice versa); the "Allow combining" list below is the exception.', 'moksa-coupons-for-woocommerce' ),
 			)
 		);
 		woocommerce_wp_textarea_input(
 			array(
 				'id'          => Keys::STACK_ALLOWED,
 				'value'       => get_post_meta( $id, Keys::STACK_ALLOWED, true ),
-				'label'       => __( 'Allowed combinable coupon codes', 'moksafocou' ),
+				'label'       => __( 'Allowed combinable coupon codes', 'moksa-coupons-for-woocommerce' ),
 				'desc_tip'    => true,
-				'description' => __( 'Only effective when "Cannot be combined" above is checked: coupon codes in the list can still be used together with this coupon. Separate with commas or line breaks.', 'moksafocou' ),
+				'description' => __( 'Only effective when "Cannot be combined" above is checked: coupon codes in the list can still be used together with this coupon. Separate with commas or line breaks.', 'moksa-coupons-for-woocommerce' ),
 			)
 		);
 		woocommerce_wp_textarea_input(
 			array(
 				'id'          => Keys::STACK_DISALLOWED,
 				'value'       => get_post_meta( $id, Keys::STACK_DISALLOWED, true ),
-				'label'       => __( 'Disallowed combinable coupon codes', 'moksafocou' ),
+				'label'       => __( 'Disallowed combinable coupon codes', 'moksa-coupons-for-woocommerce' ),
 				'desc_tip'    => true,
-				'description' => __( 'These coupon codes cannot be used together with this coupon (regardless of whether "Cannot be combined" is checked). Separate with commas or line breaks.', 'moksafocou' ),
+				'description' => __( 'These coupon codes cannot be used together with this coupon (regardless of whether "Cannot be combined" is checked). Separate with commas or line breaks.', 'moksa-coupons-for-woocommerce' ),
 			)
 		);
 		woocommerce_wp_text_input(
 			array(
 				'id'    => Keys::STACK_MSG,
 				'value' => get_post_meta( $id, Keys::STACK_MSG, true ),
-				'label' => __( 'Message shown on conflict', 'moksafocou' ),
+				'label' => __( 'Message shown on conflict', 'moksa-coupons-for-woocommerce' ),
 			)
 		);
 	}

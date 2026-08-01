@@ -20,7 +20,7 @@ final class Module extends AbstractModule {
 	}
 
 	public function label(): string {
-		return __( 'Coupon settings icon', 'moksafocou' );
+		return __( 'Coupon settings icon', 'moksa-coupons-for-woocommerce' );
 	}
 
 	public function category(): string {
@@ -28,7 +28,7 @@ final class Module extends AbstractModule {
 	}
 
 	public function tagline(): string {
-		return __( 'Add a consistently styled monochrome icon to each coupon settings tab', 'moksafocou' );
+		return __( 'Add a consistently styled monochrome icon to each coupon settings tab', 'moksa-coupons-for-woocommerce' );
 	}
 
 	public function boot(): void {

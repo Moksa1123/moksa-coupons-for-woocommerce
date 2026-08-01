@@ -63,7 +63,7 @@ final class SpecialPriceTypes {
 			$other = self::safe_coupon( (string) $applied_code );
 			if ( $other instanceof \WC_Coupon && self::is_special( $other ) ) {
 				// phpcs:ignore WordPress.Security.EscapeOutput.ExceptionNotEscaped -- esc_html applied.
-				throw new \Exception( esc_html__( 'Only one special-discount coupon (Buy X Get Y / Nth-item discount / Mix & Match) can be used at a time.', 'moksafocou' ) );
+				throw new \Exception( esc_html__( 'Only one special-discount coupon (Buy X Get Y / Nth-item discount / Mix & Match) can be used at a time.', 'moksa-coupons-for-woocommerce' ) );
 			}
 		}
 	}

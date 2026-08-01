@@ -31,7 +31,7 @@ final class Fields {
 		return array(
 			array(
 				'id'     => 'moksafocou_gift',
-				'title'  => __( 'Gift', 'moksafocou' ),
+				'title'  => __( 'Gift', 'moksa-coupons-for-woocommerce' ),
 				'render' => function (): void {
 					$this->render_gift_panel();
 				},
@@ -50,16 +50,16 @@ final class Fields {
 			array(
 				'id'          => Keys::GIFT_ENABLED,
 				'value'       => $cfg['enabled'] ? 'yes' : '',
-				'label'       => __( 'Enable gift', 'moksafocou' ),
-				'description' => __( 'When this coupon is applied, automatically add the gift below to the cart (customers cannot change the quantity or remove it; it is withdrawn automatically when the coupon is removed).', 'moksafocou' ),
+				'label'       => __( 'Enable gift', 'moksa-coupons-for-woocommerce' ),
+				'description' => __( 'When this coupon is applied, automatically add the gift below to the cart (customers cannot change the quantity or remove it; it is withdrawn automatically when the coupon is removed).', 'moksa-coupons-for-woocommerce' ),
 			)
 		);
-		$this->product_field( Keys::GIFT_PRODUCT_ID, __( 'Gift product', 'moksafocou' ), $cfg['product_id'] );
+		$this->product_field( Keys::GIFT_PRODUCT_ID, __( 'Gift product', 'moksa-coupons-for-woocommerce' ), $cfg['product_id'] );
 		woocommerce_wp_text_input(
 			array(
 				'id'                => Keys::GIFT_QTY,
 				'value'             => $cfg['qty'],
-				'label'             => __( 'Quantity', 'moksafocou' ),
+				'label'             => __( 'Quantity', 'moksa-coupons-for-woocommerce' ),
 				'type'              => 'number',
 				'custom_attributes' => array(
 					'min'  => '1',
@@ -71,11 +71,11 @@ final class Fields {
 			array(
 				'id'      => Keys::GIFT_MODE,
 				'value'   => $cfg['mode'],
-				'label'   => __( 'Gift pricing', 'moksafocou' ),
+				'label'   => __( 'Gift pricing', 'moksa-coupons-for-woocommerce' ),
 				'options' => array(
-					'free'    => __( 'Free', 'moksafocou' ),
-					'percent' => __( 'Percentage discount', 'moksafocou' ),
-					'fixed'   => __( 'Fixed discount per item', 'moksafocou' ),
+					'free'    => __( 'Free', 'moksa-coupons-for-woocommerce' ),
+					'percent' => __( 'Percentage discount', 'moksa-coupons-for-woocommerce' ),
+					'fixed'   => __( 'Fixed discount per item', 'moksa-coupons-for-woocommerce' ),
 				),
 			)
 		);
@@ -83,9 +83,9 @@ final class Fields {
 			array(
 				'id'                => Keys::GIFT_VALUE,
 				'value'             => $cfg['value'],
-				'label'             => __( 'Discount amount', 'moksafocou' ),
+				'label'             => __( 'Discount amount', 'moksa-coupons-for-woocommerce' ),
 				'desc_tip'          => true,
-				'description'       => __( 'Percentage: 0–100; fixed per item: discount amount. Leave empty when "Free" is selected.', 'moksafocou' ),
+				'description'       => __( 'Percentage: 0–100; fixed per item: discount amount. Leave empty when "Free" is selected.', 'moksa-coupons-for-woocommerce' ),
 				'type'              => 'number',
 				'custom_attributes' => array(
 					'min'  => '0',
@@ -97,7 +97,7 @@ final class Fields {
 
 	private function product_field( string $id, string $label, int $selected ): void {
 		echo '<p class="form-field"><label for="' . esc_attr( $id ) . '">' . esc_html( $label ) . '</label>';
-		echo '<select class="wc-product-search" style="width:50%;" id="' . esc_attr( $id ) . '" name="' . esc_attr( $id ) . '" data-placeholder="' . esc_attr__( 'Search products…', 'moksafocou' ) . '" data-action="woocommerce_json_search_products_and_variations" data-allow_clear="true">';
+		echo '<select class="wc-product-search" style="width:50%;" id="' . esc_attr( $id ) . '" name="' . esc_attr( $id ) . '" data-placeholder="' . esc_attr__( 'Search products…', 'moksa-coupons-for-woocommerce' ) . '" data-action="woocommerce_json_search_products_and_variations" data-allow_clear="true">';
 		if ( $selected > 0 ) {
 			$product = function_exists( 'wc_get_product' ) ? wc_get_product( $selected ) : null;
 			if ( $product ) {

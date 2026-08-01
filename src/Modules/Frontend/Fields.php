@@ -31,7 +31,7 @@ final class Fields {
 		return array(
 			array(
 				'id'     => 'moksafocou_frontend',
-				'title'  => __( 'Front-end display', 'moksafocou' ),
+				'title'  => __( 'Front-end display', 'moksa-coupons-for-woocommerce' ),
 				'render' => function (): void {
 					$this->render_frontend_panel();
 				},
@@ -50,37 +50,37 @@ final class Fields {
 			array(
 				'id'          => Keys::SHOW_IN_LIST,
 				'value'       => get_post_meta( $id, Keys::SHOW_IN_LIST, true ),
-				'label'       => __( 'Show in the front-end coupon list', 'moksafocou' ),
-				'description' => __( 'When checked, this coupon appears in the card list of the [moksafocou_coupons] shortcode.', 'moksafocou' ),
+				'label'       => __( 'Show in the front-end coupon list', 'moksa-coupons-for-woocommerce' ),
+				'description' => __( 'When checked, this coupon appears in the card list of the [moksafocou_coupons] shortcode.', 'moksa-coupons-for-woocommerce' ),
 			)
 		);
 		woocommerce_wp_text_input(
 			array(
 				'id'          => Keys::FRONT_LABEL,
 				'value'       => get_post_meta( $id, Keys::FRONT_LABEL, true ),
-				'label'       => __( 'Front-end description text', 'moksafocou' ),
+				'label'       => __( 'Front-end description text', 'moksa-coupons-for-woocommerce' ),
 				'desc_tip'    => true,
-				'description' => __( 'Marketing description shown on the card (leave empty to use the coupon description).', 'moksafocou' ),
+				'description' => __( 'Marketing description shown on the card (leave empty to use the coupon description).', 'moksa-coupons-for-woocommerce' ),
 			)
 		);
 
-		echo '<p class="form-field"><strong>' . esc_html__( 'Urgency (limited time / limited quantity)', 'moksafocou' ) . '</strong></p>';
+		echo '<p class="form-field"><strong>' . esc_html__( 'Urgency (limited time / limited quantity)', 'moksa-coupons-for-woocommerce' ) . '</strong></p>';
 		woocommerce_wp_checkbox(
 			array(
 				'id'          => Keys::COUNTDOWN_ENABLED,
 				'value'       => get_post_meta( $id, Keys::COUNTDOWN_ENABLED, true ),
-				'label'       => __( 'Show countdown timer', 'moksafocou' ),
-				'description' => __( 'Show a countdown-to-expiry timer on the card (requires an expiry date or a scheduled end time).', 'moksafocou' ),
+				'label'       => __( 'Show countdown timer', 'moksa-coupons-for-woocommerce' ),
+				'description' => __( 'Show a countdown-to-expiry timer on the card (requires an expiry date or a scheduled end time).', 'moksa-coupons-for-woocommerce' ),
 			)
 		);
 		woocommerce_wp_select(
 			array(
 				'id'      => Keys::COUNTDOWN_SOURCE,
 				'value'   => get_post_meta( $id, Keys::COUNTDOWN_SOURCE, true ),
-				'label'   => __( 'Countdown based on', 'moksafocou' ),
+				'label'   => __( 'Countdown based on', 'moksa-coupons-for-woocommerce' ),
 				'options' => array(
-					'expires'  => __( 'Coupon expiry date', 'moksafocou' ),
-					'schedule' => __( 'Scheduled end time', 'moksafocou' ),
+					'expires'  => __( 'Coupon expiry date', 'moksa-coupons-for-woocommerce' ),
+					'schedule' => __( 'Scheduled end time', 'moksa-coupons-for-woocommerce' ),
 				),
 			)
 		);
@@ -88,22 +88,22 @@ final class Fields {
 			array(
 				'id'          => Keys::STOCK_SHOW,
 				'value'       => get_post_meta( $id, Keys::STOCK_SHOW, true ),
-				'label'       => __( 'Show remaining quantity', 'moksafocou' ),
-				'description' => __( 'Show "Only N left" based on the usage limit (requires a usage limit to be set first).', 'moksafocou' ),
+				'label'       => __( 'Show remaining quantity', 'moksa-coupons-for-woocommerce' ),
+				'description' => __( 'Show "Only N left" based on the usage limit (requires a usage limit to be set first).', 'moksa-coupons-for-woocommerce' ),
 			)
 		);
 		woocommerce_wp_text_input(
 			array(
 				'id'                => Keys::STOCK_THRESHOLD,
 				'value'             => get_post_meta( $id, Keys::STOCK_THRESHOLD, true ),
-				'label'             => __( 'Remaining-quantity hint threshold', 'moksafocou' ),
+				'label'             => __( 'Remaining-quantity hint threshold', 'moksa-coupons-for-woocommerce' ),
 				'type'              => 'number',
 				'custom_attributes' => array(
 					'min'  => '0',
 					'step' => '1',
 				),
 				'desc_tip'          => true,
-				'description'       => __( 'Show only when the remaining quantity is at or below this number (0 or empty = always show).', 'moksafocou' ),
+				'description'       => __( 'Show only when the remaining quantity is at or below this number (0 or empty = always show).', 'moksa-coupons-for-woocommerce' ),
 			)
 		);
 	}

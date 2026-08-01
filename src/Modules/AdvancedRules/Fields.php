@@ -36,153 +36,153 @@ final class Fields {
 	 */
 	public static function type_spec(): array {
 		$numeric  = array(
-			'gte' => __( 'Greater than or equal to ≥', 'moksafocou' ),
-			'lte' => __( 'Less than or equal to ≤', 'moksafocou' ),
-			'gt'  => __( 'Greater than >', 'moksafocou' ),
-			'lt'  => __( 'Less than <', 'moksafocou' ),
-			'eq'  => __( 'Equal to =', 'moksafocou' ),
-			'neq' => __( 'Not equal to ≠', 'moksafocou' ),
+			'gte' => __( 'Greater than or equal to ≥', 'moksa-coupons-for-woocommerce' ),
+			'lte' => __( 'Less than or equal to ≤', 'moksa-coupons-for-woocommerce' ),
+			'gt'  => __( 'Greater than >', 'moksa-coupons-for-woocommerce' ),
+			'lt'  => __( 'Less than <', 'moksa-coupons-for-woocommerce' ),
+			'eq'  => __( 'Equal to =', 'moksa-coupons-for-woocommerce' ),
+			'neq' => __( 'Not equal to ≠', 'moksa-coupons-for-woocommerce' ),
 		);
 		$inset    = array(
-			'in'     => __( 'In', 'moksafocou' ),
-			'not_in' => __( 'Not in', 'moksafocou' ),
+			'in'     => __( 'In', 'moksa-coupons-for-woocommerce' ),
+			'not_in' => __( 'Not in', 'moksa-coupons-for-woocommerce' ),
 		);
 		$beforeaf = array(
-			'gte' => __( 'On or after', 'moksafocou' ),
-			'lte' => __( 'On or before', 'moksafocou' ),
+			'gte' => __( 'On or after', 'moksa-coupons-for-woocommerce' ),
+			'lte' => __( 'On or before', 'moksa-coupons-for-woocommerce' ),
 		);
 		$eqneq    = array(
-			'eq'  => __( 'Equal to', 'moksafocou' ),
-			'neq' => __( 'Not equal to', 'moksafocou' ),
+			'eq'  => __( 'Equal to', 'moksa-coupons-for-woocommerce' ),
+			'neq' => __( 'Not equal to', 'moksa-coupons-for-woocommerce' ),
 		);
 		return array(
 			'subtotal'               => array(
-				'label' => __( 'Cart subtotal', 'moksafocou' ),
+				'label' => __( 'Cart subtotal', 'moksa-coupons-for-woocommerce' ),
 				'kind'  => 'num',
 				'ops'   => $numeric,
 			),
 			'quantity'               => array(
-				'label' => __( 'Total item count', 'moksafocou' ),
+				'label' => __( 'Total item count', 'moksa-coupons-for-woocommerce' ),
 				'kind'  => 'num',
 				'ops'   => $numeric,
 			),
 			'order_count'            => array(
-				'label' => __( 'Customer\'s past order count', 'moksafocou' ),
+				'label' => __( 'Customer\'s past order count', 'moksa-coupons-for-woocommerce' ),
 				'kind'  => 'num',
 				'ops'   => $numeric,
 			),
 			'coupon_usage_count'     => array(
-				'label' => __( 'Number of times this coupon has been used (can restrict to the first N)', 'moksafocou' ),
+				'label' => __( 'Number of times this coupon has been used (can restrict to the first N)', 'moksa-coupons-for-woocommerce' ),
 				'kind'  => 'num',
 				'ops'   => $numeric,
 			),
 			'total_spent'            => array(
-				'label' => __( 'Customer\'s cumulative spend', 'moksafocou' ),
+				'label' => __( 'Customer\'s cumulative spend', 'moksa-coupons-for-woocommerce' ),
 				'kind'  => 'num',
 				'ops'   => $numeric,
 			),
 			'cart_weight'            => array(
-				'label' => __( 'Cart weight (kg)', 'moksafocou' ),
+				'label' => __( 'Cart weight (kg)', 'moksa-coupons-for-woocommerce' ),
 				'kind'  => 'num',
 				'ops'   => $numeric,
 			),
 			'product_quantity'       => array(
-				'label' => __( 'Quantity of a specific product', 'moksafocou' ),
+				'label' => __( 'Quantity of a specific product', 'moksa-coupons-for-woocommerce' ),
 				'kind'  => 'pair',
 				'ops'   => $numeric,
 			),
 			'category_spent'         => array(
-				'label' => __( 'Cumulative spend in a category', 'moksafocou' ),
+				'label' => __( 'Cumulative spend in a category', 'moksa-coupons-for-woocommerce' ),
 				'kind'  => 'pair',
 				'ops'   => $numeric,
 			),
 			'ordered_product'        => array(
-				'label' => __( 'Purchased a specific product', 'moksafocou' ),
+				'label' => __( 'Purchased a specific product', 'moksa-coupons-for-woocommerce' ),
 				'kind'  => 'ids',
 				'ops'   => $inset,
 			),
 			'ordered_category'       => array(
-				'label' => __( 'Purchased in a category', 'moksafocou' ),
+				'label' => __( 'Purchased in a category', 'moksa-coupons-for-woocommerce' ),
 				'kind'  => 'ids',
 				'ops'   => $inset,
 			),
 			'hours_since_registered' => array(
-				'label' => __( 'Hours since registration', 'moksafocou' ),
+				'label' => __( 'Hours since registration', 'moksa-coupons-for-woocommerce' ),
 				'kind'  => 'num',
 				'ops'   => $numeric,
 			),
 			'hours_since_last_order' => array(
-				'label' => __( 'Hours since last order', 'moksafocou' ),
+				'label' => __( 'Hours since last order', 'moksa-coupons-for-woocommerce' ),
 				'kind'  => 'num',
 				'ops'   => $numeric,
 			),
 			'coupon_applied'         => array(
-				'label' => __( 'Coupon already applied in cart', 'moksafocou' ),
+				'label' => __( 'Coupon already applied in cart', 'moksa-coupons-for-woocommerce' ),
 				'kind'  => 'codetext',
 				'ops'   => $inset,
 			),
 			'stock_status'           => array(
-				'label' => __( 'Cart contains stock status', 'moksafocou' ),
+				'label' => __( 'Cart contains stock status', 'moksa-coupons-for-woocommerce' ),
 				'kind'  => 'stock',
 				'ops'   => $inset,
 			),
 			'shipping_zone'          => array(
-				'label' => __( 'Shipping zone', 'moksafocou' ),
+				'label' => __( 'Shipping zone', 'moksa-coupons-for-woocommerce' ),
 				'kind'  => 'zone',
 				'ops'   => $inset,
 			),
 			'custom_taxonomy'        => array(
-				'label' => __( 'Cart contains custom taxonomy', 'moksafocou' ),
+				'label' => __( 'Cart contains custom taxonomy', 'moksa-coupons-for-woocommerce' ),
 				'kind'  => 'tax',
 				'ops'   => $inset,
 			),
 			'custom_user_meta'       => array(
-				'label' => __( 'Custom user meta', 'moksafocou' ),
+				'label' => __( 'Custom user meta', 'moksa-coupons-for-woocommerce' ),
 				'kind'  => 'kv',
 				'ops'   => $eqneq,
 			),
 			'custom_cart_item_meta'  => array(
-				'label' => __( 'Cart item meta', 'moksafocou' ),
+				'label' => __( 'Cart item meta', 'moksa-coupons-for-woocommerce' ),
 				'kind'  => 'kv',
 				'ops'   => $inset,
 			),
 			'product_in_cart'        => array(
-				'label' => __( 'Cart contains product', 'moksafocou' ),
+				'label' => __( 'Cart contains product', 'moksa-coupons-for-woocommerce' ),
 				'kind'  => 'ids',
 				'ops'   => $inset,
 			),
 			'category_in_cart'       => array(
-				'label' => __( 'Cart contains category', 'moksafocou' ),
+				'label' => __( 'Cart contains category', 'moksa-coupons-for-woocommerce' ),
 				'kind'  => 'ids',
 				'ops'   => $inset,
 			),
 			'shipping_country'       => array(
-				'label' => __( 'Shipping country / region', 'moksafocou' ),
+				'label' => __( 'Shipping country / region', 'moksa-coupons-for-woocommerce' ),
 				'kind'  => 'country',
 				'ops'   => $inset,
 			),
 			'payment_method'         => array(
-				'label' => __( 'Payment method', 'moksafocou' ),
+				'label' => __( 'Payment method', 'moksa-coupons-for-woocommerce' ),
 				'kind'  => 'payment',
 				'ops'   => $inset,
 			),
 			'user_role'              => array(
-				'label' => __( 'User role', 'moksafocou' ),
+				'label' => __( 'User role', 'moksa-coupons-for-woocommerce' ),
 				'kind'  => 'role',
 				'ops'   => $inset,
 			),
 			'weekday'                => array(
-				'label' => __( 'Weekday', 'moksafocou' ),
+				'label' => __( 'Weekday', 'moksa-coupons-for-woocommerce' ),
 				'kind'  => 'weekday',
 				'ops'   => $inset,
 			),
 			'time_of_day'            => array(
-				'label' => __( 'Time (hour:minute)', 'moksafocou' ),
+				'label' => __( 'Time (hour:minute)', 'moksa-coupons-for-woocommerce' ),
 				'kind'  => 'time',
 				'ops'   => $beforeaf,
 			),
 			'date'                   => array(
-				'label' => __( 'Date and time', 'moksafocou' ),
+				'label' => __( 'Date and time', 'moksa-coupons-for-woocommerce' ),
 				'kind'  => 'date',
 				'ops'   => $beforeaf,
 			),
@@ -196,7 +196,7 @@ final class Fields {
 		return array(
 			array(
 				'id'     => 'moksafocou_advrules',
-				'title'  => __( 'Advanced rules', 'moksafocou' ),
+				'title'  => __( 'Advanced rules', 'moksa-coupons-for-woocommerce' ),
 				'render' => function (): void {
 					$this->render_panel();
 				},
@@ -214,25 +214,25 @@ final class Fields {
 		$json = '' === $json ? '' : (string) Rules::canonical_json( $json );
 
 		echo '<p class="description" style="margin:8px 12px;">'
-			. esc_html__( 'Freely combine conditions with "groups" and AND/OR. The whole set can be set to "match all / any group", and within each group you can set "match all / any condition". This adds an extra check on top of the existing single conditions. The payment method condition is validated at checkout.', 'moksafocou' )
+			. esc_html__( 'Freely combine conditions with "groups" and AND/OR. The whole set can be set to "match all / any group", and within each group you can set "match all / any condition". This adds an extra check on top of the existing single conditions. The payment method condition is validated at checkout.', 'moksa-coupons-for-woocommerce' )
 			. '</p>';
 		woocommerce_wp_checkbox(
 			array(
 				'id'    => Keys::RULES_ENABLED,
 				'value' => get_post_meta( $id, Keys::RULES_ENABLED, true ),
-				'label' => __( 'Enable advanced rules', 'moksafocou' ),
+				'label' => __( 'Enable advanced rules', 'moksa-coupons-for-woocommerce' ),
 			)
 		);
 
 		echo '<div class="moksafocou-rules-builder" style="margin:6px 12px;"></div>';
-		echo '<p class="form-field"><label for="' . esc_attr( self::FIELD ) . '">' . esc_html__( 'Rules JSON (advanced / fallback)', 'moksafocou' ) . '</label>';
+		echo '<p class="form-field"><label for="' . esc_attr( self::FIELD ) . '">' . esc_html__( 'Rules JSON (advanced / fallback)', 'moksa-coupons-for-woocommerce' ) . '</label>';
 		echo '<textarea id="' . esc_attr( self::FIELD ) . '" name="' . esc_attr( self::FIELD ) . '" rows="4" class="moksafocou-rules-json" style="width:100%;font-family:monospace;">' . esc_textarea( $json ) . '</textarea></p>';
 
 		woocommerce_wp_text_input(
 			array(
 				'id'    => Keys::RULES_MSG,
 				'value' => get_post_meta( $id, Keys::RULES_MSG, true ),
-				'label' => __( 'Message shown when not met', 'moksafocou' ),
+				'label' => __( 'Message shown when not met', 'moksa-coupons-for-woocommerce' ),
 			)
 		);
 	}
@@ -273,40 +273,40 @@ final class Fields {
 				'gateways'  => self::gateways(),
 				'roles'     => self::roles(),
 				'weekdays'  => array(
-					'0' => __( 'Sunday', 'moksafocou' ),
-					'1' => __( 'Monday', 'moksafocou' ),
-					'2' => __( 'Tuesday', 'moksafocou' ),
-					'3' => __( 'Wednesday', 'moksafocou' ),
-					'4' => __( 'Thursday', 'moksafocou' ),
-					'5' => __( 'Friday', 'moksafocou' ),
-					'6' => __( 'Saturday', 'moksafocou' ),
+					'0' => __( 'Sunday', 'moksa-coupons-for-woocommerce' ),
+					'1' => __( 'Monday', 'moksa-coupons-for-woocommerce' ),
+					'2' => __( 'Tuesday', 'moksa-coupons-for-woocommerce' ),
+					'3' => __( 'Wednesday', 'moksa-coupons-for-woocommerce' ),
+					'4' => __( 'Thursday', 'moksa-coupons-for-woocommerce' ),
+					'5' => __( 'Friday', 'moksa-coupons-for-woocommerce' ),
+					'6' => __( 'Saturday', 'moksa-coupons-for-woocommerce' ),
 				),
 				'zones'     => self::zones(),
 				'stocks'    => array(
-					'instock'     => __( 'In stock', 'moksafocou' ),
-					'outofstock'  => __( 'Out of stock', 'moksafocou' ),
-					'onbackorder' => __( 'On backorder', 'moksafocou' ),
+					'instock'     => __( 'In stock', 'moksa-coupons-for-woocommerce' ),
+					'outofstock'  => __( 'Out of stock', 'moksa-coupons-for-woocommerce' ),
+					'onbackorder' => __( 'On backorder', 'moksa-coupons-for-woocommerce' ),
 				),
 				'i18n'      => array(
-					'matchAll'      => __( 'Match all', 'moksafocou' ),
-					'matchAny'      => __( 'Match any', 'moksafocou' ),
-					'ofGroups'      => __( 'Group:', 'moksafocou' ),
-					'ofRules'       => __( 'This group matches:', 'moksafocou' ),
-					'addRule'       => __( '+ Add condition', 'moksafocou' ),
-					'addGroup'      => __( '+ Add group', 'moksafocou' ),
-					'removeRule'    => __( 'Delete', 'moksafocou' ),
-					'removeGroup'   => __( 'Delete group', 'moksafocou' ),
-					'idsHint'       => __( 'Enter IDs, separated by commas', 'moksafocou' ),
-					'codesHint'     => __( 'Enter coupon codes, separated by commas', 'moksafocou' ),
-					'pairId'        => __( 'ID', 'moksafocou' ),
-					'pairNum'       => __( 'Value', 'moksafocou' ),
-					'taxSlug'       => __( 'Taxonomy slug', 'moksafocou' ),
-					'taxTerms'      => __( 'Term IDs (comma-separated)', 'moksafocou' ),
-					'metaKey'       => __( 'Meta key', 'moksafocou' ),
-					'metaVal'       => __( 'Meta value', 'moksafocou' ),
-					'pick'          => __( 'Select…', 'moksafocou' ),
-					'searchProduct' => __( 'Search products…', 'moksafocou' ),
-					'searchCat'     => __( 'Search categories…', 'moksafocou' ),
+					'matchAll'      => __( 'Match all', 'moksa-coupons-for-woocommerce' ),
+					'matchAny'      => __( 'Match any', 'moksa-coupons-for-woocommerce' ),
+					'ofGroups'      => __( 'Group:', 'moksa-coupons-for-woocommerce' ),
+					'ofRules'       => __( 'This group matches:', 'moksa-coupons-for-woocommerce' ),
+					'addRule'       => __( '+ Add condition', 'moksa-coupons-for-woocommerce' ),
+					'addGroup'      => __( '+ Add group', 'moksa-coupons-for-woocommerce' ),
+					'removeRule'    => __( 'Delete', 'moksa-coupons-for-woocommerce' ),
+					'removeGroup'   => __( 'Delete group', 'moksa-coupons-for-woocommerce' ),
+					'idsHint'       => __( 'Enter IDs, separated by commas', 'moksa-coupons-for-woocommerce' ),
+					'codesHint'     => __( 'Enter coupon codes, separated by commas', 'moksa-coupons-for-woocommerce' ),
+					'pairId'        => __( 'ID', 'moksa-coupons-for-woocommerce' ),
+					'pairNum'       => __( 'Value', 'moksa-coupons-for-woocommerce' ),
+					'taxSlug'       => __( 'Taxonomy slug', 'moksa-coupons-for-woocommerce' ),
+					'taxTerms'      => __( 'Term IDs (comma-separated)', 'moksa-coupons-for-woocommerce' ),
+					'metaKey'       => __( 'Meta key', 'moksa-coupons-for-woocommerce' ),
+					'metaVal'       => __( 'Meta value', 'moksa-coupons-for-woocommerce' ),
+					'pick'          => __( 'Select…', 'moksa-coupons-for-woocommerce' ),
+					'searchProduct' => __( 'Search products…', 'moksa-coupons-for-woocommerce' ),
+					'searchCat'     => __( 'Search categories…', 'moksa-coupons-for-woocommerce' ),
 				),
 			)
 		);
@@ -401,14 +401,14 @@ final class Fields {
 					$out[ (string) $zone['id'] ] = (string) $zone['zone_name'];
 				}
 			}
-			$out['0'] = __( 'Other regions (not covered)', 'moksafocou' );
+			$out['0'] = __( 'Other regions (not covered)', 'moksa-coupons-for-woocommerce' );
 		}
 		return $out;
 	}
 
 	/** @return array<string,string> role slug => label. */
 	private static function roles(): array {
-		$out = array( 'guest' => __( 'Guest (not logged in)', 'moksafocou' ) );
+		$out = array( 'guest' => __( 'Guest (not logged in)', 'moksa-coupons-for-woocommerce' ) );
 		if ( function_exists( 'wp_roles' ) ) {
 			foreach ( wp_roles()->roles as $slug => $role ) {
 				$out[ (string) $slug ] = translate_user_role( $role['name'] );

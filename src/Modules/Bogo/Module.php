@@ -22,7 +22,7 @@ final class Module extends AbstractModule {
 	}
 
 	public function label(): string {
-		return __( 'Buy X Get Y (BOGO)', 'moksafocou' );
+		return __( 'Buy X Get Y (BOGO)', 'moksa-coupons-for-woocommerce' );
 	}
 
 	public function category(): string {
@@ -30,7 +30,7 @@ final class Module extends AbstractModule {
 	}
 
 	public function tagline(): string {
-		return __( 'Buy specified products to get a gift / discount, supports repeating', 'moksafocou' );
+		return __( 'Buy specified products to get a gift / discount, supports repeating', 'moksa-coupons-for-woocommerce' );
 	}
 
 	public function boot(): void {

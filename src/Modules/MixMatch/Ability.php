@@ -16,7 +16,7 @@ defined( 'ABSPATH' ) || exit;
  */
 final class Ability {
 
-	public const CATEGORY = 'moksafocou';
+	public const CATEGORY = 'moksa-coupons-for-woocommerce';
 
 	public static function register(): void {
 		if ( ! function_exists( 'wp_register_ability' ) ) {
@@ -25,57 +25,57 @@ final class Ability {
 		wp_register_ability(
 			'moksafocou/create-mixmatch-coupon',
 			array(
-				'label'               => __( 'Create a Mix & Match coupon', 'moksafocou' ),
-				'description'         => __( 'Create a "Mix & Match" coupon: specify a set of products (or the whole site), the customer picks any N items, and the group is priced at a fixed total or a group percentage discount, repeatable. Example: pick 3 for $299 → qty=3, price_mode=fixed_total, price_value=299; pick 5 at 25% off → qty=5, price_mode=percent, price_value=25. Destructive — the call only "proposes"; it is created only after the user confirms.', 'moksafocou' ),
+				'label'               => __( 'Create a Mix & Match coupon', 'moksa-coupons-for-woocommerce' ),
+				'description'         => __( 'Create a "Mix & Match" coupon: specify a set of products (or the whole site), the customer picks any N items, and the group is priced at a fixed total or a group percentage discount, repeatable. Example: pick 3 for $299 → qty=3, price_mode=fixed_total, price_value=299; pick 5 at 25% off → qty=5, price_mode=percent, price_value=25. Destructive — the call only "proposes"; it is created only after the user confirms.', 'moksa-coupons-for-woocommerce' ),
 				'category'            => self::CATEGORY,
 				'input_schema'        => array(
 					'type'                 => 'object',
 					'properties'           => array(
 						'code'           => array(
 							'type'        => 'string',
-							'description' => __( 'Coupon code, e.g. PICK3FOR299', 'moksafocou' ),
+							'description' => __( 'Coupon code, e.g. PICK3FOR299', 'moksa-coupons-for-woocommerce' ),
 						),
 						'product_ids'    => array(
 							'type'        => 'array',
 							'items'       => array( 'type' => 'integer' ),
-							'description' => __( 'Selectable product IDs (leave empty + no categories = whole site)', 'moksafocou' ),
+							'description' => __( 'Selectable product IDs (leave empty + no categories = whole site)', 'moksa-coupons-for-woocommerce' ),
 						),
 						'category_ids'   => array(
 							'type'        => 'array',
 							'items'       => array( 'type' => 'integer' ),
-							'description' => __( 'Selectable product category term IDs', 'moksafocou' ),
+							'description' => __( 'Selectable product category term IDs', 'moksa-coupons-for-woocommerce' ),
 						),
 						'qty'            => array(
 							'type'        => 'integer',
 							'minimum'     => 1,
-							'description' => __( 'Number of items to pick, N (at least 1)', 'moksafocou' ),
+							'description' => __( 'Number of items to pick, N (at least 1)', 'moksa-coupons-for-woocommerce' ),
 						),
 						'price_mode'     => array(
 							'type'        => 'string',
 							'enum'        => array( 'fixed_total', 'percent' ),
-							'description' => __( 'fixed_total: group fixed total / percent: group discount percentage', 'moksafocou' ),
+							'description' => __( 'fixed_total: group fixed total / percent: group discount percentage', 'moksa-coupons-for-woocommerce' ),
 						),
 						'price_value'    => array(
 							'type'        => 'number',
 							'minimum'     => 0,
-							'description' => __( 'fixed_total is the group total; percent is the discount % (0–100)', 'moksafocou' ),
+							'description' => __( 'fixed_total is the group total; percent is the discount % (0–100)', 'moksa-coupons-for-woocommerce' ),
 						),
 						'deal_mode'      => array(
 							'type'        => 'string',
 							'enum'        => array( 'once', 'repeat' ),
-							'description' => __( 'once = one time only / repeat = repeatable (default repeat)', 'moksafocou' ),
+							'description' => __( 'once = one time only / repeat = repeatable (default repeat)', 'moksa-coupons-for-woocommerce' ),
 						),
 						'repeat_limit'   => array(
 							'type'        => 'integer',
-							'description' => __( 'Repeat limit (0 = no limit, applies to repeat only)', 'moksafocou' ),
+							'description' => __( 'Repeat limit (0 = no limit, applies to repeat only)', 'moksa-coupons-for-woocommerce' ),
 						),
 						'notice_message' => array(
 							'type'        => 'string',
-							'description' => __( 'Add-more prompt; you can use {mixmatch_qty} {coupon_code}', 'moksafocou' ),
+							'description' => __( 'Add-more prompt; you can use {mixmatch_qty} {coupon_code}', 'moksa-coupons-for-woocommerce' ),
 						),
 						'date_expires'   => array(
 							'type'        => 'string',
-							'description' => __( 'Expiry date YYYY-MM-DD (optional)', 'moksafocou' ),
+							'description' => __( 'Expiry date YYYY-MM-DD (optional)', 'moksa-coupons-for-woocommerce' ),
 						),
 						'usage_limit'    => array( 'type' => 'integer' ),
 						'individual_use' => array( 'type' => 'boolean' ),

@@ -20,7 +20,7 @@ defined( 'ABSPATH' ) || exit;
  */
 final class Ability {
 
-	public const CATEGORY = 'moksafocou';
+	public const CATEGORY = 'moksa-coupons-for-woocommerce';
 
 	public const CAP = 'manage_woocommerce';
 
@@ -37,8 +37,8 @@ final class Ability {
 		wp_register_ability_category(
 			self::CATEGORY,
 			[
-				'label'       => __( 'Moksa Coupons', 'moksafocou' ),
-				'description' => __( 'WooCommerce coupon creation, lookup and management capabilities', 'moksafocou' ),
+				'label'       => __( 'Moksa Coupons', 'moksa-coupons-for-woocommerce' ),
+				'description' => __( 'WooCommerce coupon creation, lookup and management capabilities', 'moksa-coupons-for-woocommerce' ),
 			]
 		);
 	}
@@ -57,28 +57,28 @@ final class Ability {
 		wp_register_ability(
 			'moksafocou/list-coupons',
 			[
-				'label'               => __( 'List coupons', 'moksafocou' ),
-				'description'         => __( 'List coupons, filterable by status (publish = enabled / draft = disabled), discount type, and keyword, returning a compact list (default 20, maximum 50). Read-only.', 'moksafocou' ),
+				'label'               => __( 'List coupons', 'moksa-coupons-for-woocommerce' ),
+				'description'         => __( 'List coupons, filterable by status (publish = enabled / draft = disabled), discount type, and keyword, returning a compact list (default 20, maximum 50). Read-only.', 'moksa-coupons-for-woocommerce' ),
 				'category'            => self::CATEGORY,
 				'input_schema'        => [
 					'type'                 => 'object',
 					'properties'           => [
 						'status'        => [
 							'type'        => 'string',
-							'description' => __( 'Status: publish (enabled) / draft (disabled) / any. Not given = all', 'moksafocou' ),
+							'description' => __( 'Status: publish (enabled) / draft (disabled) / any. Not given = all', 'moksa-coupons-for-woocommerce' ),
 						],
 						'discount_type' => [
 							'type'        => 'string',
 							'enum'        => CouponService::DISCOUNT_TYPES,
-							'description' => __( 'Discount type filter (optional)', 'moksafocou' ),
+							'description' => __( 'Discount type filter (optional)', 'moksa-coupons-for-woocommerce' ),
 						],
 						'search'        => [
 							'type'        => 'string',
-							'description' => __( 'Code / description keyword (optional)', 'moksafocou' ),
+							'description' => __( 'Code / description keyword (optional)', 'moksa-coupons-for-woocommerce' ),
 						],
 						'limit'         => [
 							'type'        => 'integer',
-							'description' => __( 'Maximum number of records (default 20, maximum 50)', 'moksafocou' ),
+							'description' => __( 'Maximum number of records (default 20, maximum 50)', 'moksa-coupons-for-woocommerce' ),
 						],
 					],
 					'required'             => [],
@@ -100,15 +100,15 @@ final class Ability {
 		wp_register_ability(
 			'moksafocou/get-coupon',
 			[
-				'label'               => __( 'Look up coupon details', 'moksafocou' ),
-				'description'         => __( 'Get the full settings of a single coupon (code, discount type and amount, expiry date, usage count and limit, minimum spend, restricted products, etc.). Provide a code or ID. Read-only.', 'moksafocou' ),
+				'label'               => __( 'Look up coupon details', 'moksa-coupons-for-woocommerce' ),
+				'description'         => __( 'Get the full settings of a single coupon (code, discount type and amount, expiry date, usage count and limit, minimum spend, restricted products, etc.). Provide a code or ID. Read-only.', 'moksa-coupons-for-woocommerce' ),
 				'category'            => self::CATEGORY,
 				'input_schema'        => [
 					'type'                 => 'object',
 					'properties'           => [
 						'code_or_id' => [
 							'type'        => 'string',
-							'description' => __( 'Coupon code or ID', 'moksafocou' ),
+							'description' => __( 'Coupon code or ID', 'moksa-coupons-for-woocommerce' ),
 						],
 					],
 					'required'             => [ 'code_or_id' ],
@@ -127,15 +127,15 @@ final class Ability {
 		wp_register_ability(
 			'moksafocou/find-coupon-by-code',
 			[
-				'label'               => __( 'Check whether a code exists', 'moksafocou' ),
-				'description'         => __( 'Check whether a given coupon code already exists, returning whether it exists and its ID. Use this before creating to avoid duplicates. Read-only.', 'moksafocou' ),
+				'label'               => __( 'Check whether a code exists', 'moksa-coupons-for-woocommerce' ),
+				'description'         => __( 'Check whether a given coupon code already exists, returning whether it exists and its ID. Use this before creating to avoid duplicates. Read-only.', 'moksa-coupons-for-woocommerce' ),
 				'category'            => self::CATEGORY,
 				'input_schema'        => [
 					'type'                 => 'object',
 					'properties'           => [
 						'code' => [
 							'type'        => 'string',
-							'description' => __( 'Coupon code to check', 'moksafocou' ),
+							'description' => __( 'Coupon code to check', 'moksa-coupons-for-woocommerce' ),
 						],
 					],
 					'required'             => [ 'code' ],
@@ -157,15 +157,15 @@ final class Ability {
 		wp_register_ability(
 			'moksafocou/coupon-usage-summary',
 			[
-				'label'               => __( 'Look up coupon usage', 'moksafocou' ),
-				'description'         => __( 'Look up a coupon\'s usage count, total limit and per-user limit, and remaining uses. Read-only.', 'moksafocou' ),
+				'label'               => __( 'Look up coupon usage', 'moksa-coupons-for-woocommerce' ),
+				'description'         => __( 'Look up a coupon\'s usage count, total limit and per-user limit, and remaining uses. Read-only.', 'moksa-coupons-for-woocommerce' ),
 				'category'            => self::CATEGORY,
 				'input_schema'        => [
 					'type'                 => 'object',
 					'properties'           => [
 						'code_or_id' => [
 							'type'        => 'string',
-							'description' => __( 'Coupon code or ID', 'moksafocou' ),
+							'description' => __( 'Coupon code or ID', 'moksa-coupons-for-woocommerce' ),
 						],
 					],
 					'required'             => [ 'code_or_id' ],
@@ -192,8 +192,8 @@ final class Ability {
 		wp_register_ability(
 			'moksafocou/create-coupon',
 			[
-				'label'               => __( 'Create coupon', 'moksafocou' ),
-				'description'         => __( 'Create a new WooCommerce coupon. This is a destructive operation — the call only "proposes" it, and it is only created after the user clicks "Confirm"; you do not need to ask for confirmation yourself.', 'moksafocou' ),
+				'label'               => __( 'Create coupon', 'moksa-coupons-for-woocommerce' ),
+				'description'         => __( 'Create a new WooCommerce coupon. This is a destructive operation — the call only "proposes" it, and it is only created after the user clicks "Confirm"; you do not need to ask for confirmation yourself.', 'moksa-coupons-for-woocommerce' ),
 				'category'            => self::CATEGORY,
 				'input_schema'        => self::create_input_schema(),
 				'output_schema'       => self::summary_output(),
@@ -206,8 +206,8 @@ final class Ability {
 		wp_register_ability(
 			'moksafocou/update-coupon',
 			[
-				'label'               => __( 'Update coupon', 'moksafocou' ),
-				'description'         => __( 'Update the fields of an existing coupon (discount, expiry date, usage limit, etc.; the code cannot be changed). Destructive — the call only "proposes" it, and it only takes effect after the user confirms.', 'moksafocou' ),
+				'label'               => __( 'Update coupon', 'moksa-coupons-for-woocommerce' ),
+				'description'         => __( 'Update the fields of an existing coupon (discount, expiry date, usage limit, etc.; the code cannot be changed). Destructive — the call only "proposes" it, and it only takes effect after the user confirms.', 'moksa-coupons-for-woocommerce' ),
 				'category'            => self::CATEGORY,
 				'input_schema'        => self::update_input_schema(),
 				'output_schema'       => self::summary_output(),
@@ -220,19 +220,19 @@ final class Ability {
 		wp_register_ability(
 			'moksafocou/toggle-coupon',
 			[
-				'label'               => __( 'Enable/disable coupon', 'moksafocou' ),
-				'description'         => __( 'Enable (publish) or disable (draft) a coupon. Destructive — the call only "proposes" it, and it only takes effect after the user confirms.', 'moksafocou' ),
+				'label'               => __( 'Enable/disable coupon', 'moksa-coupons-for-woocommerce' ),
+				'description'         => __( 'Enable (publish) or disable (draft) a coupon. Destructive — the call only "proposes" it, and it only takes effect after the user confirms.', 'moksa-coupons-for-woocommerce' ),
 				'category'            => self::CATEGORY,
 				'input_schema'        => [
 					'type'                 => 'object',
 					'properties'           => [
 						'code_or_id' => [
 							'type'        => 'string',
-							'description' => __( 'Coupon code or ID', 'moksafocou' ),
+							'description' => __( 'Coupon code or ID', 'moksa-coupons-for-woocommerce' ),
 						],
 						'enable'     => [
 							'type'        => 'boolean',
-							'description' => __( 'true = enable, false = disable', 'moksafocou' ),
+							'description' => __( 'true = enable, false = disable', 'moksa-coupons-for-woocommerce' ),
 						],
 					],
 					'required'             => [ 'code_or_id', 'enable' ],
@@ -248,19 +248,19 @@ final class Ability {
 		wp_register_ability(
 			'moksafocou/delete-coupon',
 			[
-				'label'               => __( 'Delete coupon', 'moksafocou' ),
-				'description'         => __( 'Delete a coupon (by default moved to trash; force=true permanently deletes). Destructive and irreversible — the call only "proposes" it, and it is only performed after the user confirms.', 'moksafocou' ),
+				'label'               => __( 'Delete coupon', 'moksa-coupons-for-woocommerce' ),
+				'description'         => __( 'Delete a coupon (by default moved to trash; force=true permanently deletes). Destructive and irreversible — the call only "proposes" it, and it is only performed after the user confirms.', 'moksa-coupons-for-woocommerce' ),
 				'category'            => self::CATEGORY,
 				'input_schema'        => [
 					'type'                 => 'object',
 					'properties'           => [
 						'code_or_id' => [
 							'type'        => 'string',
-							'description' => __( 'Coupon code or ID', 'moksafocou' ),
+							'description' => __( 'Coupon code or ID', 'moksa-coupons-for-woocommerce' ),
 						],
 						'force'      => [
 							'type'        => 'boolean',
-							'description' => __( 'true = permanently delete, false = move to trash (default)', 'moksafocou' ),
+							'description' => __( 'true = permanently delete, false = move to trash (default)', 'moksa-coupons-for-woocommerce' ),
 						],
 					],
 					'required'             => [ 'code_or_id' ],
@@ -276,8 +276,8 @@ final class Ability {
 		wp_register_ability(
 			'moksafocou/bulk-generate-coupons',
 			[
-				'label'               => __( 'Bulk-generate coupons', 'moksafocou' ),
-				'description'         => __( 'Bulk-generate multiple coupons with the same settings and unique codes at once (for marketing campaigns). Destructive — the call only "proposes" it, and they are only created after the user confirms.', 'moksafocou' ),
+				'label'               => __( 'Bulk-generate coupons', 'moksa-coupons-for-woocommerce' ),
+				'description'         => __( 'Bulk-generate multiple coupons with the same settings and unique codes at once (for marketing campaigns). Destructive — the call only "proposes" it, and they are only created after the user confirms.', 'moksa-coupons-for-woocommerce' ),
 				'category'            => self::CATEGORY,
 				'input_schema'        => self::bulk_input_schema(),
 				'output_schema'       => self::summary_output(),
@@ -290,8 +290,8 @@ final class Ability {
 		wp_register_ability(
 			'moksafocou/extend-expiry',
 			[
-				'label'               => __( 'Extend expiry date', 'moksafocou' ),
-				'description'         => __( 'Extend the expiry date of one or more coupons to a specified date. Destructive — the call only "proposes" it, and it only takes effect after the user confirms.', 'moksafocou' ),
+				'label'               => __( 'Extend expiry date', 'moksa-coupons-for-woocommerce' ),
+				'description'         => __( 'Extend the expiry date of one or more coupons to a specified date. Destructive — the call only "proposes" it, and it only takes effect after the user confirms.', 'moksa-coupons-for-woocommerce' ),
 				'category'            => self::CATEGORY,
 				'input_schema'        => [
 					'type'                 => 'object',
@@ -299,11 +299,11 @@ final class Ability {
 						'codes_or_ids' => [
 							'type'        => 'array',
 							'items'       => [ 'type' => 'string' ],
-							'description' => __( 'Array of coupon codes or IDs', 'moksafocou' ),
+							'description' => __( 'Array of coupon codes or IDs', 'moksa-coupons-for-woocommerce' ),
 						],
 						'date_expires' => [
 							'type'        => 'string',
-							'description' => __( 'New expiry date YYYY-MM-DD', 'moksafocou' ),
+							'description' => __( 'New expiry date YYYY-MM-DD', 'moksa-coupons-for-woocommerce' ),
 						],
 					],
 					'required'             => [ 'codes_or_ids', 'date_expires' ],
@@ -319,15 +319,15 @@ final class Ability {
 		wp_register_ability(
 			'moksafocou/duplicate-coupon',
 			[
-				'label'               => __( 'Copy coupon', 'moksafocou' ),
-				'description'         => __( 'Copy an existing coupon into a new draft (keeping all discount settings and schedule / role / cart conditions, resetting the usage count to zero, and automatically appending -COPY- to the code). Destructive — the call only "proposes" it, and it is only created after the user confirms.', 'moksafocou' ),
+				'label'               => __( 'Copy coupon', 'moksa-coupons-for-woocommerce' ),
+				'description'         => __( 'Copy an existing coupon into a new draft (keeping all discount settings and schedule / role / cart conditions, resetting the usage count to zero, and automatically appending -COPY- to the code). Destructive — the call only "proposes" it, and it is only created after the user confirms.', 'moksa-coupons-for-woocommerce' ),
 				'category'            => self::CATEGORY,
 				'input_schema'        => [
 					'type'                 => 'object',
 					'properties'           => [
 						'code_or_id' => [
 							'type'        => 'string',
-							'description' => __( 'Coupon code or ID of the source coupon to copy', 'moksafocou' ),
+							'description' => __( 'Coupon code or ID of the source coupon to copy', 'moksa-coupons-for-woocommerce' ),
 						],
 					],
 					'required'             => [ 'code_or_id' ],
@@ -448,25 +448,25 @@ final class Ability {
 			'properties'           => [
 				'code'                        => [
 					'type'        => 'string',
-					'description' => __( 'Coupon code, e.g. SUMMER25', 'moksafocou' ),
+					'description' => __( 'Coupon code, e.g. SUMMER25', 'moksa-coupons-for-woocommerce' ),
 				],
 				'discount_type'               => [
 					'type'        => 'string',
 					'enum'        => CouponService::DISCOUNT_TYPES,
 					'default'     => 'fixed_cart',
-					'description' => __( 'Discount type: percent (percentage) / fixed_cart (fixed cart discount) / fixed_product (fixed product discount)', 'moksafocou' ),
+					'description' => __( 'Discount type: percent (percentage) / fixed_cart (fixed cart discount) / fixed_product (fixed product discount)', 'moksa-coupons-for-woocommerce' ),
 				],
 				'amount'                      => [
 					'type'        => 'number',
-					'description' => __( 'Discount amount; for percent it is a percentage number (25 = 25%)', 'moksafocou' ),
+					'description' => __( 'Discount amount; for percent it is a percentage number (25 = 25%)', 'moksa-coupons-for-woocommerce' ),
 				],
 				'description'                 => [
 					'type'        => 'string',
-					'description' => __( 'Coupon description (optional)', 'moksafocou' ),
+					'description' => __( 'Coupon description (optional)', 'moksa-coupons-for-woocommerce' ),
 				],
 				'date_expires'                => [
 					'type'        => 'string',
-					'description' => __( 'Expiry date YYYY-MM-DD (optional)', 'moksafocou' ),
+					'description' => __( 'Expiry date YYYY-MM-DD (optional)', 'moksa-coupons-for-woocommerce' ),
 				],
 				'individual_use'              => [ 'type' => 'boolean' ],
 				'free_shipping'               => [ 'type' => 'boolean' ],
@@ -498,17 +498,17 @@ final class Ability {
 				],
 				'auto_apply'                  => [
 					'type'        => 'boolean',
-					'description' => __( 'Whether to auto-apply (added automatically when the customer reaches the cart; requires the "Auto-apply" module enabled, and the coupon has no usage or email limit)', 'moksafocou' ),
+					'description' => __( 'Whether to auto-apply (added automatically when the customer reaches the cart; requires the "Auto-apply" module enabled, and the coupon has no usage or email limit)', 'moksa-coupons-for-woocommerce' ),
 				],
 				'discount_cap'                => [
 					'type'        => 'number',
-					'description' => __( 'Maximum discount amount for a percentage discount (e.g. 20% off, up to 500; requires the "Maximum discount" module enabled). 0 or empty = no limit', 'moksafocou' ),
+					'description' => __( 'Maximum discount amount for a percentage discount (e.g. 20% off, up to 500; requires the "Maximum discount" module enabled). 0 or empty = no limit', 'moksa-coupons-for-woocommerce' ),
 				],
 				'exclude_coupons'             => [
 					'type'        => 'boolean',
-					'description' => __( 'Whether it cannot be combined with other coupons (mutually exclusive coupon; requires the "Stacking control" module enabled)', 'moksafocou' ),
+					'description' => __( 'Whether it cannot be combined with other coupons (mutually exclusive coupon; requires the "Stacking control" module enabled)', 'moksa-coupons-for-woocommerce' ),
 				],
-				'moksafocou'                  => CouponSettings::schema(),
+				'moksa-coupons-for-woocommerce'                  => CouponSettings::schema(),
 			],
 			'required'             => [ 'code', 'discount_type', 'amount' ],
 			'additionalProperties' => false,
@@ -520,7 +520,7 @@ final class Ability {
 		$schema                             = self::create_input_schema();
 		$schema['properties']['code_or_id'] = [
 			'type'        => 'string',
-			'description' => __( 'Coupon code or ID to update', 'moksafocou' ),
+			'description' => __( 'Coupon code or ID to update', 'moksa-coupons-for-woocommerce' ),
 		];
 		unset( $schema['properties']['code'] );
 		$schema['required'] = [ 'code_or_id' ];
@@ -533,11 +533,11 @@ final class Ability {
 		unset( $schema['properties']['code'] );
 		$schema['properties']['count']  = [
 			'type'        => 'integer',
-			'description' => __( 'Number of coupons to generate (1–500)', 'moksafocou' ),
+			'description' => __( 'Number of coupons to generate (1–500)', 'moksa-coupons-for-woocommerce' ),
 		];
 		$schema['properties']['prefix'] = [
 			'type'        => 'string',
-			'description' => __( 'Code prefix (optional, e.g. SALE-)', 'moksafocou' ),
+			'description' => __( 'Code prefix (optional, e.g. SALE-)', 'moksa-coupons-for-woocommerce' ),
 		];
 		$schema['required']             = [ 'count', 'discount_type', 'amount' ];
 		return $schema;

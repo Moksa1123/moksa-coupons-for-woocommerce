@@ -165,7 +165,7 @@ final class GiftHandler {
 	 */
 	public static function prevent_qty_change( $valid, $cart_item_key, $values, $quantity ) {
 		if ( self::is_gift_item( $values ) && (int) $quantity !== (int) ( $values[ GiftConfig::ITEM_QTY ] ?? 1 ) ) {
-			wc_add_notice( __( 'The gift quantity cannot be changed.', 'moksafocou' ), 'error' );
+			wc_add_notice( __( 'The gift quantity cannot be changed.', 'moksa-coupons-for-woocommerce' ), 'error' );
 			return false;
 		}
 		return $valid;

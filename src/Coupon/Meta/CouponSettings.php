@@ -26,7 +26,7 @@ defined( 'ABSPATH' ) || exit;
 final class CouponSettings {
 
 	/** REST field / ability property name. */
-	public const FIELD = 'moksafocou';
+	public const FIELD = 'moksa-coupons-for-woocommerce';
 
 	private const CAP = 'manage_woocommerce';
 
@@ -349,7 +349,7 @@ final class CouponSettings {
 		}
 		return array(
 			'type'                 => 'object',
-			'description'          => __( 'Moksa coupon advanced settings (groups: schedule / conditions / BOGO / gift / shipping…)', 'moksafocou' ),
+			'description'          => __( 'Moksa coupon advanced settings (groups: schedule / conditions / BOGO / gift / shipping…)', 'moksa-coupons-for-woocommerce' ),
 			'properties'           => $properties,
 			'additionalProperties' => false,
 		);
@@ -379,7 +379,7 @@ final class CouponSettings {
 			case 'tiers':
 				return array(
 					'type'        => 'array',
-					'description' => __( 'Tiered discount rows. Tiers are measured by moksafocou.tiers.basis (subtotal / quantity / weight, default subtotal). Each row: { threshold, kind percent|fixed, value (percent is 0-100, fixed is a fixed amount) }. Percent and fixed can be mixed; among matching tiers the one with the largest discount is used.', 'moksafocou' ),
+					'description' => __( 'Tiered discount rows. Tiers are measured by moksafocou.tiers.basis (subtotal / quantity / weight, default subtotal). Each row: { threshold, kind percent|fixed, value (percent is 0-100, fixed is a fixed amount) }. Percent and fixed can be mixed; among matching tiers the one with the largest discount is used.', 'moksa-coupons-for-woocommerce' ),
 					'items'       => array(
 						'type'                 => 'object',
 						'properties'           => array(
@@ -396,7 +396,7 @@ final class CouponSettings {
 			case 'rules':
 				return array(
 					'type'                 => 'object',
-					'description'          => __( 'Advanced rules tree (groups AND/OR). The top level match=all/any combines "groups", and each group\'s match=all/any combines "rules". Each rule = { type, op, value }. Types and value shapes: numeric (op gte/lte/gt/lt/eq/neq, value is a numeric string) subtotal / quantity / cart_weight (kg) / order_count / total_spent / hours_since_registered / hours_since_last_order; pair (op numeric, value={a: product or category ID, b: threshold}) product_quantity / category_spent; ID list (op in/not_in, value=integer array) product_in_cart / category_in_cart / ordered_product / ordered_category / shipping_zone; code (op in/not_in, value=string array) shipping_country (uppercase country code) / payment_method / coupon_applied / stock_status (instock, outofstock, onbackorder) / weekday (0-6) / user_role; custom taxonomy (op in/not_in, value={tax: taxonomy, terms:[term ID]}) custom_taxonomy; custom meta (value={key, value}) custom_user_meta (op eq/neq) / custom_cart_item_meta (op in/not_in); time (op gte/lte) time_of_day (value HH:MM) / date (value Y-m-d H:i). Payment method is validated only at checkout.', 'moksafocou' ),
+					'description'          => __( 'Advanced rules tree (groups AND/OR). The top level match=all/any combines "groups", and each group\'s match=all/any combines "rules". Each rule = { type, op, value }. Types and value shapes: numeric (op gte/lte/gt/lt/eq/neq, value is a numeric string) subtotal / quantity / cart_weight (kg) / order_count / total_spent / hours_since_registered / hours_since_last_order; pair (op numeric, value={a: product or category ID, b: threshold}) product_quantity / category_spent; ID list (op in/not_in, value=integer array) product_in_cart / category_in_cart / ordered_product / ordered_category / shipping_zone; code (op in/not_in, value=string array) shipping_country (uppercase country code) / payment_method / coupon_applied / stock_status (instock, outofstock, onbackorder) / weekday (0-6) / user_role; custom taxonomy (op in/not_in, value={tax: taxonomy, terms:[term ID]}) custom_taxonomy; custom meta (value={key, value}) custom_user_meta (op eq/neq) / custom_cart_item_meta (op in/not_in); time (op gte/lte) time_of_day (value HH:MM) / date (value Y-m-d H:i). Payment method is validated only at checkout.', 'moksa-coupons-for-woocommerce' ),
 					'properties'           => array(
 						'match'  => array(
 							'type' => 'string',
@@ -488,7 +488,7 @@ final class CouponSettings {
 		if ( ! current_user_can( self::CAP, $id ) ) {
 			return new \WP_Error(
 				'moksafocou_rest_forbidden',
-				__( 'You do not have permission to edit this coupon\'s advanced settings.', 'moksafocou' ),
+				__( 'You do not have permission to edit this coupon\'s advanced settings.', 'moksa-coupons-for-woocommerce' ),
 				array( 'status' => rest_authorization_required_code() )
 			);
 		}

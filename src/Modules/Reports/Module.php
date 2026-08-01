@@ -20,7 +20,7 @@ final class Module extends AbstractModule {
 	}
 
 	public function label(): string {
-		return __( 'Coupon report', 'moksafocou' );
+		return __( 'Coupon report', 'moksa-coupons-for-woocommerce' );
 	}
 
 	public function category(): string {
@@ -28,7 +28,7 @@ final class Module extends AbstractModule {
 	}
 
 	public function tagline(): string {
-		return __( 'Orders used and total discount per coupon (separate admin page)', 'moksafocou' );
+		return __( 'Orders used and total discount per coupon (separate admin page)', 'moksa-coupons-for-woocommerce' );
 	}
 
 	public function boot(): void {

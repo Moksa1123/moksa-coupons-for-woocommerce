@@ -33,7 +33,7 @@
         "lint": "phpcs",
         "lint:fix": "phpcbf",
         "test": "phpunit",
-        "make-pot": "wp i18n make-pot . languages/moksafocou.pot --domain=moksafocou --exclude=vendor,tests,node_modules,scripts,assets"
+        "make-pot": "wp i18n make-pot . languages/moksa-coupons-for-woocommerce.pot --domain=moksa-coupons-for-woocommerce --exclude=vendor,tests,node_modules,scripts,assets"
     },
     "config": {
         "allow-plugins": {

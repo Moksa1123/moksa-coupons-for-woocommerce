@@ -23,9 +23,9 @@
 					{ key: 'inspector' },
 					el(
 						PanelBody,
-						{ title: __( 'Settings', 'moksafocou' ), initialOpen: true },
+						{ title: __( 'Settings', 'moksa-coupons-for-woocommerce' ), initialOpen: true },
 						el( RangeControl, {
-							label: __( 'Maximum number to display', 'moksafocou' ),
+							label: __( 'Maximum number to display', 'moksa-coupons-for-woocommerce' ),
 							value: props.attributes.limit,
 							min: 1,
 							max: 50,
@@ -42,7 +42,7 @@
 					block: 'moksafocou/coupon-cards',
 					attributes: props.attributes
 				} )
-				: el( 'p', { key: 'ssr' }, __( 'Coupon cards (front-end display)', 'moksafocou' ) );
+				: el( 'p', { key: 'ssr' }, __( 'Coupon cards (front-end display)', 'moksa-coupons-for-woocommerce' ) );
 
 			return el( Fragment, {}, inspector, preview );
 		},

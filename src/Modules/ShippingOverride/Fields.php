@@ -34,7 +34,7 @@ final class Fields {
 		return array(
 			array(
 				'id'     => 'moksafocou_shipping',
-				'title'  => __( 'Shipping override', 'moksafocou' ),
+				'title'  => __( 'Shipping override', 'moksa-coupons-for-woocommerce' ),
 				'render' => function (): void {
 					$this->render_shipping_panel();
 				},
@@ -49,17 +49,17 @@ final class Fields {
 		}
 		$cfg = ShipConfig::read( new \WC_Coupon( (int) $post->ID ) );
 
-		echo '<p class="description" style="margin:8px 12px;">' . esc_html__( 'Overrides the shipping cost of all shipping methods when this coupon is applied. Different from WooCommerce\'s native "Allow free shipping" (which only enables dedicated free-shipping methods).', 'moksafocou' ) . '</p>';
+		echo '<p class="description" style="margin:8px 12px;">' . esc_html__( 'Overrides the shipping cost of all shipping methods when this coupon is applied. Different from WooCommerce\'s native "Allow free shipping" (which only enables dedicated free-shipping methods).', 'moksa-coupons-for-woocommerce' ) . '</p>';
 		woocommerce_wp_select(
 			array(
 				'id'      => Keys::SHIP_MODE,
 				'value'   => $cfg['mode'],
-				'label'   => __( 'Shipping override type', 'moksafocou' ),
+				'label'   => __( 'Shipping override type', 'moksa-coupons-for-woocommerce' ),
 				'options' => array(
-					'none'    => __( 'No override', 'moksafocou' ),
-					'free'    => __( 'Free shipping', 'moksafocou' ),
-					'percent' => __( 'Shipping percentage discount', 'moksafocou' ),
-					'fixed'   => __( 'Shipping fixed discount', 'moksafocou' ),
+					'none'    => __( 'No override', 'moksa-coupons-for-woocommerce' ),
+					'free'    => __( 'Free shipping', 'moksa-coupons-for-woocommerce' ),
+					'percent' => __( 'Shipping percentage discount', 'moksa-coupons-for-woocommerce' ),
+					'fixed'   => __( 'Shipping fixed discount', 'moksa-coupons-for-woocommerce' ),
 				),
 			)
 		);
@@ -67,9 +67,9 @@ final class Fields {
 			array(
 				'id'                => Keys::SHIP_VALUE,
 				'value'             => $cfg['value'],
-				'label'             => __( 'Discount amount', 'moksafocou' ),
+				'label'             => __( 'Discount amount', 'moksa-coupons-for-woocommerce' ),
 				'desc_tip'          => true,
-				'description'       => __( 'Percentage: 0–100; Fixed: discount amount. Not required when "Free shipping" or "No override" is selected.', 'moksafocou' ),
+				'description'       => __( 'Percentage: 0–100; Fixed: discount amount. Not required when "Free shipping" or "No override" is selected.', 'moksa-coupons-for-woocommerce' ),
 				'type'              => 'number',
 				'custom_attributes' => array(
 					'min'  => '0',

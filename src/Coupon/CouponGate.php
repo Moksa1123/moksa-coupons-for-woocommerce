@@ -57,7 +57,7 @@ final class CouponGate {
 			 */
 			$message                               = (string) apply_filters(
 				'moksafocou_coupon_not_allowed_message',
-				__( 'This coupon does not apply to your account.', 'moksafocou' ),
+				__( 'This coupon does not apply to your account.', 'moksa-coupons-for-woocommerce' ),
 				$coupon,
 				$user_id
 			);

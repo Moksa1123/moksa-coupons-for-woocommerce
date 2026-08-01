@@ -30,11 +30,11 @@ final class SendOps {
 		$input = is_array( $input ) ? $input : array();
 		$id    = CouponService::resolve_id( $input['code_or_id'] ?? '' );
 		if ( ! $id ) {
-			return new \WP_Error( 'moksafocou_not_found', __( 'Coupon not found.', 'moksafocou' ) );
+			return new \WP_Error( 'moksafocou_not_found', __( 'Coupon not found.', 'moksa-coupons-for-woocommerce' ) );
 		}
 		$email = isset( $input['email'] ) ? sanitize_email( (string) $input['email'] ) : '';
 		if ( '' === $email || ! is_email( $email ) ) {
-			return new \WP_Error( 'moksafocou_bad_email', __( 'Recipient email is invalid.', 'moksafocou' ) );
+			return new \WP_Error( 'moksafocou_bad_email', __( 'Recipient email is invalid.', 'moksa-coupons-for-woocommerce' ) );
 		}
 		$note     = isset( $input['note'] ) ? sanitize_text_field( (string) $input['note'] ) : '';
 		$restrict = ! empty( $input['restrict_to_email'] );
@@ -48,10 +48,10 @@ final class SendOps {
 			'restrict' => $restrict,
 			'summary'  => sprintf(
 				/* translators: 1: coupon code, 2: recipient email, 3: optional restriction note. */
-				__( 'Send coupon %1$s to %2$s%3$s', 'moksafocou' ),
+				__( 'Send coupon %1$s to %2$s%3$s', 'moksa-coupons-for-woocommerce' ),
 				$code,
 				$email,
-				$restrict ? __( ' (and lock it to this Email only)', 'moksafocou' ) : ''
+				$restrict ? __( ' (and lock it to this Email only)', 'moksa-coupons-for-woocommerce' ) : ''
 			),
 		);
 	}
@@ -74,7 +74,7 @@ final class SendOps {
 		return array(
 			'id'    => $id,
 			/* translators: %s: recipient email. */
-			'reply' => sprintf( __( 'Sent the coupon to %s.', 'moksafocou' ), $email ),
+			'reply' => sprintf( __( 'Sent the coupon to %s.', 'moksa-coupons-for-woocommerce' ), $email ),
 		);
 	}
 }

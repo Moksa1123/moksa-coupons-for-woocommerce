@@ -20,7 +20,7 @@ final class Module extends AbstractModule {
 	}
 
 	public function label(): string {
-		return __( 'Auto-apply coupon', 'moksafocou' );
+		return __( 'Auto-apply coupon', 'moksa-coupons-for-woocommerce' );
 	}
 
 	public function category(): string {
@@ -28,7 +28,7 @@ final class Module extends AbstractModule {
 	}
 
 	public function tagline(): string {
-		return __( 'Automatically add the coupon when the cart meets the conditions, no code needed', 'moksafocou' );
+		return __( 'Automatically add the coupon when the cart meets the conditions, no code needed', 'moksa-coupons-for-woocommerce' );
 	}
 
 	public function boot(): void {

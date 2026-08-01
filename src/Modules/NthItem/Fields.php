@@ -33,7 +33,7 @@ final class Fields {
 		return array(
 			array(
 				'id'     => 'moksafocou_nth_item',
-				'title'  => __( 'Nth-item discount', 'moksafocou' ),
+				'title'  => __( 'Nth-item discount', 'moksa-coupons-for-woocommerce' ),
 				'class'  => array( 'moksafocou_nth_item_tab' ),
 				'render' => function (): void {
 					$this->render_panel();
@@ -50,17 +50,17 @@ final class Fields {
 		$cfg = NthItemMeta::read( (int) $post->ID );
 
 		echo '<div class="options_group">';
-		echo '<p class="form-field"><strong>' . esc_html__( 'Applicable products (leave empty = whole site)', 'moksafocou' ) . '</strong></p>';
-		FieldsHelpers::product_select( Keys::NTH_PRODUCT_IDS, __( 'Specific products', 'moksafocou' ), $cfg['product_ids'] );
-		FieldsHelpers::category_select( Keys::NTH_CATEGORY_IDS, __( 'Specific categories', 'moksafocou' ), $cfg['category_ids'] );
+		echo '<p class="form-field"><strong>' . esc_html__( 'Applicable products (leave empty = whole site)', 'moksa-coupons-for-woocommerce' ) . '</strong></p>';
+		FieldsHelpers::product_select( Keys::NTH_PRODUCT_IDS, __( 'Specific products', 'moksa-coupons-for-woocommerce' ), $cfg['product_ids'] );
+		FieldsHelpers::category_select( Keys::NTH_CATEGORY_IDS, __( 'Specific categories', 'moksa-coupons-for-woocommerce' ), $cfg['category_ids'] );
 		woocommerce_wp_select(
 			array(
 				'id'      => Keys::NTH_GROUP_BY,
 				'value'   => $cfg['group_by'],
-				'label'   => __( 'Calculation method', 'moksafocou' ),
+				'label'   => __( 'Calculation method', 'moksa-coupons-for-woocommerce' ),
 				'options' => array(
-					'cart'    => __( 'Combine the whole cart in the calculation', 'moksafocou' ),
-					'product' => __( 'Count each product separately', 'moksafocou' ),
+					'cart'    => __( 'Combine the whole cart in the calculation', 'moksa-coupons-for-woocommerce' ),
+					'product' => __( 'Count each product separately', 'moksa-coupons-for-woocommerce' ),
 				),
 			)
 		);
@@ -71,25 +71,25 @@ final class Fields {
 			array(
 				'id'                => Keys::NTH_N,
 				'value'             => $cfg['n'],
-				'label'             => __( 'Discount one item per how many items (N)', 'moksafocou' ),
+				'label'             => __( 'Discount one item per how many items (N)', 'moksa-coupons-for-woocommerce' ),
 				'type'              => 'number',
 				'custom_attributes' => array(
 					'min'  => '2',
 					'step' => '1',
 				),
 				'desc_tip'          => true,
-				'description'       => __( 'Example: discount the second item → enter 2.', 'moksafocou' ),
+				'description'       => __( 'Example: discount the second item → enter 2.', 'moksa-coupons-for-woocommerce' ),
 			)
 		);
 		woocommerce_wp_select(
 			array(
 				'id'      => Keys::NTH_REWARD_MODE,
 				'value'   => $cfg['reward_mode'],
-				'label'   => __( 'Discount type', 'moksafocou' ),
+				'label'   => __( 'Discount type', 'moksa-coupons-for-woocommerce' ),
 				'options' => array(
-					'free'           => __( 'Free (100% off)', 'moksafocou' ),
-					'percent'        => __( 'Percentage discount', 'moksafocou' ),
-					'fixed_per_item' => __( 'Fixed discount per item', 'moksafocou' ),
+					'free'           => __( 'Free (100% off)', 'moksa-coupons-for-woocommerce' ),
+					'percent'        => __( 'Percentage discount', 'moksa-coupons-for-woocommerce' ),
+					'fixed_per_item' => __( 'Fixed discount per item', 'moksa-coupons-for-woocommerce' ),
 				),
 			)
 		);
@@ -97,9 +97,9 @@ final class Fields {
 			array(
 				'id'                => Keys::NTH_REWARD_VALUE,
 				'value'             => $cfg['reward_value'],
-				'label'             => __( 'Discount amount', 'moksafocou' ),
+				'label'             => __( 'Discount amount', 'moksa-coupons-for-woocommerce' ),
 				'desc_tip'          => true,
-				'description'       => __( 'Percentage is the "discount %": second item 40% off → enter 40 (40% off, pay 60%). Fixed per item: amount. Leave empty for free.', 'moksafocou' ),
+				'description'       => __( 'Percentage is the "discount %": second item 40% off → enter 40 (40% off, pay 60%). Fixed per item: amount. Leave empty for free.', 'moksa-coupons-for-woocommerce' ),
 				'type'              => 'number',
 				'custom_attributes' => array(
 					'min'  => '0',
@@ -114,10 +114,10 @@ final class Fields {
 			array(
 				'id'      => Keys::NTH_DEAL_MODE,
 				'value'   => $cfg['deal_mode'],
-				'label'   => __( 'Usage count', 'moksafocou' ),
+				'label'   => __( 'Usage count', 'moksa-coupons-for-woocommerce' ),
 				'options' => array(
-					'repeat' => __( 'Repeatable (discount one item for every N items)', 'moksafocou' ),
-					'once'   => __( 'Apply only once', 'moksafocou' ),
+					'repeat' => __( 'Repeatable (discount one item for every N items)', 'moksa-coupons-for-woocommerce' ),
+					'once'   => __( 'Apply only once', 'moksa-coupons-for-woocommerce' ),
 				),
 			)
 		);
@@ -125,9 +125,9 @@ final class Fields {
 			array(
 				'id'                => Keys::NTH_REPEAT_LIMIT,
 				'value'             => $cfg['repeat_limit'],
-				'label'             => __( 'Repeat limit', 'moksafocou' ),
+				'label'             => __( 'Repeat limit', 'moksa-coupons-for-woocommerce' ),
 				'desc_tip'          => true,
-				'description'       => __( '0 = no limit. Applies only when "repeatable".', 'moksafocou' ),
+				'description'       => __( '0 = no limit. Applies only when "repeatable".', 'moksa-coupons-for-woocommerce' ),
 				'type'              => 'number',
 				'custom_attributes' => array(
 					'min'  => '0',
@@ -139,9 +139,9 @@ final class Fields {
 			array(
 				'id'          => Keys::NTH_NOTICE_MSG,
 				'value'       => $cfg['notice_msg'],
-				'label'       => __( 'Add-more prompt message', 'moksafocou' ),
+				'label'       => __( 'Add-more prompt message', 'moksa-coupons-for-woocommerce' ),
 				'desc_tip'    => true,
-				'description' => __( 'You can use {nth_n} {coupon_code}. Leave empty to use the default message.', 'moksafocou' ),
+				'description' => __( 'You can use {nth_n} {coupon_code}. Leave empty to use the default message.', 'moksa-coupons-for-woocommerce' ),
 			)
 		);
 		echo '</div>';

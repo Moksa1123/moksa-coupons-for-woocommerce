@@ -19,7 +19,7 @@ final class Module extends AbstractModule {
 	}
 
 	public function label(): string {
-		return __( 'Free-shipping threshold hint', 'moksafocou' );
+		return __( 'Free-shipping threshold hint', 'moksa-coupons-for-woocommerce' );
 	}
 
 	public function category(): string {
@@ -27,7 +27,7 @@ final class Module extends AbstractModule {
 	}
 
 	public function tagline(): string {
-		return __( 'Show "Spend NT$X more for free shipping" in the cart / checkout to boost order value', 'moksafocou' );
+		return __( 'Show "Spend NT$X more for free shipping" in the cart / checkout to boost order value', 'moksa-coupons-for-woocommerce' );
 	}
 
 	public function boot(): void {

@@ -214,14 +214,14 @@ final class RestMeta {
 			case 'int':
 				return $base + array(
 					'type'              => 'integer',
-					'description'       => __( 'Moksa coupon settings (integer)', 'moksafocou' ),
+					'description'       => __( 'Moksa coupon settings (integer)', 'moksa-coupons-for-woocommerce' ),
 					'show_in_rest'      => true,
 					'sanitize_callback' => array( self::class, 'sanitize_int' ),
 				);
 			case 'int_list':
 				return $base + array(
 					'type'              => 'array',
-					'description'       => __( 'Moksa coupon settings (ID list)', 'moksafocou' ),
+					'description'       => __( 'Moksa coupon settings (ID list)', 'moksa-coupons-for-woocommerce' ),
 					'show_in_rest'      => array(
 						'schema' => array(
 							'type'  => 'array',
@@ -233,7 +233,7 @@ final class RestMeta {
 			case 'day_list':
 				return $base + array(
 					'type'              => 'array',
-					'description'       => __( 'Moksa coupon settings (weekday 0–6)', 'moksafocou' ),
+					'description'       => __( 'Moksa coupon settings (weekday 0–6)', 'moksa-coupons-for-woocommerce' ),
 					'show_in_rest'      => array(
 						'schema' => array(
 							'type'  => 'array',
@@ -245,7 +245,7 @@ final class RestMeta {
 			case 'key_list':
 				return $base + array(
 					'type'              => 'array',
-					'description'       => __( 'Moksa coupon settings (code list)', 'moksafocou' ),
+					'description'       => __( 'Moksa coupon settings (code list)', 'moksa-coupons-for-woocommerce' ),
 					'show_in_rest'      => array(
 						'schema' => array(
 							'type'  => 'array',
@@ -257,7 +257,7 @@ final class RestMeta {
 			case 'code_list':
 				return $base + array(
 					'type'              => 'array',
-					'description'       => __( 'Moksa coupon settings (country code list, uppercase)', 'moksafocou' ),
+					'description'       => __( 'Moksa coupon settings (country code list, uppercase)', 'moksa-coupons-for-woocommerce' ),
 					'show_in_rest'      => array(
 						'schema' => array(
 							'type'  => 'array',
@@ -269,56 +269,56 @@ final class RestMeta {
 			case 'bool':
 				return $base + array(
 					'type'              => 'string',
-					'description'       => __( 'Moksa coupon settings (enable flag yes/empty)', 'moksafocou' ),
+					'description'       => __( 'Moksa coupon settings (enable flag yes/empty)', 'moksa-coupons-for-woocommerce' ),
 					'show_in_rest'      => true,
 					'sanitize_callback' => array( self::class, 'sanitize_bool' ),
 				);
 			case 'key':
 				return $base + array(
 					'type'              => 'string',
-					'description'       => __( 'Moksa coupon settings (mode code)', 'moksafocou' ),
+					'description'       => __( 'Moksa coupon settings (mode code)', 'moksa-coupons-for-woocommerce' ),
 					'show_in_rest'      => true,
 					'sanitize_callback' => array( self::class, 'sanitize_key_value' ),
 				);
 			case 'textarea':
 				return $base + array(
 					'type'              => 'string',
-					'description'       => __( 'Moksa coupon settings (multi-line text)', 'moksafocou' ),
+					'description'       => __( 'Moksa coupon settings (multi-line text)', 'moksa-coupons-for-woocommerce' ),
 					'show_in_rest'      => true,
 					'sanitize_callback' => array( self::class, 'sanitize_textarea' ),
 				);
 			case 'slug':
 				return $base + array(
 					'type'              => 'string',
-					'description'       => __( 'Moksa coupon settings (URL slug)', 'moksafocou' ),
+					'description'       => __( 'Moksa coupon settings (URL slug)', 'moksa-coupons-for-woocommerce' ),
 					'show_in_rest'      => true,
 					'sanitize_callback' => array( self::class, 'sanitize_slug' ),
 				);
 			case 'decimal':
 				return $base + array(
 					'type'              => 'string',
-					'description'       => __( 'Moksa coupon settings (amount / number)', 'moksafocou' ),
+					'description'       => __( 'Moksa coupon settings (amount / number)', 'moksa-coupons-for-woocommerce' ),
 					'show_in_rest'      => true,
 					'sanitize_callback' => array( self::class, 'sanitize_text' ),
 				);
 			case 'datetime':
 				return $base + array(
 					'type'              => 'string',
-					'description'       => __( 'Moksa coupon settings (schedule time, site time zone)', 'moksafocou' ),
+					'description'       => __( 'Moksa coupon settings (schedule time, site time zone)', 'moksa-coupons-for-woocommerce' ),
 					'show_in_rest'      => true,
 					'sanitize_callback' => array( self::class, 'sanitize_datetime' ),
 				);
 			case 'tiers':
 				return $base + array(
 					'type'              => 'string',
-					'description'       => __( 'Moksa coupon settings (tiered discount, JSON)', 'moksafocou' ),
+					'description'       => __( 'Moksa coupon settings (tiered discount, JSON)', 'moksa-coupons-for-woocommerce' ),
 					'show_in_rest'      => true,
 					'sanitize_callback' => array( self::class, 'sanitize_tiers' ),
 				);
 			case 'rules':
 				return $base + array(
 					'type'              => 'string',
-					'description'       => __( 'Moksa coupon settings (advanced rules, JSON)', 'moksafocou' ),
+					'description'       => __( 'Moksa coupon settings (advanced rules, JSON)', 'moksa-coupons-for-woocommerce' ),
 					'show_in_rest'      => true,
 					'sanitize_callback' => array( self::class, 'sanitize_rules' ),
 				);
@@ -326,7 +326,7 @@ final class RestMeta {
 			default:
 				return $base + array(
 					'type'              => 'string',
-					'description'       => __( 'Moksa coupon settings (text)', 'moksafocou' ),
+					'description'       => __( 'Moksa coupon settings (text)', 'moksa-coupons-for-woocommerce' ),
 					'show_in_rest'      => true,
 					'sanitize_callback' => array( self::class, 'sanitize_text' ),
 				);

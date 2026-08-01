@@ -21,7 +21,7 @@ final class Module extends AbstractModule {
 	}
 
 	public function label(): string {
-		return __( 'Coupon list enhancements', 'moksafocou' );
+		return __( 'Coupon list enhancements', 'moksa-coupons-for-woocommerce' );
 	}
 
 	public function category(): string {
@@ -29,7 +29,7 @@ final class Module extends AbstractModule {
 	}
 
 	public function tagline(): string {
-		return __( 'Add enable / disable status column, bulk enable/disable, and one-click coupon copy to the coupon list', 'moksafocou' );
+		return __( 'Add enable / disable status column, bulk enable/disable, and one-click coupon copy to the coupon list', 'moksa-coupons-for-woocommerce' );
 	}
 
 	public function boot(): void {

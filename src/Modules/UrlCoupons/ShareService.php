@@ -73,7 +73,7 @@ final class ShareService {
 			'enabled'   => false,
 			'share_url' => '',
 			'via'       => 'none',
-			'reason'    => __( 'This coupon has not enabled URL apply yet. Check the "Enable" box on the coupon\'s "Coupon URL" tab, or turn on "Apply via URL query string" in the settings.', 'moksafocou' ),
+			'reason'    => __( 'This coupon has not enabled URL apply yet. Check the "Enable" box on the coupon\'s "Coupon URL" tab, or turn on "Apply via URL query string" in the settings.', 'moksa-coupons-for-woocommerce' ),
 		);
 	}
 
@@ -86,7 +86,7 @@ final class ShareService {
 	public static function qr_svg( string $url, int $px_scale = 8 ) {
 		$url = trim( $url );
 		if ( '' === $url ) {
-			return new \WP_Error( 'moksafocou_qr_empty', __( 'QR content cannot be empty.', 'moksafocou' ) );
+			return new \WP_Error( 'moksafocou_qr_empty', __( 'QR content cannot be empty.', 'moksa-coupons-for-woocommerce' ) );
 		}
 		$key    = 'moksafocou_qr_' . md5( $url . '|' . $px_scale );
 		$cached = get_transient( $key );

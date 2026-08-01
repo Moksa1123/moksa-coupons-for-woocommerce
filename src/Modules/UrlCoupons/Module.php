@@ -23,7 +23,7 @@ final class Module extends AbstractModule {
 	}
 
 	public function label(): string {
-		return __( 'Coupon URL / QR (click or scan to apply)', 'moksafocou' );
+		return __( 'Coupon URL / QR (click or scan to apply)', 'moksa-coupons-for-woocommerce' );
 	}
 
 	public function category(): string {
@@ -31,7 +31,7 @@ final class Module extends AbstractModule {
 	}
 
 	public function tagline(): string {
-		return __( 'Dedicated link + server-side QR, one-tap apply for customers', 'moksafocou' );
+		return __( 'Dedicated link + server-side QR, one-tap apply for customers', 'moksa-coupons-for-woocommerce' );
 	}
 
 	public function boot(): void {
@@ -85,12 +85,12 @@ final class Module extends AbstractModule {
 			'moksafocou-qr-admin',
 			'moksafocouQr',
 			array(
-				'copyLabel'     => __( 'Copy link', 'moksafocou' ),
-				'copiedLabel'   => __( 'Copied', 'moksafocou' ),
-				'downloadLabel' => __( 'Download QR (PNG)', 'moksafocou' ),
-				'shareTitle'    => __( 'Share link', 'moksafocou' ),
-				'qrTitle'       => __( 'QR Code', 'moksafocou' ),
-				'saveFirst'     => __( 'Please save the coupon first.', 'moksafocou' ),
+				'copyLabel'     => __( 'Copy link', 'moksa-coupons-for-woocommerce' ),
+				'copiedLabel'   => __( 'Copied', 'moksa-coupons-for-woocommerce' ),
+				'downloadLabel' => __( 'Download QR (PNG)', 'moksa-coupons-for-woocommerce' ),
+				'shareTitle'    => __( 'Share link', 'moksa-coupons-for-woocommerce' ),
+				'qrTitle'       => __( 'QR Code', 'moksa-coupons-for-woocommerce' ),
+				'saveFirst'     => __( 'Please save the coupon first.', 'moksa-coupons-for-woocommerce' ),
 			)
 		);
 	}

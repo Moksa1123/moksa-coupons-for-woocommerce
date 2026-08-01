@@ -44,8 +44,8 @@ final class Fields {
 			array(
 				'id'          => Keys::AUTO_APPLY,
 				'value'       => get_post_meta( $coupon_id, Keys::AUTO_APPLY, true ),
-				'label'       => __( 'Auto-apply', 'moksafocou' ),
-				'description' => __( 'Automatically add this coupon when the customer opens the cart (it still applies only if the conditions are met). Note: auto-apply is not possible when "usage limit / usage limit per user / email restriction" is set.', 'moksafocou' ),
+				'label'       => __( 'Auto-apply', 'moksa-coupons-for-woocommerce' ),
+				'description' => __( 'Automatically add this coupon when the customer opens the cart (it still applies only if the conditions are met). Note: auto-apply is not possible when "usage limit / usage limit per user / email restriction" is set.', 'moksa-coupons-for-woocommerce' ),
 			)
 		);
 	}
