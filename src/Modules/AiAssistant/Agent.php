@@ -89,11 +89,7 @@ final class Agent {
 				try {
 					$text = (string) $result->toText();
 				} catch ( \Throwable $e ) {
-					$text = '';
-					if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
-						// phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_error_log -- debug-gated diagnostic for a swallowed AI-response parse error.
-						error_log( 'moksafocou AI toText() failed: ' . $e->getMessage() );
-					}
+					$text = ''; // Malformed AI response → treat as empty; a fallback reply is returned below.
 				}
 				if ( '' !== trim( $text ) ) {
 					return self::text( $text );

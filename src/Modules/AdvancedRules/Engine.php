@@ -62,7 +62,6 @@ final class Engine {
 	 */
 	private static function fail( int $id, string $message ): void {
 		self::$last_error[ $id ] = $message;
-		// phpcs:ignore WordPress.Security.EscapeOutput.ExceptionNotEscaped -- run through wp_kses_post + entity-encode.
 		throw new \Exception( wp_kses_post( self::entity_encode( $message ) ) );
 	}
 
@@ -119,8 +118,7 @@ final class Engine {
 		$chosen  = sanitize_key( (string) $order->get_payment_method() );
 		$message = self::checkout_violation( $order->get_coupon_codes(), $chosen );
 		if ( null !== $message && class_exists( '\Automattic\WooCommerce\StoreApi\Exceptions\RouteException' ) ) {
-			// phpcs:ignore WordPress.Security.EscapeOutput.ExceptionNotEscaped -- plain text; Store API JSON-encodes it.
-			throw new \Automattic\WooCommerce\StoreApi\Exceptions\RouteException( 'moksafocou_rules', wp_strip_all_tags( $message ), 400 );
+			throw new \Automattic\WooCommerce\StoreApi\Exceptions\RouteException( 'moksafocou_rules', esc_html( wp_strip_all_tags( $message ) ), 400 );
 		}
 	}
 

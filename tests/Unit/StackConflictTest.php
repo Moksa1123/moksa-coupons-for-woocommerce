@@ -19,7 +19,7 @@ final class StackConflictTest extends TestCase {
 	 */
 	private function rules( bool $exclude = false, array $allowed = array(), array $disallowed = array() ): array {
 		return array(
-			'exclude'    => $exclude,
+			'no_stack'   => $exclude,
 			'allowed'    => $allowed,
 			'disallowed' => $disallowed,
 		);
@@ -33,7 +33,7 @@ final class StackConflictTest extends TestCase {
 	private function other( string $code, bool $exclude = false, array $allowed = array(), array $disallowed = array() ): array {
 		return array(
 			'code'       => $code,
-			'exclude'    => $exclude,
+			'no_stack'   => $exclude,
 			'allowed'    => $allowed,
 			'disallowed' => $disallowed,
 		);

@@ -62,7 +62,6 @@ final class CouponGate {
 				$user_id
 			);
 			self::$last_error[ $coupon->get_id() ] = $message;
-			// phpcs:ignore WordPress.Security.EscapeOutput.ExceptionNotEscaped -- message run through wp_kses_post.
 			throw new \Exception( wp_kses_post( $message ) );
 		}
 		return $valid;

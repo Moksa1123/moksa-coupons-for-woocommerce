@@ -17,12 +17,11 @@ final class StackConfig {
 
 	/**
 	 * @param \WC_Coupon $coupon Coupon to read rules from.
-	 * @return array{exclude:bool,allowed:array<int,string>,disallowed:array<int,string>,msg:string}
+	 * @return array{no_stack:bool,allowed:array<int,string>,disallowed:array<int,string>,msg:string}
 	 */
 	public static function read( \WC_Coupon $coupon ): array {
 		return array(
-			// phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude -- 'exclude' is this config map's stacking flag, not a get_posts/WP_Query parameter.
-			'exclude'    => 'yes' === $coupon->get_meta( Keys::STACK_EXCLUDE, true ),
+			'no_stack'   => 'yes' === $coupon->get_meta( Keys::STACK_EXCLUDE, true ),
 			'allowed'    => self::parse_codes( (string) $coupon->get_meta( Keys::STACK_ALLOWED, true ) ),
 			'disallowed' => self::parse_codes( (string) $coupon->get_meta( Keys::STACK_DISALLOWED, true ) ),
 			'msg'        => (string) $coupon->get_meta( Keys::STACK_MSG, true ),
@@ -33,10 +32,10 @@ final class StackConfig {
 	 * True when the coupon constrains stacking at all (so the validator can skip the
 	 * cheaper coupons that set nothing).
 	 *
-	 * @param array{exclude:bool,allowed:array<int,string>,disallowed:array<int,string>,msg?:string} $cfg Rules.
+	 * @param array{no_stack:bool,allowed:array<int,string>,disallowed:array<int,string>,msg?:string} $cfg Rules.
 	 */
 	public static function is_active( array $cfg ): bool {
-		return $cfg['exclude'] || array() !== $cfg['allowed'] || array() !== $cfg['disallowed'];
+		return $cfg['no_stack'] || array() !== $cfg['allowed'] || array() !== $cfg['disallowed'];
 	}
 
 	/**
@@ -83,8 +82,8 @@ final class StackConfig {
 	 *   - the other excludes-others and this coupon is not in the other's allow-list.
 	 *
 	 * @param string                                                                                            $code       The coupon being validated (normalized).
-	 * @param array{exclude:bool,allowed:array<int,string>,disallowed:array<int,string>}                        $self_rules This coupon's rules.
-	 * @param array<int,array{code:string,exclude:bool,allowed:array<int,string>,disallowed:array<int,string>}> $others     Other applied coupons + rules.
+	 * @param array{no_stack:bool,allowed:array<int,string>,disallowed:array<int,string>}                        $self_rules This coupon's rules.
+	 * @param array<int,array{code:string,no_stack:bool,allowed:array<int,string>,disallowed:array<int,string>}> $others     Other applied coupons + rules.
 	 */
 	public static function stack_conflict( string $code, array $self_rules, array $others ): ?string {
 		foreach ( $others as $o ) {
@@ -98,10 +97,10 @@ final class StackConfig {
 			if ( in_array( $code, $o['disallowed'], true ) ) {
 				return $ocode;
 			}
-			if ( $self_rules['exclude'] && ! in_array( $ocode, $self_rules['allowed'], true ) ) {
+			if ( $self_rules['no_stack'] && ! in_array( $ocode, $self_rules['allowed'], true ) ) {
 				return $ocode;
 			}
-			if ( $o['exclude'] && ! in_array( $code, $o['allowed'], true ) ) {
+			if ( $o['no_stack'] && ! in_array( $code, $o['allowed'], true ) ) {
 				return $ocode;
 			}
 		}

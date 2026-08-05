@@ -76,8 +76,31 @@ final class Endpoint {
 		}
 
 		echo '<p class="moksafocou-myaccount-intro">' . esc_html__( 'Here are the coupons exclusive to you; you can copy the code or apply it in one click:', 'moksa-coupons-for-woocommerce' ) . '</p>';
-		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- CouponCard::render() escapes every dynamic value; the surrounding markup is static.
-		echo '<div class="moksafocou-coupons moksafocou-myaccount-coupons">' . $cards . '</div>';
+		// CouponCard::render() escapes every dynamic value; wp_kses (not wp_kses_post) is used so the
+		// card's data-* / aria-label attributes on <button>/<div> survive (wp_kses_post strips them).
+		$card_allowed = array(
+			'div'    => array(
+				'class'         => true,
+				'data-deadline' => true,
+				'data-ended'    => true,
+			),
+			'span'   => array( 'class' => true ),
+			'ul'     => array( 'class' => true ),
+			'li'     => array( 'class' => true ),
+			'code'   => array(),
+			'button' => array(
+				'type'        => true,
+				'class'       => true,
+				'data-code'   => true,
+				'data-copied' => true,
+				'aria-label'  => true,
+			),
+			'a'      => array(
+				'class' => true,
+				'href'  => true,
+			),
+		);
+		echo wp_kses( '<div class="moksafocou-coupons moksafocou-myaccount-coupons">' . $cards . '</div>', $card_allowed );
 	}
 
 	/** Load the shared coupon-card CSS/JS on the account page (copy button + layout). */

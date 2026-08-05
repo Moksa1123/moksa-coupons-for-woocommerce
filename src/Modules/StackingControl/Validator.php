@@ -54,7 +54,6 @@ final class Validator {
 				$conflict
 			);
 		self::$last_error[ $id ] = $msg;
-		// phpcs:ignore WordPress.Security.EscapeOutput.ExceptionNotEscaped -- message run through wp_kses_post.
 		throw new \Exception( wp_kses_post( $msg ) );
 	}
 
@@ -79,8 +78,7 @@ final class Validator {
 			$rules    = StackConfig::read( $other );
 			$others[] = array(
 				'code'       => $norm,
-				// phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude -- 'exclude' is the stacking flag from StackConfig::read(), not a get_posts/WP_Query parameter.
-				'exclude'    => $rules['exclude'],
+				'no_stack'   => $rules['no_stack'],
 				'allowed'    => $rules['allowed'],
 				'disallowed' => $rules['disallowed'],
 			);

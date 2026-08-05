@@ -348,8 +348,7 @@ final class SettingsScreen {
 
 		$first = true;
 		foreach ( $tabs as $slug => $label ) {
-			$style = $first ? '' : ' style="display:none"';
-			echo '<div class="mowp-pane" data-pane="' . esc_attr( $slug ) . '"' . $style . '>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- $style is a fixed literal.
+			echo '<div class="mowp-pane" data-pane="' . esc_attr( $slug ) . '"' . ( $first ? '' : ' style="display:none"' ) . '>';
 			foreach ( $by_tab[ $slug ] as $group ) {
 				self::section_card( $group );
 			}

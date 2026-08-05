@@ -100,8 +100,12 @@ final class Rest {
 		if ( $request->get_param( 'download' ) ) {
 			header( 'Content-Disposition: attachment; filename="coupon-' . $coupon->get_id() . '-qr.svg"' );
 		}
-		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- SVG markup is plugin-computed integers + hard-coded colours; no user data is interpolated, and it cannot be esc_html'd without corruption.
-		echo $svg;
+		// Safe by construction: the SVG is assembled from plugin-computed integers + two hard-coded
+		// colour literals (no user data in markup) and is streamed as a standalone image/svg+xml
+		// response (Content-Type set above). wp_kses() cannot be used here because it lower-cases the
+		// case-sensitive viewBox attribute to "viewbox", which a standalone SVG parser silently
+		// ignores, breaking the QR coordinate system.
+		echo $svg; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- see comment above.
 		exit;
 	}
 

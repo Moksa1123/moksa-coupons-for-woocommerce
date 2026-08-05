@@ -210,8 +210,7 @@ final class ImportExport {
 		check_admin_referer( self::NONCE_IMPORT );
 		$back = add_query_arg( 'page', self::SLUG, admin_url( 'admin.php' ) );
 
-		// phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized,WordPress.Security.ValidatedSanitizedInput.MissingUnslash -- tmp_name validated by is_uploaded_file below; it is a server path, not user text.
-		$tmp = isset( $_FILES['csv']['tmp_name'] ) ? (string) $_FILES['csv']['tmp_name'] : '';
+		$tmp = isset( $_FILES['csv']['tmp_name'] ) ? sanitize_text_field( wp_unslash( $_FILES['csv']['tmp_name'] ) ) : '';
 		if ( '' === $tmp || ! is_uploaded_file( $tmp ) ) {
 			wp_safe_redirect( add_query_arg( 'moksafocou_import', 'nofile', $back ) );
 			exit;

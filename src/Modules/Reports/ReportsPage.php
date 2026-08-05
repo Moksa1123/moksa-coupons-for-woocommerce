@@ -124,7 +124,7 @@ final class ReportsPage {
 		);
 		foreach ( $cards as $card ) {
 			echo '<div class="mowp-tile">';
-			echo '<div class="mowp-tile__num">' . $card[1] . '</div>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- each value escaped above (esc_html / wc_price via wp_kses_post).
+			echo '<div class="mowp-tile__num">' . wp_kses_post( $card[1] ) . '</div>';
 			echo '<div class="mowp-tile__label">' . esc_html( (string) $card[0] ) . '</div>';
 			echo '</div>';
 		}

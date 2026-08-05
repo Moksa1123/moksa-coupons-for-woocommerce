@@ -89,7 +89,6 @@ final class Validator {
 	 */
 	private static function fail( int $id, string $message ): void {
 		self::$last_error[ $id ] = $message;
-		// phpcs:ignore WordPress.Security.EscapeOutput.ExceptionNotEscaped -- message run through wp_kses_post.
 		throw new \Exception( wp_kses_post( self::maybe_entity_encode( $message ) ) );
 	}
 
@@ -523,8 +522,7 @@ final class Validator {
 		$chosen  = sanitize_key( (string) $order->get_payment_method() );
 		$message = self::payment_violation_message( $order->get_coupon_codes(), $chosen );
 		if ( null !== $message && class_exists( '\Automattic\WooCommerce\StoreApi\Exceptions\RouteException' ) ) {
-			// phpcs:ignore WordPress.Security.EscapeOutput.ExceptionNotEscaped -- message stripped to plain text; Store API JSON-encodes it.
-			throw new \Automattic\WooCommerce\StoreApi\Exceptions\RouteException( 'moksafocou_payment', wp_strip_all_tags( $message ), 400 );
+			throw new \Automattic\WooCommerce\StoreApi\Exceptions\RouteException( 'moksafocou_payment', esc_html( wp_strip_all_tags( $message ) ), 400 );
 		}
 	}
 
