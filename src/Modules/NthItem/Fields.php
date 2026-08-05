@@ -153,23 +153,24 @@ final class Fields {
 	 */
 	public function save( $post_id, $coupon ): void {
 		$post_id = (int) $post_id;
-		if ( ! $this->verify_save( $post_id, self::NONCE ) ) {
+		if ( ! current_user_can( self::CAP, $post_id ) ) {
+			return;
+		}
+		if ( ! isset( $_POST[ self::NONCE ] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST[ self::NONCE ] ) ), $this->action( $post_id ) ) ) {
 			return;
 		}
 
-		// phpcs:disable WordPress.Security.NonceVerification.Missing, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- nonce verified above; every value is sanitized in NthItemMeta::sanitize (absint id-lists, int/float scalars, sanitize_text_field text).
 		$raw = array(
-			'product_ids'  => isset( $_POST[ Keys::NTH_PRODUCT_IDS ] ) ? wp_unslash( $_POST[ Keys::NTH_PRODUCT_IDS ] ) : array(),
-			'category_ids' => isset( $_POST[ Keys::NTH_CATEGORY_IDS ] ) ? wp_unslash( $_POST[ Keys::NTH_CATEGORY_IDS ] ) : array(),
+			'product_ids'  => isset( $_POST[ Keys::NTH_PRODUCT_IDS ] ) ? array_map( 'absint', (array) wp_unslash( $_POST[ Keys::NTH_PRODUCT_IDS ] ) ) : array(),
+			'category_ids' => isset( $_POST[ Keys::NTH_CATEGORY_IDS ] ) ? array_map( 'absint', (array) wp_unslash( $_POST[ Keys::NTH_CATEGORY_IDS ] ) ) : array(),
 			'group_by'     => isset( $_POST[ Keys::NTH_GROUP_BY ] ) ? sanitize_key( wp_unslash( $_POST[ Keys::NTH_GROUP_BY ] ) ) : 'cart',
-			'n'            => isset( $_POST[ Keys::NTH_N ] ) ? wp_unslash( $_POST[ Keys::NTH_N ] ) : 2,
+			'n'            => isset( $_POST[ Keys::NTH_N ] ) ? absint( wp_unslash( $_POST[ Keys::NTH_N ] ) ) : 2,
 			'reward_mode'  => isset( $_POST[ Keys::NTH_REWARD_MODE ] ) ? sanitize_key( wp_unslash( $_POST[ Keys::NTH_REWARD_MODE ] ) ) : 'percent',
-			'reward_value' => isset( $_POST[ Keys::NTH_REWARD_VALUE ] ) ? wp_unslash( $_POST[ Keys::NTH_REWARD_VALUE ] ) : 0,
+			'reward_value' => isset( $_POST[ Keys::NTH_REWARD_VALUE ] ) ? sanitize_text_field( wp_unslash( $_POST[ Keys::NTH_REWARD_VALUE ] ) ) : 0,
 			'deal_mode'    => isset( $_POST[ Keys::NTH_DEAL_MODE ] ) ? sanitize_key( wp_unslash( $_POST[ Keys::NTH_DEAL_MODE ] ) ) : 'repeat',
-			'repeat_limit' => isset( $_POST[ Keys::NTH_REPEAT_LIMIT ] ) ? wp_unslash( $_POST[ Keys::NTH_REPEAT_LIMIT ] ) : 0,
-			'notice_msg'   => isset( $_POST[ Keys::NTH_NOTICE_MSG ] ) ? wp_unslash( $_POST[ Keys::NTH_NOTICE_MSG ] ) : '',
+			'repeat_limit' => isset( $_POST[ Keys::NTH_REPEAT_LIMIT ] ) ? absint( wp_unslash( $_POST[ Keys::NTH_REPEAT_LIMIT ] ) ) : 0,
+			'notice_msg'   => isset( $_POST[ Keys::NTH_NOTICE_MSG ] ) ? sanitize_text_field( wp_unslash( $_POST[ Keys::NTH_NOTICE_MSG ] ) ) : '',
 		);
-		// phpcs:enable WordPress.Security.NonceVerification.Missing, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 
 		NthItemMeta::write( $post_id, NthItemMeta::sanitize( $raw ) );
 	}

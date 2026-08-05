@@ -141,22 +141,23 @@ final class Fields {
 	 */
 	public function save( $post_id, $coupon ): void {
 		$post_id = (int) $post_id;
-		if ( ! $this->verify_save( $post_id, self::NONCE ) ) {
+		if ( ! current_user_can( self::CAP, $post_id ) ) {
+			return;
+		}
+		if ( ! isset( $_POST[ self::NONCE ] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST[ self::NONCE ] ) ), $this->action( $post_id ) ) ) {
 			return;
 		}
 
-		// phpcs:disable WordPress.Security.NonceVerification.Missing, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- nonce verified above; every value is sanitized in MixMatchMeta::sanitize (absint id-lists, int/float scalars, sanitize_textarea_field text).
 		$raw = array(
-			'product_ids'  => isset( $_POST[ Keys::MIXMATCH_PRODUCT_IDS ] ) ? wp_unslash( $_POST[ Keys::MIXMATCH_PRODUCT_IDS ] ) : array(),
-			'category_ids' => isset( $_POST[ Keys::MIXMATCH_CATEGORY_IDS ] ) ? wp_unslash( $_POST[ Keys::MIXMATCH_CATEGORY_IDS ] ) : array(),
-			'qty'          => isset( $_POST[ Keys::MIXMATCH_QTY ] ) ? wp_unslash( $_POST[ Keys::MIXMATCH_QTY ] ) : 1,
+			'product_ids'  => isset( $_POST[ Keys::MIXMATCH_PRODUCT_IDS ] ) ? array_map( 'absint', (array) wp_unslash( $_POST[ Keys::MIXMATCH_PRODUCT_IDS ] ) ) : array(),
+			'category_ids' => isset( $_POST[ Keys::MIXMATCH_CATEGORY_IDS ] ) ? array_map( 'absint', (array) wp_unslash( $_POST[ Keys::MIXMATCH_CATEGORY_IDS ] ) ) : array(),
+			'qty'          => isset( $_POST[ Keys::MIXMATCH_QTY ] ) ? absint( wp_unslash( $_POST[ Keys::MIXMATCH_QTY ] ) ) : 1,
 			'price_mode'   => isset( $_POST[ Keys::MIXMATCH_PRICE_MODE ] ) ? sanitize_key( wp_unslash( $_POST[ Keys::MIXMATCH_PRICE_MODE ] ) ) : 'fixed_total',
-			'price_value'  => isset( $_POST[ Keys::MIXMATCH_PRICE_VALUE ] ) ? wp_unslash( $_POST[ Keys::MIXMATCH_PRICE_VALUE ] ) : 0,
+			'price_value'  => isset( $_POST[ Keys::MIXMATCH_PRICE_VALUE ] ) ? sanitize_text_field( wp_unslash( $_POST[ Keys::MIXMATCH_PRICE_VALUE ] ) ) : 0,
 			'deal_mode'    => isset( $_POST[ Keys::MIXMATCH_DEAL_MODE ] ) ? sanitize_key( wp_unslash( $_POST[ Keys::MIXMATCH_DEAL_MODE ] ) ) : 'repeat',
-			'repeat_limit' => isset( $_POST[ Keys::MIXMATCH_REPEAT_LIMIT ] ) ? wp_unslash( $_POST[ Keys::MIXMATCH_REPEAT_LIMIT ] ) : 0,
-			'notice_msg'   => isset( $_POST[ Keys::MIXMATCH_NOTICE_MSG ] ) ? wp_unslash( $_POST[ Keys::MIXMATCH_NOTICE_MSG ] ) : '',
+			'repeat_limit' => isset( $_POST[ Keys::MIXMATCH_REPEAT_LIMIT ] ) ? absint( wp_unslash( $_POST[ Keys::MIXMATCH_REPEAT_LIMIT ] ) ) : 0,
+			'notice_msg'   => isset( $_POST[ Keys::MIXMATCH_NOTICE_MSG ] ) ? sanitize_text_field( wp_unslash( $_POST[ Keys::MIXMATCH_NOTICE_MSG ] ) ) : '',
 		);
-		// phpcs:enable WordPress.Security.NonceVerification.Missing, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 
 		MixMatchMeta::write( $post_id, MixMatchMeta::sanitize( $raw ) );
 	}

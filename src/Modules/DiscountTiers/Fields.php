@@ -221,11 +221,13 @@ final class Fields {
 	 */
 	public function save( $post_id, $coupon ): void {
 		$post_id = (int) $post_id;
-		if ( ! $this->verify_save( $post_id, self::NONCE ) ) {
+		if ( ! current_user_can( self::CAP, $post_id ) ) {
+			return;
+		}
+		if ( ! isset( $_POST[ self::NONCE ] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST[ self::NONCE ] ) ), $this->action( $post_id ) ) ) {
 			return;
 		}
 
-		// phpcs:disable WordPress.Security.NonceVerification.Missing -- nonce verified above.
 		// Store 'yes' / '' (not 'no') to match every other feature's enable flag convention.
 		update_post_meta( $post_id, Keys::TIERS_ENABLED, isset( $_POST[ Keys::TIERS_ENABLED ] ) ? 'yes' : '' );
 
@@ -254,14 +256,16 @@ final class Fields {
 		$mode = isset( $_POST[ Keys::TIERS_TARGET_MODE ] ) ? sanitize_key( wp_unslash( $_POST[ Keys::TIERS_TARGET_MODE ] ) ) : 'all';
 		update_post_meta( $post_id, Keys::TIERS_TARGET_MODE, in_array( $mode, array( 'products', 'categories' ), true ) ? $mode : 'all' );
 
-		$this->save_id_list( $post_id, Keys::TIERS_TARGET_PRODUCTS );
-		$this->save_id_list( $post_id, Keys::TIERS_TARGET_CATEGORIES );
-		// phpcs:enable WordPress.Security.NonceVerification.Missing
+		$products   = isset( $_POST[ Keys::TIERS_TARGET_PRODUCTS ] ) ? array_map( 'absint', (array) wp_unslash( $_POST[ Keys::TIERS_TARGET_PRODUCTS ] ) ) : array();
+		$categories = isset( $_POST[ Keys::TIERS_TARGET_CATEGORIES ] ) ? array_map( 'absint', (array) wp_unslash( $_POST[ Keys::TIERS_TARGET_CATEGORIES ] ) ) : array();
+		$this->save_id_list( $post_id, Keys::TIERS_TARGET_PRODUCTS, $products );
+		$this->save_id_list( $post_id, Keys::TIERS_TARGET_CATEGORIES, $categories );
 	}
 
-	private function save_id_list( int $post_id, string $key ): void {
-		// phpcs:ignore WordPress.Security.NonceVerification.Missing -- caller verified the nonce.
-		$raw  = isset( $_POST[ $key ] ) ? array_map( 'sanitize_text_field', (array) wp_unslash( $_POST[ $key ] ) ) : array();
+	/**
+	 * @param array<int|string,mixed> $raw
+	 */
+	private function save_id_list( int $post_id, string $key, array $raw ): void {
 		$list = FieldsHelpers::int_list( $raw );
 		if ( array() === $list ) {
 			delete_post_meta( $post_id, $key );

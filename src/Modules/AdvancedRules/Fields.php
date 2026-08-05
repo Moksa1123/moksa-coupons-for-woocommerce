@@ -423,18 +423,19 @@ final class Fields {
 	 */
 	public function save( $post_id, $coupon ): void {
 		$post_id = (int) $post_id;
-		if ( ! $this->verify_save( $post_id, self::NONCE ) ) {
+		if ( ! current_user_can( self::CAP, $post_id ) ) {
+			return;
+		}
+		if ( ! isset( $_POST[ self::NONCE ] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST[ self::NONCE ] ) ), $this->action( $post_id ) ) ) {
 			return;
 		}
 
-		// phpcs:disable WordPress.Security.NonceVerification.Missing -- nonce verified above.
 		update_post_meta( $post_id, Keys::RULES_ENABLED, isset( $_POST[ Keys::RULES_ENABLED ] ) ? 'yes' : '' );
 
 		// The builder writes canonical JSON here; Rules::canonical_json parses + rebuilds it
 		// (only known type/op/value survive), which IS the sanitization for this structured field.
-		// phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- structural sanitisation via Rules::canonical_json below.
-		$raw  = isset( $_POST[ self::FIELD ] ) ? wp_unslash( $_POST[ self::FIELD ] ) : '';
-		$json = Rules::canonical_json( is_string( $raw ) ? $raw : '' );
+		$raw  = isset( $_POST[ self::FIELD ] ) ? sanitize_textarea_field( wp_unslash( $_POST[ self::FIELD ] ) ) : '';
+		$json = Rules::canonical_json( $raw );
 		if ( '' === $json ) {
 			delete_post_meta( $post_id, Keys::RULES );
 		} else {
@@ -447,6 +448,5 @@ final class Fields {
 		} else {
 			update_post_meta( $post_id, Keys::RULES_MSG, $msg );
 		}
-		// phpcs:enable WordPress.Security.NonceVerification.Missing
 	}
 }

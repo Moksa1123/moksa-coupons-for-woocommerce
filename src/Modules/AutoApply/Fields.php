@@ -56,11 +56,13 @@ final class Fields {
 	 */
 	public function save( $post_id, $coupon ): void {
 		$post_id = (int) $post_id;
-		if ( ! $this->verify_save( $post_id, self::NONCE ) ) {
+		if ( ! current_user_can( self::CAP, $post_id ) ) {
+			return;
+		}
+		if ( ! isset( $_POST[ self::NONCE ] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST[ self::NONCE ] ) ), $this->action( $post_id ) ) ) {
 			return;
 		}
 		// Explicit bool — unchecked must delete the meta + drop the cache id (un-toggle).
-		// phpcs:ignore WordPress.Security.NonceVerification.Missing -- nonce verified above.
 		AutoApplyMeta::write( $post_id, isset( $_POST[ Keys::AUTO_APPLY ] ) );
 	}
 }

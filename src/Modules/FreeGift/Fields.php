@@ -113,11 +113,13 @@ final class Fields {
 	 */
 	public function save( $post_id, $coupon ): void {
 		$post_id = (int) $post_id;
-		if ( ! $this->verify_save( $post_id, self::NONCE ) ) {
+		if ( ! current_user_can( self::CAP, $post_id ) ) {
+			return;
+		}
+		if ( ! isset( $_POST[ self::NONCE ] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST[ self::NONCE ] ) ), $this->action( $post_id ) ) ) {
 			return;
 		}
 
-		// phpcs:disable WordPress.Security.NonceVerification.Missing -- nonce verified above.
 		update_post_meta( $post_id, Keys::GIFT_ENABLED, isset( $_POST[ Keys::GIFT_ENABLED ] ) ? 'yes' : '' );
 
 		$pid = isset( $_POST[ Keys::GIFT_PRODUCT_ID ] ) ? absint( wp_unslash( $_POST[ Keys::GIFT_PRODUCT_ID ] ) ) : 0;
@@ -134,6 +136,5 @@ final class Fields {
 
 		$value = isset( $_POST[ Keys::GIFT_VALUE ] ) ? (float) wc_format_decimal( sanitize_text_field( wp_unslash( $_POST[ Keys::GIFT_VALUE ] ) ) ) : 0.0;
 		update_post_meta( $post_id, Keys::GIFT_VALUE, (string) max( 0.0, $value ) );
-		// phpcs:enable WordPress.Security.NonceVerification.Missing
 	}
 }

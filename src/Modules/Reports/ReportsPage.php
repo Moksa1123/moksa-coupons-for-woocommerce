@@ -167,11 +167,13 @@ final class ReportsPage {
 	}
 
 	private static function refresh_requested(): bool {
-		if ( isset( $_GET['refresh'], $_GET['_wpnonce'] ) ) {
-			$nonce = sanitize_text_field( wp_unslash( $_GET['_wpnonce'] ) );
-			return (bool) wp_verify_nonce( $nonce, self::NONCE );
+		if ( ! current_user_can( self::CAP ) ) {
+			return false;
 		}
-		return false;
+		if ( ! isset( $_GET['refresh'], $_GET['_wpnonce'] ) ) {
+			return false;
+		}
+		return (bool) wp_verify_nonce( sanitize_text_field( wp_unslash( $_GET['_wpnonce'] ) ), self::NONCE );
 	}
 
 	private static function type_label( string $type ): string {

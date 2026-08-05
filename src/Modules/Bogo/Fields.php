@@ -161,25 +161,26 @@ final class Fields {
 	 */
 	public function save( $post_id, $coupon ): void {
 		$post_id = (int) $post_id;
-		if ( ! $this->verify_save( $post_id, self::NONCE ) ) {
+		if ( ! current_user_can( self::CAP, $post_id ) ) {
+			return;
+		}
+		if ( ! isset( $_POST[ self::NONCE ] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST[ self::NONCE ] ) ), $this->action( $post_id ) ) ) {
 			return;
 		}
 
-		// phpcs:disable WordPress.Security.NonceVerification.Missing, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- nonce verified above; every value is sanitized in BogoMeta::sanitize (absint id-lists, int/float scalars, sanitize_text_field text).
 		$raw = array(
-			'trigger_product_ids'  => isset( $_POST[ Keys::BOGO_TRIGGER_PRODUCT_IDS ] ) ? wp_unslash( $_POST[ Keys::BOGO_TRIGGER_PRODUCT_IDS ] ) : array(),
-			'trigger_category_ids' => isset( $_POST[ Keys::BOGO_TRIGGER_CATEGORY_IDS ] ) ? wp_unslash( $_POST[ Keys::BOGO_TRIGGER_CATEGORY_IDS ] ) : array(),
-			'trigger_qty'          => isset( $_POST[ Keys::BOGO_TRIGGER_QTY ] ) ? wp_unslash( $_POST[ Keys::BOGO_TRIGGER_QTY ] ) : 1,
-			'reward_product_ids'   => isset( $_POST[ Keys::BOGO_REWARD_PRODUCT_IDS ] ) ? wp_unslash( $_POST[ Keys::BOGO_REWARD_PRODUCT_IDS ] ) : array(),
-			'reward_category_ids'  => isset( $_POST[ Keys::BOGO_REWARD_CATEGORY_IDS ] ) ? wp_unslash( $_POST[ Keys::BOGO_REWARD_CATEGORY_IDS ] ) : array(),
-			'reward_qty'           => isset( $_POST[ Keys::BOGO_REWARD_QTY ] ) ? wp_unslash( $_POST[ Keys::BOGO_REWARD_QTY ] ) : 1,
+			'trigger_product_ids'  => isset( $_POST[ Keys::BOGO_TRIGGER_PRODUCT_IDS ] ) ? array_map( 'absint', (array) wp_unslash( $_POST[ Keys::BOGO_TRIGGER_PRODUCT_IDS ] ) ) : array(),
+			'trigger_category_ids' => isset( $_POST[ Keys::BOGO_TRIGGER_CATEGORY_IDS ] ) ? array_map( 'absint', (array) wp_unslash( $_POST[ Keys::BOGO_TRIGGER_CATEGORY_IDS ] ) ) : array(),
+			'trigger_qty'          => isset( $_POST[ Keys::BOGO_TRIGGER_QTY ] ) ? absint( wp_unslash( $_POST[ Keys::BOGO_TRIGGER_QTY ] ) ) : 1,
+			'reward_product_ids'   => isset( $_POST[ Keys::BOGO_REWARD_PRODUCT_IDS ] ) ? array_map( 'absint', (array) wp_unslash( $_POST[ Keys::BOGO_REWARD_PRODUCT_IDS ] ) ) : array(),
+			'reward_category_ids'  => isset( $_POST[ Keys::BOGO_REWARD_CATEGORY_IDS ] ) ? array_map( 'absint', (array) wp_unslash( $_POST[ Keys::BOGO_REWARD_CATEGORY_IDS ] ) ) : array(),
+			'reward_qty'           => isset( $_POST[ Keys::BOGO_REWARD_QTY ] ) ? absint( wp_unslash( $_POST[ Keys::BOGO_REWARD_QTY ] ) ) : 1,
 			'reward_mode'          => isset( $_POST[ Keys::BOGO_REWARD_MODE ] ) ? sanitize_key( wp_unslash( $_POST[ Keys::BOGO_REWARD_MODE ] ) ) : 'percent',
-			'reward_value'         => isset( $_POST[ Keys::BOGO_REWARD_VALUE ] ) ? wp_unslash( $_POST[ Keys::BOGO_REWARD_VALUE ] ) : 0,
+			'reward_value'         => isset( $_POST[ Keys::BOGO_REWARD_VALUE ] ) ? sanitize_text_field( wp_unslash( $_POST[ Keys::BOGO_REWARD_VALUE ] ) ) : 0,
 			'deal_mode'            => isset( $_POST[ Keys::BOGO_DEAL_MODE ] ) ? sanitize_key( wp_unslash( $_POST[ Keys::BOGO_DEAL_MODE ] ) ) : 'once',
-			'repeat_limit'         => isset( $_POST[ Keys::BOGO_REPEAT_LIMIT ] ) ? wp_unslash( $_POST[ Keys::BOGO_REPEAT_LIMIT ] ) : 0,
-			'notice_msg'           => isset( $_POST[ Keys::BOGO_NOTICE_MSG ] ) ? wp_unslash( $_POST[ Keys::BOGO_NOTICE_MSG ] ) : '',
+			'repeat_limit'         => isset( $_POST[ Keys::BOGO_REPEAT_LIMIT ] ) ? absint( wp_unslash( $_POST[ Keys::BOGO_REPEAT_LIMIT ] ) ) : 0,
+			'notice_msg'           => isset( $_POST[ Keys::BOGO_NOTICE_MSG ] ) ? sanitize_text_field( wp_unslash( $_POST[ Keys::BOGO_NOTICE_MSG ] ) ) : '',
 		);
-		// phpcs:enable WordPress.Security.NonceVerification.Missing, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 
 		BogoMeta::write( $post_id, BogoMeta::sanitize( $raw ) );
 	}

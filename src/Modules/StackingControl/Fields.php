@@ -88,14 +88,16 @@ final class Fields {
 	 */
 	public function save( $post_id, $coupon ): void {
 		$post_id = (int) $post_id;
-		if ( ! $this->verify_save( $post_id, self::NONCE ) ) {
+		if ( ! current_user_can( self::CAP, $post_id ) ) {
+			return;
+		}
+		if ( ! isset( $_POST[ self::NONCE ] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST[ self::NONCE ] ) ), $this->action( $post_id ) ) ) {
 			return;
 		}
 
-		// phpcs:disable WordPress.Security.NonceVerification.Missing -- nonce verified above.
 		update_post_meta( $post_id, Keys::STACK_EXCLUDE, isset( $_POST[ Keys::STACK_EXCLUDE ] ) ? 'yes' : '' );
-		self::save_codes( $post_id, Keys::STACK_ALLOWED );
-		self::save_codes( $post_id, Keys::STACK_DISALLOWED );
+		self::save_codes( $post_id, Keys::STACK_ALLOWED, isset( $_POST[ Keys::STACK_ALLOWED ] ) ? sanitize_textarea_field( wp_unslash( $_POST[ Keys::STACK_ALLOWED ] ) ) : '' );
+		self::save_codes( $post_id, Keys::STACK_DISALLOWED, isset( $_POST[ Keys::STACK_DISALLOWED ] ) ? sanitize_textarea_field( wp_unslash( $_POST[ Keys::STACK_DISALLOWED ] ) ) : '' );
 
 		$msg = isset( $_POST[ Keys::STACK_MSG ] ) ? sanitize_text_field( wp_unslash( $_POST[ Keys::STACK_MSG ] ) ) : '';
 		if ( '' === $msg ) {
@@ -103,12 +105,9 @@ final class Fields {
 		} else {
 			update_post_meta( $post_id, Keys::STACK_MSG, $msg );
 		}
-		// phpcs:enable WordPress.Security.NonceVerification.Missing
 	}
 
-	private static function save_codes( int $post_id, string $key ): void {
-		// phpcs:ignore WordPress.Security.NonceVerification.Missing -- nonce verified in save().
-		$raw   = isset( $_POST[ $key ] ) ? sanitize_textarea_field( wp_unslash( $_POST[ $key ] ) ) : '';
+	private static function save_codes( int $post_id, string $key, string $raw ): void {
 		$codes = StackConfig::parse_codes( $raw );
 		if ( array() === $codes ) {
 			delete_post_meta( $post_id, $key );

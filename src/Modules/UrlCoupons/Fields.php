@@ -103,11 +103,13 @@ final class Fields {
 	 */
 	public function save( $post_id, $coupon ): void {
 		$post_id = (int) $post_id;
-		if ( ! $this->verify_save( $post_id, self::NONCE ) ) {
+		if ( ! current_user_can( self::CAP, $post_id ) ) {
+			return;
+		}
+		if ( ! isset( $_POST[ self::NONCE ] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST[ self::NONCE ] ) ), $this->action( $post_id ) ) ) {
 			return;
 		}
 
-		// phpcs:disable WordPress.Security.NonceVerification.Missing -- nonce verified above.
 		update_post_meta( $post_id, Keys::URL_ENABLED, isset( $_POST[ Keys::URL_ENABLED ] ) ? 'yes' : '' );
 		update_post_meta( $post_id, Keys::URL_REDIRECT_ORIGIN, isset( $_POST[ Keys::URL_REDIRECT_ORIGIN ] ) ? 'yes' : '' );
 
@@ -138,7 +140,6 @@ final class Fields {
 		} else {
 			update_post_meta( $post_id, Keys::URL_SUCCESS_MSG, $msg );
 		}
-		// phpcs:enable WordPress.Security.NonceVerification.Missing
 	}
 
 	/** True if no OTHER shop_coupon already owns this slug (as post_name or URL_SLUG). */

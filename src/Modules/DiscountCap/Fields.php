@@ -58,10 +58,12 @@ final class Fields {
 	 */
 	public function save( $post_id, $coupon ): void {
 		$post_id = (int) $post_id;
-		if ( ! $this->verify_save( $post_id, self::NONCE ) ) {
+		if ( ! current_user_can( self::CAP, $post_id ) ) {
 			return;
 		}
-		// phpcs:ignore WordPress.Security.NonceVerification.Missing -- nonce verified above.
+		if ( ! isset( $_POST[ self::NONCE ] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST[ self::NONCE ] ) ), $this->action( $post_id ) ) ) {
+			return;
+		}
 		$raw = isset( $_POST[ Keys::DISCOUNT_CAP ] ) ? sanitize_text_field( wp_unslash( $_POST[ Keys::DISCOUNT_CAP ] ) ) : '';
 		if ( '' === trim( $raw ) ) {
 			delete_post_meta( $post_id, Keys::DISCOUNT_CAP );

@@ -554,11 +554,13 @@ final class Fields {
 	 */
 	public function save( $post_id, $coupon ): void {
 		$post_id = (int) $post_id;
-		if ( ! $this->verify_save( $post_id, self::NONCE ) ) {
+		if ( ! current_user_can( self::CAP, $post_id ) ) {
+			return;
+		}
+		if ( ! isset( $_POST[ self::NONCE ] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST[ self::NONCE ] ) ), $this->action( $post_id ) ) ) {
 			return;
 		}
 
-		// phpcs:disable WordPress.Security.NonceVerification.Missing -- nonce verified above.
 		// Schedule.
 		update_post_meta( $post_id, Keys::SCHEDULE_ENABLED, isset( $_POST[ Keys::SCHEDULE_ENABLED ] ) ? 'yes' : '' );
 		foreach ( array( Keys::SCHEDULE_START, Keys::SCHEDULE_END ) as $key ) {
@@ -570,8 +572,8 @@ final class Fields {
 				update_post_meta( $post_id, $key, $norm );
 			}
 		}
-		$this->save_text( $post_id, Keys::SCHEDULE_MSG_START );
-		$this->save_text( $post_id, Keys::SCHEDULE_MSG_END );
+		$this->save_text( $post_id, Keys::SCHEDULE_MSG_START, isset( $_POST[ Keys::SCHEDULE_MSG_START ] ) ? sanitize_text_field( wp_unslash( $_POST[ Keys::SCHEDULE_MSG_START ] ) ) : '' );
+		$this->save_text( $post_id, Keys::SCHEDULE_MSG_END, isset( $_POST[ Keys::SCHEDULE_MSG_END ] ) ? sanitize_text_field( wp_unslash( $_POST[ Keys::SCHEDULE_MSG_END ] ) ) : '' );
 
 		// Role.
 		update_post_meta( $post_id, Keys::ROLE_ENABLED, isset( $_POST[ Keys::ROLE_ENABLED ] ) ? 'yes' : '' );
@@ -582,7 +584,7 @@ final class Fields {
 			? array_values( array_intersect( array_map( 'sanitize_key', wp_unslash( $_POST[ Keys::ROLE_LIST ] ) ), $valid_roles ) )
 			: array();
 		update_post_meta( $post_id, Keys::ROLE_LIST, $roles );
-		$this->save_text( $post_id, Keys::ROLE_MSG );
+		$this->save_text( $post_id, Keys::ROLE_MSG, isset( $_POST[ Keys::ROLE_MSG ] ) ? sanitize_text_field( wp_unslash( $_POST[ Keys::ROLE_MSG ] ) ) : '' );
 
 		// Cart.
 		$subtotal = isset( $_POST[ Keys::MIN_SUBTOTAL ] ) ? wc_format_decimal( sanitize_text_field( wp_unslash( $_POST[ Keys::MIN_SUBTOTAL ] ) ) ) : '';
@@ -593,55 +595,53 @@ final class Fields {
 		}
 		update_post_meta( $post_id, Keys::MIN_SUBTOTAL_INCL_TAX, isset( $_POST[ Keys::MIN_SUBTOTAL_INCL_TAX ] ) ? 'yes' : '' );
 		update_post_meta( $post_id, Keys::MIN_QTY, isset( $_POST[ Keys::MIN_QTY ] ) ? max( 0, absint( wp_unslash( $_POST[ Keys::MIN_QTY ] ) ) ) : 0 );
-		$this->save_text( $post_id, Keys::CART_MSG );
+		$this->save_text( $post_id, Keys::CART_MSG, isset( $_POST[ Keys::CART_MSG ] ) ? sanitize_text_field( wp_unslash( $_POST[ Keys::CART_MSG ] ) ) : '' );
 
 		// Customer history.
 		update_post_meta( $post_id, Keys::CUST_ENABLED, isset( $_POST[ Keys::CUST_ENABLED ] ) ? 'yes' : '' );
 		update_post_meta( $post_id, Keys::CUST_FIRST_ONLY, isset( $_POST[ Keys::CUST_FIRST_ONLY ] ) ? 'yes' : '' );
-		$this->save_int( $post_id, Keys::CUST_MIN_ORDERS );
-		$this->save_int( $post_id, Keys::CUST_MAX_ORDERS );
-		$this->save_price( $post_id, Keys::CUST_MIN_SPENT );
-		$this->save_price( $post_id, Keys::CUST_MAX_SPENT );
-		$this->save_text( $post_id, Keys::CUST_MSG );
+		$this->save_int( $post_id, Keys::CUST_MIN_ORDERS, isset( $_POST[ Keys::CUST_MIN_ORDERS ] ) ? sanitize_text_field( wp_unslash( $_POST[ Keys::CUST_MIN_ORDERS ] ) ) : '' );
+		$this->save_int( $post_id, Keys::CUST_MAX_ORDERS, isset( $_POST[ Keys::CUST_MAX_ORDERS ] ) ? sanitize_text_field( wp_unslash( $_POST[ Keys::CUST_MAX_ORDERS ] ) ) : '' );
+		$this->save_price( $post_id, Keys::CUST_MIN_SPENT, isset( $_POST[ Keys::CUST_MIN_SPENT ] ) ? sanitize_text_field( wp_unslash( $_POST[ Keys::CUST_MIN_SPENT ] ) ) : '' );
+		$this->save_price( $post_id, Keys::CUST_MAX_SPENT, isset( $_POST[ Keys::CUST_MAX_SPENT ] ) ? sanitize_text_field( wp_unslash( $_POST[ Keys::CUST_MAX_SPENT ] ) ) : '' );
+		$this->save_text( $post_id, Keys::CUST_MSG, isset( $_POST[ Keys::CUST_MSG ] ) ? sanitize_text_field( wp_unslash( $_POST[ Keys::CUST_MSG ] ) ) : '' );
 
 		// Product / category cart-presence conditions.
-		$this->save_id_list( $post_id, Keys::REQ_PRODUCTS );
-		$this->save_mode( $post_id, Keys::REQ_PRODUCTS_MODE );
-		$this->save_id_list( $post_id, Keys::REQ_CATEGORIES );
-		$this->save_mode( $post_id, Keys::REQ_CATEGORIES_MODE );
-		$this->save_text( $post_id, Keys::PRODUCT_MSG );
-		$this->save_id_list( $post_id, Keys::EXCL_PRODUCTS );
-		$this->save_id_list( $post_id, Keys::EXCL_CATEGORIES );
-		$this->save_text( $post_id, Keys::EXCL_MSG );
+		$this->save_id_list( $post_id, Keys::REQ_PRODUCTS, ( isset( $_POST[ Keys::REQ_PRODUCTS ] ) && is_array( $_POST[ Keys::REQ_PRODUCTS ] ) ) ? array_map( 'absint', (array) wp_unslash( $_POST[ Keys::REQ_PRODUCTS ] ) ) : array() );
+		$this->save_mode( $post_id, Keys::REQ_PRODUCTS_MODE, isset( $_POST[ Keys::REQ_PRODUCTS_MODE ] ) ? sanitize_key( wp_unslash( $_POST[ Keys::REQ_PRODUCTS_MODE ] ) ) : 'any' );
+		$this->save_id_list( $post_id, Keys::REQ_CATEGORIES, ( isset( $_POST[ Keys::REQ_CATEGORIES ] ) && is_array( $_POST[ Keys::REQ_CATEGORIES ] ) ) ? array_map( 'absint', (array) wp_unslash( $_POST[ Keys::REQ_CATEGORIES ] ) ) : array() );
+		$this->save_mode( $post_id, Keys::REQ_CATEGORIES_MODE, isset( $_POST[ Keys::REQ_CATEGORIES_MODE ] ) ? sanitize_key( wp_unslash( $_POST[ Keys::REQ_CATEGORIES_MODE ] ) ) : 'any' );
+		$this->save_text( $post_id, Keys::PRODUCT_MSG, isset( $_POST[ Keys::PRODUCT_MSG ] ) ? sanitize_text_field( wp_unslash( $_POST[ Keys::PRODUCT_MSG ] ) ) : '' );
+		$this->save_id_list( $post_id, Keys::EXCL_PRODUCTS, ( isset( $_POST[ Keys::EXCL_PRODUCTS ] ) && is_array( $_POST[ Keys::EXCL_PRODUCTS ] ) ) ? array_map( 'absint', (array) wp_unslash( $_POST[ Keys::EXCL_PRODUCTS ] ) ) : array() );
+		$this->save_id_list( $post_id, Keys::EXCL_CATEGORIES, ( isset( $_POST[ Keys::EXCL_CATEGORIES ] ) && is_array( $_POST[ Keys::EXCL_CATEGORIES ] ) ) ? array_map( 'absint', (array) wp_unslash( $_POST[ Keys::EXCL_CATEGORIES ] ) ) : array() );
+		$this->save_text( $post_id, Keys::EXCL_MSG, isset( $_POST[ Keys::EXCL_MSG ] ) ? sanitize_text_field( wp_unslash( $_POST[ Keys::EXCL_MSG ] ) ) : '' );
 
 		// Shipping-region condition.
 		update_post_meta( $post_id, Keys::SHIPREGION_ENABLED, isset( $_POST[ Keys::SHIPREGION_ENABLED ] ) ? 'yes' : '' );
-		// phpcs:ignore WordPress.Security.NonceVerification.Missing -- nonce verified in save().
 		$sr_mode = isset( $_POST[ Keys::SHIPREGION_MODE ] ) ? sanitize_key( wp_unslash( $_POST[ Keys::SHIPREGION_MODE ] ) ) : 'allow';
 		update_post_meta( $post_id, Keys::SHIPREGION_MODE, 'disallow' === $sr_mode ? 'disallow' : 'allow' );
-		$this->save_code_list( $post_id, Keys::SHIPREGION_COUNTRIES );
-		$this->save_text( $post_id, Keys::SHIPREGION_MSG );
+		$this->save_code_list( $post_id, Keys::SHIPREGION_COUNTRIES, ( isset( $_POST[ Keys::SHIPREGION_COUNTRIES ] ) && is_array( $_POST[ Keys::SHIPREGION_COUNTRIES ] ) ) ? array_map( 'sanitize_text_field', (array) wp_unslash( $_POST[ Keys::SHIPREGION_COUNTRIES ] ) ) : array() );
+		$this->save_text( $post_id, Keys::SHIPREGION_MSG, isset( $_POST[ Keys::SHIPREGION_MSG ] ) ? sanitize_text_field( wp_unslash( $_POST[ Keys::SHIPREGION_MSG ] ) ) : '' );
 
 		// Payment-method condition.
 		update_post_meta( $post_id, Keys::PAYMENT_ENABLED, isset( $_POST[ Keys::PAYMENT_ENABLED ] ) ? 'yes' : '' );
-		// phpcs:ignore WordPress.Security.NonceVerification.Missing -- nonce verified in save().
 		$pm_mode = isset( $_POST[ Keys::PAYMENT_MODE ] ) ? sanitize_key( wp_unslash( $_POST[ Keys::PAYMENT_MODE ] ) ) : 'allow';
 		update_post_meta( $post_id, Keys::PAYMENT_MODE, 'disallow' === $pm_mode ? 'disallow' : 'allow' );
-		$this->save_key_list( $post_id, Keys::PAYMENT_METHODS );
-		$this->save_text( $post_id, Keys::PAYMENT_MSG );
+		$this->save_key_list( $post_id, Keys::PAYMENT_METHODS, ( isset( $_POST[ Keys::PAYMENT_METHODS ] ) && is_array( $_POST[ Keys::PAYMENT_METHODS ] ) ) ? array_map( 'sanitize_key', (array) wp_unslash( $_POST[ Keys::PAYMENT_METHODS ] ) ) : array() );
+		$this->save_text( $post_id, Keys::PAYMENT_MSG, isset( $_POST[ Keys::PAYMENT_MSG ] ) ? sanitize_text_field( wp_unslash( $_POST[ Keys::PAYMENT_MSG ] ) ) : '' );
 
 		// Day-of-week / time-of-day window.
 		update_post_meta( $post_id, Keys::DAYTIME_ENABLED, isset( $_POST[ Keys::DAYTIME_ENABLED ] ) ? 'yes' : '' );
-		$this->save_days( $post_id );
-		$this->save_time( $post_id, Keys::DAYTIME_START );
-		$this->save_time( $post_id, Keys::DAYTIME_END );
-		$this->save_text( $post_id, Keys::DAYTIME_MSG );
-		// phpcs:enable WordPress.Security.NonceVerification.Missing
+		$this->save_days( $post_id, ( isset( $_POST[ Keys::DAYTIME_DAYS ] ) && is_array( $_POST[ Keys::DAYTIME_DAYS ] ) ) ? array_map( 'absint', (array) wp_unslash( $_POST[ Keys::DAYTIME_DAYS ] ) ) : array() );
+		$this->save_time( $post_id, Keys::DAYTIME_START, isset( $_POST[ Keys::DAYTIME_START ] ) ? sanitize_text_field( wp_unslash( $_POST[ Keys::DAYTIME_START ] ) ) : '' );
+		$this->save_time( $post_id, Keys::DAYTIME_END, isset( $_POST[ Keys::DAYTIME_END ] ) ? sanitize_text_field( wp_unslash( $_POST[ Keys::DAYTIME_END ] ) ) : '' );
+		$this->save_text( $post_id, Keys::DAYTIME_MSG, isset( $_POST[ Keys::DAYTIME_MSG ] ) ? sanitize_text_field( wp_unslash( $_POST[ Keys::DAYTIME_MSG ] ) ) : '' );
 	}
 
-	private function save_days( int $post_id ): void {
-		// phpcs:ignore WordPress.Security.NonceVerification.Missing, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- nonce verified in save(); each element is cast to int and range-checked (0–6) below.
-		$raw  = ( isset( $_POST[ Keys::DAYTIME_DAYS ] ) && is_array( $_POST[ Keys::DAYTIME_DAYS ] ) ) ? wp_unslash( $_POST[ Keys::DAYTIME_DAYS ] ) : array();
+	/**
+	 * @param array<int,int> $raw
+	 */
+	private function save_days( int $post_id, array $raw ): void {
 		$days = array();
 		foreach ( $raw as $d ) {
 			$n = (int) $d;
@@ -657,9 +657,7 @@ final class Fields {
 		}
 	}
 
-	private function save_time( int $post_id, string $key ): void {
-		// phpcs:ignore WordPress.Security.NonceVerification.Missing -- nonce verified in save().
-		$raw = isset( $_POST[ $key ] ) ? sanitize_text_field( wp_unslash( $_POST[ $key ] ) ) : '';
+	private function save_time( int $post_id, string $key, string $raw ): void {
 		if ( null === Validator::hhmm_to_min( $raw ) ) {
 			delete_post_meta( $post_id, $key );
 		} else {
@@ -667,9 +665,10 @@ final class Fields {
 		}
 	}
 
-	private function save_id_list( int $post_id, string $key ): void {
-		// phpcs:ignore WordPress.Security.NonceVerification.Missing, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- nonce verified in save(); every element is cast through absint on the next line.
-		$raw = ( isset( $_POST[ $key ] ) && is_array( $_POST[ $key ] ) ) ? wp_unslash( $_POST[ $key ] ) : array();
+	/**
+	 * @param array<int,int> $raw
+	 */
+	private function save_id_list( int $post_id, string $key, array $raw ): void {
 		$ids = array_values( array_unique( array_filter( array_map( 'absint', $raw ) ) ) );
 		if ( array() === $ids ) {
 			delete_post_meta( $post_id, $key );
@@ -678,9 +677,10 @@ final class Fields {
 		}
 	}
 
-	private function save_code_list( int $post_id, string $key ): void {
-		// phpcs:ignore WordPress.Security.NonceVerification.Missing, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- nonce verified in save(); each element is reduced to an uppercase 2-letter code below.
-		$raw   = ( isset( $_POST[ $key ] ) && is_array( $_POST[ $key ] ) ) ? wp_unslash( $_POST[ $key ] ) : array();
+	/**
+	 * @param array<int,string> $raw
+	 */
+	private function save_code_list( int $post_id, string $key, array $raw ): void {
 		$codes = array();
 		foreach ( $raw as $v ) {
 			$code = strtoupper( preg_replace( '/[^A-Za-z]/', '', (string) $v ) ?? '' );
@@ -695,9 +695,10 @@ final class Fields {
 		}
 	}
 
-	private function save_key_list( int $post_id, string $key ): void {
-		// phpcs:ignore WordPress.Security.NonceVerification.Missing, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- nonce verified in save(); every element runs through sanitize_key below.
-		$raw  = ( isset( $_POST[ $key ] ) && is_array( $_POST[ $key ] ) ) ? wp_unslash( $_POST[ $key ] ) : array();
+	/**
+	 * @param array<int,string> $raw
+	 */
+	private function save_key_list( int $post_id, string $key, array $raw ): void {
 		$keys = array_values( array_unique( array_filter( array_map( 'sanitize_key', $raw ) ) ) );
 		if ( array() === $keys ) {
 			delete_post_meta( $post_id, $key );
@@ -706,15 +707,12 @@ final class Fields {
 		}
 	}
 
-	private function save_mode( int $post_id, string $key ): void {
-		// phpcs:ignore WordPress.Security.NonceVerification.Missing -- nonce verified in save().
-		$raw = isset( $_POST[ $key ] ) ? sanitize_key( wp_unslash( $_POST[ $key ] ) ) : 'any';
-		update_post_meta( $post_id, $key, 'all' === $raw ? 'all' : 'any' );
+	private function save_mode( int $post_id, string $key, string $value ): void {
+		update_post_meta( $post_id, $key, 'all' === $value ? 'all' : 'any' );
 	}
 
-	private function save_int( int $post_id, string $key ): void {
-		// phpcs:ignore WordPress.Security.NonceVerification.Missing -- nonce verified in save().
-		$raw = isset( $_POST[ $key ] ) ? trim( sanitize_text_field( wp_unslash( $_POST[ $key ] ) ) ) : '';
+	private function save_int( int $post_id, string $key, string $value ): void {
+		$raw = trim( $value );
 		if ( '' === $raw ) {
 			delete_post_meta( $post_id, $key );
 		} else {
@@ -722,9 +720,7 @@ final class Fields {
 		}
 	}
 
-	private function save_price( int $post_id, string $key ): void {
-		// phpcs:ignore WordPress.Security.NonceVerification.Missing -- nonce verified in save().
-		$raw = isset( $_POST[ $key ] ) ? sanitize_text_field( wp_unslash( $_POST[ $key ] ) ) : '';
+	private function save_price( int $post_id, string $key, string $raw ): void {
 		if ( '' === trim( $raw ) ) {
 			delete_post_meta( $post_id, $key );
 		} else {
@@ -732,9 +728,7 @@ final class Fields {
 		}
 	}
 
-	private function save_text( int $post_id, string $key ): void {
-		// phpcs:ignore WordPress.Security.NonceVerification.Missing -- nonce verified in save().
-		$value = isset( $_POST[ $key ] ) ? sanitize_text_field( wp_unslash( $_POST[ $key ] ) ) : '';
+	private function save_text( int $post_id, string $key, string $value ): void {
 		if ( '' === $value ) {
 			delete_post_meta( $post_id, $key );
 		} else {

@@ -503,7 +503,9 @@ final class SettingsScreen {
 			}
 			$fields = is_array( $group['fields'] ?? null ) ? $group['fields'] : array();
 			foreach ( $fields as $field ) {
-				self::save_field( $field );
+				$fid   = (string) ( $field['id'] ?? '' );
+				$value = ( '' !== $fid && isset( $_POST[ $fid ] ) ) ? sanitize_text_field( wp_unslash( (string) $_POST[ $fid ] ) ) : null;
+				self::save_field( $field, $value );
 			}
 		}
 
@@ -513,24 +515,22 @@ final class SettingsScreen {
 
 	/**
 	 * @param array<string,mixed> $field
+	 * @param string|null         $value Submitted, already-sanitized value for this field (null if absent from POST).
 	 */
-	private static function save_field( array $field ): void {
+	private static function save_field( array $field, ?string $value ): void {
 		$id   = (string) ( $field['id'] ?? '' );
 		$type = (string) ( $field['type'] ?? 'checkbox' );
 		if ( '' === $id ) {
 			return;
 		}
 
-		// The nonce is verified in handle() before this runs; phpcs can't follow that
-		// across method boundaries, so the NonceVerification ignores below are intentional.
 		if ( 'checkbox' === $type ) {
-			// Unchecked boxes are absent from POST → store 'no'.
-			$checked = isset( $_POST[ $id ] ) ? sanitize_text_field( wp_unslash( $_POST[ $id ] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Missing
-			update_option( $id, 'yes' === $checked ? 'yes' : 'no' );
+			// Unchecked boxes are absent from POST (value null) → store 'no'.
+			update_option( $id, 'yes' === $value ? 'yes' : 'no' );
 			return;
 		}
 
-		$raw = isset( $_POST[ $id ] ) ? sanitize_text_field( wp_unslash( (string) $_POST[ $id ] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Missing
+		$raw = (string) ( $value ?? '' );
 
 		if ( 'select' === $type ) {
 			$options = is_array( $field['options'] ?? null ) ? $field['options'] : array();
