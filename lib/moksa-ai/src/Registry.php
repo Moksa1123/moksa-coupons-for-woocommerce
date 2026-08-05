@@ -108,7 +108,6 @@ final class Registry {
 			'send'         => 'Send',
 			'thinking'     => 'Looking that up',
 			'clear'        => 'Clear',
-			'close'        => 'Close',
 			'errorPrefix'  => 'Something went wrong',
 			'emptyReply'   => '(no reply)',
 			'confirmRun'   => 'Confirm',
@@ -121,16 +120,6 @@ final class Registry {
 			'confirmStale' => 'That confirmation has expired or no longer exists. Please start again.',
 			'noPermission' => 'You do not have permission to do this.',
 			'examples'     => array(),
-
-			// 命令選盤（沒有 AI 金鑰時的 fallback）
-			'paletteTitle'   => 'Moksa assistant',
-			'paletteSearch'  => 'Search features…',
-			'paletteRun'     => 'Run',
-			'paletteConfirm' => 'This changes data. Run it?',
-			'paletteEmpty'   => 'No features are available (or you lack permission).',
-			'notFound'       => 'That feature could not be found.',
-			'outOfScope'     => 'That feature is outside the assistant\'s scope.',
-			'needsConfirm'   => 'This changes data. Please confirm before running it.',
 		);
 
 		$strings = (array) apply_filters( 'moksa_ai_strings', $defaults );

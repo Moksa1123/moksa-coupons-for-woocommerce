@@ -19,7 +19,7 @@ defined( 'ABSPATH' ) || exit;
 
 // Bump this string when shipping a newer bundled launcher. Highest version wins the election.
 $GLOBALS['moksa_ai_pool'][] = array(
-	'version' => '1.1.1',
+	'version' => '1.2.0',
 	'dir'     => __DIR__,
 );
 
