@@ -199,7 +199,6 @@ final class UrlHandler {
 				break;
 			case 'same_page':
 			default:
-				// phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized, WordPress.Security.ValidatedSanitizedInput.MissingUnslash -- esc_url_raw sanitizes; only the path is used.
 				$here   = isset( $_SERVER['REQUEST_URI'] ) ? esc_url_raw( wp_unslash( $_SERVER['REQUEST_URI'] ) ) : '';
 				$target = remove_query_arg( 'coupon', home_url( $here ) );
 				break;
@@ -275,7 +274,7 @@ final class UrlHandler {
 		if ( empty( $_SERVER['HTTP_REFERER'] ) ) {
 			return '';
 		}
-		$referer = esc_url_raw( wp_unslash( $_SERVER['HTTP_REFERER'] ) ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+		$referer = esc_url_raw( wp_unslash( $_SERVER['HTTP_REFERER'] ) );
 		$r_host  = (string) wp_parse_url( $referer, PHP_URL_HOST );
 		$h_host  = (string) wp_parse_url( home_url(), PHP_URL_HOST );
 		if ( '' === $r_host || strtolower( $r_host ) !== strtolower( $h_host ) ) {

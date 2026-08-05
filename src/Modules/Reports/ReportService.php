@@ -282,7 +282,7 @@ final class ReportService {
 			array(
 				'post_type'   => 'shop_coupon',
 				'post_status' => 'any',
-				'numberposts' => -1,
+				'numberposts' => 500,
 				'fields'      => 'ids',
 				// phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query -- admin report, runs behind the hourly cache.
 				'meta_query'  => array(

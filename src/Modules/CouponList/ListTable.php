@@ -128,7 +128,7 @@ final class ListTable {
 			wp_die( esc_html__( 'You do not have permission to do this.', 'moksa-coupons-for-woocommerce' ) );
 		}
 		check_admin_referer( self::NONCE );
-		$id   = isset( $_GET['id'] ) ? (int) $_GET['id'] : 0;
+		$id   = isset( $_GET['id'] ) ? absint( wp_unslash( $_GET['id'] ) ) : 0;
 		$back = wp_get_referer();
 		if ( ! $back ) {
 			$back = admin_url( 'edit.php?post_type=shop_coupon' );
