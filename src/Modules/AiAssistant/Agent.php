@@ -98,7 +98,7 @@ final class Agent {
 					? new \WordPress\AiClient\Messages\DTO\UserMessage( [ new \WordPress\AiClient\Messages\DTO\MessagePart( $current ) ] )
 					: $current;
 				$current   = new \WordPress\AiClient\Messages\DTO\UserMessage(
-					[ new \WordPress\AiClient\Messages\DTO\MessagePart( '請根據前面工具查到的資料,用繁體中文文字簡短回答我的問題。' ) ]
+					[ new \WordPress\AiClient\Messages\DTO\MessagePart( 'Based on the data the previous tools returned, answer my question briefly.' ) ]
 				);
 				// Empty content + no tool call: rotate this provider to the back.
 				$models[] = array_shift( $models );

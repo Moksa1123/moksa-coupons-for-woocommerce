@@ -4726,12 +4726,12 @@ msgstr ""
 
 #: src/Modules/Frontend/blocks/coupon-cards/block.json
 msgctxt "block title"
-msgid "Moksa 優惠券卡片"
+msgid "Moksa coupon cards"
 msgstr ""
 
 #: src/Modules/Frontend/blocks/coupon-cards/block.json
 msgctxt "block description"
-msgid "顯示目前可用的優惠券卡片(等同 [moksafocou_coupons] 短代碼)。"
+msgid "Show the currently available coupon cards (same as the [moksafocou_coupons] shortcode)."
 msgstr ""
 
 #: src/Modules/Frontend/blocks/coupon-cards/block.json
@@ -4741,7 +4741,7 @@ msgstr ""
 
 #: src/Modules/Frontend/blocks/coupon-cards/block.json
 msgctxt "block keyword"
-msgid "優惠券"
+msgid "coupons"
 msgstr ""
 
 #: src/Modules/Frontend/blocks/coupon-cards/block.json

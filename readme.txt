@@ -6,7 +6,7 @@ Tested up to: 7.0
 Requires PHP: 8.2
 WC requires at least: 10.7
 WC tested up to: 10.9
-Stable tag: 1.0.0
+Stable tag: 1.0.2
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -92,6 +92,12 @@ This plugin can connect to a third-party AI provider, but only when you, the sit
 6. Front-end coupon wall rendered by the [moksafocou_coupons] shortcode.
 
 == Changelog ==
+
+= 1.0.2 =
+* Fix: the coupon-cards block title/description and the AI assistant's Clear / Close / Send / Confirm / Cancel controls now render in English (they could show Traditional Chinese regardless of site language). The block's text domain was also corrected so its strings localise properly.
+
+= 1.0.1 =
+* Bundle the Traditional Chinese (zh_TW) translation so the plugin is localized on install; community translations continue on translate.wordpress.org.
 
 = 1.0.0 =
 First public release. A free, modular, AI-first WooCommerce coupon toolkit — every feature is a separate module, off by default, enabled under "Moksa coupon → Settings".

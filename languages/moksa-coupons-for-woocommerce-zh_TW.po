@@ -3161,3 +3161,15 @@ msgstr "true=啟用、false=停用"
 
 msgid "true = permanently delete, false = move to trash (default)"
 msgstr "true=永久刪除、false=移到垃圾桶(預設)"
+
+msgctxt "block title"
+msgid "Moksa coupon cards"
+msgstr "Moksa 優惠券卡片"
+
+msgctxt "block description"
+msgid "Show the currently available coupon cards (same as the [moksafocou_coupons] shortcode)."
+msgstr "顯示目前可用的優惠券卡片(等同 [moksafocou_coupons] 短代碼)。"
+
+msgctxt "block keyword"
+msgid "coupons"
+msgstr "優惠券"
