@@ -6,7 +6,6 @@ namespace Moksafocou\Modules\AdminMenu;
 
 use Moksafocou\Plugin;
 use Moksafocou\Settings\SettingsScreen;
-use Moksafocou\Settings\SettingsUi;
 use Moksafocou\Modules\Reports\ReportsPage;
 use Moksafocou\Modules\Templates\TemplatePage;
 
@@ -83,7 +82,7 @@ final class Dashboard {
 	public static function enqueue_admin( string $hook = '' ): void {
 		$screen = function_exists( 'get_current_screen' ) ? get_current_screen() : null;
 		if ( $screen && false !== strpos( (string) $screen->id, Menu::TOPLEVEL ) ) {
-			wp_add_inline_style( 'common', SettingsUi::css() );
+			wp_add_inline_style( 'common', \Moksa\Kit\SettingsUi::css() );
 		}
 	}
 

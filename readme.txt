@@ -2,11 +2,11 @@
 Contributors: moksa0923
 Tags: coupons, woocommerce, bogo, cart conditions, ai
 Requires at least: 7.0
-Tested up to: 7.0
+Tested up to: 7.1
 Requires PHP: 8.2
 WC requires at least: 10.7
 WC tested up to: 10.9
-Stable tag: 1.0.2
+Stable tag: 1.1.1
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -93,6 +93,17 @@ This plugin can connect to a third-party AI provider, but only when you, the sit
 
 == Changelog ==
 
+= 1.1.1 =
+* WordPress 7.1 compatibility: tested against 7.1. Read-only coupon tools now also declare the unified `public` flag introduced in 7.1, so AI clients and MCP adapters can discover them without channel-by-channel configuration. Tools that change or delete coupons are the other way round: whether an MCP client is offered them now follows the plugin's own "expose destructive abilities" setting, which is off by default — so a third-party MCP adapter cannot offer a destructive tool you have not asked for. Every tool is still gated by its own capability check.
+* Fix: the coupon-cards block preview in the editor rendered without its stylesheet. WordPress 7.1 always renders the post editor inside an iframe, and the card styles are now declared on the block itself, so the preview matches the front end.
+* Internal: the settings-screen presentation layer moved into a shared bundled library. No change to behaviour or to stored settings.
+
+= 1.1.0 =
+* Fix: the assistant could fail with a "Bad Request (400)" before it ran anything, so no question could be answered at all. Several coupon tools described a field as accepting more than one data type, which one of the supported AI providers rejects outright — and it rejects the whole set of tools, not just those. Every field now declares a single type.
+* Fix: asking how many coupons there are could produce a made-up number. The list tool returns at most 50 rows, and the count it reported was the number of rows returned, which reads as a total. It now also reports the real total, and there is a dedicated counting tool for "how many" questions.
+* New: a tool that reports how many coupons exist, broken down by enabled, disabled and expired.
+* Advanced rule values may now arrive as a JSON string as well as a native value, so a rule written by an assistant is stored correctly instead of being silently saved as an unmatched single entry.
+
 = 1.0.2 =
 * Fix: the coupon-cards block title/description and the AI assistant's Clear / Close / Send / Confirm / Cancel controls now render in English (they could show Traditional Chinese regardless of site language). The block's text domain was also corrected so its strings localise properly.
 
@@ -126,6 +137,9 @@ Quality:
 * A single source of truth for coupon-type labels (no raw slugs in reports / emails), cached reports and a bounded customer-history lookup, first-run safe-default module seeding, a soft cross-module dependency advisory, a prefix-based uninstall cleanup, and a WordPress.org-clean build.
 
 == Upgrade Notice ==
+
+= 1.1.1 =
+Compatibility with WordPress 7.1, plus a fix for the coupon-cards block preview in the editor.
 
 = 1.0.0 =
 First public release.

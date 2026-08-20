@@ -343,6 +343,42 @@ final class CouponService {
 	 * @param array<string,mixed> $args
 	 * @return array{count:int,coupons:array<int,array<string,mixed>>}
 	 */
+	/**
+	 * 各狀態的優惠券張數。expired 是 publish 之中已過期的（過期券仍然是 publish，
+	 * WooCommerce 不會自己改狀態），所以 expired 不另計入 total。
+	 *
+	 * @return array<string,int>
+	 */
+	public static function counts(): array {
+		$counts  = (array) wp_count_posts( 'shop_coupon' );
+		$publish = (int) ( $counts['publish'] ?? 0 );
+		$draft   = (int) ( $counts['draft'] ?? 0 );
+
+		$expired = 0;
+		$now     = time();
+		foreach ( get_posts(
+			[
+				'post_type'      => 'shop_coupon',
+				'post_status'    => 'publish',
+				'posts_per_page' => -1,
+				'fields'         => 'ids',
+				'no_found_rows'  => true,
+			]
+		) as $id ) {
+			$date = ( new \WC_Coupon( $id ) )->get_date_expires();
+			if ( $date && $date->getTimestamp() < $now ) {
+				++$expired;
+			}
+		}
+
+		return [
+			'total'   => $publish + $draft,
+			'publish' => $publish,
+			'draft'   => $draft,
+			'expired' => $expired,
+		];
+	}
+
 	public static function list( array $args = [] ): array {
 		$limit  = isset( $args['limit'] ) ? (int) $args['limit'] : 20;
 		$limit  = max( 1, min( 50, $limit ) );
@@ -355,7 +391,8 @@ final class CouponService {
 			'posts_per_page' => $limit,
 			'orderby'        => 'date',
 			'order'          => 'DESC',
-			'no_found_rows'  => true,
+			// 要算總數：回傳只有 $limit 筆，模型看到那個數字會以為那就是全部。
+			'no_found_rows'  => false,
 		];
 		if ( '' !== $search ) {
 			$query_args['s'] = $search;
@@ -369,7 +406,8 @@ final class CouponService {
 			$query_args['meta_value'] = $discount_type; // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_value
 		}
 
-		$posts   = get_posts( $query_args );
+		$query   = new \WP_Query( $query_args );
+		$posts   = $query->posts;
 		$coupons = [];
 		foreach ( $posts as $post ) {
 			$coupon = new \WC_Coupon( $post->ID );
@@ -379,6 +417,7 @@ final class CouponService {
 		}
 		return [
 			'count'   => count( $coupons ),
+			'total'   => (int) $query->found_posts,
 			'coupons' => $coupons,
 		];
 	}

@@ -72,6 +72,7 @@ final class Module {
 		return array_merge(
 			$abilities,
 			[
+				'moksafocou/count-coupons',
 				'moksafocou/list-coupons',
 				'moksafocou/get-coupon',
 				'moksafocou/find-coupon-by-code',

@@ -5,6 +5,7 @@ declare( strict_types=1 );
 namespace Moksafocou\Modules\CouponSend;
 
 use Moksafocou\Modules\AbstractModule;
+use Moksafocou\Support\AbilityMeta;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -82,18 +83,7 @@ final class Module extends AbstractModule {
 				),
 				'execute_callback'    => array( SendOps::class, 'send_prepare' ),
 				'permission_callback' => array( self::class, 'can_send' ),
-				'meta'                => array(
-					'show_in_rest' => false,
-					'annotations'  => array(
-						'readonly'    => false,
-						'destructive' => true,
-						'idempotent'  => false,
-					),
-					'mcp'          => array(
-						'public' => true,
-						'type'   => 'tool',
-					),
-				),
+				'meta'                => AbilityMeta::write(),
 			)
 		);
 	}

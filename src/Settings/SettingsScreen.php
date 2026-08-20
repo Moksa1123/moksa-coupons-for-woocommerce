@@ -552,9 +552,9 @@ final class SettingsScreen {
 		if ( ! $screen || false === strpos( (string) $screen->id, self::SLUG ) ) {
 			return;
 		}
-		wp_add_inline_style( 'common', SettingsUi::css() );
+		wp_add_inline_style( 'common', \Moksa\Kit\SettingsUi::css() );
 		wp_register_script( 'moksafocou-settings-ui', false, array(), '1.0.0', true );
 		wp_enqueue_script( 'moksafocou-settings-ui' );
-		wp_add_inline_script( 'moksafocou-settings-ui', SettingsUi::js() );
+		wp_add_inline_script( 'moksafocou-settings-ui', \Moksa\Kit\SettingsUi::js() );
 	}
 }

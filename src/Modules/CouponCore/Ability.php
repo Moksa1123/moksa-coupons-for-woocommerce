@@ -54,11 +54,53 @@ final class Ability {
 	// === Read abilities ===
 
 	private static function register_reads(): void {
+		// 「有幾張優惠券」要有一個只回數字的工具。給模型一包清單它就會拿回傳筆數
+		// 當總數，或乾脆自己編一個 —— 實測問「目前有幾個優惠券」會答出不存在的數字。
+		// 單一純量沒有可誤讀的空間。
+		wp_register_ability(
+			'moksafocou/count-coupons',
+			[
+				'label'               => __( 'Count coupons', 'moksa-coupons-for-woocommerce' ),
+				'description'         => __( 'How many coupons the store has, broken down by status. Use this for any "how many coupons" question instead of counting rows from list-coupons. Read-only.', 'moksa-coupons-for-woocommerce' ),
+				'category'            => self::CATEGORY,
+				// 不要寫成 'properties' => []：空陣列 json_encode 出來是 `[]` 不是 `{}`，
+				// OpenAI 直接退整包；改成拿掉 properties 又會讓 WP 的輸入驗證判定無效。
+				// 給一個真的可選參數最單純，兩邊都照一般工具處理。
+				'input_schema'        => [
+					'type'                 => 'object',
+					'properties'           => [
+						'status' => [
+							'type'        => 'string',
+							'enum'        => [ 'any', 'publish', 'draft' ],
+							'description' => __( 'Which figure to emphasise; the response always contains every status. Pass "any" unless the question is about one status.', 'moksa-coupons-for-woocommerce' ),
+						],
+					],
+					// 必填是刻意的：全部參數都可省時，模型有時整個不帶引數呼叫，WP 就會用
+					// null 去驗 type:object 而判定無效（實測三次有兩次踩到）。有一個必填欄位
+					// 就保證送進來的是物件。
+					'required'             => [ 'status' ],
+					'additionalProperties' => false,
+				],
+				'output_schema'       => [
+					'type'       => 'object',
+					'properties' => [
+						'total'   => [ 'type' => 'integer' ],
+						'publish' => [ 'type' => 'integer' ],
+						'draft'   => [ 'type' => 'integer' ],
+						'expired' => [ 'type' => 'integer' ],
+					],
+				],
+				'execute_callback'    => [ self::class, 'execute_count' ],
+				'permission_callback' => [ self::class, 'can_read' ],
+				'meta'                => self::read_meta(),
+			]
+		);
+
 		wp_register_ability(
 			'moksafocou/list-coupons',
 			[
 				'label'               => __( 'List coupons', 'moksa-coupons-for-woocommerce' ),
-				'description'         => __( 'List coupons, filterable by status (publish = enabled / draft = disabled), discount type, and keyword, returning a compact list (default 20, maximum 50). Read-only.', 'moksa-coupons-for-woocommerce' ),
+				'description'         => __( 'List coupons, filterable by status (publish = enabled / draft = disabled), discount type, and keyword. Returns total (how many match the filter in the whole store) and coupons (a page of at most 50 rows, default 20). Answer questions about how many there are with total, never with the number of rows returned. Read-only.', 'moksa-coupons-for-woocommerce' ),
 				'category'            => self::CATEGORY,
 				'input_schema'        => [
 					'type'                 => 'object',
@@ -87,7 +129,14 @@ final class Ability {
 				'output_schema'       => [
 					'type'       => 'object',
 					'properties' => [
-						'count'   => [ 'type' => 'integer' ],
+						'count'   => [
+							'type'        => 'integer',
+							'description' => 'Rows returned in this response (capped by limit).',
+						],
+						'total'   => [
+							'type'        => 'integer',
+							'description' => 'Total coupons matching the filter. Use this to answer how many there are.',
+						],
 						'coupons' => [ 'type' => 'array' ],
 					],
 				],
@@ -347,10 +396,32 @@ final class Ability {
 	 * @param mixed $input
 	 * @return array<string,mixed>
 	 */
+	/**
+	 * @param mixed $input Unused (no parameters).
+	 * @return array<string,int>
+	 */
+	public static function execute_count( $input ): array {
+		unset( $input );
+		if ( ! self::can_read() ) {
+			return [
+				'total'   => 0,
+				'publish' => 0,
+				'draft'   => 0,
+				'expired' => 0,
+			];
+		}
+		return CouponService::counts();
+	}
+
+	/**
+	 * @param mixed $input
+	 * @return array<string,mixed>
+	 */
 	public static function execute_list( $input ): array {
 		if ( ! self::can_read() ) {
 			return [
 				'count'   => 0,
+				'total'   => 0,
 				'coupons' => [],
 			];
 		}
@@ -446,69 +517,69 @@ final class Ability {
 		return [
 			'type'                 => 'object',
 			'properties'           => [
-				'code'                        => [
+				'code'                          => [
 					'type'        => 'string',
 					'description' => __( 'Coupon code, e.g. SUMMER25', 'moksa-coupons-for-woocommerce' ),
 				],
-				'discount_type'               => [
+				'discount_type'                 => [
 					'type'        => 'string',
 					'enum'        => CouponService::DISCOUNT_TYPES,
 					'default'     => 'fixed_cart',
 					'description' => __( 'Discount type: percent (percentage) / fixed_cart (fixed cart discount) / fixed_product (fixed product discount)', 'moksa-coupons-for-woocommerce' ),
 				],
-				'amount'                      => [
+				'amount'                        => [
 					'type'        => 'number',
 					'description' => __( 'Discount amount; for percent it is a percentage number (25 = 25%)', 'moksa-coupons-for-woocommerce' ),
 				],
-				'description'                 => [
+				'description'                   => [
 					'type'        => 'string',
 					'description' => __( 'Coupon description (optional)', 'moksa-coupons-for-woocommerce' ),
 				],
-				'date_expires'                => [
+				'date_expires'                  => [
 					'type'        => 'string',
 					'description' => __( 'Expiry date YYYY-MM-DD (optional)', 'moksa-coupons-for-woocommerce' ),
 				],
-				'individual_use'              => [ 'type' => 'boolean' ],
-				'free_shipping'               => [ 'type' => 'boolean' ],
-				'exclude_sale_items'          => [ 'type' => 'boolean' ],
-				'minimum_amount'              => [ 'type' => 'number' ],
-				'maximum_amount'              => [ 'type' => 'number' ],
-				'usage_limit'                 => [ 'type' => 'integer' ],
-				'usage_limit_per_user'        => [ 'type' => 'integer' ],
-				'limit_usage_to_x_items'      => [ 'type' => 'integer' ],
-				'product_ids'                 => [
+				'individual_use'                => [ 'type' => 'boolean' ],
+				'free_shipping'                 => [ 'type' => 'boolean' ],
+				'exclude_sale_items'            => [ 'type' => 'boolean' ],
+				'minimum_amount'                => [ 'type' => 'number' ],
+				'maximum_amount'                => [ 'type' => 'number' ],
+				'usage_limit'                   => [ 'type' => 'integer' ],
+				'usage_limit_per_user'          => [ 'type' => 'integer' ],
+				'limit_usage_to_x_items'        => [ 'type' => 'integer' ],
+				'product_ids'                   => [
 					'type'  => 'array',
 					'items' => [ 'type' => 'integer' ],
 				],
-				'excluded_product_ids'        => [
+				'excluded_product_ids'          => [
 					'type'  => 'array',
 					'items' => [ 'type' => 'integer' ],
 				],
-				'product_categories'          => [
+				'product_categories'            => [
 					'type'  => 'array',
 					'items' => [ 'type' => 'integer' ],
 				],
-				'excluded_product_categories' => [
+				'excluded_product_categories'   => [
 					'type'  => 'array',
 					'items' => [ 'type' => 'integer' ],
 				],
-				'email_restrictions'          => [
+				'email_restrictions'            => [
 					'type'  => 'array',
 					'items' => [ 'type' => 'string' ],
 				],
-				'auto_apply'                  => [
+				'auto_apply'                    => [
 					'type'        => 'boolean',
 					'description' => __( 'Whether to auto-apply (added automatically when the customer reaches the cart; requires the "Auto-apply" module enabled, and the coupon has no usage or email limit)', 'moksa-coupons-for-woocommerce' ),
 				],
-				'discount_cap'                => [
+				'discount_cap'                  => [
 					'type'        => 'number',
 					'description' => __( 'Maximum discount amount for a percentage discount (e.g. 20% off, up to 500; requires the "Maximum discount" module enabled). 0 or empty = no limit', 'moksa-coupons-for-woocommerce' ),
 				],
-				'exclude_coupons'             => [
+				'exclude_coupons'               => [
 					'type'        => 'boolean',
 					'description' => __( 'Whether it cannot be combined with other coupons (mutually exclusive coupon; requires the "Stacking control" module enabled)', 'moksa-coupons-for-woocommerce' ),
 				],
-				'moksa-coupons-for-woocommerce'                  => CouponSettings::schema(),
+				'moksa-coupons-for-woocommerce' => CouponSettings::schema(),
 			],
 			'required'             => [ 'code', 'discount_type', 'amount' ],
 			'additionalProperties' => false,

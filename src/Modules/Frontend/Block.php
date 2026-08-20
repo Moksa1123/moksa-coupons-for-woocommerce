@@ -22,6 +22,15 @@ final class Block {
 		if ( ! file_exists( $dir . '/block.json' ) ) {
 			return;
 		}
+		/*
+		 * The card stylesheet is normally registered on `wp_enqueue_scripts`, which never fires for
+		 * the block-renderer REST request behind the editor preview. WordPress 7.1 iframes the post
+		 * editor unconditionally, so the preview only gets CSS that core injects into the canvas —
+		 * which it does for the handle named in block.json's "style". Register it here (at `init`,
+		 * before register_block_type) so that handle resolves.
+		 */
+		Shortcode::register_assets();
+
 		$rel  = 'src/Modules/Frontend/blocks/coupon-cards/index.js';
 		$path = \MOKSAFOCOU_PLUGIN_DIR . $rel;
 		$ver  = file_exists( $path ) ? (string) filemtime( $path ) : \MOKSAFOCOU_VERSION;

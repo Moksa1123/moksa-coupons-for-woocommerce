@@ -135,8 +135,10 @@ final class ToolsAbility {
 					'type'                 => 'object',
 					'properties'           => [
 						'rules'       => [
-							'type'        => [ 'object', 'string' ],
-							'description' => __( 'Rule tree object or its JSON string', 'moksa-coupons-for-woocommerce' ),
+							// 單一 type：聯集型別會被 Gemini 整包退掉（連帶弄垮其他外掛的工具）。
+							// handler 的 Rules::parse() 與 raw_rule_types() 本來就會把 JSON 字串 decode。
+							'type'        => 'string',
+							'description' => __( 'Rule tree as a JSON string', 'moksa-coupons-for-woocommerce' ),
 						],
 						'sample_cart' => [
 							'type'        => 'object',

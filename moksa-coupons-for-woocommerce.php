@@ -3,9 +3,9 @@
  * Plugin Name:        Moksa Coupons for WooCommerce
  * Plugin URI:         https://github.com/Moksa1123/moksa-coupons-for-woocommerce
  * Description:        A free, modular WooCommerce coupon toolkit: BOGO, cart conditions, role limits, scheduling, URL coupons and one-click templates, every feature off by default. Coupon actions are also WordPress Abilities, usable from an optional in-dashboard AI assistant, the REST API and MCP.
- * Version:            1.0.2
+ * Version:            1.1.1
  * Requires at least:  7.0
- * Tested up to:       7.0
+ * Tested up to:       7.1
  * Requires PHP:       8.2
  * Requires Plugins:   woocommerce
  * WC requires at least: 10.7
@@ -25,7 +25,7 @@ declare( strict_types=1 );
 defined( 'ABSPATH' ) || exit;
 
 /* Constants */
-const MOKSAFOCOU_VERSION    = '1.0.2';
+const MOKSAFOCOU_VERSION    = '1.1.1';
 const MOKSAFOCOU_MIN_PHP    = '8.2';
 const MOKSAFOCOU_MIN_WP     = '7.0';
 const MOKSAFOCOU_MIN_WC     = '10.7';
@@ -59,6 +59,14 @@ if ( is_readable( $moksafocou_autoload ) ) {
 		}
 	);
 }
+
+/*
+ * Shared Moksa Kit (bundled library; single-instance version election across the suite).
+ * Infrastructure every Moksa plugin's settings screen needs — the `mowp-` design system, the settings
+ * change log, the settings export/import porter — carried once instead of five times. Always loaded:
+ * it registers an autoloader and nothing else, makes no request and touches no option by itself.
+ */
+require_once __DIR__ . '/lib/moksa-kit/moksa-kit.php';
 
 /* Shared Moksa AI launcher (bundled; single-instance version election across the suite). */
 require_once __DIR__ . '/lib/moksa-ai/moksa-ai.php';

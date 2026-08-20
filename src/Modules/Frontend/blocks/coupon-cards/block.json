@@ -16,5 +16,6 @@
 		"html": false,
 		"align": [ "wide", "full" ]
 	},
-	"editorScript": "moksafocou-coupon-cards-editor"
+	"editorScript": "moksafocou-coupon-cards-editor",
+	"style": "moksafocou-coupon-cards"
 }

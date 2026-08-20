@@ -20,6 +20,9 @@ final class Shortcode {
 	}
 
 	public static function register_assets(): void {
+		if ( wp_style_is( self::HANDLE, 'registered' ) ) {
+			return;
+		}
 		$css_rel = 'src/Modules/Frontend/assets/css/coupon-cards.css';
 		$js_rel  = 'src/Modules/Frontend/assets/js/coupon-cards.js';
 		wp_register_style(

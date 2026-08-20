@@ -5,6 +5,7 @@ declare( strict_types=1 );
 namespace Moksafocou\Modules\UrlCoupons;
 
 use Moksafocou\Coupon\CouponService;
+use Moksafocou\Support\AbilityMeta;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -53,18 +54,7 @@ final class ShareAbility {
 				),
 				'execute_callback'    => array( self::class, 'execute' ),
 				'permission_callback' => array( self::class, 'can_read' ),
-				'meta'                => array(
-					'show_in_rest' => true,
-					'annotations'  => array(
-						'readonly'    => true,
-						'destructive' => false,
-						'idempotent'  => true,
-					),
-					'mcp'          => array(
-						'public' => true,
-						'type'   => 'tool',
-					),
-				),
+				'meta'                => AbilityMeta::read(),
 			)
 		);
 	}

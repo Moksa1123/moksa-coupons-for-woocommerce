@@ -185,11 +185,33 @@ final class Rules {
 	}
 
 	/**
+	 * 規則的 value 本來是多型的（數字 / 陣列 / 物件）。JSON Schema 可以用聯集型別表達，
+	 * 但 Gemini 的 Schema proto 只吃單一 type，所以送給模型的 schema 會被塌成 string ——
+	 * 模型於是把陣列或物件序列化成 JSON 字串送進來。不先解回來的話，下面的 `(array)`
+	 * 會把 `"[12,34]"` 包成 `['[12,34]']`，規則寫進去卻對不到任何商品，而且不會報錯。
+	 *
+	 * @param mixed $value 可能是原生型別，也可能是 JSON 字串。
+	 * @return mixed
+	 */
+	private static function decode_json_value( $value ) {
+		if ( ! is_string( $value ) ) {
+			return $value;
+		}
+		$trimmed = trim( $value );
+		if ( '' === $trimmed || ( '[' !== $trimmed[0] && '{' !== $trimmed[0] ) ) {
+			return $value;
+		}
+		$decoded = json_decode( $trimmed, true );
+		return ( null === $decoded && JSON_ERROR_NONE !== json_last_error() ) ? $value : $decoded;
+	}
+
+	/**
 	 * @param string $kind  Value kind (ids|codes|roles|date|time|num).
 	 * @param mixed  $value  Raw value.
 	 * @return mixed Cleaned value, or null when empty / invalid (→ rule dropped).
 	 */
 	private static function clean_value( string $kind, $value ) {
+		$value = self::decode_json_value( $value );
 		switch ( $kind ) {
 			case 'ids':
 				$ids = array();
