@@ -3,7 +3,7 @@
  * Plugin Name:        Moksa Coupons for WooCommerce
  * Plugin URI:         https://github.com/Moksa1123/moksa-coupons-for-woocommerce
  * Description:        A free, modular WooCommerce coupon toolkit: BOGO, cart conditions, role limits, scheduling, URL coupons and one-click templates, every feature off by default. Coupon actions are also WordPress Abilities, usable from an optional in-dashboard AI assistant, the REST API and MCP.
- * Version:            1.1.1
+ * Version:            1.1.2
  * Requires at least:  7.0
  * Tested up to:       7.1
  * Requires PHP:       8.2
@@ -25,7 +25,7 @@ declare( strict_types=1 );
 defined( 'ABSPATH' ) || exit;
 
 /* Constants */
-const MOKSAFOCOU_VERSION    = '1.1.1';
+const MOKSAFOCOU_VERSION    = '1.1.2';
 const MOKSAFOCOU_MIN_PHP    = '8.2';
 const MOKSAFOCOU_MIN_WP     = '7.0';
 const MOKSAFOCOU_MIN_WC     = '10.7';

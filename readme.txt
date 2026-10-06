@@ -6,7 +6,7 @@ Tested up to: 7.1
 Requires PHP: 8.2
 WC requires at least: 10.7
 WC tested up to: 10.9
-Stable tag: 1.1.1
+Stable tag: 1.1.2
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -93,6 +93,11 @@ This plugin can connect to a third-party AI provider, but only when you, the sit
 
 == Changelog ==
 
+= 1.1.2 =
+* Fix: on the WordPress plugin-update screen the AI assistant button appeared a second time inside the update progress frame. It is no longer loaded inside admin iframes.
+* Fix: attributes in the AI assistant panel are now escaped as attributes, not only as text.
+* Settings screens use a wider layout (up to 1500px).
+
 = 1.1.1 =
 * WordPress 7.1 compatibility: tested against 7.1. Read-only coupon tools now also declare the unified `public` flag introduced in 7.1, so AI clients and MCP adapters can discover them without channel-by-channel configuration. Tools that change or delete coupons are the other way round: whether an MCP client is offered them now follows the plugin's own "expose destructive abilities" setting, which is off by default — so a third-party MCP adapter cannot offer a destructive tool you have not asked for. Every tool is still gated by its own capability check.
 * Fix: the coupon-cards block preview in the editor rendered without its stylesheet. WordPress 7.1 always renders the post editor inside an iframe, and the card styles are now declared on the block itself, so the preview matches the front end.
@@ -137,6 +142,9 @@ Quality:
 * A single source of truth for coupon-type labels (no raw slugs in reports / emails), cached reports and a bounded customer-history lookup, first-run safe-default module seeding, a soft cross-module dependency advisory, a prefix-based uninstall cleanup, and a WordPress.org-clean build.
 
 == Upgrade Notice ==
+
+= 1.1.2 =
+Small fixes: the AI assistant button no longer appears twice on the plugin-update screen, and settings screens use a wider layout.
 
 = 1.1.1 =
 Compatibility with WordPress 7.1, plus a fix for the coupon-cards block preview in the editor.
