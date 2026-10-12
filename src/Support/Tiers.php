@@ -32,7 +32,7 @@ final class Tiers {
 	 * rows are dropped and the threshold clamps to >= 0. Returns a 0-indexed list.
 	 *
 	 * @param mixed $raw
-	 * @return array<int,array{threshold:float,kind:string,value:float}>
+	 * @return array<int,array{threshold:float,kind:string,value:float,from?:string,until?:string}>
 	 */
 	public static function parse( $raw ): array {
 		if ( is_string( $raw ) ) {
@@ -65,13 +65,81 @@ final class Tiers {
 			} elseif ( $value <= 0.0 ) {
 				continue;
 			}
-			$rows[] = array(
+			$out = array(
 				'threshold' => $threshold,
 				'kind'      => $kind,
 				'value'     => $value,
 			);
+			// Optional window, site-calendar dates, both ends inclusive. Absent keys mean "always"
+			// on that side, so every ladder saved before windows existed reads exactly as before.
+			foreach ( array( 'from', 'until' ) as $edge ) {
+				$date = self::date( $row[ $edge ] ?? '' );
+				if ( '' !== $date ) {
+					$out[ $edge ] = $date;
+				}
+			}
+			// A window that ends before it starts is KEPT as typed. It is never in effect - no day is
+			// both on/after `from` and on/before `until` - so in_effect() skips it without help. The
+			// first version dropped such a row here, which meant one mistyped date silently deleted a
+			// whole tier from the shop's ladder; the admin screen now says so instead (inverted()).
+			$rows[] = $out;
 		}
 		return $rows;
+	}
+
+	/**
+	 * The rows in effect on a given day.
+	 *
+	 * Festival pricing is the case this exists for: em925 ran an opening ladder from NT$0 and had
+	 * to write a one-off scheduled job to swap the first tier to NT$599 on 1 January. With a window
+	 * per row that is four rows typed once - the NT$0 row "until 2026-12-31", the NT$599 row "from
+	 * 2027-01-01" - and nothing has to run at midnight.
+	 *
+	 * Compared as Y-m-d strings in the SITE timezone: a date the shop announced is a wall-clock
+	 * date, and with UTC a Taiwan shop's campaign would end at 08:00 the next morning.
+	 *
+	 * @param array<int,array<string,mixed>> $tiers
+	 * @param int|null                       $now   Timestamp; defaults to now.
+	 * @return array<int,array<string,mixed>>
+	 */
+	public static function in_effect( array $tiers, ?int $now = null ): array {
+		$today = wp_date( 'Y-m-d', $now ?? time() );
+		$out   = array();
+		foreach ( $tiers as $tier ) {
+			if ( isset( $tier['from'] ) && $today < $tier['from'] ) {
+				continue;
+			}
+			if ( isset( $tier['until'] ) && $today > $tier['until'] ) {
+				continue;
+			}
+			$out[] = $tier;
+		}
+		return $out;
+	}
+
+	/**
+	 * 1-based positions of rows whose window ends before it starts, for the admin warning.
+	 *
+	 * @param array<int,array<string,mixed>> $tiers
+	 * @return array<int,int>
+	 */
+	public static function inverted( array $tiers ): array {
+		$out = array();
+		foreach ( array_values( $tiers ) as $i => $tier ) {
+			if ( isset( $tier['from'], $tier['until'] ) && $tier['from'] > $tier['until'] ) {
+				$out[] = $i + 1;
+			}
+		}
+		return $out;
+	}
+
+	/** A strict Y-m-d that is a real calendar date, or ''. */
+	private static function date( $raw ): string {
+		$raw = is_string( $raw ) ? trim( $raw ) : '';
+		if ( ! preg_match( '/^(\d{4})-(\d{2})-(\d{2})$/', $raw, $m ) ) {
+			return '';
+		}
+		return checkdate( (int) $m[2], (int) $m[3], (int) $m[1] ) ? $raw : '';
 	}
 
 	/** Normalise a basis string to one of BASES (defaults to subtotal). */

@@ -84,6 +84,7 @@ final class Fields {
 			. '<th scope="col" class="moksafocou-tier-th-threshold">' . esc_html__( 'Threshold ≥ (per the basis above)', 'moksa-coupons-for-woocommerce' ) . '</th>'
 			. '<th scope="col" style="width:120px;">' . esc_html__( 'Discount type', 'moksa-coupons-for-woocommerce' ) . '</th>'
 			. '<th scope="col">' . esc_html__( 'Discount amount', 'moksa-coupons-for-woocommerce' ) . '</th>'
+			. '<th scope="col" style="width:290px;">' . esc_html__( 'Dates (optional)', 'moksa-coupons-for-woocommerce' ) . '</th>'
 			. '<th scope="col" style="width:36px;"><span class="screen-reader-text">' . esc_html__( 'Action', 'moksa-coupons-for-woocommerce' ) . '</span></th>'
 			. '</tr></thead><tbody class="moksafocou-tiers-rows">';
 
@@ -121,6 +122,9 @@ final class Fields {
 		echo '<p class="description" style="margin:0 0 8px;">'
 			. esc_html__( 'The tier applies only when the threshold is reached; when multiple tiers match, the one with the "largest discount amount" is used. Leave the discount amount empty = that tier is disabled. Enter 10 for percentage = 10% off; enter 200 for fixed amount = 200 off.', 'moksa-coupons-for-woocommerce' )
 			. '</p>';
+		echo '<p class="description" style="margin:0 0 8px;">'
+			. esc_html__( 'Dates are optional and inclusive, in the site\'s timezone. Use them for campaigns: give an opening-offer tier an end date, and its replacement a start date of the following day, and the ladder switches over by itself at midnight with nothing to schedule. A tier outside its dates is ignored — neither applied nor shown to customers as the next tier to reach.', 'moksa-coupons-for-woocommerce' )
+			. '</p>';
 
 		woocommerce_wp_select(
 			array(
@@ -146,7 +150,7 @@ final class Fields {
 	 * on add/remove. Values are escaped; empty / zero thresholds render blank.
 	 *
 	 * @param int                                       $index Display index (1-based; 0 for the template).
-	 * @param array{threshold:mixed,kind:mixed,value:mixed} $row Tier row.
+	 * @param array{threshold:mixed,kind:mixed,value:mixed,from?:mixed,until?:mixed} $row Tier row.
 	 */
 	private function print_tier_row( int $index, array $row ): void {
 		$threshold = ( '' === $row['threshold'] || 0.0 === (float) $row['threshold'] ) ? '' : (string) $row['threshold'];
@@ -159,6 +163,8 @@ final class Fields {
 			. '<option value="percent"%3$s>%4$s</option>'
 			. '<option value="fixed"%5$s>%6$s</option></select></td>'
 			. '<td><input type="number" min="0" step="0.01" name="moksafocou_tier_value[]" value="%7$s" placeholder="%8$s" aria-label="%12$s" /></td>'
+			. '<td style="white-space:nowrap;"><input type="date" name="moksafocou_tier_from[]" value="%13$s" aria-label="%15$s" style="width:130px;" /> '
+			. '&ndash; <input type="date" name="moksafocou_tier_until[]" value="%14$s" aria-label="%16$s" style="width:130px;" /></td>'
 			. '<td class="moksafocou-tier-actions"><button type="button" class="button-link moksafocou-tier-remove" title="%9$s" aria-label="%9$s">&times;</button></td></tr>',
 			(int) $index,
 			esc_attr( $threshold ),
@@ -171,8 +177,29 @@ final class Fields {
 			esc_attr__( 'Delete this tier', 'moksa-coupons-for-woocommerce' ),
 			esc_attr__( 'Threshold', 'moksa-coupons-for-woocommerce' ),
 			esc_attr__( 'Discount type', 'moksa-coupons-for-woocommerce' ),
-			esc_attr__( 'Discount amount', 'moksa-coupons-for-woocommerce' )
+			esc_attr__( 'Discount amount', 'moksa-coupons-for-woocommerce' ),
+			esc_attr( (string) ( $row['from'] ?? '' ) ),
+			esc_attr( (string) ( $row['until'] ?? '' ) ),
+			esc_attr__( 'In effect from (blank = always)', 'moksa-coupons-for-woocommerce' ),
+			esc_attr__( 'In effect until (blank = no end)', 'moksa-coupons-for-woocommerce' )
 		);
+	}
+
+	/** Warn about tiers whose end date is before their start date. */
+	public static function notice(): void {
+		$key = 'moksafocou_tiers_inverted_' . get_current_user_id();
+		$bad = get_transient( $key );
+		if ( ! is_array( $bad ) || array() === $bad ) {
+			return;
+		}
+		delete_transient( $key );
+		echo '<div class="notice notice-warning is-dismissible"><p>' . esc_html(
+			sprintf(
+				/* translators: %s: comma-separated tier numbers, e.g. "2, 3". */
+				__( 'Tiered discount: tier %s ends before it starts, so it will never apply. It has been saved as entered - check the dates.', 'moksa-coupons-for-woocommerce' ),
+				implode( ', ', array_map( 'intval', $bad ) )
+			)
+		) . '</p></div>';
 	}
 
 	/** Enqueue the row add/remove script on the coupon edit screen only. */
@@ -237,16 +264,29 @@ final class Fields {
 		$thresholds = isset( $_POST['moksafocou_tier_threshold'] ) ? array_map( 'sanitize_text_field', (array) wp_unslash( $_POST['moksafocou_tier_threshold'] ) ) : array();
 		$kinds      = isset( $_POST['moksafocou_tier_kind'] ) ? array_map( 'sanitize_text_field', (array) wp_unslash( $_POST['moksafocou_tier_kind'] ) ) : array();
 		$values     = isset( $_POST['moksafocou_tier_value'] ) ? array_map( 'sanitize_text_field', (array) wp_unslash( $_POST['moksafocou_tier_value'] ) ) : array();
+		$froms      = isset( $_POST['moksafocou_tier_from'] ) ? array_map( 'sanitize_text_field', (array) wp_unslash( $_POST['moksafocou_tier_from'] ) ) : array();
+		$untils     = isset( $_POST['moksafocou_tier_until'] ) ? array_map( 'sanitize_text_field', (array) wp_unslash( $_POST['moksafocou_tier_until'] ) ) : array();
 
 		$rows = array();
 		foreach ( $values as $i => $value ) {
+			// Dates are validated (and an inverted window dropped) by Tiers::parse() inside
+			// canonical_json(), the one place every stored ladder goes through.
 			$rows[] = array(
 				'threshold' => (float) wc_format_decimal( (string) ( $thresholds[ $i ] ?? '' ) ),
 				'kind'      => ( 'fixed' === ( $kinds[ $i ] ?? 'percent' ) ) ? 'fixed' : 'percent',
 				'value'     => (float) wc_format_decimal( (string) $value ),
+				'from'      => (string) ( $froms[ $i ] ?? '' ),
+				'until'     => (string) ( $untils[ $i ] ?? '' ),
 			);
 		}
 		$json = Tiers::canonical_json( $rows );
+
+		// Said once, after the save redirect. The rows are stored exactly as typed; this only
+		// tells the operator which ones can never apply.
+		$bad = Tiers::inverted( Tiers::parse( $json ) );
+		if ( array() !== $bad ) {
+			set_transient( 'moksafocou_tiers_inverted_' . get_current_user_id(), $bad, MINUTE_IN_SECONDS );
+		}
 		if ( '' === $json ) {
 			delete_post_meta( $post_id, Keys::TIERS );
 		} else {

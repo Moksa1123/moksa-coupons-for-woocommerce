@@ -3173,3 +3173,48 @@ msgstr "顯示目前可用的優惠券卡片(等同 [moksafocou_coupons] 短代�
 msgctxt "block keyword"
 msgid "coupons"
 msgstr "優惠券"
+
+msgid "It has a \"usage limit per user\". Auto-apply happens when the cart opens, before the shop knows who the customer is, so it cannot check whether this customer has already used it."
+msgstr "這張券設了「每人限用次數」。自動套用在購物車一打開時就執行，那時系統還不知道顧客是誰，無法確認他是否已經用過。"
+
+msgid "It is restricted to certain email addresses. The customer's email is not known until checkout, long after auto-apply has run."
+msgstr "這張券限定了特定的電子郵件。顧客的電子郵件要到結帳時才知道，遠在自動套用執行之後。"
+
+msgid "It has an overall \"usage limit\". Once the limit is reached the coupon stops being valid, and WooCommerce removes an invalid coupon from the cart with an error message — which every shopper would see the moment their cart opened."
+msgstr "這張券設了「總使用次數」。用完之後券就失效，而 WooCommerce 會把失效的券從購物車移除並顯示錯誤訊息——每位顧客一打開購物車就會看到。"
+
+msgid "Ticked, but this coupon will not be applied automatically:"
+msgstr "已勾選，但這張券不會被自動套用："
+
+msgid "Customers can still enter the code by hand. To have it applied automatically, remove the setting above."
+msgstr "顧客仍然可以手動輸入代碼。要讓它自動套用，請拿掉上面那個設定。"
+
+msgid "Saved — but this coupon will not be applied automatically. The reason is shown under the \"Auto-apply\" box."
+msgstr "已儲存——但這張券不會被自動套用。原因顯示在「自動套用」勾選框下方。"
+
+msgid "Dates (optional)"
+msgstr "期間（選填）"
+
+msgid "Dates are optional and inclusive, in the site's timezone. Use them for campaigns: give an opening-offer tier an end date, and its replacement a start date of the following day, and the ladder switches over by itself at midnight with nothing to schedule. A tier outside its dates is ignored — neither applied nor shown to customers as the next tier to reach."
+msgstr "期間可不填，起訖日都包含在內，以網站時區計算。適合用在檔期活動：開幕優惠那一級設定到期日、接替它的那一級設定隔天為生效日，午夜就會自動切換，不需要另外排程。不在期間內的級距會被忽略——既不套用，也不會顯示成顧客下一個可以達到的級距。"
+
+msgid "In effect from (blank = always)"
+msgstr "生效日（空白＝一直有效）"
+
+msgid "In effect until (blank = no end)"
+msgstr "到期日（空白＝不會到期）"
+
+msgid " (%s)"
+msgstr "（%s）"
+
+msgid "upgrade to %s"
+msgstr "升級為 %s"
+
+msgid "%1$s,%2$s!"
+msgstr "%1$s，%2$s！"
+
+msgid "Where the cart stands on each applied tiered coupon."
+msgstr "購物車在每張已套用的階梯折扣券上目前的級距。"
+
+msgid "Tiered discount: tier %s ends before it starts, so it will never apply. It has been saved as entered - check the dates."
+msgstr "階梯折扣：第 %s 級的到期日早於生效日，所以永遠不會套用。已照你輸入的內容儲存，請檢查日期。"

@@ -214,4 +214,83 @@ final class TiersTest extends TestCase {
 		$this->assertTrue( Tiers::is_targeted( 'categories', array(), array( 12 ), 5, 0, array( 12, 3 ) ) );
 		$this->assertFalse( Tiers::is_targeted( 'categories', array(), array( 99 ), 5, 0, array( 12, 3 ) ) );
 	}
+
+	/* ------------------------------------------------------------------ *
+	 * Per-tier date windows
+	 * ------------------------------------------------------------------ */
+
+	/** em925's opening ladder: the NT$0 tier until 31 Dec, its NT$599 replacement from 1 Jan. */
+	private function festival(): array {
+		return Tiers::parse(
+			array(
+				array( 'threshold' => 0, 'kind' => 'percent', 'value' => 15, 'until' => '2026-12-31' ),
+				array( 'threshold' => 599, 'kind' => 'percent', 'value' => 15, 'from' => '2027-01-01' ),
+				array( 'threshold' => 999, 'kind' => 'percent', 'value' => 18 ),
+				array( 'threshold' => 1399, 'kind' => 'percent', 'value' => 20 ),
+			)
+		);
+	}
+
+	public function test_parse_keeps_valid_dates_and_drops_invalid_ones(): void {
+		$rows = Tiers::parse(
+			array(
+				array( 'threshold' => 0, 'kind' => 'percent', 'value' => 10, 'from' => '2026-01-01', 'until' => '2026-12-31' ),
+				array( 'threshold' => 0, 'kind' => 'percent', 'value' => 10, 'from' => '2026-02-30' ), // not a real day
+				array( 'threshold' => 0, 'kind' => 'percent', 'value' => 10, 'until' => '31/12/2026' ),  // wrong format
+			)
+		);
+		$this->assertSame( '2026-01-01', $rows[0]['from'] );
+		$this->assertSame( '2026-12-31', $rows[0]['until'] );
+		$this->assertArrayNotHasKey( 'from', $rows[1], 'an impossible date must not become a window' );
+		$this->assertArrayNotHasKey( 'until', $rows[2] );
+		$this->assertCount( 3, $rows, 'a bad date drops the DATE, never the tier' );
+	}
+
+	public function test_old_ladders_without_dates_are_always_in_effect(): void {
+		$rows = Tiers::parse( array( array( 'threshold' => 0, 'kind' => 'percent', 'value' => 10 ) ) );
+		$this->assertCount( 1, Tiers::in_effect( $rows, strtotime( '2020-01-01 12:00 UTC' ) ) );
+		$this->assertCount( 1, Tiers::in_effect( $rows, strtotime( '2099-01-01 12:00 UTC' ) ) );
+	}
+
+	public function test_festival_ladder_before_the_switch(): void {
+		$tiers = Tiers::in_effect( $this->festival(), strtotime( '2026-12-31 23:00 UTC' ) );
+		$this->assertCount( 3, $tiers, 'NT$0 still on, NT$599 not yet' );
+		// A NT$400 cart is discounted at 15%.
+		$this->assertSame( 15.0, Tiers::resolve( $tiers, 400.0, 400.0 )['value'] );
+	}
+
+	public function test_festival_ladder_after_the_switch(): void {
+		$tiers = Tiers::in_effect( $this->festival(), strtotime( '2027-01-01 00:30 UTC' ) );
+		$this->assertCount( 3, $tiers, 'NT$0 ended, NT$599 started' );
+		// The same NT$400 cart now gets nothing, with no scheduled job and no minimum-spend change.
+		$this->assertSame( 0.0, Tiers::resolve( $tiers, 400.0, 400.0 )['amount'] );
+		$this->assertSame( 15.0, Tiers::resolve( $tiers, 700.0, 700.0 )['value'] );
+		// And the nudge points at the NT$599 tier, not at one that has ended.
+		$next = Tiers::next_tier( $tiers, 400.0, 400.0 );
+		$this->assertNotNull( $next );
+		$this->assertSame( 599.0, $next['threshold'] );
+	}
+
+	public function test_window_edges_are_inclusive(): void {
+		$rows = Tiers::parse( array( array( 'threshold' => 0, 'kind' => 'percent', 'value' => 10, 'from' => '2026-10-12', 'until' => '2026-10-12' ) ) );
+		$this->assertCount( 0, Tiers::in_effect( $rows, strtotime( '2026-10-11 23:59 UTC' ) ) );
+		$this->assertCount( 1, Tiers::in_effect( $rows, strtotime( '2026-10-12 00:00 UTC' ) ) );
+		$this->assertCount( 1, Tiers::in_effect( $rows, strtotime( '2026-10-12 23:59 UTC' ) ) );
+		$this->assertCount( 0, Tiers::in_effect( $rows, strtotime( '2026-10-13 00:00 UTC' ) ) );
+	}
+
+	/** A mistyped window used to delete the whole tier on save; it is now kept and reported. */
+	public function test_inverted_window_is_kept_reported_and_never_in_effect(): void {
+		$rows = Tiers::parse(
+			array(
+				array( 'threshold' => 0, 'kind' => 'percent', 'value' => 10 ),
+				array( 'threshold' => 999, 'kind' => 'percent', 'value' => 18, 'from' => '2026-12-01', 'until' => '2026-11-01' ),
+			)
+		);
+		$this->assertCount( 2, $rows, 'kept as typed' );
+		$this->assertSame( array( 2 ), Tiers::inverted( $rows ) );
+		foreach ( array( '2026-10-15', '2026-11-15', '2026-12-15' ) as $day ) {
+			$this->assertCount( 1, Tiers::in_effect( $rows, strtotime( $day . ' 12:00 UTC' ) ), $day );
+		}
+	}
 }

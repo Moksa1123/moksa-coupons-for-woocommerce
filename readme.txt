@@ -5,8 +5,8 @@ Requires at least: 7.0
 Tested up to: 7.1
 Requires PHP: 8.2
 WC requires at least: 10.7
-WC tested up to: 10.9
-Stable tag: 1.1.2
+WC tested up to: 11.1
+Stable tag: 1.2.1
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -93,6 +93,17 @@ This plugin can connect to a third-party AI provider, but only when you, the sit
 
 == Changelog ==
 
+= 1.2.1 =
+* Auto-apply: a coupon the plugin added automatically is now taken back out of the cart once it can no longer apply - for example after it is set to draft, trashed or deleted. The block cart never ran WooCommerce's own clean-up, so such a coupon stayed in the cart as a NT$0 line until checkout refused it. Coupons the customer typed in are not touched.
+* Tiered discounts: the "add NT$X more to upgrade" prompt and the tier shown on the coupon line ("(18% off)") can now be switched off separately, in both the block and the classic cart and checkout. Use the moksafocou_tiers_show_nudge filter for the prompt and moksafocou_tiers_label_current for the coupon line. In 1.2.0, turning the prompt off in the block cart also removed the tier from the coupon line.
+
+= 1.2.0 =
+* Tiered discounts now work in the block cart and checkout, which WooCommerce uses by default. The "add NT$X more to upgrade your discount" line and a progress bar appear under the totals; until now they were only shown on the classic cart and checkout, so on most stores they did not appear at all.
+* Tiered discounts: the coupon line now names the tier the cart has reached, for example "Store-wide offer (18% off)" — or "82 折" on Traditional Chinese sites. A discount of NT$247 under a coupon advertised at 15% no longer leaves customers guessing that they had already moved up a tier. Works on both the block and the classic checkout.
+* Tiered discounts: each tier can have an optional start and end date (site timezone, both inclusive). An opening-offer tier can end on 31 December and its replacement start on 1 January, and the ladder switches over at midnight with nothing to schedule. A tier outside its dates is neither applied nor shown as the next tier to reach. A tier whose end date is before its start date is kept as entered and a warning is shown, rather than being removed.
+* Auto-apply: when the box is ticked on a coupon that cannot be applied automatically — one with a per-customer limit, an email restriction or an overall usage limit — the coupon screen now says which setting is in the way and why, and a notice appears on save. Previously the coupon simply never appeared in the cart.
+* Tested with WooCommerce 11.1.
+
 = 1.1.2 =
 * Fix: on the WordPress plugin-update screen the AI assistant button appeared a second time inside the update progress frame. It is no longer loaded inside admin iframes.
 * Fix: attributes in the AI assistant panel are now escaped as attributes, not only as text.
@@ -142,6 +153,12 @@ Quality:
 * A single source of truth for coupon-type labels (no raw slugs in reports / emails), cached reports and a bounded customer-history lookup, first-run safe-default module seeding, a soft cross-module dependency advisory, a prefix-based uninstall cleanup, and a WordPress.org-clean build.
 
 == Upgrade Notice ==
+
+= 1.2.1 =
+Auto-applied coupons that have been drafted or deleted no longer linger in the block cart. The tier upgrade prompt and the tier on the coupon line can be switched off separately.
+
+= 1.2.0 =
+Tiered discounts now show their upgrade prompt and current tier in the block cart and checkout, and tiers can have start and end dates. If you added your own CSS or script to show the tier, remove it after updating or it will appear twice.
 
 = 1.1.2 =
 Small fixes: the AI assistant button no longer appears twice on the plugin-update screen, and settings screens use a wider layout.

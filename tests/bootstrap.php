@@ -25,6 +25,14 @@ if ( ! defined( 'DAY_IN_SECONDS' ) ) {
 }
 // phpcs:enable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedConstantFound
 
+// Site-timezone date, stubbed as UTC: tests pass explicit timestamps, so the zone only has to be
+// consistent, not real.
+if ( ! function_exists( 'wp_date' ) ) {
+	function wp_date( string $format, ?int $timestamp = null ): string { // phpcs:ignore
+		return gmdate( $format, $timestamp ?? time() );
+	}
+}
+
 if ( ! function_exists( '__' ) ) {
 	function __( string $text, string $domain = 'default' ): string { // phpcs:ignore
 		return $text;

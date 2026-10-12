@@ -14,10 +14,19 @@ defined( 'ABSPATH' ) || exit;
  * Exception and runs BOGO is_valid), and adds the coupon with set_applied_coupons —
  * NOT apply_coupon — to avoid recalc/notice spam. A static sentinel makes the one
  * follow-up calculate_totals() (which lets the Store-API first response reflect the
- * discount) safe against recursion. An auto-coupon that later becomes invalid is
- * removed automatically by WC core's check_cart_coupons() — no manual removal.
+ * discount) safe against recursion.
+ *
+ * An auto-coupon that later becomes invalid is taken back out here, quietly. This used to be left
+ * to WC core's check_cart_coupons(), which holds for the classic cart only: the block cart reads
+ * through the Store API, which never runs that check, so a coupon the shop had since drafted or
+ * deleted stayed in em925's block cart as a NT$0 chip until checkout refused it. Only codes this
+ * class added are tracked (in the WC session) and only those are removed — a code the customer
+ * typed is WooCommerce's business, not ours.
  */
 final class Frontend {
+
+	/** WC session key: the codes this class put into the cart. */
+	public const SESSION_KEY = 'moksafocou_autoapplied';
 
 	private static bool $running = false;
 
@@ -37,14 +46,25 @@ final class Frontend {
 		if ( ! function_exists( 'wc_coupons_enabled' ) || ! wc_coupons_enabled() ) {
 			return;
 		}
-		$ids = (array) apply_filters( 'moksafocou_autoapply_coupons', AutoApplyMeta::ids() );
-		if ( array() === $ids ) {
+		$ids  = (array) apply_filters( 'moksafocou_autoapply_coupons', AutoApplyMeta::ids() );
+		$ours = self::tracked();
+		if ( array() === $ids && array() === $ours ) {
 			return;
 		}
 
 		self::$running = true;
-		$added         = false;
+		$changed       = false;
 		try {
+			// 1. Take back what we added and can no longer apply.
+			$stale = AutoApplyMeta::stale( $cart->get_applied_coupons(), $ours, static fn( string $code ): bool => self::still_valid( $cart, $code ) );
+			foreach ( $stale as $code ) {
+				// remove_coupon(), not set_applied_coupons(): it also clears the coupon's discount
+				// totals and fires woocommerce_removed_coupon, exactly as a customer's removal would.
+				$cart->remove_coupon( $code );
+				$changed = true;
+			}
+
+			// 2. Add what is eligible and not there yet.
 			$applied = $cart->get_applied_coupons();
 			foreach ( $ids as $id ) {
 				$coupon = new \WC_Coupon( (int) $id );
@@ -61,20 +81,57 @@ final class Frontend {
 				$discounts = new \WC_Discounts( $cart );
 				if ( true === $discounts->is_coupon_valid( $coupon ) ) {
 					$applied[] = $code;
+					$ours[]    = $code;
 					$cart->set_applied_coupons( $applied );
 					$coupon->add_coupon_message( \WC_Coupon::WC_COUPON_SUCCESS );
 					// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- deliberately firing WooCommerce's own coupon-applied hook (mirrors WC_Cart::apply_coupon) so listeners react to our auto-applied coupon.
 					do_action( 'woocommerce_applied_coupon', $code );
-					$added = true;
+					$changed = true;
 				}
 			}
-			if ( $added ) {
-				// Recompute so this request's totals already include the newly-applied
-				// coupon(s); the sentinel makes the nested after_calculate_totals a no-op.
+
+			// Forget codes that have left the cart, by our hand or the customer's.
+			self::track( array_values( array_intersect( $ours, $cart->get_applied_coupons() ) ) );
+
+			if ( $changed ) {
+				// Recompute so this request's totals already reflect the change; the sentinel
+				// makes the nested after_calculate_totals a no-op.
 				$cart->calculate_totals();
 			}
 		} finally {
 			self::$running = false;
+		}
+	}
+
+	/**
+	 * Can this code still apply? A drafted, trashed or deleted coupon no longer resolves to an ID
+	 * at all; one that resolves goes through the same WC_Discounts check that put it in the cart.
+	 */
+	private static function still_valid( \WC_Cart $cart, string $code ): bool {
+		$coupon = new \WC_Coupon( $code );
+		if ( ! $coupon->get_id() || 'publish' !== get_post_status( $coupon->get_id() ) ) {
+			return false;
+		}
+		return true === ( new \WC_Discounts( $cart ) )->is_coupon_valid( $coupon );
+	}
+
+	/** @return array<int,string> */
+	private static function tracked(): array {
+		if ( ! function_exists( 'WC' ) || ! WC()->session ) {
+			return array();
+		}
+		$codes = WC()->session->get( self::SESSION_KEY, array() );
+		return is_array( $codes ) ? array_values( array_unique( array_map( 'strval', $codes ) ) ) : array();
+	}
+
+	/** @param array<int,string> $codes */
+	private static function track( array $codes ): void {
+		if ( ! function_exists( 'WC' ) || ! WC()->session ) {
+			return;
+		}
+		$codes = array_values( array_unique( $codes ) );
+		if ( $codes !== self::tracked() ) {
+			WC()->session->set( self::SESSION_KEY, array() === $codes ? null : $codes );
 		}
 	}
 

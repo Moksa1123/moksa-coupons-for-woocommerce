@@ -36,9 +36,19 @@ final class Module extends AbstractModule {
 	public function boot(): void {
 		Engine::boot();
 
-		/** Filter: show the cart/checkout "spend NT$X more for a bigger discount" nudge. */
-		if ( apply_filters( 'moksafocou_tiers_show_nudge', true ) ) {
-			Nudge::boot();
+		/**
+		 * Two independent switches, each covering the classic AND the block cart / checkout. They
+		 * were one in 1.2.0, so a shop with its own "spend more" bar (em925) could not hide our
+		 * nudge without also losing the tier on the coupon line.
+		 *
+		 * Filter moksafocou_tiers_show_nudge:    the "add NT$X more to upgrade" row and bar.
+		 * Filter moksafocou_tiers_label_current: the current tier on the coupon line ("（82 折）").
+		 */
+		$nudge = (bool) apply_filters( 'moksafocou_tiers_show_nudge', true );
+		$label = (bool) apply_filters( 'moksafocou_tiers_label_current', true );
+		if ( $nudge || $label ) {
+			Nudge::boot( $nudge, $label );     // Classic cart / checkout.
+			StoreApi::boot( $nudge, $label );  // Block cart / checkout — WooCommerce's default, which Nudge never reached.
 		}
 
 		if ( is_admin() ) {
@@ -46,6 +56,7 @@ final class Module extends AbstractModule {
 			CouponSections::register( 18, array( $fields, 'render_nonce' ), array( $fields, 'sections' ) );
 			add_action( 'woocommerce_coupon_options_save', array( $fields, 'save' ), 10, 2 );
 			add_action( 'admin_enqueue_scripts', array( $fields, 'enqueue' ) );
+			add_action( 'admin_notices', array( Fields::class, 'notice' ) );
 		}
 	}
 }

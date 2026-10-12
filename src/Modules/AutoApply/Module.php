@@ -49,6 +49,7 @@ final class Module extends AbstractModule {
 			$fields = new Fields();
 			add_action( 'woocommerce_coupon_options', array( $fields, 'render' ), 10, 2 );
 			add_action( 'woocommerce_coupon_options_save', array( $fields, 'save' ), 10, 2 );
+			add_action( 'admin_notices', array( Fields::class, 'notice' ) );
 		}
 	}
 }

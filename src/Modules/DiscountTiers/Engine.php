@@ -53,7 +53,7 @@ final class Engine {
 			if ( 'yes' !== $coupon->get_meta( Keys::TIERS_ENABLED, true ) ) {
 				continue;
 			}
-			$tiers = Tiers::parse( (string) $coupon->get_meta( Keys::TIERS, true ) );
+			$tiers = Tiers::in_effect( Tiers::parse( (string) $coupon->get_meta( Keys::TIERS, true ) ) );
 			$basis = Tiers::basis( $coupon->get_meta( Keys::TIERS_BASIS, true ) );
 			$mode  = (string) $coupon->get_meta( Keys::TIERS_TARGET_MODE, true );
 			$mode  = in_array( $mode, array( 'products', 'categories' ), true ) ? $mode : 'all';
@@ -88,6 +88,22 @@ final class Engine {
 				'categories' => $categories,
 			);
 		}
+	}
+
+	/**
+	 * The tier this request actually applied to a coupon, after the moksafocou_tier_percent filter.
+	 * Null when totals have not been calculated yet, or the cart is below every tier.
+	 *
+	 * @return array{kind:string,value:float}|null
+	 */
+	public static function active( string $code ): ?array {
+		if ( ! isset( self::$active[ $code ] ) || self::$active[ $code ]['value'] <= 0.0 ) {
+			return null;
+		}
+		return array(
+			'kind'  => self::$active[ $code ]['kind'],
+			'value' => (float) self::$active[ $code ]['value'],
+		);
 	}
 
 	/**
