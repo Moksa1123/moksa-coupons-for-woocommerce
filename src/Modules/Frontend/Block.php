@@ -22,6 +22,7 @@ final class Block {
 		if ( ! file_exists( $dir . '/block.json' ) ) {
 			return;
 		}
+
 		/*
 		 * The card stylesheet is normally registered on `wp_enqueue_scripts`, which never fires for
 		 * the block-renderer REST request behind the editor preview. WordPress 7.1 iframes the post

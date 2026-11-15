@@ -4,6 +4,8 @@ declare( strict_types=1 );
 
 namespace Moksafocou\Modules\UrlCoupons;
 
+use Moksafocou\Support\Qr\QrSvg;
+
 use Moksafocou\Coupon\CouponService;
 
 defined( 'ABSPATH' ) || exit;
@@ -70,7 +72,8 @@ final class Rest {
 		if ( $info['enabled'] && $request->get_param( 'inline' ) ) {
 			$svg = ShareService::qr_svg( $info['share_url'] );
 			if ( ! ( $svg instanceof \WP_Error ) ) {
-				$out['qr_svg'] = $svg;
+				// Same escaping as the image endpoint: the admin screen inserts this markup into the page.
+				$out['qr_svg'] = wp_kses( $svg, QrSvg::allowed_html() );
 			}
 		}
 
@@ -100,12 +103,7 @@ final class Rest {
 		if ( $request->get_param( 'download' ) ) {
 			header( 'Content-Disposition: attachment; filename="coupon-' . $coupon->get_id() . '-qr.svg"' );
 		}
-		// Safe by construction: the SVG is assembled from plugin-computed integers + two hard-coded
-		// colour literals (no user data in markup) and is streamed as a standalone image/svg+xml
-		// response (Content-Type set above). wp_kses() cannot be used here because it lower-cases the
-		// case-sensitive viewBox attribute to "viewbox", which a standalone SVG parser silently
-		// ignores, breaking the QR coordinate system.
-		echo $svg; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- see comment above.
+		echo wp_kses( $svg, QrSvg::allowed_html() );
 		exit;
 	}
 

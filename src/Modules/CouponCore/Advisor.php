@@ -108,17 +108,26 @@ final class Advisor {
 	public static function audit(): array {
 		$issues = array();
 		$now    = time();
-		$ids    = get_posts(
-			array(
-				'post_type'   => 'shop_coupon',
-				'post_status' => array( 'publish', 'draft' ),
-				// phpcs:ignore WordPress.WP.PostsPerPage.posts_per_page_numberposts -- bounded one-off admin audit; caps the scan, never unbounded.
-				'numberposts' => 300,
-				'fields'      => 'ids',
-				'orderby'     => 'ID',
-				'order'       => 'DESC',
-			)
-		);
+		// The newest 300 coupons, read 100 at a time.
+		$ids = array();
+		for ( $page = 1; $page <= 3; $page++ ) {
+			$batch = get_posts(
+				array(
+					'post_type'      => 'shop_coupon',
+					'post_status'    => array( 'publish', 'draft' ),
+					'posts_per_page' => 100,
+					'paged'          => $page,
+					'fields'         => 'ids',
+					'orderby'        => 'ID',
+					'order'          => 'DESC',
+					'no_found_rows'  => true,
+				)
+			);
+			$ids   = array_merge( $ids, (array) $batch );
+			if ( count( (array) $batch ) < 100 ) {
+				break;
+			}
+		}
 		foreach ( array_map( 'intval', (array) $ids ) as $id ) {
 			$coupon  = new \WC_Coupon( $id );
 			$code    = $coupon->get_code();

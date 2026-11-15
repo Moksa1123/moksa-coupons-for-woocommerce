@@ -4,6 +4,8 @@ declare( strict_types=1 );
 
 namespace Moksafocou\Modules\MyAccount;
 
+use Moksafocou\Support\CouponIndex;
+
 defined( 'ABSPATH' ) || exit;
 
 /**
@@ -43,35 +45,27 @@ final class CouponQuery {
 		if ( $user_id <= 0 ) {
 			return array();
 		}
-		$clauses = array(
-			array(
-				'key'   => self::OWNER_META,
-				'value' => (string) $user_id,
-			),
-		);
-		$email   = strtolower( trim( $email ) );
+		// Owned by this user, or locked to their email address (the coupon index stores the email
+		// as a hash). Then the newest 100 published ones.
+		$names = array( 'owner:' . $user_id );
+		$email = CouponIndex::email_term( $email );
 		if ( '' !== $email ) {
-			// email_restrictions is stored serialized in the customer_email meta; a LIKE on the
-			// address is enough to find coupons locked to this customer.
-			$clauses[] = array(
-				'key'     => 'customer_email',
-				'value'   => $email,
-				'compare' => 'LIKE',
-			);
+			$names[] = $email;
 		}
-		$meta_query = count( $clauses ) > 1 ? array_merge( array( 'relation' => 'OR' ), $clauses ) : $clauses;
-
+		$candidates = CouponIndex::ids_any( $names );
+		if ( array() === $candidates ) {
+			return array();
+		}
 		$ids = get_posts(
 			array(
 				'post_type'        => 'shop_coupon',
 				'post_status'      => 'publish',
-				'numberposts'      => 100,
+				'post__in'         => $candidates,
+				'posts_per_page'   => 100,
 				'fields'           => 'ids',
 				'orderby'          => 'date',
 				'order'            => 'DESC',
 				'suppress_filters' => false,
-				// phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query -- customer-scoped, small result set, runs on a logged-in account page.
-				'meta_query'       => $meta_query,
 			)
 		);
 		return array_map( 'intval', (array) $ids );

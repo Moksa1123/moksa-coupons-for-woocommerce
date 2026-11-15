@@ -33,8 +33,9 @@ final class Frontend {
 		return 'nth';
 	}
 
-	protected static function priority_filter(): string {
-		return 'moksafocou_nthitem_priority';
+	/** before_calculate_totals priority for the Nth-item price engine (filterable). */
+	protected static function priority(): int {
+		return (int) apply_filters( 'moksafocou_nthitem_priority', 11 );
 	}
 
 	/**

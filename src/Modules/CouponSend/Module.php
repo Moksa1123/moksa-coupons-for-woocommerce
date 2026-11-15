@@ -83,7 +83,7 @@ final class Module extends AbstractModule {
 				),
 				'execute_callback'    => array( SendOps::class, 'send_prepare' ),
 				'permission_callback' => array( self::class, 'can_send' ),
-				'meta'                => AbilityMeta::write(),
+				'meta'                => AbilityMeta::write( 'manage_woocommerce' ),
 			)
 		);
 	}

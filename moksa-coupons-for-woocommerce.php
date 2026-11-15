@@ -3,13 +3,12 @@
  * Plugin Name:        Moksa Coupons for WooCommerce
  * Plugin URI:         https://github.com/Moksa1123/moksa-coupons-for-woocommerce
  * Description:        A free, modular WooCommerce coupon toolkit: BOGO, cart conditions, role limits, scheduling, URL coupons and one-click templates, every feature off by default. Coupon actions are also WordPress Abilities, usable from an optional in-dashboard AI assistant, the REST API and MCP.
- * Version:            1.2.1
+ * Version:            1.3.0
  * Requires at least:  7.0
- * Tested up to:       7.1
  * Requires PHP:       8.2
  * Requires Plugins:   woocommerce
  * WC requires at least: 10.7
- * WC tested up to:    11.1
+ * WC tested up to:    11.3
  * Author:             MoksaWeb
  * Author URI:         https://moksaweb.com/
  * License:            GPLv3 or later
@@ -25,7 +24,7 @@ declare( strict_types=1 );
 defined( 'ABSPATH' ) || exit;
 
 /* Constants */
-const MOKSAFOCOU_VERSION    = '1.2.1';
+const MOKSAFOCOU_VERSION    = '1.3.0';
 const MOKSAFOCOU_MIN_PHP    = '8.2';
 const MOKSAFOCOU_MIN_WP     = '7.0';
 const MOKSAFOCOU_MIN_WC     = '10.7';
@@ -70,6 +69,12 @@ require_once __DIR__ . '/lib/moksa-kit/moksa-kit.php';
 
 /* Shared Moksa AI launcher (bundled; single-instance version election across the suite). */
 require_once __DIR__ . '/lib/moksa-ai/moksa-ai.php';
+
+/*
+ * Shared Moksa MCP endpoint (bundled; single-instance version election across the suite). One MCP
+ * endpoint for every Moksa plugin on the site; it stays silent until a plugin's MCP switch is on.
+ */
+require_once __DIR__ . '/lib/moksa-mcp/moksa-mcp.php';
 add_filter(
 	'moksa_ai_sections',
 	static function ( array $sections ): array {

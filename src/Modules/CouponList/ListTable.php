@@ -6,6 +6,7 @@ namespace Moksafocou\Modules\CouponList;
 
 use Moksafocou\Coupon\CouponService;
 use Moksafocou\Modules\CouponCore\CouponOps;
+use Moksafocou\Support\RedirectNotice;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -120,7 +121,7 @@ final class ListTable {
 			CouponService::set_status( $id, $enable );
 			++$count;
 		}
-		return add_query_arg( 'moksafocou_bulk', ( $enable ? 'on-' : 'off-' ) . $count, $redirect );
+		return RedirectNotice::url( array( 'moksafocou_bulk' => ( $enable ? 'on-' : 'off-' ) . $count ), $redirect );
 	}
 
 	public static function handle_duplicate(): void {
@@ -136,16 +137,16 @@ final class ListTable {
 
 		$prepared = CouponOps::duplicate_prepare( array( 'code_or_id' => (string) $id ) );
 		if ( $prepared instanceof \WP_Error ) {
-			wp_safe_redirect( add_query_arg( 'moksafocou_dup', 'err', $back ) );
+			wp_safe_redirect( RedirectNotice::url( array( 'moksafocou_dup' => 'err' ), $back ) );
 			exit;
 		}
 		$result = CouponOps::duplicate_apply( $prepared );
 		if ( $result instanceof \WP_Error ) {
-			wp_safe_redirect( add_query_arg( 'moksafocou_dup', 'err', $back ) );
+			wp_safe_redirect( RedirectNotice::url( array( 'moksafocou_dup' => 'err' ), $back ) );
 			exit;
 		}
 		// Open the new draft for review.
-		wp_safe_redirect( add_query_arg( 'moksafocou_dup', 'ok', admin_url( 'post.php?post=' . (int) $result['id'] . '&action=edit' ) ) );
+		wp_safe_redirect( RedirectNotice::url( array( 'moksafocou_dup' => 'ok' ), admin_url( 'post.php?post=' . (int) $result['id'] . '&action=edit' ) ) );
 		exit;
 	}
 
@@ -154,17 +155,17 @@ final class ListTable {
 		if ( ! $screen || 'shop_coupon' !== $screen->post_type ) {
 			return;
 		}
-		// phpcs:disable WordPress.Security.NonceVerification.Recommended -- read-only result flags from a redirect, no state change.
-		if ( isset( $_GET['moksafocou_dup'] ) ) {
-			$dup = sanitize_key( wp_unslash( $_GET['moksafocou_dup'] ) );
+		$dup = RedirectNotice::get( 'moksafocou_dup' );
+		if ( null !== $dup ) {
 			if ( 'ok' === $dup ) {
 				echo '<div class="notice notice-success is-dismissible"><p>' . esc_html__( 'Copied as a draft coupon with usage count reset to zero; you can review it before enabling.', 'moksa-coupons-for-woocommerce' ) . '</p></div>';
 			} elseif ( 'err' === $dup ) {
 				echo '<div class="notice notice-error is-dismissible"><p>' . esc_html__( 'Failed to copy the coupon.', 'moksa-coupons-for-woocommerce' ) . '</p></div>';
 			}
 		}
-		if ( isset( $_GET['moksafocou_bulk'] ) ) {
-			$parts = explode( '-', sanitize_key( wp_unslash( $_GET['moksafocou_bulk'] ) ) );
+		$bulk = RedirectNotice::get( 'moksafocou_bulk' );
+		if ( null !== $bulk ) {
+			$parts = explode( '-', sanitize_key( $bulk ) );
 			$count = isset( $parts[1] ) ? (int) $parts[1] : 0;
 			$label = ( 'on' === ( $parts[0] ?? '' ) ) ? __( 'Enable', 'moksa-coupons-for-woocommerce' ) : __( 'Disable', 'moksa-coupons-for-woocommerce' );
 			echo '<div class="notice notice-success is-dismissible"><p>' . esc_html(
@@ -176,6 +177,5 @@ final class ListTable {
 				)
 			) . '</p></div>';
 		}
-		// phpcs:enable WordPress.Security.NonceVerification.Recommended
 	}
 }

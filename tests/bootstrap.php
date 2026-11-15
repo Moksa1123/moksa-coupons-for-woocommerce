@@ -85,7 +85,9 @@ if ( ! function_exists( 'current_user_can' ) ) {
 	// Test double: returns $GLOBALS['__mfc_test_can'] (default true) so tests can simulate
 	// an unauthorised user without a real WP roles/caps stack.
 	function current_user_can( $capability, ...$args ): bool { // phpcs:ignore
-		return (bool) ( $GLOBALS['__mfc_test_can'] ?? true );
+		$can = $GLOBALS['__mfc_test_can'] ?? true;
+		// A callable answers per capability (the MCP tests need "has X but not Y").
+		return is_callable( $can ) ? (bool) $can( (string) $capability ) : (bool) $can;
 	}
 }
 

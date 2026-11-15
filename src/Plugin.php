@@ -65,6 +65,8 @@ final class Plugin {
 			return;
 		}
 
+		Support\Upgrade::maybe_run();
+
 		add_action( 'woocommerce_init', [ $this, 'on_woocommerce_init' ] );
 		add_filter( 'plugin_action_links_' . MOKSAFOCOU_PLUGIN_BASENAME, [ $this, 'plugin_action_links' ] );
 	}
@@ -117,6 +119,10 @@ final class Plugin {
 		}
 		// Always-on: the shared daily cron heartbeat. Modules attach time-based work to it.
 		Support\Cron::register();
+		// Always-on: the coupon lookup index (private taxonomy) that replaces meta queries.
+		Support\CouponIndex::boot();
+		// Always-on: remember every option we write, so uninstall can delete them by name.
+		Support\OptionRegistry::boot();
 		$this->modules->boot();
 	}
 }

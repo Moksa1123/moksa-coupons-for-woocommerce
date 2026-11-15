@@ -88,7 +88,8 @@ final class ShareService {
 		if ( '' === $url ) {
 			return new \WP_Error( 'moksafocou_qr_empty', __( 'QR content cannot be empty.', 'moksa-coupons-for-woocommerce' ) );
 		}
-		$key    = 'moksafocou_qr_' . md5( $url . '|' . $px_scale );
+		// v2: pixel coordinates, no viewBox (older cached SVGs had one and would break under wp_kses).
+		$key    = 'moksafocou_qr_' . md5( 'v2|' . $url . '|' . $px_scale );
 		$cached = get_transient( $key );
 		if ( is_string( $cached ) && '' !== $cached ) {
 			return $cached;

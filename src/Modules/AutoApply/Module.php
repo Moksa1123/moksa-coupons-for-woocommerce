@@ -34,16 +34,7 @@ final class Module extends AbstractModule {
 	public function boot(): void {
 		Frontend::boot();
 
-		// Keep the derived id-cache in sync (safety net beyond AutoApplyMeta::write).
-		add_action( 'save_post_shop_coupon', array( AutoApplyMeta::class, 'on_save' ), 20, 1 );
-		add_action( 'untrashed_post', array( AutoApplyMeta::class, 'on_save' ) );
-		add_action( 'wp_trash_post', array( AutoApplyMeta::class, 'on_remove' ) );
-		add_action( 'before_delete_post', array( AutoApplyMeta::class, 'on_remove' ) );
-		// Meta-level sync so REST / AI / WP-CLI writes of the flag also refresh the cache
-		// (WC REST fires save_post before it writes meta, so save_post alone is stale).
-		add_action( 'added_post_meta', array( AutoApplyMeta::class, 'on_meta_change' ), 10, 3 );
-		add_action( 'updated_post_meta', array( AutoApplyMeta::class, 'on_meta_change' ), 10, 3 );
-		add_action( 'deleted_post_meta', array( AutoApplyMeta::class, 'on_meta_change' ), 10, 3 );
+		// The auto-apply list comes from Support\CouponIndex, which follows the meta itself.
 
 		if ( is_admin() ) {
 			$fields = new Fields();

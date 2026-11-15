@@ -4,8 +4,11 @@ declare( strict_types=1 );
 
 namespace Moksafocou\Settings;
 
+use Moksafocou\Mcp\Provider as McpProvider;
+
 use Moksafocou\Plugin;
 use Moksafocou\Support\ModuleDependencies;
+use Moksafocou\Support\RedirectNotice;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -255,8 +258,21 @@ final class SettingsScreen {
 				'desc'   => __( 'Create / query coupons with natural language in the admin, and optionally open them up to external AI tools. All disabled by default; enable when needed.', 'moksa-coupons-for-woocommerce' ),
 				'fields' => array(
 					self::toggle( 'moksafocou_ai_enabled', __( 'AI coupon assistant', 'moksa-coupons-for-woocommerce' ), __( 'Create / query coupons with natural language in the admin (requires the AI Client of WordPress 7.0+ and a configured Connector).', 'moksa-coupons-for-woocommerce' ) ),
-					self::toggle( 'moksafocou_mcp_server_enabled', __( 'External MCP server', 'moksa-coupons-for-woocommerce' ), __( 'Open up coupon capabilities to external AI tools (MCP). Disabled by default.', 'moksa-coupons-for-woocommerce' ) ),
-					self::toggle( 'moksafocou_mcp_expose_destructive', __( 'Allow external MCP to make changes', 'moksa-coupons-for-woocommerce' ), __( 'Allow destructive capabilities (create / update / delete coupons) to be exposed to external MCP. Disabled by default (read-only).', 'moksa-coupons-for-woocommerce' ) ),
+					self::toggle( 'moksafocou_mcp_server_enabled', __( 'External MCP server', 'moksa-coupons-for-woocommerce' ), __( 'Open up coupon capabilities to external AI tools (MCP). Read-only tools only, unless you tick changes below. Disabled by default.', 'moksa-coupons-for-woocommerce' ) ),
+					array(
+						'id'      => McpProvider::TOOLS_OPTION,
+						'type'    => 'mcp_tools',
+						'default' => array(),
+						'title'   => __( 'Changes AI tools may make over MCP', 'moksa-coupons-for-woocommerce' ),
+						'desc'    => __( 'None are ticked by default. Each change is first proposed with a summary, and only carried out when the AI tool confirms it with a one-time token (valid for 10 minutes, usable once). Each one also needs its own permission on the account the AI tool signs in with.', 'moksa-coupons-for-woocommerce' ),
+					),
+					array(
+						'id'      => 'moksafocou_mcp_audit_view',
+						'type'    => 'mcp_audit',
+						'default' => '',
+						'title'   => __( 'Recent changes made over MCP', 'moksa-coupons-for-woocommerce' ),
+						'desc'    => __( 'The latest changes AI tools carried out, or tried to, over MCP. Only a fingerprint of what was sent is kept, never the content.', 'moksa-coupons-for-woocommerce' ),
+					),
 				),
 			),
 		);
@@ -307,7 +323,7 @@ final class SettingsScreen {
 
 		echo '<div class="wrap moksafocou-settings-screen">';
 
-		$flag = isset( $_GET['moksafocou_saved'] ) ? sanitize_text_field( wp_unslash( (string) $_GET['moksafocou_saved'] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		$flag = (string) RedirectNotice::get( 'moksafocou_saved' );
 		if ( isset( self::NOTICES[ $flag ] ) ) {
 			echo '<div class="notice notice-success is-dismissible"><p>' . esc_html__( 'Settings saved.', 'moksa-coupons-for-woocommerce' ) . '</p></div>';
 		}
@@ -466,7 +482,11 @@ final class SettingsScreen {
 		if ( '' !== $desc ) {
 			echo '<span class="mowp-field__desc">' . esc_html( $desc ) . '</span>';
 		}
-		if ( 'select' === $type ) {
+		if ( 'mcp_tools' === $type ) {
+			self::mcp_tools_field( $id );
+		} elseif ( 'mcp_audit' === $type ) {
+			self::mcp_audit_table();
+		} elseif ( 'select' === $type ) {
 			echo '<select id="' . esc_attr( $id ) . '" name="' . esc_attr( $id ) . '">';
 			$options = is_array( $field['options'] ?? null ) ? $field['options'] : array();
 			foreach ( $options as $opt_val => $opt_label ) {
@@ -478,6 +498,54 @@ final class SettingsScreen {
 			echo '<input type="text" id="' . esc_attr( $id ) . '" name="' . esc_attr( $id ) . '" value="' . esc_attr( (string) $value ) . '">';
 		}
 		echo '</div>';
+	}
+
+	/**
+	 * The per-tool opt-in list for destructive MCP tools, with the endpoint and the risk note.
+	 *
+	 * @param string $id Option id.
+	 */
+	private static function mcp_tools_field( string $id ): void {
+		echo '<p class="mowp-field__desc">' . esc_html__( 'MCP endpoint:', 'moksa-coupons-for-woocommerce' )
+			. ' <code>' . esc_html( McpProvider::endpoint_url() ) . '</code></p>';
+		echo '<div class="mowp-note mowp-note--warn">'
+			. esc_html__( 'Create the application password for AI tools on a dedicated account with only the permissions it needs. If your AI tool is set to approve tool calls automatically, ticking a change here lets the AI confirm it by itself — the site cannot tell the difference.', 'moksa-coupons-for-woocommerce' )
+			. '</div>';
+
+		$choices = McpProvider::destructive_choices();
+		if ( array() === $choices ) {
+			echo '<p class="mowp-field__desc">' . esc_html__( 'No change tools are available (requires WordPress 6.9 or later).', 'moksa-coupons-for-woocommerce' ) . '</p>';
+			return;
+		}
+		$picked = (array) get_option( $id, array() );
+		echo '<fieldset class="mowp-checklist">';
+		foreach ( $choices as $name => $choice ) {
+			echo '<label class="mowp-checklist__item"><input type="checkbox" name="' . esc_attr( $id ) . '[]" value="' . esc_attr( $name ) . '"'
+				. checked( in_array( $name, $picked, true ), true, false ) . '> '
+				. esc_html( (string) $choice['label'] )
+				. ' <code>' . esc_html( (string) $choice['capability'] ) . '</code></label><br>';
+		}
+		echo '</fieldset>';
+	}
+
+	/** The recent MCP changes for this plugin's tools (time, who, tool, result). */
+	private static function mcp_audit_table(): void {
+		$rows = McpProvider::recent_changes( 20 );
+		if ( array() === $rows ) {
+			echo '<p class="mowp-field__desc">' . esc_html__( 'Nothing yet.', 'moksa-coupons-for-woocommerce' ) . '</p>';
+			return;
+		}
+		echo '<table class="widefat striped"><thead><tr>'
+			. '<th>' . esc_html__( 'Time', 'moksa-coupons-for-woocommerce' ) . '</th>'
+			. '<th>' . esc_html__( 'Account', 'moksa-coupons-for-woocommerce' ) . '</th>'
+			. '<th>' . esc_html__( 'Tool', 'moksa-coupons-for-woocommerce' ) . '</th>'
+			. '<th>' . esc_html__( 'Result', 'moksa-coupons-for-woocommerce' ) . '</th>'
+			. '</tr></thead><tbody>';
+		foreach ( $rows as $row ) {
+			echo '<tr><td>' . esc_html( $row['time'] ) . '</td><td>' . esc_html( $row['user'] ) . '</td><td><code>'
+				. esc_html( $row['tool'] ) . '</code></td><td>' . esc_html( $row['result'] ) . '</td></tr>';
+		}
+		echo '</tbody></table>';
 	}
 
 	/** admin_post handler: verify, whitelist-save the submitting sub-page's fields, redirect with notice. */
@@ -502,13 +570,25 @@ final class SettingsScreen {
 			}
 			$fields = is_array( $group['fields'] ?? null ) ? $group['fields'] : array();
 			foreach ( $fields as $field ) {
-				$fid   = (string) ( $field['id'] ?? '' );
+				$fid  = (string) ( $field['id'] ?? '' );
+				$type = (string) ( $field['type'] ?? 'checkbox' );
+				if ( 'mcp_audit' === $type ) {
+					continue; // Display only.
+				}
+				if ( 'mcp_tools' === $type ) {
+					$picked = ( '' !== $fid && isset( $_POST[ $fid ] ) && is_array( $_POST[ $fid ] ) )
+						? array_map( 'sanitize_text_field', wp_unslash( $_POST[ $fid ] ) )
+						: array();
+					// Only names this build can actually offer; anything else in the POST is dropped.
+					update_option( $fid, array_values( array_intersect( array_keys( McpProvider::destructive_choices() ), $picked ) ), false );
+					continue;
+				}
 				$value = ( '' !== $fid && isset( $_POST[ $fid ] ) ) ? sanitize_text_field( wp_unslash( (string) $_POST[ $fid ] ) ) : null;
 				self::save_field( $field, $value );
 			}
 		}
 
-		wp_safe_redirect( add_query_arg( 'moksafocou_saved', '1', self::page_url( $scope ) ) );
+		wp_safe_redirect( RedirectNotice::url( array( 'moksafocou_saved' => '1' ), self::page_url( $scope ) ) );
 		exit;
 	}
 

@@ -303,7 +303,9 @@ final class Fields {
 	}
 
 	/**
-	 * @param array<int|string,mixed> $raw
+	 * @param int                     $post_id Coupon post ID.
+	 * @param string                  $key     Meta key.
+	 * @param array<int|string,mixed> $raw     Submitted IDs.
 	 */
 	private function save_id_list( int $post_id, string $key, array $raw ): void {
 		$list = FieldsHelpers::int_list( $raw );

@@ -5,8 +5,8 @@ Requires at least: 7.0
 Tested up to: 7.1
 Requires PHP: 8.2
 WC requires at least: 10.7
-WC tested up to: 11.1
-Stable tag: 1.2.1
+WC tested up to: 11.3
+Stable tag: 1.3.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -42,9 +42,11 @@ Every coupon action is registered as a WordPress Ability, so the same capability
 
 * the **in-dashboard AI assistant** — create or look up coupons by typing in plain language (uses the WordPress AI Client, which you configure with your own provider);
 * the **WordPress Abilities API** and REST API;
-* an optional **MCP server** that exposes coupon abilities to external AI tools.
+* an optional **MCP server** that exposes coupon abilities to external AI tools. It is served by the shared Moksa MCP endpoint (`/wp-json/moksa/v1/mcp`), which lists the tools of every Moksa plugin you have switched it on in; the older `/wp-json/moksafocou/v1/mcp` keeps working and lists coupon tools only.
 
-These features are off by default and respect WordPress capabilities — every ability and REST route checks the current user's `manage_woocommerce` (or a coupon-specific) capability. Destructive abilities exposed over external MCP stay disabled unless you separately opt in, and even then run as a confirm-then-apply (propose/apply) flow.
+These features are off by default and respect WordPress capabilities — every ability and REST route checks the current user's `manage_woocommerce` (or a coupon-specific) capability. Over external MCP, tools that change coupons are all off by default and are switched on one by one. Each needs its own capability (for example `delete_shop_coupons` to delete), and each runs in two steps: the change is first proposed with a summary, and only carried out when the AI tool confirms it with a one-time token (valid for 10 minutes, usable once). Recent changes made this way are listed on the settings screen.
+
+Use a dedicated account with only the permissions it needs for the application password you give an AI tool. If the AI tool is set to approve tool calls automatically, switching on a change tool lets the AI confirm that change by itself — the site cannot tell the difference.
 
 = Off by default, enable what you need =
 
@@ -80,7 +82,7 @@ This plugin can connect to a third-party AI provider, but only when you, the sit
 
 **AI coupon assistant (optional, off by default).** When you enable this feature, the natural-language text you type in the admin to create or query coupons — plus the coupon parameters needed to fulfil that request — is sent to the AI model provider you have configured in WordPress's AI Client (WordPress 7.0+). The plugin does not choose a provider, does not include or transmit any API keys of its own, and makes no AI request unless you enable the feature and configure a provider. Which provider receives the text, and the terms and privacy policy that apply, depend entirely on the AI Client connector you set up. Please review your chosen provider's terms of service and privacy policy.
 
-**External MCP server (optional, off by default).** When you enable this feature, the plugin exposes coupon abilities to external AI tools over the Model Context Protocol. This is an inbound, authenticated endpoint: a request must come from a logged-in user with the `manage_woocommerce` capability. The plugin does not send your data to any external service through this feature; it only answers authorised incoming requests. Destructive abilities (create / update / delete coupons) remain disabled over external MCP unless you separately opt in.
+**External MCP server (optional, off by default).** When you enable this feature, the plugin exposes coupon abilities to external AI tools over the Model Context Protocol. This is an inbound, authenticated endpoint: a request must come from a logged-in user with the `manage_woocommerce` capability. The plugin does not send your data to any external service through this feature; it only answers authorised incoming requests. Tools that change coupons stay off over external MCP until you switch them on one by one. For each call the plugin keeps a short log on your own site (time, account, tool name, outcome and a fingerprint of the arguments — never the arguments themselves); nothing is sent anywhere.
 
 == Screenshots ==
 
@@ -92,6 +94,19 @@ This plugin can connect to a third-party AI provider, but only when you, the sit
 6. Front-end coupon wall rendered by the [moksafocou_coupons] shortcode.
 
 == Changelog ==
+
+= 1.3.0 =
+* New: one MCP endpoint for the whole site, /wp-json/moksa/v1/mcp, shared by every Moksa plugin you have switched MCP on in. The old /wp-json/moksafocou/v1/mcp keeps working and lists coupon tools only.
+* New: over MCP, tools that change coupons are switched on one by one in Settings → AI and external openness. Each needs its own permission (for example "delete coupons" to delete), and each runs in two steps: the change is proposed with a summary first, and only carried out when the AI tool confirms it with a one-time token (valid for 10 minutes, usable once). The old all-or-nothing "Allow external MCP to make changes" switch is gone; after updating, every change tool starts switched off.
+* New: the settings screen lists the latest changes made over MCP (time, account, tool, result). Only a fingerprint of what was sent is kept, never the content.
+* Fix: an automatically applied coupon is no longer forced into a cart that already holds an "individual use only" coupon, and an "individual use only" coupon is no longer applied automatically on top of a code the customer entered. The customer's own coupon is always kept.
+* Fix: when a customer applies an "individual use only" coupon, the automatically applied coupon it removes no longer comes straight back.
+* Fix: a coupon issued to one customer no longer shows up in the public coupon list, even when it was copied from a template marked "show in list".
+* Improvement: looking up coupons (auto-apply, URL coupon codes, My coupons, expiry reminders, reports) now uses an index instead of searching every coupon, which is faster on stores with many coupons. The index is built in the background right after the update.
+* Improvement: the shared QR code is written in a form that survives output escaping; it scans the same.
+* Improvement: uninstalling removes this plugin's settings by name instead of a database pattern match.
+* Removed: leftover code of the plugin's old built-in chat window, which the shared Moksa AI chat replaced earlier, and its two settings.
+* Tested with WooCommerce 11.3.
 
 = 1.2.1 =
 * Auto-apply: a coupon the plugin added automatically is now taken back out of the cart once it can no longer apply - for example after it is set to draft, trashed or deleted. The block cart never ran WooCommerce's own clean-up, so such a coupon stayed in the cart as a NT$0 line until checkout refused it. Coupons the customer typed in are not touched.
@@ -144,7 +159,7 @@ Management:
 * An independent "Moksa coupon" admin menu with a dashboard, per-coupon / revenue / per-campaign reports, a consolidated tabbed coupon-settings metabox with type icons, a live editor summary, coupon-list status / bulk / duplicate tools, CSV import / export, a "My coupons" My Account page, post-purchase remarketing coupons and expiry-reminder emails.
 
 AI, Abilities & MCP (optional, off by default):
-* Every coupon action is a capability-checked WordPress Ability, reachable from an in-dashboard AI assistant (WordPress 7.0 AI Client), the REST API and an optional self-built MCP server. Destructive abilities stay disabled over external MCP unless separately opted in, and run as a propose / apply confirmation flow.
+* Every coupon action is a capability-checked WordPress Ability, reachable from an in-dashboard AI assistant (WordPress 7.0 AI Client), the REST API and an optional self-built MCP server. Tools that change coupons are switched on one by one over external MCP, each with its own capability, and run as a propose / apply confirmation flow.
 
 Platform integration:
 * Companion-plugin hooks so a separate points / membership / group-buy plugin can own value, identity and attribution: a moksafocou_coupon_redeemed event on paid orders and a moksafocou_coupon_allowed_for_user filter (e.g. for VIP-gated coupons).
@@ -153,6 +168,9 @@ Quality:
 * A single source of truth for coupon-type labels (no raw slugs in reports / emails), cached reports and a bounded customer-history lookup, first-run safe-default module seeding, a soft cross-module dependency advisory, a prefix-based uninstall cleanup, and a WordPress.org-clean build.
 
 == Upgrade Notice ==
+
+= 1.3.0 =
+New single MCP endpoint for all Moksa plugins. Tools that change coupons over MCP are now switched on one by one and confirmed in two steps; they all start switched off after updating, so re-enable the ones you need under Settings → AI and external openness. If your site uses a page cache, purge it after updating so the public coupon list is refreshed.
 
 = 1.2.1 =
 Auto-applied coupons that have been drafted or deleted no longer linger in the block cart. The tier upgrade prompt and the tier on the coupon line can be switched off separately.

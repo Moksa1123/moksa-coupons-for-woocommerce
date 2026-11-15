@@ -33,8 +33,9 @@ final class Frontend {
 		return 'bogo';
 	}
 
-	protected static function priority_filter(): string {
-		return 'moksafocou_bogo_priority';
+	/** before_calculate_totals priority for the BOGO price engine (filterable). */
+	protected static function priority(): int {
+		return (int) apply_filters( 'moksafocou_bogo_priority', 11 );
 	}
 
 	/**

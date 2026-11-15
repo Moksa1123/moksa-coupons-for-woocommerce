@@ -363,7 +363,9 @@ final class CouponSettings {
 			case 'int':
 				return array( 'type' => 'integer' );
 			case 'decimal':
-				return array( 'type' => array( 'number', 'null' ) );
+				// Single type: AI providers (Gemini) reject a list-valued "type". Leave the field out,
+				// or send 0, to mean "not set".
+				return array( 'type' => 'number' );
 			case 'int_list':
 			case 'day_list':
 				return array(
@@ -424,7 +426,13 @@ final class CouponSettings {
 													'type' => 'string',
 													'enum' => array( 'gte', 'lte', 'gt', 'lt', 'eq', 'neq', 'in', 'not_in' ),
 												),
-												'value' => array( 'type' => array( 'string', 'array', 'number', 'object' ) ),
+												// The value is polymorphic (number / list / object). AI providers reject a
+												// list-valued "type", so it is declared as a string: lists and objects are
+												// sent as JSON text and Rules::clean_value() decodes them.
+												'value' => array(
+													'type' => 'string',
+													'description' => __( 'Numbers and text as they are; lists and objects as JSON text, for example [12,34] or {"a":12,"b":3}.', 'moksa-coupons-for-woocommerce' ),
+												),
 											),
 											'additionalProperties' => false,
 										),

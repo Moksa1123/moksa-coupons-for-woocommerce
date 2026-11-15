@@ -61,4 +61,36 @@ final class QrEncoderTest extends TestCase {
 		$this->assertStringNotContainsString( 'save10', $svg );
 		$this->assertStringNotContainsString( 'example.test', $svg );
 	}
+
+	public function test_svg_has_no_viewbox_and_only_lowercase_attributes(): void {
+		// wp_kses() lower-cases attribute names; a standalone SVG ignores "viewbox". So the markup must
+		// not depend on any mixed-case attribute (it is escaped with wp_kses() on output).
+		$svg = (string) QrSvg::render( 'https://example.test/coupon/save10', 8 );
+		$this->assertStringNotContainsStringIgnoringCase( 'viewbox', $svg );
+		preg_match_all( '/\s([A-Za-z:-]+)="/', $svg, $m );
+		foreach ( $m[1] as $attr ) {
+			$this->assertSame( strtolower( $attr ), $attr, "attribute {$attr} is not lower-case" );
+		}
+	}
+
+	public function test_svg_markup_matches_allowed_html(): void {
+		$svg     = (string) QrSvg::render( 'https://example.test/coupon/save10', 8 );
+		$allowed = QrSvg::allowed_html();
+		preg_match_all( '/<([a-z]+)([^>]*)>/', $svg, $tags, PREG_SET_ORDER );
+		foreach ( $tags as $tag ) {
+			$this->assertArrayHasKey( $tag[1], $allowed, "element {$tag[1]} not allowed" );
+			preg_match_all( '/\s([a-z:-]+)="/', $tag[2], $attrs );
+			foreach ( $attrs[1] as $attr ) {
+				$this->assertArrayHasKey( $attr, $allowed[ $tag[1] ], "{$tag[1]}[{$attr}] not allowed" );
+			}
+		}
+	}
+
+	public function test_svg_geometry_is_modules_times_scale(): void {
+		// 2x2 matrix, dark at (0,0) and (1,1); quiet zone 4; scale 5 → modules at 20 and 25 px.
+		$svg = QrSvg::from_matrix( array( array( 1, 0 ), array( 0, 1 ) ), 5 );
+		$this->assertStringContainsString( 'width="50" height="50"', $svg, '(2 + 8) modules x 5 px' );
+		$this->assertStringContainsString( 'd="M20,20h5v5h-5zM25,25h5v5h-5z"', $svg );
+		$this->assertStringContainsString( '<rect width="50" height="50" fill="#ffffff" />', $svg, 'the " />" form wp_kses() writes' );
+	}
 }

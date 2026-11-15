@@ -6,6 +6,7 @@ namespace Moksafocou\Modules\Frontend;
 
 use Moksafocou\Coupon\Meta\Keys;
 use Moksafocou\Support\DiscountTypeRegistry;
+use Moksafocou\Support\CouponIndex;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -50,27 +51,29 @@ final class Catalog {
 	 * @return array<int,\WC_Coupon>
 	 */
 	public static function query( int $limit = 20 ): array {
-		$ids = get_posts(
+		// Coupons the owner marked "show in list", from the coupon index — never a coupon issued to
+		// one customer (a personal coupon cloned from a listed template keeps the flag).
+		$listed = array_values( array_diff( CouponIndex::ids( 'list_visible:1' ), CouponIndex::ids( 'personal:1' ) ) );
+		$ids    = array() === $listed ? array() : get_posts(
 			array(
 				'post_type'      => 'shop_coupon',
 				'post_status'    => 'publish',
+				'post__in'       => $listed,
 				'posts_per_page' => max( 1, min( 50, $limit ) ),
 				'orderby'        => 'date',
 				'order'          => 'DESC',
 				'fields'         => 'ids',
-				'meta_query'     => array( // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query -- bounded admin-curated list.
-					array(
-						'key'   => Keys::SHOW_IN_LIST,
-						'value' => 'yes',
-					),
-				),
 			)
 		);
 
 		$now    = time();
 		$result = array();
 		foreach ( $ids as $id ) {
-			$coupon      = new \WC_Coupon( (int) $id );
+			$coupon = new \WC_Coupon( (int) $id );
+			// Never a coupon issued to one customer, even if the index is still being built.
+			if ( array() !== $coupon->get_email_restrictions() || (int) get_post_meta( (int) $id, CouponIndex::OWNER_META, true ) > 0 ) {
+				continue;
+			}
 			$expires     = $coupon->get_date_expires();
 			$valid_until = $expires ? $expires->getTimestamp() + DAY_IN_SECONDS : null;
 			if ( self::is_advertisable( get_post_status( (int) $id ) ?: '', 'yes', $valid_until, $now ) ) {

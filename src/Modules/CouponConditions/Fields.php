@@ -639,7 +639,8 @@ final class Fields {
 	}
 
 	/**
-	 * @param array<int,int> $raw
+	 * @param int            $post_id Coupon post ID.
+	 * @param array<int,int> $raw     Submitted weekday numbers.
 	 */
 	private function save_days( int $post_id, array $raw ): void {
 		$days = array();
@@ -666,7 +667,9 @@ final class Fields {
 	}
 
 	/**
-	 * @param array<int,int> $raw
+	 * @param int            $post_id Coupon post ID.
+	 * @param string         $key     Meta key.
+	 * @param array<int,int> $raw     Submitted IDs.
 	 */
 	private function save_id_list( int $post_id, string $key, array $raw ): void {
 		$ids = array_values( array_unique( array_filter( array_map( 'absint', $raw ) ) ) );
@@ -678,7 +681,9 @@ final class Fields {
 	}
 
 	/**
-	 * @param array<int,string> $raw
+	 * @param int               $post_id Coupon post ID.
+	 * @param string            $key     Meta key.
+	 * @param array<int,string> $raw     Submitted country codes.
 	 */
 	private function save_code_list( int $post_id, string $key, array $raw ): void {
 		$codes = array();
@@ -696,7 +701,9 @@ final class Fields {
 	}
 
 	/**
-	 * @param array<int,string> $raw
+	 * @param int               $post_id Coupon post ID.
+	 * @param string            $key     Meta key.
+	 * @param array<int,string> $raw     Submitted keys.
 	 */
 	private function save_key_list( int $post_id, string $key, array $raw ): void {
 		$keys = array_values( array_unique( array_filter( array_map( 'sanitize_key', $raw ) ) ) );

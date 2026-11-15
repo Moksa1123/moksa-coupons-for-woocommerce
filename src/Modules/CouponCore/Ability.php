@@ -248,7 +248,7 @@ final class Ability {
 				'output_schema'       => self::summary_output(),
 				'execute_callback'    => [ CouponOps::class, 'create_prepare' ],
 				'permission_callback' => [ self::class, 'can_write' ],
-				'meta'                => self::write_meta(),
+				'meta'                => self::write_meta( 'publish_shop_coupons' ),
 			]
 		);
 
@@ -262,7 +262,7 @@ final class Ability {
 				'output_schema'       => self::summary_output(),
 				'execute_callback'    => [ CouponOps::class, 'update_prepare' ],
 				'permission_callback' => [ self::class, 'can_write' ],
-				'meta'                => self::write_meta(),
+				'meta'                => self::write_meta( 'edit_shop_coupons' ),
 			]
 		);
 
@@ -290,7 +290,7 @@ final class Ability {
 				'output_schema'       => self::summary_output(),
 				'execute_callback'    => [ CouponOps::class, 'toggle_prepare' ],
 				'permission_callback' => [ self::class, 'can_write' ],
-				'meta'                => self::write_meta(),
+				'meta'                => self::write_meta( 'publish_shop_coupons' ),
 			]
 		);
 
@@ -318,7 +318,7 @@ final class Ability {
 				'output_schema'       => self::summary_output(),
 				'execute_callback'    => [ CouponOps::class, 'delete_prepare' ],
 				'permission_callback' => [ self::class, 'can_write' ],
-				'meta'                => self::write_meta(),
+				'meta'                => self::write_meta( 'delete_shop_coupons' ),
 			]
 		);
 
@@ -332,7 +332,7 @@ final class Ability {
 				'output_schema'       => self::summary_output(),
 				'execute_callback'    => [ CouponOps::class, 'bulk_generate_prepare' ],
 				'permission_callback' => [ self::class, 'can_write' ],
-				'meta'                => self::write_meta(),
+				'meta'                => self::write_meta( 'publish_shop_coupons' ),
 			]
 		);
 
@@ -361,7 +361,7 @@ final class Ability {
 				'output_schema'       => self::summary_output(),
 				'execute_callback'    => [ CouponOps::class, 'extend_expiry_prepare' ],
 				'permission_callback' => [ self::class, 'can_write' ],
-				'meta'                => self::write_meta(),
+				'meta'                => self::write_meta( 'edit_shop_coupons' ),
 			]
 		);
 
@@ -385,7 +385,7 @@ final class Ability {
 				'output_schema'       => self::summary_output(),
 				'execute_callback'    => [ CouponOps::class, 'duplicate_prepare' ],
 				'permission_callback' => [ self::class, 'can_write' ],
-				'meta'                => self::write_meta(),
+				'meta'                => self::write_meta( 'publish_shop_coupons' ),
 			]
 		);
 	}
@@ -503,8 +503,8 @@ final class Ability {
 	}
 
 	/** @return array<string,mixed> */
-	private static function write_meta(): array {
-		return AbilityMeta::write();
+	private static function write_meta( string $mcp_capability ): array {
+		return AbilityMeta::write( $mcp_capability );
 	}
 
 	/** @return array<string,mixed> */
@@ -615,10 +615,9 @@ final class Ability {
 	}
 
 	// === MCP exposure gate ===
-
-	private static function expose_destructive(): bool {
-		return 'yes' === get_option( 'moksafocou_mcp_expose_destructive', 'no' );
-	}
+	// Destructive coupon abilities are never handed to third-party MCP adapters (the official MCP
+	// Adapter, WooCommerce's MCP). Over MCP they are reachable only through the shared Moksa MCP
+	// endpoint, one ticked tool at a time, as a two-step propose / apply (lib/moksa-mcp).
 
 	/**
 	 * @param mixed $args
@@ -630,7 +629,7 @@ final class Ability {
 			return $args;
 		}
 		$destructive = ! empty( $args['meta']['annotations']['destructive'] );
-		if ( $destructive && ! self::expose_destructive() ) {
+		if ( $destructive ) {
 			$args['meta']['mcp']['public'] = false;
 			self::$mcp_hidden[ $name ]     = true;
 		}

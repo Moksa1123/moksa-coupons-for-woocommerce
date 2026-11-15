@@ -4,15 +4,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Moksa Coupons for WooCommerce 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/moksafocou\n"
+"POT-Creation-Date: 2026-08-01T07:04:55+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-08-01T07:04:55+00:00\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: moksa-coupons-for-woocommerce\n"
+"X-Generator: WP-CLI 2.12.0\n"
 
 #. Plugin Name of the plugin
 #: moksafocou.php
@@ -26,7 +26,10 @@ msgstr ""
 
 #. Description of the plugin
 #: moksafocou.php
-msgid "AI-powered WooCommerce coupon toolkit. Create coupons with natural language, plus BOGO, cart conditions, role restrictions, scheduling and URL coupons. Exposes coupon abilities to the WordPress Abilities API, AI Client and MCP."
+msgid ""
+"AI-powered WooCommerce coupon toolkit. Create coupons with natural language,"
+" plus BOGO, cart conditions, role restrictions, scheduling and URL coupons. "
+"Exposes coupon abilities to the WordPress Abilities API, AI Client and MCP."
 msgstr ""
 
 #. Author of the plugin
@@ -39,8 +42,7 @@ msgstr ""
 msgid "https://moksaweb.com/"
 msgstr ""
 
-#: moksafocou.php:70
-#: src/Modules/AdminMenu/Menu.php:68
+#: moksafocou.php:70 src/Modules/AdminMenu/Menu.php:68
 msgid "Coupon"
 msgstr ""
 
@@ -52,14 +54,12 @@ msgstr ""
 msgid "No coupon settings sections are enabled yet."
 msgstr ""
 
-#: src/Admin/FieldsHelpers.php:26
-#: src/Modules/AdvancedRules/Fields.php:308
+#: src/Admin/FieldsHelpers.php:26 src/Modules/AdvancedRules/Fields.php:308
 #: src/Modules/FreeGift/Fields.php:100
 msgid "Search products…"
 msgstr ""
 
-#: src/Admin/FieldsHelpers.php:45
-#: src/Modules/AdvancedRules/Fields.php:309
+#: src/Admin/FieldsHelpers.php:45 src/Modules/AdvancedRules/Fields.php:309
 msgid "Search categories…"
 msgstr ""
 
@@ -90,15 +90,15 @@ msgstr ""
 #. translators: 1: required WC, 2: current WC.
 #: src/Compatibility/Requirements.php:45
 #, php-format
-msgid "Moksa Coupons requires WooCommerce %1$s or higher. You are running %2$s."
+msgid ""
+"Moksa Coupons requires WooCommerce %1$s or higher. You are running %2$s."
 msgstr ""
 
 #: src/Coupon/CouponGate.php:60
 msgid "This coupon does not apply to your account."
 msgstr ""
 
-#: src/Coupon/CouponService.php:43
-#: src/Modules/Bogo/BogoOps.php:42
+#: src/Coupon/CouponService.php:43 src/Modules/Bogo/BogoOps.php:42
 #: src/Modules/CouponCore/CouponOps.php:41
 #: src/Modules/MixMatch/MixMatchOps.php:40
 #: src/Modules/NthItem/NthItemOps.php:40
@@ -119,11 +119,9 @@ msgstr ""
 msgid "Discount amount cannot be negative."
 msgstr ""
 
-#: src/Coupon/CouponService.php:75
-#: src/Modules/Bogo/BogoOps.php:109
+#: src/Coupon/CouponService.php:75 src/Modules/Bogo/BogoOps.php:109
 #: src/Modules/MixMatch/MixMatchOps.php:103
-#: src/Modules/NthItem/NthItemOps.php:103
-#: src/Modules/Summary/Panel.php:120
+#: src/Modules/NthItem/NthItemOps.php:103 src/Modules/Summary/Panel.php:120
 msgid "Percentage discount cannot exceed 100."
 msgstr ""
 
@@ -131,8 +129,7 @@ msgstr ""
 msgid "Minimum / maximum spend must be a number."
 msgstr ""
 
-#: src/Coupon/CouponService.php:137
-#: src/Modules/CouponCore/CouponOps.php:401
+#: src/Coupon/CouponService.php:137 src/Modules/CouponCore/CouponOps.php:401
 msgid "Invalid expiry date format; use YYYY-MM-DD."
 msgstr ""
 
@@ -142,8 +139,7 @@ msgstr ""
 msgid "%1$sCoupon %2$s: %3$s %4$s"
 msgstr ""
 
-#: src/Coupon/CouponService.php:212
-#: src/Modules/AiAssistant/Agent.php:290
+#: src/Coupon/CouponService.php:212 src/Modules/AiAssistant/Agent.php:290
 #: src/Modules/Frontend/Hints.php:56
 msgid "Includes free shipping"
 msgstr ""
@@ -180,8 +176,7 @@ msgstr ""
 msgid "Failed to save the coupon."
 msgstr ""
 
-#: src/Coupon/CouponService.php:533
-#: src/Modules/CouponCore/CouponOps.php:162
+#: src/Coupon/CouponService.php:533 src/Modules/CouponCore/CouponOps.php:162
 #: src/Modules/CouponCore/CouponOps.php:221
 #: src/Modules/CouponCore/CouponOps.php:269
 #: src/Modules/CouponCore/CouponOps.php:469
@@ -189,14 +184,12 @@ msgstr ""
 #: src/Modules/CouponCore/CouponRest.php:89
 #: src/Modules/CouponSend/SendOps.php:33
 #: src/Modules/CouponSend/SendService.php:82
-#: src/Modules/UrlCoupons/Rest.php:56
-#: src/Modules/UrlCoupons/Rest.php:87
+#: src/Modules/UrlCoupons/Rest.php:56 src/Modules/UrlCoupons/Rest.php:87
 #: src/Modules/UrlCoupons/ShareAbility.php:96
 msgid "Coupon not found."
 msgstr ""
 
-#: src/Coupon/CouponService.php:536
-#: src/Modules/CouponCore/CouponOps.php:497
+#: src/Coupon/CouponService.php:536 src/Modules/CouponCore/CouponOps.php:497
 msgid "Could not generate a unique new code."
 msgstr ""
 
@@ -205,15 +198,38 @@ msgid "Copy failed."
 msgstr ""
 
 #: src/Coupon/Meta/CouponSettings.php:352
-msgid "Moksa coupon advanced settings (groups: schedule / conditions / BOGO / gift / shipping…)"
+msgid ""
+"Moksa coupon advanced settings (groups: schedule / conditions / BOGO / gift "
+"/ shipping…)"
 msgstr ""
 
 #: src/Coupon/Meta/CouponSettings.php:382
-msgid "Tiered discount rows. Tiers are measured by moksafocou.tiers.basis (subtotal / quantity / weight, default subtotal). Each row: { threshold, kind percent|fixed, value (percent is 0-100, fixed is a fixed amount) }. Percent and fixed can be mixed; among matching tiers the one with the largest discount is used."
+msgid ""
+"Tiered discount rows. Tiers are measured by moksafocou.tiers.basis (subtotal"
+" / quantity / weight, default subtotal). Each row: { threshold, kind "
+"percent|fixed, value (percent is 0-100, fixed is a fixed amount) }. Percent "
+"and fixed can be mixed; among matching tiers the one with the largest "
+"discount is used."
 msgstr ""
 
 #: src/Coupon/Meta/CouponSettings.php:399
-msgid "Advanced rules tree (groups AND/OR). The top level match=all/any combines \"groups\", and each group's match=all/any combines \"rules\". Each rule = { type, op, value }. Types and value shapes: numeric (op gte/lte/gt/lt/eq/neq, value is a numeric string) subtotal / quantity / cart_weight (kg) / order_count / total_spent / hours_since_registered / hours_since_last_order; pair (op numeric, value={a: product or category ID, b: threshold}) product_quantity / category_spent; ID list (op in/not_in, value=integer array) product_in_cart / category_in_cart / ordered_product / ordered_category / shipping_zone; code (op in/not_in, value=string array) shipping_country (uppercase country code) / payment_method / coupon_applied / stock_status (instock, outofstock, onbackorder) / weekday (0-6) / user_role; custom taxonomy (op in/not_in, value={tax: taxonomy, terms:[term ID]}) custom_taxonomy; custom meta (value={key, value}) custom_user_meta (op eq/neq) / custom_cart_item_meta (op in/not_in); time (op gte/lte) time_of_day (value HH:MM) / date (value Y-m-d H:i). Payment method is validated only at checkout."
+msgid ""
+"Advanced rules tree (groups AND/OR). The top level match=all/any combines "
+"\"groups\", and each group's match=all/any combines \"rules\". Each rule = {"
+" type, op, value }. Types and value shapes: numeric (op "
+"gte/lte/gt/lt/eq/neq, value is a numeric string) subtotal / quantity / "
+"cart_weight (kg) / order_count / total_spent / hours_since_registered / "
+"hours_since_last_order; pair (op numeric, value={a: product or category ID, "
+"b: threshold}) product_quantity / category_spent; ID list (op in/not_in, "
+"value=integer array) product_in_cart / category_in_cart / ordered_product / "
+"ordered_category / shipping_zone; code (op in/not_in, value=string array) "
+"shipping_country (uppercase country code) / payment_method / coupon_applied "
+"/ stock_status (instock, outofstock, onbackorder) / weekday (0-6) / "
+"user_role; custom taxonomy (op in/not_in, value={tax: taxonomy, terms:[term "
+"ID]}) custom_taxonomy; custom meta (value={key, value}) custom_user_meta (op"
+" eq/neq) / custom_cart_item_meta (op in/not_in); time (op gte/lte) "
+"time_of_day (value HH:MM) / date (value Y-m-d H:i). Payment method is "
+"validated only at checkout."
 msgstr ""
 
 #: src/Coupon/Meta/CouponSettings.php:491
@@ -286,7 +302,8 @@ msgstr ""
 msgid "Buy X Get Y \"%1$s\": gift offer, save %2$s"
 msgstr ""
 
-#. translators: 1: coupon code, 2: effect description, 3: this order's shipping.
+#. translators: 1: coupon code, 2: effect description, 3: this order's
+#. shipping.
 #: src/Coupon/OrderCouponNote.php:111
 #, php-format
 msgid "Shipping override \"%1$s\": %2$s (order shipping %3$s)"
@@ -298,8 +315,7 @@ msgstr ""
 msgid "Free gift \"%1$s\": gift %2$s added"
 msgstr ""
 
-#: src/Coupon/OrderCouponNote.php:147
-#: src/Modules/Frontend/CouponCard.php:107
+#: src/Coupon/OrderCouponNote.php:147 src/Modules/Frontend/CouponCard.php:107
 #: src/Modules/ShippingOverride/Fields.php:60
 msgid "Free shipping"
 msgstr ""
@@ -320,15 +336,13 @@ msgstr ""
 msgid "Shipping adjustment"
 msgstr ""
 
-#: src/Mcp/Server.php:283
-#: src/Modules/CouponList/ListTable.php:128
+#: src/Mcp/Server.php:283 src/Modules/CouponList/ListTable.php:128
 #: src/Modules/ImportExport/ImportExport.php:112
 #: src/Modules/ImportExport/ImportExport.php:208
 #: src/Modules/Remarketing/Ability.php:125
 #: src/Modules/Templates/TemplatePage.php:259
 #: src/Modules/UrlCoupons/ShareAbility.php:86
-#: src/Settings/SettingsScreen.php:487
-#: src/Support/GuardedOps.php:23
+#: src/Settings/SettingsScreen.php:487 src/Support/GuardedOps.php:23
 msgid "You do not have permission to do this."
 msgstr ""
 
@@ -349,7 +363,8 @@ msgid "Coupon advanced settings schema"
 msgstr ""
 
 #: src/Mcp/Server.php:334
-msgid "JSON schema for the moksafocou advanced settings object for create / update."
+msgid ""
+"JSON schema for the moksafocou advanced settings object for create / update."
 msgstr ""
 
 #: src/Mcp/Server.php:339
@@ -365,7 +380,9 @@ msgid "Guide coupon creation with a single marketing idea"
 msgstr ""
 
 #: src/Mcp/Server.php:411
-msgid "Marketing campaign idea, for example \"Site-wide 10% off for the anniversary sale\""
+msgid ""
+"Marketing campaign idea, for example \"Site-wide 10% off for the anniversary"
+" sale\""
 msgstr ""
 
 #: src/Mcp/Server.php:418
@@ -379,17 +396,27 @@ msgstr ""
 #. translators: %s: the marketing idea.
 #: src/Mcp/Server.php:443
 #, php-format
-msgid "Please create a coupon with the moksafocou tools based on this marketing idea: \"%s\". First use find-coupon-by-code to confirm the code is not duplicated; when advanced conditions are needed, use list-rule-types / get-settings-schema to check the details, then call create-coupon or create-tiered-coupon."
+msgid ""
+"Please create a coupon with the moksafocou tools based on this marketing "
+"idea: \"%s\". First use find-coupon-by-code to confirm the code is not "
+"duplicated; when advanced conditions are needed, use list-rule-types / get-"
+"settings-schema to check the details, then call create-coupon or create-"
+"tiered-coupon."
 msgstr ""
 
 #. translators: %s: the campaign goal.
 #: src/Mcp/Server.php:451
 #, php-format
-msgid "For the goal \"%s\", use list-templates to reference the built-in templates and propose 3 coupon campaign ideas suitable for this store, explaining the setup."
+msgid ""
+"For the goal \"%s\", use list-templates to reference the built-in templates "
+"and propose 3 coupon campaign ideas suitable for this store, explaining the "
+"setup."
 msgstr ""
 
 #: src/Mcp/Server.php:454
-msgid "Use list-templates to reference the built-in templates and propose 3 coupon campaign ideas suitable for this store, explaining the setup."
+msgid ""
+"Use list-templates to reference the built-in templates and propose 3 coupon "
+"campaign ideas suitable for this store, explaining the setup."
 msgstr ""
 
 #: src/Modules/AdminMenu/Dashboard.php:35
@@ -397,12 +424,12 @@ msgid "Moksa coupon management"
 msgstr ""
 
 #: src/Modules/AdminMenu/Dashboard.php:36
-msgid "Manage all coupons, view reports, and adjust settings here in one place."
+msgid ""
+"Manage all coupons, view reports, and adjust settings here in one place."
 msgstr ""
 
 #: src/Modules/AdminMenu/Dashboard.php:38
-#: src/Modules/AdminMenu/Dashboard.php:56
-#: src/Modules/AdminMenu/Menu.php:100
+#: src/Modules/AdminMenu/Dashboard.php:56 src/Modules/AdminMenu/Menu.php:100
 #: src/Modules/AdminMenu/Menu.php:101
 msgid "Add coupon"
 msgstr ""
@@ -419,8 +446,7 @@ msgstr ""
 msgid "Draft / pending"
 msgstr ""
 
-#: src/Modules/AdminMenu/Dashboard.php:51
-#: src/Modules/AdminMenu/Menu.php:91
+#: src/Modules/AdminMenu/Dashboard.php:51 src/Modules/AdminMenu/Menu.php:91
 #: src/Modules/AdminMenu/Menu.php:92
 msgid "All coupons"
 msgstr ""
@@ -433,10 +459,8 @@ msgstr ""
 msgid "Create a new coupon."
 msgstr ""
 
-#: src/Modules/AdminMenu/Dashboard.php:62
-#: src/Modules/AdminMenu/Menu.php:112
-#: src/Modules/AdminMenu/Menu.php:113
-#: src/Modules/Templates/Module.php:24
+#: src/Modules/AdminMenu/Dashboard.php:62 src/Modules/AdminMenu/Menu.php:112
+#: src/Modules/AdminMenu/Menu.php:113 src/Modules/Templates/Module.php:24
 #: src/Modules/Templates/TemplatePage.php:37
 #: src/Modules/Templates/TemplatePage.php:38
 #: src/Modules/Templates/TemplatePage.php:63
@@ -448,8 +472,7 @@ msgstr ""
 msgid "Pick a template to create a draft coupon in one click."
 msgstr ""
 
-#: src/Modules/AdminMenu/Dashboard.php:68
-#: src/Settings/SettingsScreen.php:48
+#: src/Modules/AdminMenu/Dashboard.php:68 src/Settings/SettingsScreen.php:48
 #: src/Settings/SettingsScreen.php:49
 msgid "Coupon settings"
 msgstr ""
@@ -458,12 +481,10 @@ msgstr ""
 msgid "Enable / disable each feature module."
 msgstr ""
 
-#: src/Modules/AdminMenu/Dashboard.php:75
-#: src/Modules/Reports/Module.php:23
+#: src/Modules/AdminMenu/Dashboard.php:75 src/Modules/Reports/Module.php:23
 #: src/Modules/Reports/ReportsPage.php:28
 #: src/Modules/Reports/ReportsPage.php:29
-#: src/Modules/Reports/ReportsPage.php:41
-#: src/Settings/SettingsScreen.php:182
+#: src/Modules/Reports/ReportsPage.php:41 src/Settings/SettingsScreen.php:182
 msgid "Coupon report"
 msgstr ""
 
@@ -471,8 +492,7 @@ msgstr ""
 msgid "Moksa coupon"
 msgstr ""
 
-#: src/Modules/AdminMenu/Menu.php:80
-#: src/Modules/AdminMenu/Menu.php:81
+#: src/Modules/AdminMenu/Menu.php:80 src/Modules/AdminMenu/Menu.php:81
 msgid "Dashboard"
 msgstr ""
 
@@ -481,7 +501,9 @@ msgid "Coupon management menu"
 msgstr ""
 
 #: src/Modules/AdminMenu/Module.php:32
-msgid "Move coupon management into its own top-level menu (bringing together all coupons / add / reports / settings)"
+msgid ""
+"Move coupon management into its own top-level menu (bringing together all "
+"coupons / add / reports / settings)"
 msgstr ""
 
 #: src/Modules/AdvancedRules/Engine.php:148
@@ -552,7 +574,8 @@ msgid "Customer's past order count"
 msgstr ""
 
 #: src/Modules/AdvancedRules/Fields.php:75
-msgid "Number of times this coupon has been used (can restrict to the first N)"
+msgid ""
+"Number of times this coupon has been used (can restrict to the first N)"
 msgstr ""
 
 #: src/Modules/AdvancedRules/Fields.php:80
@@ -649,13 +672,16 @@ msgstr ""
 msgid "Date and time"
 msgstr ""
 
-#: src/Modules/AdvancedRules/Fields.php:199
-#: src/Modules/Summary/Panel.php:75
+#: src/Modules/AdvancedRules/Fields.php:199 src/Modules/Summary/Panel.php:75
 msgid "Advanced rules"
 msgstr ""
 
 #: src/Modules/AdvancedRules/Fields.php:217
-msgid "Freely combine conditions with \"groups\" and AND/OR. The whole set can be set to \"match all / any group\", and within each group you can set \"match all / any condition\". This adds an extra check on top of the existing single conditions. The payment method condition is validated at checkout."
+msgid ""
+"Freely combine conditions with \"groups\" and AND/OR. The whole set can be "
+"set to \"match all / any group\", and within each group you can set \"match "
+"all / any condition\". This adds an extra check on top of the existing "
+"single conditions. The payment method condition is validated at checkout."
 msgstr ""
 
 #: src/Modules/AdvancedRules/Fields.php:223
@@ -795,13 +821,14 @@ msgid "Guest (not logged in)"
 msgstr ""
 
 #: src/Modules/AdvancedRules/Module.php:25
-#: src/Modules/Templates/Catalog.php:1084
-#: src/Settings/SettingsScreen.php:134
+#: src/Modules/Templates/Catalog.php:1084 src/Settings/SettingsScreen.php:134
 msgid "Advanced rules (AND/OR)"
 msgstr ""
 
 #: src/Modules/AdvancedRules/Module.php:33
-msgid "Freely combine conditions with groups and AND/OR (subtotal / item count / products / categories / regions / payment / roles / weekday / time…)"
+msgid ""
+"Freely combine conditions with groups and AND/OR (subtotal / item count / "
+"products / categories / regions / payment / roles / weekday / time…)"
 msgstr ""
 
 #: src/Modules/AiAssistant/Agent.php:39
@@ -813,11 +840,11 @@ msgid "AI is temporarily unavailable, please try again later."
 msgstr ""
 
 #: src/Modules/AiAssistant/Agent.php:120
-msgid "AI could not complete after several attempts; please rephrase your request."
+msgid ""
+"AI could not complete after several attempts; please rephrase your request."
 msgstr ""
 
-#: src/Modules/AiAssistant/Agent.php:196
-#: src/Modules/AiAssistant/Rest.php:143
+#: src/Modules/AiAssistant/Agent.php:196 src/Modules/AiAssistant/Rest.php:143
 msgid "Unsupported operation."
 msgstr ""
 
@@ -829,35 +856,27 @@ msgstr ""
 msgid "Advanced settings"
 msgstr ""
 
-#: src/Modules/AiAssistant/Agent.php:251
-#: src/Modules/AiAssistant/Agent.php:257
-#: src/Modules/AiAssistant/Agent.php:269
-#: src/Modules/AiAssistant/Agent.php:307
+#: src/Modules/AiAssistant/Agent.php:251 src/Modules/AiAssistant/Agent.php:257
+#: src/Modules/AiAssistant/Agent.php:269 src/Modules/AiAssistant/Agent.php:307
 msgid "Yes"
 msgstr ""
 
-#: src/Modules/AiAssistant/Agent.php:256
-#: src/Modules/AutoApply/Fields.php:47
+#: src/Modules/AiAssistant/Agent.php:256 src/Modules/AutoApply/Fields.php:47
 #: src/Modules/Summary/Panel.php:78
 msgid "Auto-apply"
 msgstr ""
 
-#: src/Modules/AiAssistant/Agent.php:257
-#: src/Modules/AiAssistant/Agent.php:307
+#: src/Modules/AiAssistant/Agent.php:257 src/Modules/AiAssistant/Agent.php:307
 msgid "No"
 msgstr ""
 
-#: src/Modules/AiAssistant/Agent.php:262
-#: src/Modules/DiscountCap/Module.php:22
-#: src/Modules/Templates/Catalog.php:1082
-#: src/Settings/SettingsScreen.php:135
+#: src/Modules/AiAssistant/Agent.php:262 src/Modules/DiscountCap/Module.php:22
+#: src/Modules/Templates/Catalog.php:1082 src/Settings/SettingsScreen.php:135
 msgid "Maximum discount"
 msgstr ""
 
-#: src/Modules/AiAssistant/Agent.php:268
-#: src/Modules/AiAssistant/Agent.php:289
-#: src/Modules/Frontend/Hints.php:60
-#: src/Modules/StackingControl/Fields.php:54
+#: src/Modules/AiAssistant/Agent.php:268 src/Modules/AiAssistant/Agent.php:289
+#: src/Modules/Frontend/Hints.php:60 src/Modules/StackingControl/Fields.php:54
 #: src/Modules/Templates/TemplatePage.php:243
 msgid "Cannot be combined with other coupons"
 msgstr ""
@@ -867,22 +886,17 @@ msgstr ""
 msgid "Code"
 msgstr ""
 
-#: src/Modules/AiAssistant/Agent.php:281
-#: src/Modules/Bogo/Fields.php:96
+#: src/Modules/AiAssistant/Agent.php:281 src/Modules/Bogo/Fields.php:96
 #: src/Modules/DiscountTiers/Fields.php:85
-#: src/Modules/DiscountTiers/Fields.php:173
-#: src/Modules/NthItem/Fields.php:88
+#: src/Modules/DiscountTiers/Fields.php:173 src/Modules/NthItem/Fields.php:88
 #: src/Modules/Summary/Panel.php:104
 msgid "Discount type"
 msgstr ""
 
-#: src/Modules/AiAssistant/Agent.php:282
-#: src/Modules/Bogo/Fields.php:108
+#: src/Modules/AiAssistant/Agent.php:282 src/Modules/Bogo/Fields.php:108
 #: src/Modules/DiscountTiers/Fields.php:86
-#: src/Modules/DiscountTiers/Fields.php:174
-#: src/Modules/FreeGift/Fields.php:86
-#: src/Modules/NthItem/Fields.php:100
-#: src/Modules/Reports/ReportsPage.php:82
+#: src/Modules/DiscountTiers/Fields.php:174 src/Modules/FreeGift/Fields.php:86
+#: src/Modules/NthItem/Fields.php:100 src/Modules/Reports/ReportsPage.php:82
 #: src/Modules/ShippingOverride/Fields.php:70
 #: src/Modules/Templates/TemplatePage.php:224
 msgid "Discount amount"
@@ -914,10 +928,8 @@ msgstr ""
 msgid "Cart maximum"
 msgstr ""
 
-#: src/Modules/AiAssistant/Agent.php:291
-#: src/Modules/Bogo/Fields.php:60
-#: src/Modules/DiscountTiers/Fields.php:137
-#: src/Modules/MixMatch/Fields.php:54
+#: src/Modules/AiAssistant/Agent.php:291 src/Modules/Bogo/Fields.php:60
+#: src/Modules/DiscountTiers/Fields.php:137 src/Modules/MixMatch/Fields.php:54
 #: src/Modules/NthItem/Fields.php:54
 msgid "Specific products"
 msgstr ""
@@ -927,10 +939,8 @@ msgstr ""
 msgid "Exclude products"
 msgstr ""
 
-#: src/Modules/AiAssistant/Agent.php:293
-#: src/Modules/Bogo/Fields.php:61
-#: src/Modules/DiscountTiers/Fields.php:138
-#: src/Modules/MixMatch/Fields.php:55
+#: src/Modules/AiAssistant/Agent.php:293 src/Modules/Bogo/Fields.php:61
+#: src/Modules/DiscountTiers/Fields.php:138 src/Modules/MixMatch/Fields.php:55
 #: src/Modules/NthItem/Fields.php:55
 msgid "Specific categories"
 msgstr ""
@@ -941,25 +951,71 @@ msgid "Exclude categories"
 msgstr ""
 
 #: src/Modules/AiAssistant/Config.php:51
-msgid "You are the \"coupon assistant\" for a WooCommerce merchant. Common tools: list-coupons to list, get-coupon for details, find-coupon-by-code to check whether a code is a duplicate, coupon-usage-summary for usage, get-coupon-report for performance reports (all read-only); create-coupon to create, update-coupon to update, toggle-coupon to enable or disable, delete-coupon to delete, bulk-generate-coupons for mass generation, extend-expiry to extend the expiry date, duplicate-coupon to duplicate, create-tiered-coupon to create a tiered coupon, apply-template to apply a template (all destructive). Destructive operations are only \"proposed\"; the system asks the user to click \"Confirm\" before they take effect, so you do not need to ask for confirmation again. When creating a coupon: the discount types are only percent (percentage), fixed_cart (fixed cart amount), and fixed_product (fixed product amount); the amount for percent is a percentage number and cannot exceed 100; use YYYY-MM-DD for the expiry date."
+msgid ""
+"You are the \"coupon assistant\" for a WooCommerce merchant. Common tools: "
+"list-coupons to list, get-coupon for details, find-coupon-by-code to check "
+"whether a code is a duplicate, coupon-usage-summary for usage, get-coupon-"
+"report for performance reports (all read-only); create-coupon to create, "
+"update-coupon to update, toggle-coupon to enable or disable, delete-coupon "
+"to delete, bulk-generate-coupons for mass generation, extend-expiry to "
+"extend the expiry date, duplicate-coupon to duplicate, create-tiered-coupon "
+"to create a tiered coupon, apply-template to apply a template (all "
+"destructive). Destructive operations are only \"proposed\"; the system asks "
+"the user to click \"Confirm\" before they take effect, so you do not need to"
+" ask for confirmation again. When creating a coupon: the discount types are "
+"only percent (percentage), fixed_cart (fixed cart amount), and fixed_product"
+" (fixed product amount); the amount for percent is a percentage number and "
+"cannot exceed 100; use YYYY-MM-DD for the expiry date."
 msgstr ""
 
 #: src/Modules/AiAssistant/Config.php:52
-msgid " Advanced capabilities (all via the moksafocou settings object in create-coupon / update-coupon, or dedicated shortcuts): tiered discounts (tiers, or use create-tiered-coupon), maximum discount (discount_cap), auto-apply (auto_apply), mutual exclusion / no stacking (exclude_coupons), schedule start and end, user role, cart minimum, products / categories, shipping region, payment method, weekday and time window, Buy X Get Y, free gift, shipping override, and 26 types of AND/OR \"advanced rules\" (moksafocou.advanced_rules). When unsure which rule types exist or what the merchant's payment / shipping codes are, first use list-rule-types / get-settings-schema / list-payment-gateways / list-shipping-zones / list-countries to find out; when unsure about templates, use list-templates instead of guessing. Confirm with tools before creating (such as whether a code is a duplicate), and reply briefly and clearly; if something cannot be found or fails, say so plainly and do not make things up. Always end with text, do not stop at a tool call."
+msgid ""
+" Advanced capabilities (all via the moksafocou settings object in create-"
+"coupon / update-coupon, or dedicated shortcuts): tiered discounts (tiers, or"
+" use create-tiered-coupon), maximum discount (discount_cap), auto-apply "
+"(auto_apply), mutual exclusion / no stacking (exclude_coupons), schedule "
+"start and end, user role, cart minimum, products / categories, shipping "
+"region, payment method, weekday and time window, Buy X Get Y, free gift, "
+"shipping override, and 26 types of AND/OR \"advanced rules\" "
+"(moksafocou.advanced_rules). When unsure which rule types exist or what the "
+"merchant's payment / shipping codes are, first use list-rule-types / get-"
+"settings-schema / list-payment-gateways / list-shipping-zones / list-"
+"countries to find out; when unsure about templates, use list-templates "
+"instead of guessing. Confirm with tools before creating (such as whether a "
+"code is a duplicate), and reply briefly and clearly; if something cannot be "
+"found or fails, say so plainly and do not make things up. Always end with "
+"text, do not stop at a tool call."
 msgstr ""
 
 #: src/Modules/AiAssistant/Config.php:56
-msgid "Always reply in the language the user asks in (use Traditional Chinese when the interface is in Traditional Chinese)."
+msgid ""
+"Always reply in the language the user asks in (use Traditional Chinese when "
+"the interface is in Traditional Chinese)."
 msgstr ""
 
 #. translators: %s: today's date in Y-m-d format.
 #: src/Modules/AiAssistant/Config.php:61
 #, php-format
-msgid "Today's date is %s. When the user gives only a month / day or a relative date (such as \"December 31\" or \"end of next month\"), always resolve it to this year; only use next year if that date has already passed this year. Never use a past year."
+msgid ""
+"Today's date is %s. When the user gives only a month / day or a relative "
+"date (such as \"December 31\" or \"end of next month\"), always resolve it "
+"to this year; only use next year if that date has already passed this year. "
+"Never use a past year."
 msgstr ""
 
 #: src/Modules/AiAssistant/Config.php:67
-msgid "Taiwanese \"zhe\" discount conversion (always compute step by step with the formula, never by intuition): a \"zhe\" figure is the proportion of the price still paid after the discount, and the percent coupon's amount = 100 minus that payment percentage. For a single-digit \"N-zhe\", the payment percentage = N*10, so amount = 100 - N*10: 9-zhe -> pay 90 -> amount = 10; 8-zhe -> amount = 20; 7-zhe -> amount = 30; 5-zhe -> amount = 50. For a two-digit \"NN-zhe\", the payment percentage = NN, so amount = 100 - NN: 85-zhe -> amount = 15; 79-zhe -> amount = 21. Note in particular: the amount for \"9-zhe\" is always 10, not 9 and not 1. Only when the user states the discount directly (\"N% off\", \"a discount of N%\", \"save N%\") or a fixed amount (\"N off\") should you fill it in literally."
+msgid ""
+"Taiwanese \"zhe\" discount conversion (always compute step by step with the "
+"formula, never by intuition): a \"zhe\" figure is the proportion of the "
+"price still paid after the discount, and the percent coupon's amount = 100 "
+"minus that payment percentage. For a single-digit \"N-zhe\", the payment "
+"percentage = N*10, so amount = 100 - N*10: 9-zhe -> pay 90 -> amount = 10; "
+"8-zhe -> amount = 20; 7-zhe -> amount = 30; 5-zhe -> amount = 50. For a two-"
+"digit \"NN-zhe\", the payment percentage = NN, so amount = 100 - NN: 85-zhe "
+"-> amount = 15; 79-zhe -> amount = 21. Note in particular: the amount for "
+"\"9-zhe\" is always 10, not 9 and not 1. Only when the user states the "
+"discount directly (\"N% off\", \"a discount of N%\", \"save N%\") or a fixed"
+" amount (\"N off\") should you fill it in literally."
 msgstr ""
 
 #: src/Modules/AiAssistant/Module.php:24
@@ -971,15 +1027,24 @@ msgid "Requires WordPress 7.0 and an AI key set under Settings → Connectors"
 msgstr ""
 
 #: src/Modules/AiAssistant/Module.php:120
-msgid "Besides coupons, you can also look up a customer's points balance, membership tier and benefits, and group-buy / KOL commissions (use the available tools to query; these are read-only). Call the corresponding tool directly when needed."
+msgid ""
+"Besides coupons, you can also look up a customer's points balance, "
+"membership tier and benefits, and group-buy / KOL commissions (use the "
+"available tools to query; these are read-only). Call the corresponding tool "
+"directly when needed."
 msgstr ""
 
 #: src/Modules/AiAssistant/Module.php:145
-msgid "Hi, I'm the Moksa assistant — I can help with coupons, points, membership tiers, and group-buy commissions. Try: \"Create a 20% off coupon SUMMER20 that expires on 8/31\" or \"List active coupons\"."
+msgid ""
+"Hi, I'm the Moksa assistant — I can help with coupons, points, membership "
+"tiers, and group-buy commissions. Try: \"Create a 20% off coupon SUMMER20 "
+"that expires on 8/31\" or \"List active coupons\"."
 msgstr ""
 
 #: src/Modules/AiAssistant/Module.php:149
-msgid "Create a 10% off coupon VIP10, list active coupons, mass-generate 50 SALE- coupons for 100 off"
+msgid ""
+"Create a 10% off coupon VIP10, list active coupons, mass-generate 50 SALE- "
+"coupons for 100 off"
 msgstr ""
 
 #: src/Modules/AiAssistant/Module.php:160
@@ -1040,17 +1105,21 @@ msgid "Insufficient permissions, cannot run."
 msgstr ""
 
 #: src/Modules/AutoApply/Fields.php:48
-msgid "Automatically add this coupon when the customer opens the cart (it still applies only if the conditions are met). Note: auto-apply is not possible when \"usage limit / usage limit per user / email restriction\" is set."
+msgid ""
+"Automatically add this coupon when the customer opens the cart (it still "
+"applies only if the conditions are met). Note: auto-apply is not possible "
+"when \"usage limit / usage limit per user / email restriction\" is set."
 msgstr ""
 
-#: src/Modules/AutoApply/Module.php:23
-#: src/Modules/Templates/Catalog.php:1085
+#: src/Modules/AutoApply/Module.php:23 src/Modules/Templates/Catalog.php:1085
 #: src/Settings/SettingsScreen.php:143
 msgid "Auto-apply coupon"
 msgstr ""
 
 #: src/Modules/AutoApply/Module.php:31
-msgid "Automatically add the coupon when the cart meets the conditions, no code needed"
+msgid ""
+"Automatically add the coupon when the cart meets the conditions, no code "
+"needed"
 msgstr ""
 
 #: src/Modules/Bogo/Ability.php:29
@@ -1058,7 +1127,12 @@ msgid "Create a Buy X Get Y coupon"
 msgstr ""
 
 #: src/Modules/Bogo/Ability.php:30
-msgid "Create a \"Buy X Get Y (BOGO)\" coupon: after the customer buys the specified products / categories in the required quantity, the gift items in the cart can be free / percentage / fixed discount, and it can be set to once or repeatable. Destructive — the call only \"proposes\" it, and it is created only after the user confirms."
+msgid ""
+"Create a \"Buy X Get Y (BOGO)\" coupon: after the customer buys the "
+"specified products / categories in the required quantity, the gift items in "
+"the cart can be free / percentage / fixed discount, and it can be set to "
+"once or repeatable. Destructive — the call only \"proposes\" it, and it is "
+"created only after the user confirms."
 msgstr ""
 
 #: src/Modules/Bogo/Ability.php:37
@@ -1094,29 +1168,27 @@ msgid "Discount type: free / percent / fixed_per_item (fixed amount per item)"
 msgstr ""
 
 #: src/Modules/Bogo/Ability.php:74
-msgid "Discount amount; 0–100 for percent, an amount for fixed_per_item, leave empty for free"
+msgid ""
+"Discount amount; 0–100 for percent, an amount for fixed_per_item, leave "
+"empty for free"
 msgstr ""
 
 #: src/Modules/Bogo/Ability.php:79
 msgid "once (only once) / repeat (repeatable) (default once)"
 msgstr ""
 
-#: src/Modules/Bogo/Ability.php:83
-#: src/Modules/MixMatch/Ability.php:70
+#: src/Modules/Bogo/Ability.php:83 src/Modules/MixMatch/Ability.php:70
 #: src/Modules/NthItem/Ability.php:76
 msgid "Repeat limit (0 = no limit, applies to repeat only)"
 msgstr ""
 
-#: src/Modules/Bogo/Ability.php:87
-#: src/Modules/CouponCore/Ability.php:469
-#: src/Modules/MixMatch/Ability.php:78
-#: src/Modules/NthItem/Ability.php:84
+#: src/Modules/Bogo/Ability.php:87 src/Modules/CouponCore/Ability.php:469
+#: src/Modules/MixMatch/Ability.php:78 src/Modules/NthItem/Ability.php:84
 msgid "Expiry date YYYY-MM-DD (optional)"
 msgstr ""
 
 #. translators: %s: coupon code.
-#: src/Modules/Bogo/BogoOps.php:48
-#: src/Modules/CouponCore/CouponOps.php:47
+#: src/Modules/Bogo/BogoOps.php:48 src/Modules/CouponCore/CouponOps.php:47
 #: src/Modules/MixMatch/MixMatchOps.php:46
 #: src/Modules/NthItem/NthItemOps.php:46
 #, php-format
@@ -1137,20 +1209,17 @@ msgstr ""
 msgid "Please specify the gift products or categories."
 msgstr ""
 
-#: src/Modules/Bogo/BogoOps.php:112
-#: src/Modules/NthItem/NthItemOps.php:106
+#: src/Modules/Bogo/BogoOps.php:112 src/Modules/NthItem/NthItemOps.php:106
 msgid "Fixed discount per item must be greater than 0."
 msgstr ""
 
-#: src/Modules/Bogo/BogoOps.php:124
-#: src/Modules/FreeGift/Fields.php:76
+#: src/Modules/Bogo/BogoOps.php:124 src/Modules/FreeGift/Fields.php:76
 #: src/Modules/NthItem/NthItemOps.php:118
 msgid "Free"
 msgstr ""
 
 #. translators: %s: per-item discount amount.
-#: src/Modules/Bogo/BogoOps.php:127
-#: src/Modules/NthItem/NthItemOps.php:121
+#: src/Modules/Bogo/BogoOps.php:127 src/Modules/NthItem/NthItemOps.php:121
 #, php-format
 msgid "%s off per item"
 msgstr ""
@@ -1158,33 +1227,32 @@ msgstr ""
 #. translators: %s: percent discount.
 #. translators: %s: discount percent.
 #. translators: %s: percentage off.
-#: src/Modules/Bogo/BogoOps.php:130
-#: src/Modules/NthItem/NthItemOps.php:124
+#: src/Modules/Bogo/BogoOps.php:130 src/Modules/NthItem/NthItemOps.php:124
 #: src/Modules/Summary/Panel.php:110
 #, php-format
 msgid "%s%% off"
 msgstr ""
 
-#: src/Modules/Bogo/BogoOps.php:132
-#: src/Modules/MixMatch/MixMatchOps.php:123
+#: src/Modules/Bogo/BogoOps.php:132 src/Modules/MixMatch/MixMatchOps.php:123
 #: src/Modules/NthItem/NthItemOps.php:126
 msgid "(repeatable)"
 msgstr ""
 
-#: src/Modules/Bogo/BogoOps.php:132
-#: src/Modules/MixMatch/MixMatchOps.php:123
+#: src/Modules/Bogo/BogoOps.php:132 src/Modules/MixMatch/MixMatchOps.php:123
 #: src/Modules/NthItem/NthItemOps.php:126
 msgid "(one time only)"
 msgstr ""
 
-#. translators: 1: code, 2: trigger qty, 3: reward qty, 4: reward desc, 5: repeat note.
+#. translators: 1: code, 2: trigger qty, 3: reward qty, 4: reward desc, 5:
+#. repeat note.
 #: src/Modules/Bogo/BogoOps.php:136
 #, php-format
-msgid "Create Buy X Get Y coupon %1$s: for every %2$d of the specified items → %3$d gift item(s) %4$s %5$s"
+msgid ""
+"Create Buy X Get Y coupon %1$s: for every %2$d of the specified items → %3$d"
+" gift item(s) %4$s %5$s"
 msgstr ""
 
-#: src/Modules/Bogo/Fields.php:42
-#: src/Modules/Summary/Panel.php:101
+#: src/Modules/Bogo/Fields.php:42 src/Modules/Summary/Panel.php:101
 #: src/Support/DiscountTypeRegistry.php:46
 msgid "Buy X Get Y"
 msgstr ""
@@ -1201,8 +1269,7 @@ msgstr ""
 msgid "Gift / discount (Get Y)"
 msgstr ""
 
-#: src/Modules/Bogo/Fields.php:78
-#: src/Modules/FreeGift/Fields.php:57
+#: src/Modules/Bogo/Fields.php:78 src/Modules/FreeGift/Fields.php:57
 msgid "Gift product"
 msgstr ""
 
@@ -1214,37 +1281,33 @@ msgstr ""
 msgid "Gift / discount quantity"
 msgstr ""
 
-#: src/Modules/Bogo/Fields.php:98
-#: src/Modules/NthItem/Fields.php:90
+#: src/Modules/Bogo/Fields.php:98 src/Modules/NthItem/Fields.php:90
 msgid "Free (100% off)"
 msgstr ""
 
-#: src/Modules/Bogo/Fields.php:99
-#: src/Modules/FreeGift/Fields.php:77
-#: src/Modules/NthItem/Fields.php:91
-#: src/Modules/Summary/Panel.php:98
+#: src/Modules/Bogo/Fields.php:99 src/Modules/FreeGift/Fields.php:77
+#: src/Modules/NthItem/Fields.php:91 src/Modules/Summary/Panel.php:98
 #: src/Support/DiscountTypeRegistry.php:32
 msgid "Percentage discount"
 msgstr ""
 
-#: src/Modules/Bogo/Fields.php:100
-#: src/Modules/FreeGift/Fields.php:78
+#: src/Modules/Bogo/Fields.php:100 src/Modules/FreeGift/Fields.php:78
 #: src/Modules/NthItem/Fields.php:92
 msgid "Fixed discount per item"
 msgstr ""
 
 #: src/Modules/Bogo/Fields.php:110
-msgid "Percentage: 0–100; fixed per item: an amount. Leave empty when \"Free\" is selected."
+msgid ""
+"Percentage: 0–100; fixed per item: an amount. Leave empty when \"Free\" is "
+"selected."
 msgstr ""
 
-#: src/Modules/Bogo/Fields.php:125
-#: src/Modules/MixMatch/Fields.php:105
+#: src/Modules/Bogo/Fields.php:125 src/Modules/MixMatch/Fields.php:105
 #: src/Modules/NthItem/Fields.php:117
 msgid "Usage count"
 msgstr ""
 
-#: src/Modules/Bogo/Fields.php:127
-#: src/Modules/MixMatch/Fields.php:108
+#: src/Modules/Bogo/Fields.php:127 src/Modules/MixMatch/Fields.php:108
 #: src/Modules/NthItem/Fields.php:120
 msgid "Apply only once"
 msgstr ""
@@ -1253,14 +1316,12 @@ msgstr ""
 msgid "Repeatable (give one set for each qualifying set in the cart)"
 msgstr ""
 
-#: src/Modules/Bogo/Fields.php:136
-#: src/Modules/MixMatch/Fields.php:116
+#: src/Modules/Bogo/Fields.php:136 src/Modules/MixMatch/Fields.php:116
 #: src/Modules/NthItem/Fields.php:128
 msgid "Repeat limit"
 msgstr ""
 
-#: src/Modules/Bogo/Fields.php:138
-#: src/Modules/MixMatch/Fields.php:118
+#: src/Modules/Bogo/Fields.php:138 src/Modules/MixMatch/Fields.php:118
 #: src/Modules/NthItem/Fields.php:130
 msgid "0 = no limit. Applies only when \"repeatable\"."
 msgstr ""
@@ -1270,19 +1331,21 @@ msgid "Prompt message (when the gift is not added)"
 msgstr ""
 
 #: src/Modules/Bogo/Fields.php:152
-msgid "You can use {bogo_qty} {coupon_code}. Leave empty to use the default message."
+msgid ""
+"You can use {bogo_qty} {coupon_code}. Leave empty to use the default "
+"message."
 msgstr ""
 
 #. translators: %s: coupon code.
 #: src/Modules/Bogo/Frontend.php:141
 #, php-format
-msgid "You qualify for the Buy X Get Y offer on \"%s\" — add the gift to your cart to get the discount."
+msgid ""
+"You qualify for the Buy X Get Y offer on \"%s\" — add the gift to your cart "
+"to get the discount."
 msgstr ""
 
-#: src/Modules/Bogo/Module.php:25
-#: src/Modules/Templates/Catalog.php:1075
-#: src/Settings/SettingsScreen.php:139
-#: src/Support/DiscountTypeRegistry.php:47
+#: src/Modules/Bogo/Module.php:25 src/Modules/Templates/Catalog.php:1075
+#: src/Settings/SettingsScreen.php:139 src/Support/DiscountTypeRegistry.php:47
 msgid "Buy X Get Y (BOGO)"
 msgstr ""
 
@@ -1290,8 +1353,7 @@ msgstr ""
 msgid "Buy specified products to get a gift / discount, supports repeating"
 msgstr ""
 
-#: src/Modules/CouponConditions/Fields.php:41
-#: src/Modules/Summary/Panel.php:70
+#: src/Modules/CouponConditions/Fields.php:41 src/Modules/Summary/Panel.php:70
 msgid "Schedule"
 msgstr ""
 
@@ -1303,8 +1365,7 @@ msgstr ""
 msgid "Cart conditions"
 msgstr ""
 
-#: src/Modules/CouponConditions/Fields.php:62
-#: src/Modules/Summary/Panel.php:71
+#: src/Modules/CouponConditions/Fields.php:62 src/Modules/Summary/Panel.php:71
 msgid "Customer conditions"
 msgstr ""
 
@@ -1312,8 +1373,7 @@ msgstr ""
 msgid "Product conditions"
 msgstr ""
 
-#: src/Modules/CouponConditions/Fields.php:76
-#: src/Modules/Summary/Panel.php:76
+#: src/Modules/CouponConditions/Fields.php:76 src/Modules/Summary/Panel.php:76
 msgid "Shipping region"
 msgstr ""
 
@@ -1326,7 +1386,9 @@ msgid "Enable schedule"
 msgstr ""
 
 #: src/Modules/CouponConditions/Fields.php:110
-msgid "This coupon can only be used within the start and end times below (site time zone)."
+msgid ""
+"This coupon can only be used within the start and end times below (site time"
+" zone)."
 msgstr ""
 
 #: src/Modules/CouponConditions/Fields.php:113
@@ -1374,7 +1436,10 @@ msgid "Minimum cart subtotal"
 msgstr ""
 
 #: src/Modules/CouponConditions/Fields.php:180
-msgid "Note: this differs in meaning from WooCommerce's native \"minimum spend\" (you can choose whether tax is included), so do not set both at the same time."
+msgid ""
+"Note: this differs in meaning from WooCommerce's native \"minimum spend\" "
+"(you can choose whether tax is included), so do not set both at the same "
+"time."
 msgstr ""
 
 #: src/Modules/CouponConditions/Fields.php:187
@@ -1395,7 +1460,9 @@ msgid "Enable customer conditions"
 msgstr ""
 
 #: src/Modules/CouponConditions/Fields.php:223
-msgid "Restrict use by the customer's order history / total spend (applies only to logged-in customers; guests are treated as having no purchase history)."
+msgid ""
+"Restrict use by the customer's order history / total spend (applies only to "
+"logged-in customers; guests are treated as having no purchase history)."
 msgstr ""
 
 #: src/Modules/CouponConditions/Fields.php:230
@@ -1403,7 +1470,10 @@ msgid "First purchase only"
 msgstr ""
 
 #: src/Modules/CouponConditions/Fields.php:231
-msgid "Only customers who have not completed any order can use it. Note: guests who are not logged in are treated as first-time buyers (returning customers checking out as guests may bypass this)."
+msgid ""
+"Only customers who have not completed any order can use it. Note: guests who"
+" are not logged in are treated as first-time buyers (returning customers "
+"checking out as guests may bypass this)."
 msgstr ""
 
 #: src/Modules/CouponConditions/Fields.php:238
@@ -1411,7 +1481,9 @@ msgid "Minimum number of past orders"
 msgstr ""
 
 #: src/Modules/CouponConditions/Fields.php:241
-msgid "Leave empty = no limit. The number of orders the customer has completed must reach this value."
+msgid ""
+"Leave empty = no limit. The number of orders the customer has completed must"
+" reach this value."
 msgstr ""
 
 #: src/Modules/CouponConditions/Fields.php:252
@@ -1419,7 +1491,9 @@ msgid "Maximum number of past orders"
 msgstr ""
 
 #: src/Modules/CouponConditions/Fields.php:255
-msgid "Leave empty = no limit. The coupon becomes unavailable once the customer's order count exceeds this value."
+msgid ""
+"Leave empty = no limit. The coupon becomes unavailable once the customer's "
+"order count exceeds this value."
 msgstr ""
 
 #: src/Modules/CouponConditions/Fields.php:266
@@ -1427,7 +1501,8 @@ msgid "Minimum total spend"
 msgstr ""
 
 #: src/Modules/CouponConditions/Fields.php:269
-msgid "Leave empty = no limit. The customer's total spend must reach this value."
+msgid ""
+"Leave empty = no limit. The customer's total spend must reach this value."
 msgstr ""
 
 #: src/Modules/CouponConditions/Fields.php:276
@@ -1435,11 +1510,16 @@ msgid "Maximum total spend"
 msgstr ""
 
 #: src/Modules/CouponConditions/Fields.php:279
-msgid "Leave empty = no limit. The coupon becomes unavailable once the customer's total spend exceeds this value."
+msgid ""
+"Leave empty = no limit. The coupon becomes unavailable once the customer's "
+"total spend exceeds this value."
 msgstr ""
 
 #: src/Modules/CouponConditions/Fields.php:298
-msgid "The cart must contain the following products / categories to use this coupon (unlike WooCommerce's native \"applicable products\": this is a usage requirement, not the discount scope). Leave empty = no limit."
+msgid ""
+"The cart must contain the following products / categories to use this coupon"
+" (unlike WooCommerce's native \"applicable products\": this is a usage "
+"requirement, not the discount scope). Leave empty = no limit."
 msgstr ""
 
 #: src/Modules/CouponConditions/Fields.php:299
@@ -1463,7 +1543,9 @@ msgid "Message shown when product conditions are not met"
 msgstr ""
 
 #: src/Modules/CouponConditions/Fields.php:330
-msgid "This coupon cannot be used when the cart \"contains\" the following products / categories (e.g. certain items are not eligible)."
+msgid ""
+"This coupon cannot be used when the cart \"contains\" the following products"
+" / categories (e.g. certain items are not eligible)."
 msgstr ""
 
 #: src/Modules/CouponConditions/Fields.php:337
@@ -1475,11 +1557,15 @@ msgid "Enable day / time restrictions"
 msgstr ""
 
 #: src/Modules/CouponConditions/Fields.php:354
-msgid "This coupon can only be used on the following days and time slots (site time zone)."
+msgid ""
+"This coupon can only be used on the following days and time slots (site time"
+" zone)."
 msgstr ""
 
 #: src/Modules/CouponConditions/Fields.php:360
-msgid "Leave the time slot empty = all day. An end earlier than the start is treated as overnight (e.g. 22:00–02:00). No day selected = no limit."
+msgid ""
+"Leave the time slot empty = all day. An end earlier than the start is "
+"treated as overnight (e.g. 22:00–02:00). No day selected = no limit."
 msgstr ""
 
 #: src/Modules/CouponConditions/Fields.php:365
@@ -1491,7 +1577,10 @@ msgid "Allowed days"
 msgstr ""
 
 #: src/Modules/CouponConditions/Fields.php:434
-msgid "Restrict this coupon by the \"country of the shipping address\" (validated at the cart stage). Unlike \"Shipping override\" — that changes shipping, this restricts the region."
+msgid ""
+"Restrict this coupon by the \"country of the shipping address\" (validated "
+"at the cart stage). Unlike \"Shipping override\" — that changes shipping, "
+"this restricts the region."
 msgstr ""
 
 #: src/Modules/CouponConditions/Fields.php:439
@@ -1507,7 +1596,10 @@ msgid "Exclude the following countries / regions"
 msgstr ""
 
 #: src/Modules/CouponConditions/Fields.php:469
-msgid "Restrict the payment methods this coupon can be used with. The payment method is only determined at checkout, so it is validated at checkout (blocks checkout if not met)."
+msgid ""
+"Restrict the payment methods this coupon can be used with. The payment "
+"method is only determined at checkout, so it is validated at checkout "
+"(blocks checkout if not met)."
 msgstr ""
 
 #: src/Modules/CouponConditions/Fields.php:474
@@ -1539,7 +1631,9 @@ msgid "Coupon conditions (schedule / role / cart)"
 msgstr ""
 
 #: src/Modules/CouponConditions/Module.php:34
-msgid "Schedule start and end, role restrictions, minimum subtotal / quantity, customer history, products / categories, days / time slots"
+msgid ""
+"Schedule start and end, role restrictions, minimum subtotal / quantity, "
+"customer history, products / categories, days / time slots"
 msgstr ""
 
 #: src/Modules/CouponConditions/Validator.php:135
@@ -1611,7 +1705,10 @@ msgid "List coupons"
 msgstr ""
 
 #: src/Modules/CouponCore/Ability.php:61
-msgid "List coupons, filterable by status (publish = enabled / draft = disabled), discount type, and keyword, returning a compact list (default 20, maximum 50). Read-only."
+msgid ""
+"List coupons, filterable by status (publish = enabled / draft = disabled), "
+"discount type, and keyword, returning a compact list (default 20, maximum "
+"50). Read-only."
 msgstr ""
 
 #: src/Modules/CouponCore/Ability.php:68
@@ -1635,7 +1732,10 @@ msgid "Look up coupon details"
 msgstr ""
 
 #: src/Modules/CouponCore/Ability.php:104
-msgid "Get the full settings of a single coupon (code, discount type and amount, expiry date, usage count and limit, minimum spend, restricted products, etc.). Provide a code or ID. Read-only."
+msgid ""
+"Get the full settings of a single coupon (code, discount type and amount, "
+"expiry date, usage count and limit, minimum spend, restricted products, "
+"etc.). Provide a code or ID. Read-only."
 msgstr ""
 
 #: src/Modules/CouponCore/Ability.php:111
@@ -1651,7 +1751,9 @@ msgid "Check whether a code exists"
 msgstr ""
 
 #: src/Modules/CouponCore/Ability.php:131
-msgid "Check whether a given coupon code already exists, returning whether it exists and its ID. Use this before creating to avoid duplicates. Read-only."
+msgid ""
+"Check whether a given coupon code already exists, returning whether it "
+"exists and its ID. Use this before creating to avoid duplicates. Read-only."
 msgstr ""
 
 #: src/Modules/CouponCore/Ability.php:138
@@ -1663,7 +1765,9 @@ msgid "Look up coupon usage"
 msgstr ""
 
 #: src/Modules/CouponCore/Ability.php:161
-msgid "Look up a coupon's usage count, total limit and per-user limit, and remaining uses. Read-only."
+msgid ""
+"Look up a coupon's usage count, total limit and per-user limit, and "
+"remaining uses. Read-only."
 msgstr ""
 
 #: src/Modules/CouponCore/Ability.php:195
@@ -1672,7 +1776,10 @@ msgid "Create coupon"
 msgstr ""
 
 #: src/Modules/CouponCore/Ability.php:196
-msgid "Create a new WooCommerce coupon. This is a destructive operation — the call only \"proposes\" it, and it is only created after the user clicks \"Confirm\"; you do not need to ask for confirmation yourself."
+msgid ""
+"Create a new WooCommerce coupon. This is a destructive operation — the call "
+"only \"proposes\" it, and it is only created after the user clicks "
+"\"Confirm\"; you do not need to ask for confirmation yourself."
 msgstr ""
 
 #: src/Modules/CouponCore/Ability.php:209
@@ -1680,7 +1787,10 @@ msgid "Update coupon"
 msgstr ""
 
 #: src/Modules/CouponCore/Ability.php:210
-msgid "Update the fields of an existing coupon (discount, expiry date, usage limit, etc.; the code cannot be changed). Destructive — the call only \"proposes\" it, and it only takes effect after the user confirms."
+msgid ""
+"Update the fields of an existing coupon (discount, expiry date, usage limit,"
+" etc.; the code cannot be changed). Destructive — the call only \"proposes\""
+" it, and it only takes effect after the user confirms."
 msgstr ""
 
 #: src/Modules/CouponCore/Ability.php:223
@@ -1688,7 +1798,9 @@ msgid "Enable/disable coupon"
 msgstr ""
 
 #: src/Modules/CouponCore/Ability.php:224
-msgid "Enable (publish) or disable (draft) a coupon. Destructive — the call only \"proposes\" it, and it only takes effect after the user confirms."
+msgid ""
+"Enable (publish) or disable (draft) a coupon. Destructive — the call only "
+"\"proposes\" it, and it only takes effect after the user confirms."
 msgstr ""
 
 #: src/Modules/CouponCore/Ability.php:235
@@ -1700,7 +1812,10 @@ msgid "Delete coupon"
 msgstr ""
 
 #: src/Modules/CouponCore/Ability.php:252
-msgid "Delete a coupon (by default moved to trash; force=true permanently deletes). Destructive and irreversible — the call only \"proposes\" it, and it is only performed after the user confirms."
+msgid ""
+"Delete a coupon (by default moved to trash; force=true permanently deletes)."
+" Destructive and irreversible — the call only \"proposes\" it, and it is "
+"only performed after the user confirms."
 msgstr ""
 
 #: src/Modules/CouponCore/Ability.php:263
@@ -1712,7 +1827,10 @@ msgid "Bulk-generate coupons"
 msgstr ""
 
 #: src/Modules/CouponCore/Ability.php:280
-msgid "Bulk-generate multiple coupons with the same settings and unique codes at once (for marketing campaigns). Destructive — the call only \"proposes\" it, and they are only created after the user confirms."
+msgid ""
+"Bulk-generate multiple coupons with the same settings and unique codes at "
+"once (for marketing campaigns). Destructive — the call only \"proposes\" it,"
+" and they are only created after the user confirms."
 msgstr ""
 
 #: src/Modules/CouponCore/Ability.php:293
@@ -1720,7 +1838,10 @@ msgid "Extend expiry date"
 msgstr ""
 
 #: src/Modules/CouponCore/Ability.php:294
-msgid "Extend the expiry date of one or more coupons to a specified date. Destructive — the call only \"proposes\" it, and it only takes effect after the user confirms."
+msgid ""
+"Extend the expiry date of one or more coupons to a specified date. "
+"Destructive — the call only \"proposes\" it, and it only takes effect after "
+"the user confirms."
 msgstr ""
 
 #: src/Modules/CouponCore/Ability.php:302
@@ -1738,7 +1859,11 @@ msgid "Copy coupon"
 msgstr ""
 
 #: src/Modules/CouponCore/Ability.php:323
-msgid "Copy an existing coupon into a new draft (keeping all discount settings and schedule / role / cart conditions, resetting the usage count to zero, and automatically appending -COPY- to the code). Destructive — the call only \"proposes\" it, and it is only created after the user confirms."
+msgid ""
+"Copy an existing coupon into a new draft (keeping all discount settings and "
+"schedule / role / cart conditions, resetting the usage count to zero, and "
+"automatically appending -COPY- to the code). Destructive — the call only "
+"\"proposes\" it, and it is only created after the user confirms."
 msgstr ""
 
 #: src/Modules/CouponCore/Ability.php:330
@@ -1750,7 +1875,9 @@ msgid "Coupon code, e.g. SUMMER25"
 msgstr ""
 
 #: src/Modules/CouponCore/Ability.php:457
-msgid "Discount type: percent (percentage) / fixed_cart (fixed cart discount) / fixed_product (fixed product discount)"
+msgid ""
+"Discount type: percent (percentage) / fixed_cart (fixed cart discount) / "
+"fixed_product (fixed product discount)"
 msgstr ""
 
 #: src/Modules/CouponCore/Ability.php:461
@@ -1763,15 +1890,22 @@ msgid "Coupon description (optional)"
 msgstr ""
 
 #: src/Modules/CouponCore/Ability.php:501
-msgid "Whether to auto-apply (added automatically when the customer reaches the cart; requires the \"Auto-apply\" module enabled, and the coupon has no usage or email limit)"
+msgid ""
+"Whether to auto-apply (added automatically when the customer reaches the "
+"cart; requires the \"Auto-apply\" module enabled, and the coupon has no "
+"usage or email limit)"
 msgstr ""
 
 #: src/Modules/CouponCore/Ability.php:505
-msgid "Maximum discount amount for a percentage discount (e.g. 20% off, up to 500; requires the \"Maximum discount\" module enabled). 0 or empty = no limit"
+msgid ""
+"Maximum discount amount for a percentage discount (e.g. 20% off, up to 500; "
+"requires the \"Maximum discount\" module enabled). 0 or empty = no limit"
 msgstr ""
 
 #: src/Modules/CouponCore/Ability.php:509
-msgid "Whether it cannot be combined with other coupons (mutually exclusive coupon; requires the \"Stacking control\" module enabled)"
+msgid ""
+"Whether it cannot be combined with other coupons (mutually exclusive coupon;"
+" requires the \"Stacking control\" module enabled)"
 msgstr ""
 
 #: src/Modules/CouponCore/Ability.php:523
@@ -1793,7 +1927,9 @@ msgstr ""
 #. translators: 1: AOV, 2: threshold, 3: reward.
 #: src/Modules/CouponCore/Advisor.php:37
 #, php-format
-msgid "Coupon-backed average order value over the last 30 days is about %1$s. Set \"spend %2$s, get %3$s off\" to push most orders up a tier."
+msgid ""
+"Coupon-backed average order value over the last 30 days is about %1$s. Set "
+"\"spend %2$s, get %3$s off\" to push most orders up a tier."
 msgstr ""
 
 #: src/Modules/CouponCore/Advisor.php:55
@@ -1803,7 +1939,10 @@ msgstr ""
 #. translators: 1: code, 2: type, 3: orders, 4: discount.
 #: src/Modules/CouponCore/Advisor.php:58
 #, php-format
-msgid "\"%1$s\" (%2$s) has driven %3$d order(s) and %4$s in discounts, and is currently the most effective coupon. You can extend its expiry or copy it into a new campaign."
+msgid ""
+"\"%1$s\" (%2$s) has driven %3$d order(s) and %4$s in discounts, and is "
+"currently the most effective coupon. You can extend its expiry or copy it "
+"into a new campaign."
 msgstr ""
 
 #: src/Modules/CouponCore/Advisor.php:76
@@ -1813,7 +1952,10 @@ msgstr ""
 #. translators: %s: comma-separated product names.
 #: src/Modules/CouponCore/Advisor.php:79
 #, php-format
-msgid "These products have had no sales in the last 60 days: %s. You could run \"20% off specific products\" or \"buy one get one\" for them to drive sales."
+msgid ""
+"These products have had no sales in the last 60 days: %s. You could run "
+"\"20% off specific products\" or \"buy one get one\" for them to drive "
+"sales."
 msgstr ""
 
 #: src/Modules/CouponCore/Advisor.php:93
@@ -1821,7 +1963,10 @@ msgid "Launch a new-customer first-purchase coupon"
 msgstr ""
 
 #: src/Modules/CouponCore/Advisor.php:94
-msgid "Coupon-backed orders in the last 30 days are on the low side. Issue a new-customer first-purchase coupon (e.g. \"10% off first purchase\") together with the front-end coupon wall / auto-apply to attract new customers."
+msgid ""
+"Coupon-backed orders in the last 30 days are on the low side. Issue a new-"
+"customer first-purchase coupon (e.g. \"10% off first purchase\") together "
+"with the front-end coupon wall / auto-apply to attract new customers."
 msgstr ""
 
 #: src/Modules/CouponCore/Advisor.php:133
@@ -1829,13 +1974,17 @@ msgid "Expired but still enabled; consider disabling or cleaning up."
 msgstr ""
 
 #: src/Modules/CouponCore/Advisor.php:141
-msgid "Expires within 7 days but has never been used; consider boosting exposure or adjusting the threshold."
+msgid ""
+"Expires within 7 days but has never been used; consider boosting exposure or"
+" adjusting the threshold."
 msgstr ""
 
 #. translators: %s: percent.
 #: src/Modules/CouponCore/Advisor.php:151
 #, php-format
-msgid "The percentage discount is as high as %s%%; confirm your margin can absorb it."
+msgid ""
+"The percentage discount is as high as %s%%; confirm your margin can absorb "
+"it."
 msgstr ""
 
 #: src/Modules/CouponCore/CouponOps.php:53
@@ -1955,7 +2104,9 @@ msgstr ""
 #. translators: 1: requested count, 2: shortfall count.
 #: src/Modules/CouponCore/CouponOps.php:375
 #, php-format
-msgid "(%1$d requested; %2$d were not created due to duplicate codes or save failures)"
+msgid ""
+"(%1$d requested; %2$d were not created due to duplicate codes or save "
+"failures)"
 msgstr ""
 
 #: src/Modules/CouponCore/CouponOps.php:406
@@ -1984,13 +2135,17 @@ msgstr ""
 #. translators: %s: source coupon code.
 #: src/Modules/CouponCore/CouponOps.php:477
 #, php-format
-msgid "Copy coupon %s into a new draft (keeping all settings and conditions, resetting the usage count to zero)"
+msgid ""
+"Copy coupon %s into a new draft (keeping all settings and conditions, "
+"resetting the usage count to zero)"
 msgstr ""
 
 #. translators: 1: source code, 2: new draft code.
 #: src/Modules/CouponCore/CouponOps.php:511
 #, php-format
-msgid "Copied %1$s into draft %2$s (the usage count has been reset to zero; you can review it before enabling)."
+msgid ""
+"Copied %1$s into draft %2$s (the usage count has been reset to zero; you can"
+" review it before enabling)."
 msgstr ""
 
 #: src/Modules/CouponCore/CouponOps.php:533
@@ -2000,7 +2155,9 @@ msgstr ""
 #. translators: 1: coupon code, 2: number of tiers.
 #: src/Modules/CouponCore/CouponOps.php:563
 #, php-format
-msgid "Create a tiered discount coupon %1$s (%2$d tiers, giving different percentages by cart threshold)"
+msgid ""
+"Create a tiered discount coupon %1$s (%2$d tiers, giving different "
+"percentages by cart threshold)"
 msgstr ""
 
 #: src/Modules/CouponCore/CouponOps.php:564
@@ -2020,17 +2177,23 @@ msgstr ""
 #. translators: 1: coupon code, 2: coupon id.
 #: src/Modules/CouponCore/CouponOps.php:618
 #, php-format
-msgid "Created a draft coupon from the template %1$s (#%2$d); you can review it before enabling."
+msgid ""
+"Created a draft coupon from the template %1$s (#%2$d); you can review it "
+"before enabling."
 msgstr ""
 
 #: src/Modules/CouponCore/CouponOps.php:640
-msgid "The specified coupon was not found in the trash; please provide the numeric ID of a deleted coupon."
+msgid ""
+"The specified coupon was not found in the trash; please provide the numeric "
+"ID of a deleted coupon."
 msgstr ""
 
 #. translators: %s: coupon code.
 #: src/Modules/CouponCore/CouponOps.php:646
 #, php-format
-msgid "Restore coupon %s from the trash as a draft (you can review it before enabling)"
+msgid ""
+"Restore coupon %s from the trash as a draft (you can review it before "
+"enabling)"
 msgstr ""
 
 #: src/Modules/CouponCore/CouponOps.php:662
@@ -2044,7 +2207,9 @@ msgstr ""
 #. translators: 1: count, 2: date.
 #: src/Modules/CouponCore/CouponOps.php:705
 #, php-format
-msgid "Immediately disable %1$d coupon(s) (expiry date set to %2$s, effective at once)"
+msgid ""
+"Immediately disable %1$d coupon(s) (expiry date set to %2$s, effective at "
+"once)"
 msgstr ""
 
 #. translators: %d: number expired.
@@ -2074,7 +2239,10 @@ msgid "List advanced rule types"
 msgstr ""
 
 #: src/Modules/CouponCore/ToolsAbility.php:47
-msgid "List all 26 condition types available for \"Advanced rules (AND/OR)\", each with its allowed operators (op) and value shape. Check this before building moksafocou.advanced_rules. Read-only."
+msgid ""
+"List all 26 condition types available for \"Advanced rules (AND/OR)\", each "
+"with its allowed operators (op) and value shape. Check this before building "
+"moksafocou.advanced_rules. Read-only."
 msgstr ""
 
 #: src/Modules/CouponCore/ToolsAbility.php:63
@@ -2082,7 +2250,10 @@ msgid "Get advanced settings schema"
 msgstr ""
 
 #: src/Modules/CouponCore/ToolsAbility.php:64
-msgid "Return the complete JSON schema of the moksafocou advanced settings object for create-coupon / update-coupon (schedule / conditions / tiers / advanced rules / BOGO / gift / shipping…). Read-only."
+msgid ""
+"Return the complete JSON schema of the moksafocou advanced settings object "
+"for create-coupon / update-coupon (schedule / conditions / tiers / advanced "
+"rules / BOGO / gift / shipping…). Read-only."
 msgstr ""
 
 #: src/Modules/CouponCore/ToolsAbility.php:80
@@ -2090,7 +2261,10 @@ msgid "List payment methods"
 msgstr ""
 
 #: src/Modules/CouponCore/ToolsAbility.php:81
-msgid "List the id, name, and enabled status of all payment methods in this store — use the real id when setting \"Payment method conditions\" or a payment_method rule. Read-only."
+msgid ""
+"List the id, name, and enabled status of all payment methods in this store —"
+" use the real id when setting \"Payment method conditions\" or a "
+"payment_method rule. Read-only."
 msgstr ""
 
 #: src/Modules/CouponCore/ToolsAbility.php:97
@@ -2098,7 +2272,10 @@ msgid "List shipping zones"
 msgstr ""
 
 #: src/Modules/CouponCore/ToolsAbility.php:98
-msgid "List the id and name of WooCommerce shipping zones (including the \"Locations not covered\" zone 0) — use the real id for shipping_zone rules. Read-only."
+msgid ""
+"List the id and name of WooCommerce shipping zones (including the "
+"\"Locations not covered\" zone 0) — use the real id for shipping_zone rules."
+" Read-only."
 msgstr ""
 
 #: src/Modules/CouponCore/ToolsAbility.php:114
@@ -2106,7 +2283,10 @@ msgid "List country codes"
 msgstr ""
 
 #: src/Modules/CouponCore/ToolsAbility.php:115
-msgid "List the ISO codes and names of countries / regions — use the uppercase code (e.g. TW) when setting \"Shipping region conditions\" or a shipping_country rule. Read-only."
+msgid ""
+"List the ISO codes and names of countries / regions — use the uppercase code"
+" (e.g. TW) when setting \"Shipping region conditions\" or a shipping_country"
+" rule. Read-only."
 msgstr ""
 
 #: src/Modules/CouponCore/ToolsAbility.php:131
@@ -2114,7 +2294,11 @@ msgid "Validate advanced rule tree"
 msgstr ""
 
 #: src/Modules/CouponCore/ToolsAbility.php:132
-msgid "Dry-run an \"Advanced rules\" tree: return whether there are valid rules, the normalized result, the types used, and any unknown types that were dropped; if sample_cart is given, also return whether it passes. Does not write. Read-only."
+msgid ""
+"Dry-run an \"Advanced rules\" tree: return whether there are valid rules, "
+"the normalized result, the types used, and any unknown types that were "
+"dropped; if sample_cart is given, also return whether it passes. Does not "
+"write. Read-only."
 msgstr ""
 
 #: src/Modules/CouponCore/ToolsAbility.php:139
@@ -2122,7 +2306,10 @@ msgid "Rule tree object or its JSON string"
 msgstr ""
 
 #: src/Modules/CouponCore/ToolsAbility.php:143
-msgid "Optional scenario (subtotal/qty/products/categories/country/payment/roles/weight…) used to test whether it passes"
+msgid ""
+"Optional scenario "
+"(subtotal/qty/products/categories/country/payment/roles/weight…) used to "
+"test whether it passes"
 msgstr ""
 
 #: src/Modules/CouponCore/ToolsAbility.php:170
@@ -2130,7 +2317,9 @@ msgid "Coupon performance report"
 msgstr ""
 
 #: src/Modules/CouponCore/ToolsAbility.php:171
-msgid "Orders used and total discount for each coupon (paid orders only), sorted by discount amount from high to low. Read-only."
+msgid ""
+"Orders used and total discount for each coupon (paid orders only), sorted by"
+" discount amount from high to low. Read-only."
 msgstr ""
 
 #: src/Modules/CouponCore/ToolsAbility.php:178
@@ -2150,7 +2339,10 @@ msgid "Coupon revenue overview"
 msgstr ""
 
 #: src/Modules/CouponCore/ToolsAbility.php:210
-msgid "Revenue, total discount, order count, and average order value of paid orders with coupons over the last N days, plus a daily trend. Answers \"how much business coupons brought in\". Read-only."
+msgid ""
+"Revenue, total discount, order count, and average order value of paid orders"
+" with coupons over the last N days, plus a daily trend. Answers \"how much "
+"business coupons brought in\". Read-only."
 msgstr ""
 
 #: src/Modules/CouponCore/ToolsAbility.php:217
@@ -2162,7 +2354,10 @@ msgid "Coupon campaign report"
 msgstr ""
 
 #: src/Modules/CouponCore/ToolsAbility.php:243
-msgid "Aggregate the coupon count, orders used, discount, and revenue for each campaign by \"Campaign\" tag (paid orders only), sorted by discount from high to low. Read-only."
+msgid ""
+"Aggregate the coupon count, orders used, discount, and revenue for each "
+"campaign by \"Campaign\" tag (paid orders only), sorted by discount from "
+"high to low. Read-only."
 msgstr ""
 
 #: src/Modules/CouponCore/ToolsAbility.php:262
@@ -2170,7 +2365,11 @@ msgid "Suggest coupons"
 msgstr ""
 
 #: src/Modules/CouponCore/ToolsAbility.php:263
-msgid "Make specific coupon suggestions based on store data (average order value with coupons, slow-moving products, currently most effective coupons, coupon activity), each with parameters you can create directly. Read-only analysis."
+msgid ""
+"Make specific coupon suggestions based on store data (average order value "
+"with coupons, slow-moving products, currently most effective coupons, coupon"
+" activity), each with parameters you can create directly. Read-only "
+"analysis."
 msgstr ""
 
 #: src/Modules/CouponCore/ToolsAbility.php:282
@@ -2178,7 +2377,10 @@ msgid "Coupon health check"
 msgstr ""
 
 #: src/Modules/CouponCore/ToolsAbility.php:283
-msgid "Find coupons that need attention: expired but still enabled, expiring within 7 days but never used, percentage discount too high (margin risk). Read-only."
+msgid ""
+"Find coupons that need attention: expired but still enabled, expiring within"
+" 7 days but never used, percentage discount too high (margin risk). Read-"
+"only."
 msgstr ""
 
 #: src/Modules/CouponCore/ToolsAbility.php:302
@@ -2186,11 +2388,16 @@ msgid "List coupon templates"
 msgstr ""
 
 #: src/Modules/CouponCore/ToolsAbility.php:303
-msgid "List the built-in coupon templates (id, name, description, category, discount type, required modules). Pair with apply-template for one-click coupon creation. Read-only."
+msgid ""
+"List the built-in coupon templates (id, name, description, category, "
+"discount type, required modules). Pair with apply-template for one-click "
+"coupon creation. Read-only."
 msgstr ""
 
 #: src/Modules/CouponCore/ToolsAbility.php:310
-msgid "List only a specific category (acquisition/aov/shipping/promo/seasonal/bonus/member)"
+msgid ""
+"List only a specific category "
+"(acquisition/aov/shipping/promo/seasonal/bonus/member)"
 msgstr ""
 
 #: src/Modules/CouponCore/ToolsAbility.php:332
@@ -2198,7 +2405,10 @@ msgid "List schedule / expiry status"
 msgstr ""
 
 #: src/Modules/CouponCore/ToolsAbility.php:333
-msgid "List coupons' expiry dates, schedule start/end, and campaign, sorted by expiry date; you can view a single campaign only. Use this when managing multi-stage campaigns or coupons nearing expiry. Read-only."
+msgid ""
+"List coupons' expiry dates, schedule start/end, and campaign, sorted by "
+"expiry date; you can view a single campaign only. Use this when managing "
+"multi-stage campaigns or coupons nearing expiry. Read-only."
 msgstr ""
 
 #: src/Modules/CouponCore/ToolsAbility.php:340
@@ -2210,7 +2420,11 @@ msgid "Create a tiered discount coupon"
 msgstr ""
 
 #: src/Modules/CouponCore/ToolsAbility.php:367
-msgid "Create a percentage coupon that \"gives different discounts by cart threshold\" using a simple tier table (e.g. spend 1000 get 10% off, spend 2000 get 20% off). Destructive — the call only \"proposes\"; it is created only after the user confirms."
+msgid ""
+"Create a percentage coupon that \"gives different discounts by cart "
+"threshold\" using a simple tier table (e.g. spend 1000 get 10% off, spend "
+"2000 get 20% off). Destructive — the call only \"proposes\"; it is created "
+"only after the user confirms."
 msgstr ""
 
 #: src/Modules/CouponCore/ToolsAbility.php:374
@@ -2223,11 +2437,16 @@ msgid "Tier basis: subtotal (default) / quantity / weight"
 msgstr ""
 
 #: src/Modules/CouponCore/ToolsAbility.php:383
-msgid "Tier rows, each { threshold, kind percent|fixed, value }. For percent the value is a 0-100 percentage (10 = 10% off); for fixed the value is a fixed discount amount. They can be mixed."
+msgid ""
+"Tier rows, each { threshold, kind percent|fixed, value }. For percent the "
+"value is a 0-100 percentage (10 = 10% off); for fixed the value is a fixed "
+"discount amount. They can be mixed."
 msgstr ""
 
 #: src/Modules/CouponCore/ToolsAbility.php:400
-msgid "Discount application scope: cart (whole cart, default) / products / categories"
+msgid ""
+"Discount application scope: cart (whole cart, default) / products / "
+"categories"
 msgstr ""
 
 #: src/Modules/CouponCore/ToolsAbility.php:427
@@ -2235,7 +2454,11 @@ msgid "Apply coupon template"
 msgstr ""
 
 #: src/Modules/CouponCore/ToolsAbility.php:428
-msgid "Apply a built-in template to create a draft coupon (first use list-templates to get the template_id). You can fine-tune code / amount / date_expires / usage_limit, etc. Destructive — the call only \"proposes\"; it is created only after the user confirms."
+msgid ""
+"Apply a built-in template to create a draft coupon (first use list-templates"
+" to get the template_id). You can fine-tune code / amount / date_expires / "
+"usage_limit, etc. Destructive — the call only \"proposes\"; it is created "
+"only after the user confirms."
 msgstr ""
 
 #: src/Modules/CouponCore/ToolsAbility.php:435
@@ -2251,7 +2474,10 @@ msgid "Restore deleted coupon"
 msgstr ""
 
 #: src/Modules/CouponCore/ToolsAbility.php:466
-msgid "Restore a coupon from the trash as a draft (provide the numeric ID). Destructive — the call only \"proposes\"; it is restored only after the user confirms."
+msgid ""
+"Restore a coupon from the trash as a draft (provide the numeric ID). "
+"Destructive — the call only \"proposes\"; it is restored only after the user"
+" confirms."
 msgstr ""
 
 #: src/Modules/CouponCore/ToolsAbility.php:473
@@ -2263,7 +2489,11 @@ msgid "Expire immediately"
 msgstr ""
 
 #: src/Modules/CouponCore/ToolsAbility.php:490
-msgid "Set one or more coupons to expire immediately (expiry date set to yesterday). Ends a campaign \"right now\" more explicitly than disabling. Destructive — the call only \"proposes\"; it takes effect only after the user confirms."
+msgid ""
+"Set one or more coupons to expire immediately (expiry date set to "
+"yesterday). Ends a campaign \"right now\" more explicitly than disabling. "
+"Destructive — the call only \"proposes\"; it takes effect only after the "
+"user confirms."
 msgstr ""
 
 #: src/Modules/CouponCore/ToolsAbility.php:514
@@ -2271,7 +2501,11 @@ msgid "Batch adjust expiry date"
 msgstr ""
 
 #: src/Modules/CouponCore/ToolsAbility.php:515
-msgid "Set the expiry date of multiple coupons to the same day at once (leave date_expires empty = clear the expiry date to make them permanent). Handy for extending or ending campaigns early. Destructive — the call only \"proposes\"; it takes effect only after the user confirms."
+msgid ""
+"Set the expiry date of multiple coupons to the same day at once (leave "
+"date_expires empty = clear the expiry date to make them permanent). Handy "
+"for extending or ending campaigns early. Destructive — the call only "
+"\"proposes\"; it takes effect only after the user confirms."
 msgstr ""
 
 #: src/Modules/CouponCore/ToolsAbility.php:527
@@ -2290,7 +2524,9 @@ msgid "Copy"
 msgstr ""
 
 #: src/Modules/CouponList/ListTable.php:161
-msgid "Copied as a draft coupon with usage count reset to zero; you can review it before enabling."
+msgid ""
+"Copied as a draft coupon with usage count reset to zero; you can review it "
+"before enabling."
 msgstr ""
 
 #: src/Modules/CouponList/ListTable.php:163
@@ -2308,16 +2544,19 @@ msgid "Coupon list enhancements"
 msgstr ""
 
 #: src/Modules/CouponList/Module.php:32
-msgid "Add enable / disable status column, bulk enable/disable, and one-click coupon copy to the coupon list"
+msgid ""
+"Add enable / disable status column, bulk enable/disable, and one-click "
+"coupon copy to the coupon list"
 msgstr ""
 
-#: src/Modules/CouponSend/Module.php:27
-#: src/Settings/SettingsScreen.php:198
+#: src/Modules/CouponSend/Module.php:27 src/Settings/SettingsScreen.php:198
 msgid "Coupon delivery"
 msgstr ""
 
 #: src/Modules/CouponSend/Module.php:35
-msgid "Send a coupon to a customer in natural language, optionally locked to that Email only"
+msgid ""
+"Send a coupon to a customer in natural language, optionally locked to that "
+"Email only"
 msgstr ""
 
 #: src/Modules/CouponSend/Module.php:53
@@ -2325,7 +2564,10 @@ msgid "Send coupon"
 msgstr ""
 
 #: src/Modules/CouponSend/Module.php:54
-msgid "Send an existing coupon to a specified Email (optionally locked to that Email only). Destructive — the call only \"proposes\"; it is sent only after the user confirms."
+msgid ""
+"Send an existing coupon to a specified Email (optionally locked to that "
+"Email only). Destructive — the call only \"proposes\"; it is sent only after"
+" the user confirms."
 msgstr ""
 
 #: src/Modules/CouponSend/Module.php:61
@@ -2341,7 +2583,9 @@ msgid "Message to include for the customer (optional)"
 msgstr ""
 
 #: src/Modules/CouponSend/Module.php:73
-msgid "Whether to lock this coupon to that Email only (writes WooCommerce's Email restriction)"
+msgid ""
+"Whether to lock this coupon to that Email only (writes WooCommerce's Email "
+"restriction)"
 msgstr ""
 
 #: src/Modules/CouponSend/SendOps.php:37
@@ -2349,7 +2593,8 @@ msgstr ""
 msgid "Recipient email is invalid."
 msgstr ""
 
-#. translators: 1: coupon code, 2: recipient email, 3: optional restriction note.
+#. translators: 1: coupon code, 2: recipient email, 3: optional restriction
+#. note.
 #: src/Modules/CouponSend/SendOps.php:51
 #, php-format
 msgid "Send coupon %1$s to %2$s%3$s"
@@ -2397,25 +2642,32 @@ msgid "Maximum discount amount"
 msgstr ""
 
 #: src/Modules/DiscountCap/Fields.php:49
-msgid "The maximum discount amount for a percentage discount (e.g. 20% off, but at most 500). Leave empty = no limit."
+msgid ""
+"The maximum discount amount for a percentage discount (e.g. 20% off, but at "
+"most 500). Leave empty = no limit."
 msgstr ""
 
 #: src/Modules/DiscountCap/Module.php:30
-msgid "Set a maximum discount amount for a percentage discount (e.g. 20% off, at most 500)"
+msgid ""
+"Set a maximum discount amount for a percentage discount (e.g. 20% off, at "
+"most 500)"
 msgstr ""
 
 #: src/Modules/DiscountTiers/Fields.php:38
 #: src/Modules/DiscountTiers/Module.php:25
 #: src/Modules/DiscountTiers/Nudge.php:78
-#: src/Modules/Frontend/CouponCard.php:86
-#: src/Modules/Summary/Panel.php:74
-#: src/Modules/Templates/Catalog.php:1083
-#: src/Settings/SettingsScreen.php:136
+#: src/Modules/Frontend/CouponCard.php:86 src/Modules/Summary/Panel.php:74
+#: src/Modules/Templates/Catalog.php:1083 src/Settings/SettingsScreen.php:136
 msgid "Tiered discount"
 msgstr ""
 
 #: src/Modules/DiscountTiers/Fields.php:55
-msgid "The same coupon gives different discounts by tier according to the \"Tier basis\" (cart subtotal / quantity / weight); each tier can be a percentage or a fixed amount, and they can be mixed. Once enabled, the discount is calculated entirely from the table below and the coupon's original discount amount is ignored."
+msgid ""
+"The same coupon gives different discounts by tier according to the \"Tier "
+"basis\" (cart subtotal / quantity / weight); each tier can be a percentage "
+"or a fixed amount, and they can be mixed. Once enabled, the discount is "
+"calculated entirely from the table below and the coupon's original discount "
+"amount is ignored."
 msgstr ""
 
 #: src/Modules/DiscountTiers/Fields.php:62
@@ -2423,7 +2675,9 @@ msgid "Enable tiered discount"
 msgstr ""
 
 #: src/Modules/DiscountTiers/Fields.php:63
-msgid "When checked, this coupon calculates the discount according to the tiers below."
+msgid ""
+"When checked, this coupon calculates the discount according to the tiers "
+"below."
 msgstr ""
 
 #: src/Modules/DiscountTiers/Fields.php:71
@@ -2455,7 +2709,11 @@ msgid "+ Add tier"
 msgstr ""
 
 #: src/Modules/DiscountTiers/Fields.php:122
-msgid "The tier applies only when the threshold is reached; when multiple tiers match, the one with the \"largest discount amount\" is used. Leave the discount amount empty = that tier is disabled. Enter 10 for percentage = 10% off; enter 200 for fixed amount = 200 off."
+msgid ""
+"The tier applies only when the threshold is reached; when multiple tiers "
+"match, the one with the \"largest discount amount\" is used. Leave the "
+"discount amount empty = that tier is disabled. Enter 10 for percentage = 10%"
+" off; enter 200 for fixed amount = 200 off."
 msgstr ""
 
 #: src/Modules/DiscountTiers/Fields.php:129
@@ -2466,8 +2724,7 @@ msgstr ""
 msgid "Whole cart"
 msgstr ""
 
-#: src/Modules/DiscountTiers/Fields.php:132
-#: src/Modules/Frontend/Hints.php:44
+#: src/Modules/DiscountTiers/Fields.php:132 src/Modules/Frontend/Hints.php:44
 msgid "Specific products only"
 msgstr ""
 
@@ -2476,7 +2733,11 @@ msgid "Specific categories only"
 msgstr ""
 
 #: src/Modules/DiscountTiers/Fields.php:140
-msgid "The threshold is always judged by the whole cart's \"Tier basis\"; the \"Discount application scope\" only determines which products the discount applies to (a fixed amount is distributed proportionally across the products in scope). For user role restrictions, use the \"Conditions\" tab."
+msgid ""
+"The threshold is always judged by the whole cart's \"Tier basis\"; the "
+"\"Discount application scope\" only determines which products the discount "
+"applies to (a fixed amount is distributed proportionally across the products"
+" in scope). For user role restrictions, use the \"Conditions\" tab."
 msgstr ""
 
 #: src/Modules/DiscountTiers/Fields.php:166
@@ -2510,8 +2771,7 @@ msgid "Threshold ≥ (%s)"
 msgstr ""
 
 #. translators: %s: the basis unit (item count).
-#: src/Modules/DiscountTiers/Fields.php:198
-#: src/Modules/FreeGift/Fields.php:62
+#: src/Modules/DiscountTiers/Fields.php:198 src/Modules/FreeGift/Fields.php:62
 msgid "Quantity"
 msgstr ""
 
@@ -2521,7 +2781,9 @@ msgid "Weight kg"
 msgstr ""
 
 #: src/Modules/DiscountTiers/Module.php:33
-msgid "The same coupon gives different discounts by cart threshold (e.g. under 1000 get 10% off, over 1000 get 20% off)"
+msgid ""
+"The same coupon gives different discounts by cart threshold (e.g. under 1000"
+" get 10% off, over 1000 get 20% off)"
 msgstr ""
 
 #. translators: %s: fixed discount amount.
@@ -2566,7 +2828,9 @@ msgid "Coupon expiry reminder"
 msgstr ""
 
 #: src/Modules/ExpiryReminder/Module.php:32
-msgid "Automatically email customers each day to remind them their \"exclusive coupon is about to expire\", encouraging use before the deadline"
+msgid ""
+"Automatically email customers each day to remind them their \"exclusive "
+"coupon is about to expire\", encouraging use before the deadline"
 msgstr ""
 
 #. translators: %s: coupon code.
@@ -2578,7 +2842,9 @@ msgstr ""
 #. translators: 1: site name, 2: expiry date.
 #: src/Modules/ExpiryReminder/Runtime.php:104
 #, php-format
-msgid "Reminder: %1$s's exclusive coupon expires on %2$s, don't forget to use it before the deadline!"
+msgid ""
+"Reminder: %1$s's exclusive coupon expires on %2$s, don't forget to use it "
+"before the deadline!"
 msgstr ""
 
 #: src/Modules/ExpiryReminder/Runtime.php:115
@@ -2594,7 +2860,10 @@ msgid "Enable gift"
 msgstr ""
 
 #: src/Modules/FreeGift/Fields.php:54
-msgid "When this coupon is applied, automatically add the gift below to the cart (customers cannot change the quantity or remove it; it is withdrawn automatically when the coupon is removed)."
+msgid ""
+"When this coupon is applied, automatically add the gift below to the cart "
+"(customers cannot change the quantity or remove it; it is withdrawn "
+"automatically when the coupon is removed)."
 msgstr ""
 
 #: src/Modules/FreeGift/Fields.php:74
@@ -2602,24 +2871,26 @@ msgid "Gift pricing"
 msgstr ""
 
 #: src/Modules/FreeGift/Fields.php:88
-msgid "Percentage: 0–100; fixed per item: discount amount. Leave empty when \"Free\" is selected."
+msgid ""
+"Percentage: 0–100; fixed per item: discount amount. Leave empty when "
+"\"Free\" is selected."
 msgstr ""
 
 #: src/Modules/FreeGift/GiftHandler.php:168
 msgid "The gift quantity cannot be changed."
 msgstr ""
 
-#: src/Modules/FreeGift/Module.php:24
-#: src/Settings/SettingsScreen.php:138
+#: src/Modules/FreeGift/Module.php:24 src/Settings/SettingsScreen.php:138
 msgid "Add-on / free gift"
 msgstr ""
 
 #: src/Modules/FreeGift/Module.php:32
-msgid "Automatically add a gift (free or discounted) when the coupon is applied; quantity is locked and withdrawn when the coupon is removed"
+msgid ""
+"Automatically add a gift (free or discounted) when the coupon is applied; "
+"quantity is locked and withdrawn when the coupon is removed"
 msgstr ""
 
-#: src/Modules/Frontend/CouponCard.php:46
-#: src/Modules/UrlCoupons/Module.php:89
+#: src/Modules/Frontend/CouponCard.php:46 src/Modules/UrlCoupons/Module.php:89
 msgid "Copied"
 msgstr ""
 
@@ -2645,8 +2916,7 @@ msgstr ""
 msgid "Discount"
 msgstr ""
 
-#: src/Modules/Frontend/CouponCard.php:90
-#: src/Modules/Summary/Panel.php:102
+#: src/Modules/Frontend/CouponCard.php:90 src/Modules/Summary/Panel.php:102
 #: src/Support/DiscountTypeRegistry.php:63
 msgid "Cashback"
 msgstr ""
@@ -2661,21 +2931,15 @@ msgstr ""
 msgid "Buy and get a gift"
 msgstr ""
 
-#: src/Modules/Frontend/CouponCard.php:103
-#: src/Modules/NthItem/Fields.php:36
-#: src/Modules/NthItem/Module.php:24
-#: src/Modules/Templates/Catalog.php:1076
-#: src/Settings/SettingsScreen.php:140
-#: src/Support/DiscountTypeRegistry.php:52
+#: src/Modules/Frontend/CouponCard.php:103 src/Modules/NthItem/Fields.php:36
+#: src/Modules/NthItem/Module.php:24 src/Modules/Templates/Catalog.php:1076
+#: src/Settings/SettingsScreen.php:140 src/Support/DiscountTypeRegistry.php:52
 msgid "Nth-item discount"
 msgstr ""
 
-#: src/Modules/Frontend/CouponCard.php:105
-#: src/Modules/MixMatch/Fields.php:36
-#: src/Modules/MixMatch/Module.php:24
-#: src/Modules/Templates/Catalog.php:1077
-#: src/Settings/SettingsScreen.php:141
-#: src/Support/DiscountTypeRegistry.php:57
+#: src/Modules/Frontend/CouponCard.php:105 src/Modules/MixMatch/Fields.php:36
+#: src/Modules/MixMatch/Module.php:24 src/Modules/Templates/Catalog.php:1077
+#: src/Settings/SettingsScreen.php:141 src/Support/DiscountTypeRegistry.php:57
 #: src/Support/DiscountTypeRegistry.php:58
 msgid "Mix & Match"
 msgstr ""
@@ -2699,7 +2963,9 @@ msgid "Show in the front-end coupon list"
 msgstr ""
 
 #: src/Modules/Frontend/Fields.php:54
-msgid "When checked, this coupon appears in the card list of the [moksafocou_coupons] shortcode."
+msgid ""
+"When checked, this coupon appears in the card list of the "
+"[moksafocou_coupons] shortcode."
 msgstr ""
 
 #: src/Modules/Frontend/Fields.php:61
@@ -2707,7 +2973,9 @@ msgid "Front-end description text"
 msgstr ""
 
 #: src/Modules/Frontend/Fields.php:63
-msgid "Marketing description shown on the card (leave empty to use the coupon description)."
+msgid ""
+"Marketing description shown on the card (leave empty to use the coupon "
+"description)."
 msgstr ""
 
 #: src/Modules/Frontend/Fields.php:67
@@ -2719,7 +2987,9 @@ msgid "Show countdown timer"
 msgstr ""
 
 #: src/Modules/Frontend/Fields.php:73
-msgid "Show a countdown-to-expiry timer on the card (requires an expiry date or a scheduled end time)."
+msgid ""
+"Show a countdown-to-expiry timer on the card (requires an expiry date or a "
+"scheduled end time)."
 msgstr ""
 
 #: src/Modules/Frontend/Fields.php:80
@@ -2739,7 +3009,9 @@ msgid "Show remaining quantity"
 msgstr ""
 
 #: src/Modules/Frontend/Fields.php:92
-msgid "Show \"Only N left\" based on the usage limit (requires a usage limit to be set first)."
+msgid ""
+"Show \"Only N left\" based on the usage limit (requires a usage limit to be "
+"set first)."
 msgstr ""
 
 #: src/Modules/Frontend/Fields.php:99
@@ -2747,7 +3019,9 @@ msgid "Remaining-quantity hint threshold"
 msgstr ""
 
 #: src/Modules/Frontend/Fields.php:106
-msgid "Show only when the remaining quantity is at or below this number (0 or empty = always show)."
+msgid ""
+"Show only when the remaining quantity is at or below this number (0 or empty"
+" = always show)."
 msgstr ""
 
 #. translators: %s: formatted minimum amount.
@@ -2782,13 +3056,14 @@ msgstr ""
 msgid "Only %d left"
 msgstr ""
 
-#: src/Modules/Frontend/Module.php:24
-#: src/Settings/SettingsScreen.php:195
+#: src/Modules/Frontend/Module.php:24 src/Settings/SettingsScreen.php:195
 msgid "Front-end coupon display"
 msgstr ""
 
 #: src/Modules/Frontend/Module.php:32
-msgid "Use the [moksafocou_coupons] shortcode to display available coupon cards on the front end"
+msgid ""
+"Use the [moksafocou_coupons] shortcode to display available coupon cards on "
+"the front end"
 msgstr ""
 
 #: src/Modules/Frontend/Shortcode.php:73
@@ -2805,7 +3080,9 @@ msgid "Coupon import / export"
 msgstr ""
 
 #: src/Modules/ImportExport/ImportExport.php:84
-msgid "Back up, audit, or bulk-edit coupons: export to CSV, or upload a CSV to create / update many coupons at once."
+msgid ""
+"Back up, audit, or bulk-edit coupons: export to CSV, or upload a CSV to "
+"create / update many coupons at once."
 msgstr ""
 
 #: src/Modules/ImportExport/ImportExport.php:86
@@ -2813,7 +3090,9 @@ msgid "Export"
 msgstr ""
 
 #: src/Modules/ImportExport/ImportExport.php:87
-msgid "Export all coupons (including tiered / advanced rule settings) to CSV, for backup, auditing, or bulk editing."
+msgid ""
+"Export all coupons (including tiered / advanced rule settings) to CSV, for "
+"backup, auditing, or bulk editing."
 msgstr ""
 
 #: src/Modules/ImportExport/ImportExport.php:91
@@ -2825,7 +3104,9 @@ msgid "Import"
 msgstr ""
 
 #: src/Modules/ImportExport/ImportExport.php:96
-msgid "Upload a CSV in the same format. Matching is done by the \"code\" column: existing coupons are updated, new ones are created as drafts."
+msgid ""
+"Upload a CSV in the same format. Matching is done by the \"code\" column: "
+"existing coupons are updated, new ones are created as drafts."
 msgstr ""
 
 #: src/Modules/ImportExport/ImportExport.php:101
@@ -2847,7 +3128,9 @@ msgid "CSV import / export"
 msgstr ""
 
 #: src/Modules/ImportExport/Module.php:31
-msgid "Export coupons to CSV for backup / auditing, or bulk create and update with a CSV"
+msgid ""
+"Export coupons to CSV for backup / auditing, or bulk create and update with "
+"a CSV"
 msgstr ""
 
 #: src/Modules/Metaboxes/Module.php:28
@@ -2855,7 +3138,9 @@ msgid "Centralized settings metabox"
 msgstr ""
 
 #: src/Modules/Metaboxes/Module.php:36
-msgid "Consolidate the coupon setting sections into a single metabox, presented with WooCommerce-style left-hand tabs"
+msgid ""
+"Consolidate the coupon setting sections into a single metabox, presented "
+"with WooCommerce-style left-hand tabs"
 msgstr ""
 
 #: src/Modules/MixMatch/Ability.php:28
@@ -2863,7 +3148,13 @@ msgid "Create a Mix & Match coupon"
 msgstr ""
 
 #: src/Modules/MixMatch/Ability.php:29
-msgid "Create a \"Mix & Match\" coupon: specify a set of products (or the whole site), the customer picks any N items, and the group is priced at a fixed total or a group percentage discount, repeatable. Example: pick 3 for $299 → qty=3, price_mode=fixed_total, price_value=299; pick 5 at 25% off → qty=5, price_mode=percent, price_value=25. Destructive — the call only \"proposes\"; it is created only after the user confirms."
+msgid ""
+"Create a \"Mix & Match\" coupon: specify a set of products (or the whole "
+"site), the customer picks any N items, and the group is priced at a fixed "
+"total or a group percentage discount, repeatable. Example: pick 3 for $299 →"
+" qty=3, price_mode=fixed_total, price_value=299; pick 5 at 25% off → qty=5, "
+"price_mode=percent, price_value=25. Destructive — the call only "
+"\"proposes\"; it is created only after the user confirms."
 msgstr ""
 
 #: src/Modules/MixMatch/Ability.php:36
@@ -2890,8 +3181,7 @@ msgstr ""
 msgid "fixed_total is the group total; percent is the discount % (0–100)"
 msgstr ""
 
-#: src/Modules/MixMatch/Ability.php:66
-#: src/Modules/NthItem/Ability.php:72
+#: src/Modules/MixMatch/Ability.php:66 src/Modules/NthItem/Ability.php:72
 msgid "once = one time only / repeat = repeatable (default repeat)"
 msgstr ""
 
@@ -2928,20 +3218,23 @@ msgid "Price / discount amount"
 msgstr ""
 
 #: src/Modules/MixMatch/Fields.php:90
-msgid "Fixed total: the total price for the group of N items (pick 3 for $299 → enter 299). Percentage: 0–100 (pick 5 at 25% off → enter 25)."
+msgid ""
+"Fixed total: the total price for the group of N items (pick 3 for $299 → "
+"enter 299). Percentage: 0–100 (pick 5 at 25% off → enter 25)."
 msgstr ""
 
 #: src/Modules/MixMatch/Fields.php:107
 msgid "Repeatable (apply again for every N items)"
 msgstr ""
 
-#: src/Modules/MixMatch/Fields.php:130
-#: src/Modules/NthItem/Fields.php:142
+#: src/Modules/MixMatch/Fields.php:130 src/Modules/NthItem/Fields.php:142
 msgid "Add-more prompt message"
 msgstr ""
 
 #: src/Modules/MixMatch/Fields.php:132
-msgid "You can use {mixmatch_qty} {coupon_code}. Leave empty to use the default message."
+msgid ""
+"You can use {mixmatch_qty} {coupon_code}. Leave empty to use the default "
+"message."
 msgstr ""
 
 #. translators: %d: required item count N.
@@ -2983,11 +3276,12 @@ msgid "Create a Mix & Match coupon %1$s: %2$s %3$s"
 msgstr ""
 
 #: src/Modules/MixMatch/Module.php:32
-msgid "Pick N for $X / N items at Y% off: pick and combine specific products for a special price, repeatable"
+msgid ""
+"Pick N for $X / N items at Y% off: pick and combine specific products for a "
+"special price, repeatable"
 msgstr ""
 
-#: src/Modules/MyAccount/Endpoint.php:38
-#: src/Modules/MyAccount/Endpoint.php:43
+#: src/Modules/MyAccount/Endpoint.php:38 src/Modules/MyAccount/Endpoint.php:43
 msgid "My coupons"
 msgstr ""
 
@@ -3000,16 +3294,19 @@ msgid "You currently have no exclusive coupons."
 msgstr ""
 
 #: src/Modules/MyAccount/Endpoint.php:78
-msgid "Here are the coupons exclusive to you; you can copy the code or apply it in one click:"
+msgid ""
+"Here are the coupons exclusive to you; you can copy the code or apply it in "
+"one click:"
 msgstr ""
 
-#: src/Modules/MyAccount/Module.php:26
-#: src/Settings/SettingsScreen.php:199
+#: src/Modules/MyAccount/Module.php:26 src/Settings/SettingsScreen.php:199
 msgid "My Account coupons"
 msgstr ""
 
 #: src/Modules/MyAccount/Module.php:34
-msgid "Show customer-exclusive coupons in WooCommerce \"My Account\", with copy or one-click apply"
+msgid ""
+"Show customer-exclusive coupons in WooCommerce \"My Account\", with copy or "
+"one-click apply"
 msgstr ""
 
 #: src/Modules/NthItem/Ability.php:29
@@ -3017,7 +3314,12 @@ msgid "Create an Nth-item discount coupon"
 msgstr ""
 
 #: src/Modules/NthItem/Ability.php:30
-msgid "Create an \"Nth-item discount\" coupon: for the same set of products (or the whole site), every N items qualifies the Nth item for free / percentage / fixed discount per item, once or repeatable. Example: second item 40% off → n=2, reward_mode=percent, reward_value=40. Destructive — the call only \"proposes\"; it is created only after the user confirms."
+msgid ""
+"Create an \"Nth-item discount\" coupon: for the same set of products (or the"
+" whole site), every N items qualifies the Nth item for free / percentage / "
+"fixed discount per item, once or repeatable. Example: second item 40% off → "
+"n=2, reward_mode=percent, reward_value=40. Destructive — the call only "
+"\"proposes\"; it is created only after the user confirms."
 msgstr ""
 
 #: src/Modules/NthItem/Ability.php:37
@@ -3033,19 +3335,27 @@ msgid "Applicable product category term IDs"
 msgstr ""
 
 #: src/Modules/NthItem/Ability.php:52
-msgid "cart: combine the whole cart / product: count each product separately (default cart)"
+msgid ""
+"cart: combine the whole cart / product: count each product separately "
+"(default cart)"
 msgstr ""
 
 #: src/Modules/NthItem/Ability.php:57
-msgid "Discount one item per how many items, N (at least 2; enter 2 to discount the second item)"
+msgid ""
+"Discount one item per how many items, N (at least 2; enter 2 to discount the"
+" second item)"
 msgstr ""
 
 #: src/Modules/NthItem/Ability.php:62
-msgid "Discount type: free / percent: discount percentage / fixed_per_item: fixed amount per item"
+msgid ""
+"Discount type: free / percent: discount percentage / fixed_per_item: fixed "
+"amount per item"
 msgstr ""
 
 #: src/Modules/NthItem/Ability.php:67
-msgid "Discount amount; percent is the discount % (40% off = 40), fixed_per_item is an amount, leave empty for free"
+msgid ""
+"Discount amount; percent is the discount % (40% off = 40), fixed_per_item is"
+" an amount, leave empty for free"
 msgstr ""
 
 #: src/Modules/NthItem/Ability.php:80
@@ -3077,7 +3387,9 @@ msgid "Example: discount the second item → enter 2."
 msgstr ""
 
 #: src/Modules/NthItem/Fields.php:102
-msgid "Percentage is the \"discount %\": second item 40% off → enter 40 (40% off, pay 60%). Fixed per item: amount. Leave empty for free."
+msgid ""
+"Percentage is the \"discount %\": second item 40% off → enter 40 (40% off, "
+"pay 60%). Fixed per item: amount. Leave empty for free."
 msgstr ""
 
 #: src/Modules/NthItem/Fields.php:119
@@ -3085,7 +3397,8 @@ msgid "Repeatable (discount one item for every N items)"
 msgstr ""
 
 #: src/Modules/NthItem/Fields.php:144
-msgid "You can use {nth_n} {coupon_code}. Leave empty to use the default message."
+msgid ""
+"You can use {nth_n} {coupon_code}. Leave empty to use the default message."
 msgstr ""
 
 #. translators: %d: required item count N.
@@ -3095,7 +3408,9 @@ msgid "Buy %d items to enjoy the Nth-item discount."
 msgstr ""
 
 #: src/Modules/NthItem/Module.php:32
-msgid "Second item 40% off / Nth-item discount: for the same set of products, every N items qualifies the Nth item for a discount, repeatable"
+msgid ""
+"Second item 40% off / Nth-item discount: for the same set of products, every"
+" N items qualifies the Nth item for a discount, repeatable"
 msgstr ""
 
 #. translators: %s: coupon code.
@@ -3111,16 +3426,19 @@ msgstr ""
 #. translators: 1: code, 2: N, 3: reward desc, 4: repeat note.
 #: src/Modules/NthItem/NthItemOps.php:130
 #, php-format
-msgid "Create an Nth-item discount coupon %1$s: for every %2$d items, the Nth item %3$s %4$s"
+msgid ""
+"Create an Nth-item discount coupon %1$s: for every %2$d items, the Nth item "
+"%3$s %4$s"
 msgstr ""
 
-#: src/Modules/Nudge/Module.php:22
-#: src/Settings/SettingsScreen.php:197
+#: src/Modules/Nudge/Module.php:22 src/Settings/SettingsScreen.php:197
 msgid "Free-shipping threshold hint"
 msgstr ""
 
 #: src/Modules/Nudge/Module.php:30
-msgid "Show \"Spend NT$X more for free shipping\" in the cart / checkout to boost order value"
+msgid ""
+"Show \"Spend NT$X more for free shipping\" in the cart / checkout to boost "
+"order value"
 msgstr ""
 
 #. translators: %s: remaining amount.
@@ -3134,7 +3452,10 @@ msgid "Get remarketing settings"
 msgstr ""
 
 #: src/Modules/Remarketing/Ability.php:31
-msgid "Read the current \"automatically issue a coupon after order completion\" settings: template coupon, issuance conditions, amount threshold, validity days, and whether to send an email. Read-only."
+msgid ""
+"Read the current \"automatically issue a coupon after order completion\" "
+"settings: template coupon, issuance conditions, amount threshold, validity "
+"days, and whether to send an email. Read-only."
 msgstr ""
 
 #: src/Modules/Remarketing/Ability.php:54
@@ -3142,7 +3463,11 @@ msgid "Set remarketing rules"
 msgstr ""
 
 #: src/Modules/Remarketing/Ability.php:55
-msgid "Set \"automatically issue a coupon after order completion\": template coupon code, issuance conditions (all / first_order / min_total), amount threshold, validity days, and whether to send an email. Validates that the template coupon exists."
+msgid ""
+"Set \"automatically issue a coupon after order completion\": template coupon"
+" code, issuance conditions (all / first_order / min_total), amount "
+"threshold, validity days, and whether to send an email. Validates that the "
+"template coupon exists."
 msgstr ""
 
 #: src/Modules/Remarketing/Ability.php:62
@@ -3153,8 +3478,7 @@ msgstr ""
 msgid "Template coupon code (will be copied into a customer-exclusive coupon)"
 msgstr ""
 
-#: src/Modules/Remarketing/Ability.php:71
-#: src/Settings/SettingsScreen.php:219
+#: src/Modules/Remarketing/Ability.php:71 src/Settings/SettingsScreen.php:219
 msgid "Issuance conditions"
 msgstr ""
 
@@ -3166,8 +3490,7 @@ msgstr ""
 msgid "Win-back coupon validity in days (0 = use template expiry)"
 msgstr ""
 
-#: src/Modules/Remarketing/Ability.php:83
-#: src/Settings/SettingsScreen.php:241
+#: src/Modules/Remarketing/Ability.php:83 src/Settings/SettingsScreen.php:241
 msgid "Also notify the customer by email"
 msgstr ""
 
@@ -3184,11 +3507,16 @@ msgid "Auto-issue a coupon after order completion (remarketing)"
 msgstr ""
 
 #: src/Modules/Remarketing/Module.php:32
-msgid "After an order is completed, copy the specified template coupon into a customer-specific coupon based on conditions, automatically added to My Account and optionally emailed"
+msgid ""
+"After an order is completed, copy the specified template coupon into a "
+"customer-specific coupon based on conditions, automatically added to My "
+"Account and optionally emailed"
 msgstr ""
 
 #: src/Modules/Remarketing/Runtime.php:79
-msgid "Thank you for your order! Here is a coupon you can use on your next purchase."
+msgid ""
+"Thank you for your order! Here is a coupon you can use on your next "
+"purchase."
 msgstr ""
 
 #: src/Modules/Reports/Module.php:31
@@ -3196,7 +3524,9 @@ msgid "Orders used and total discount per coupon (separate admin page)"
 msgstr ""
 
 #: src/Modules/Reports/ReportsPage.php:42
-msgid "Track orders used and total discount per coupon based on paid orders (cached hourly)."
+msgid ""
+"Track orders used and total discount per coupon based on paid orders (cached"
+" hourly)."
 msgstr ""
 
 #: src/Modules/Reports/ReportsPage.php:63
@@ -3206,7 +3536,9 @@ msgstr ""
 #. translators: 1: number of coupons, 2: total orders, 3: total discount.
 #: src/Modules/Reports/ReportsPage.php:66
 #, php-format
-msgid "A total of %1$s coupon(s) used, %2$s order(s), with %3$s in cumulative discount."
+msgid ""
+"A total of %1$s coupon(s) used, %2$s order(s), with %3$s in cumulative "
+"discount."
 msgstr ""
 
 #: src/Modules/Reports/ReportsPage.php:81
@@ -3286,7 +3618,9 @@ msgid "Checkout savings hint"
 msgstr ""
 
 #: src/Modules/Savings/Module.php:32
-msgid "Show a \"You saved a total of NT$X\" summary in the cart and checkout to reinforce the sense of savings"
+msgid ""
+"Show a \"You saved a total of NT$X\" summary in the cart and checkout to "
+"reinforce the sense of savings"
 msgstr ""
 
 #: src/Modules/ShippingOverride/Fields.php:37
@@ -3296,7 +3630,10 @@ msgid "Shipping override"
 msgstr ""
 
 #: src/Modules/ShippingOverride/Fields.php:52
-msgid "Overrides the shipping cost of all shipping methods when this coupon is applied. Different from WooCommerce's native \"Allow free shipping\" (which only enables dedicated free-shipping methods)."
+msgid ""
+"Overrides the shipping cost of all shipping methods when this coupon is "
+"applied. Different from WooCommerce's native \"Allow free shipping\" (which "
+"only enables dedicated free-shipping methods)."
 msgstr ""
 
 #: src/Modules/ShippingOverride/Fields.php:57
@@ -3316,22 +3653,28 @@ msgid "Shipping fixed discount"
 msgstr ""
 
 #: src/Modules/ShippingOverride/Fields.php:72
-msgid "Percentage: 0–100; Fixed: discount amount. Not required when \"Free shipping\" or \"No override\" is selected."
+msgid ""
+"Percentage: 0–100; Fixed: discount amount. Not required when \"Free "
+"shipping\" or \"No override\" is selected."
 msgstr ""
 
 #: src/Modules/ShippingOverride/Module.php:33
-msgid "Free or discounted shipping when the coupon is applied (percentage or fixed amount)"
+msgid ""
+"Free or discounted shipping when the coupon is applied (percentage or fixed "
+"amount)"
 msgstr ""
 
 #: src/Modules/StackingControl/Fields.php:35
 #: src/Modules/StackingControl/Module.php:26
-#: src/Modules/Templates/Catalog.php:1080
-#: src/Settings/SettingsScreen.php:142
+#: src/Modules/Templates/Catalog.php:1080 src/Settings/SettingsScreen.php:142
 msgid "Stacking control"
 msgstr ""
 
 #: src/Modules/StackingControl/Fields.php:55
-msgid "When checked, this coupon cannot be applied if the cart already has other coupons (and vice versa); the \"Allow combining\" list below is the exception."
+msgid ""
+"When checked, this coupon cannot be applied if the cart already has other "
+"coupons (and vice versa); the \"Allow combining\" list below is the "
+"exception."
 msgstr ""
 
 #: src/Modules/StackingControl/Fields.php:62
@@ -3339,7 +3682,10 @@ msgid "Allowed combinable coupon codes"
 msgstr ""
 
 #: src/Modules/StackingControl/Fields.php:64
-msgid "Only effective when \"Cannot be combined\" above is checked: coupon codes in the list can still be used together with this coupon. Separate with commas or line breaks."
+msgid ""
+"Only effective when \"Cannot be combined\" above is checked: coupon codes in"
+" the list can still be used together with this coupon. Separate with commas "
+"or line breaks."
 msgstr ""
 
 #: src/Modules/StackingControl/Fields.php:71
@@ -3347,7 +3693,10 @@ msgid "Disallowed combinable coupon codes"
 msgstr ""
 
 #: src/Modules/StackingControl/Fields.php:73
-msgid "These coupon codes cannot be used together with this coupon (regardless of whether \"Cannot be combined\" is checked). Separate with commas or line breaks."
+msgid ""
+"These coupon codes cannot be used together with this coupon (regardless of "
+"whether \"Cannot be combined\" is checked). Separate with commas or line "
+"breaks."
 msgstr ""
 
 #: src/Modules/StackingControl/Fields.php:80
@@ -3355,7 +3704,9 @@ msgid "Message shown on conflict"
 msgstr ""
 
 #: src/Modules/StackingControl/Module.php:34
-msgid "Mutually exclusive coupons, allowed / disallowed combinable coupon code lists"
+msgid ""
+"Mutually exclusive coupons, allowed / disallowed combinable coupon code "
+"lists"
 msgstr ""
 
 #. translators: %s: the conflicting coupon code.
@@ -3364,13 +3715,13 @@ msgstr ""
 msgid "This coupon cannot be used together with \"%s\"."
 msgstr ""
 
-#: src/Modules/Summary/Module.php:23
-#: src/Settings/SettingsScreen.php:187
+#: src/Modules/Summary/Module.php:23 src/Settings/SettingsScreen.php:187
 msgid "Live summary on the edit page"
 msgstr ""
 
 #: src/Modules/Summary/Module.php:31
-msgid "Show a live effect summary and conflict warnings while editing the coupon"
+msgid ""
+"Show a live effect summary and conflict warnings while editing the coupon"
 msgstr ""
 
 #: src/Modules/Summary/Panel.php:27
@@ -3378,15 +3729,16 @@ msgid "Coupon summary"
 msgstr ""
 
 #: src/Modules/Summary/Panel.php:37
-msgid "While editing the fields, this shows a live effect summary and conflict warnings for this coupon."
+msgid ""
+"While editing the fields, this shows a live effect summary and conflict "
+"warnings for this coupon."
 msgstr ""
 
 #: src/Modules/Summary/Panel.php:73
 msgid "Day and time window"
 msgstr ""
 
-#: src/Modules/Summary/Panel.php:79
-#: src/Modules/Templates/Catalog.php:1078
+#: src/Modules/Summary/Panel.php:79 src/Modules/Templates/Catalog.php:1078
 msgid "Free gift"
 msgstr ""
 
@@ -3394,23 +3746,22 @@ msgstr ""
 msgid "Cannot be stacked"
 msgstr ""
 
-#: src/Modules/Summary/Panel.php:81
-#: src/Modules/Templates/Catalog.php:1079
+#: src/Modules/Summary/Panel.php:81 src/Modules/Templates/Catalog.php:1079
 msgid "URL coupon"
 msgstr ""
 
-#: src/Modules/Summary/Panel.php:99
-#: src/Support/DiscountTypeRegistry.php:36
+#: src/Modules/Summary/Panel.php:99 src/Support/DiscountTypeRegistry.php:36
 msgid "Fixed cart discount"
 msgstr ""
 
-#: src/Modules/Summary/Panel.php:100
-#: src/Support/DiscountTypeRegistry.php:41
+#: src/Modules/Summary/Panel.php:100 src/Support/DiscountTypeRegistry.php:41
 msgid "Fixed product discount"
 msgstr ""
 
 #: src/Modules/Summary/Panel.php:103
-msgid "Apply cashback based on the \"Cashback\" tab settings after the order is paid"
+msgid ""
+"Apply cashback based on the \"Cashback\" tab settings after the order is "
+"paid"
 msgstr ""
 
 #: src/Modules/Summary/Panel.php:105
@@ -3452,19 +3803,22 @@ msgid "Please set the trigger and reward on the \"Buy X Get Y\" tab"
 msgstr ""
 
 #: src/Modules/Summary/Panel.php:118
-msgid "Tiered discount only applies to \"Percentage discount\"; the current discount type does not match."
+msgid ""
+"Tiered discount only applies to \"Percentage discount\"; the current "
+"discount type does not match."
 msgstr ""
 
 #: src/Modules/Summary/Panel.php:119
-msgid "The cart minimum amount is greater than the maximum amount, so this coupon will never be usable."
+msgid ""
+"The cart minimum amount is greater than the maximum amount, so this coupon "
+"will never be usable."
 msgstr ""
 
 #: src/Modules/Summary/Panel.php:121
 msgid "(Not set yet)"
 msgstr ""
 
-#: src/Modules/TabIcons/Module.php:23
-#: src/Settings/SettingsScreen.php:183
+#: src/Modules/TabIcons/Module.php:23 src/Settings/SettingsScreen.php:183
 msgid "Coupon settings icon"
 msgstr ""
 
@@ -3525,7 +3879,9 @@ msgid "10% off first purchase for new customers"
 msgstr ""
 
 #: src/Modules/Templates/Catalog.php:54
-msgid "New customers get 10% off their first order (limited to one use per customer)."
+msgid ""
+"New customers get 10% off their first order (limited to one use per "
+"customer)."
 msgstr ""
 
 #: src/Modules/Templates/Catalog.php:62
@@ -3537,7 +3893,9 @@ msgid "$150 off $600 for new customers"
 msgstr ""
 
 #: src/Modules/Templates/Catalog.php:73
-msgid "New customers get $150 off orders over $600 to encourage first-purchase basket building (one use per person)."
+msgid ""
+"New customers get $150 off orders over $600 to encourage first-purchase "
+"basket building (one use per person)."
 msgstr ""
 
 #: src/Modules/Templates/Catalog.php:81
@@ -3549,7 +3907,9 @@ msgid "Claim a coupon via a dedicated link"
 msgstr ""
 
 #: src/Modules/Templates/Catalog.php:93
-msgid "Automatically apply a coupon via a URL, ideal for EDM / social traffic (after applying, set the link alias on the \"URL coupon\" tab)."
+msgid ""
+"Automatically apply a coupon via a URL, ideal for EDM / social traffic "
+"(after applying, set the link alias on the \"URL coupon\" tab)."
 msgstr ""
 
 #: src/Modules/Templates/Catalog.php:100
@@ -3564,8 +3924,7 @@ msgstr ""
 msgid "Get $100 off when the cart reaches $1000."
 msgstr ""
 
-#: src/Modules/Templates/Catalog.php:119
-#: src/Modules/Templates/Catalog.php:153
+#: src/Modules/Templates/Catalog.php:119 src/Modules/Templates/Catalog.php:153
 msgid "Threshold discount"
 msgstr ""
 
@@ -3618,7 +3977,9 @@ msgid "Free shipping over $800"
 msgstr ""
 
 #: src/Modules/Templates/Catalog.php:199
-msgid "Free shipping only when the cart reaches $800, balancing shipping cost and basket building."
+msgid ""
+"Free shipping only when the cart reaches $800, balancing shipping cost and "
+"basket building."
 msgstr ""
 
 #: src/Modules/Templates/Catalog.php:206
@@ -3654,7 +4015,9 @@ msgid "20% off weekends only"
 msgstr ""
 
 #: src/Modules/Templates/Catalog.php:252
-msgid "A 20% off coupon usable only on Saturdays and Sundays (based on the store time zone)."
+msgid ""
+"A 20% off coupon usable only on Saturdays and Sundays (based on the store "
+"time zone)."
 msgstr ""
 
 #: src/Modules/Templates/Catalog.php:259
@@ -3678,7 +4041,9 @@ msgid "25% off limited time"
 msgstr ""
 
 #: src/Modules/Templates/Catalog.php:290
-msgid "Short-term limited-time promotion (after applying, set the start and end times on the \"Schedule\" tab to automatically go live and expire)."
+msgid ""
+"Short-term limited-time promotion (after applying, set the start and end "
+"times on the \"Schedule\" tab to automatically go live and expire)."
 msgstr ""
 
 #: src/Modules/Templates/Catalog.php:297
@@ -3690,7 +4055,9 @@ msgid "20% off Black Friday"
 msgstr ""
 
 #: src/Modules/Templates/Catalog.php:309
-msgid "A 20% off Black Friday big-sale coupon (set an expiry date when creating it to make it a limited-time coupon)."
+msgid ""
+"A 20% off Black Friday big-sale coupon (set an expiry date when creating it "
+"to make it a limited-time coupon)."
 msgstr ""
 
 #: src/Modules/Templates/Catalog.php:316
@@ -3762,7 +4129,9 @@ msgid "Free shipping for Christmas"
 msgstr ""
 
 #: src/Modules/Templates/Catalog.php:399
-msgid "Store-wide free-shipping coupon for the Christmas season (via shipping override)."
+msgid ""
+"Store-wide free-shipping coupon for the Christmas season (via shipping "
+"override)."
 msgstr ""
 
 #: src/Modules/Templates/Catalog.php:406
@@ -3841,8 +4210,7 @@ msgstr ""
 msgid "Mid-Autumn Festival deal"
 msgstr ""
 
-#: src/Modules/Templates/Catalog.php:505
-#: src/Modules/Templates/Catalog.php:513
+#: src/Modules/Templates/Catalog.php:505 src/Modules/Templates/Catalog.php:513
 msgid "Double 11 free shipping"
 msgstr ""
 
@@ -3855,7 +4223,9 @@ msgid "20% off for the 618 Mid-Year Sale"
 msgstr ""
 
 #: src/Modules/Templates/Catalog.php:524
-msgid "20% off coupon for the 618 Mid-Year shopping festival, the most important discount battle of the first half of the year."
+msgid ""
+"20% off coupon for the 618 Mid-Year shopping festival, the most important "
+"discount battle of the first half of the year."
 msgstr ""
 
 #: src/Modules/Templates/Catalog.php:531
@@ -3867,7 +4237,9 @@ msgid "12% off for Women's Day (3.8)"
 msgstr ""
 
 #: src/Modules/Templates/Catalog.php:539
-msgid "12% off coupon for the 3.8 Queen's Day, focused on beauty, skincare and self-pampering."
+msgid ""
+"12% off coupon for the 3.8 Queen's Day, focused on beauty, skincare and "
+"self-pampering."
 msgstr ""
 
 #: src/Modules/Templates/Catalog.php:546
@@ -3891,7 +4263,9 @@ msgid "100 off for Children's Day"
 msgstr ""
 
 #: src/Modules/Templates/Catalog.php:569
-msgid "100 off directly for the Children's Day family season, focused on baby and parent-child products."
+msgid ""
+"100 off directly for the Children's Day family season, focused on baby and "
+"parent-child products."
 msgstr ""
 
 #: src/Modules/Templates/Catalog.php:576
@@ -3903,7 +4277,9 @@ msgid "10% off for the Dragon Boat Festival"
 msgstr ""
 
 #: src/Modules/Templates/Catalog.php:584
-msgid "10% off coupon for the Dragon Boat Festival season, rice-dumpling gift boxes and summer-cooling products."
+msgid ""
+"10% off coupon for the Dragon Boat Festival season, rice-dumpling gift boxes"
+" and summer-cooling products."
 msgstr ""
 
 #: src/Modules/Templates/Catalog.php:591
@@ -3939,47 +4315,53 @@ msgid "10% off for the back-to-school season"
 msgstr ""
 
 #: src/Modules/Templates/Catalog.php:629
-msgid "10% off coupon for the back-to-school season, stationery, electronics and daily essentials."
+msgid ""
+"10% off coupon for the back-to-school season, stationery, electronics and "
+"daily essentials."
 msgstr ""
 
 #: src/Modules/Templates/Catalog.php:636
 msgid "Back-to-school season deal"
 msgstr ""
 
-#: src/Modules/Templates/Catalog.php:645
-#: src/Modules/Templates/Catalog.php:653
+#: src/Modules/Templates/Catalog.php:645 src/Modules/Templates/Catalog.php:653
 msgid "Buy two get one free"
 msgstr ""
 
 #: src/Modules/Templates/Catalog.php:646
-msgid "Buy 2 specific items, get 1 free (after applying, set the specific products on the \"Buy X Get Y\" tab)."
+msgid ""
+"Buy 2 specific items, get 1 free (after applying, set the specific products "
+"on the \"Buy X Get Y\" tab)."
 msgstr ""
 
-#: src/Modules/Templates/Catalog.php:666
-#: src/Modules/Templates/Catalog.php:674
+#: src/Modules/Templates/Catalog.php:666 src/Modules/Templates/Catalog.php:674
 msgid "Second item half price"
 msgstr ""
 
 #: src/Modules/Templates/Catalog.php:667
-msgid "Buy 1 item, get the second at half price (after applying, set the specific products on the \"Buy X Get Y\" tab)."
+msgid ""
+"Buy 1 item, get the second at half price (after applying, set the specific "
+"products on the \"Buy X Get Y\" tab)."
 msgstr ""
 
-#: src/Modules/Templates/Catalog.php:688
-#: src/Modules/Templates/Catalog.php:696
+#: src/Modules/Templates/Catalog.php:688 src/Modules/Templates/Catalog.php:696
 msgid "Cheapest item free for every 3"
 msgstr ""
 
 #: src/Modules/Templates/Catalog.php:689
-msgid "For every 3 items in the cart, the cheapest one is free (after applying, set the specific products / categories on the \"Nth-item discount\" tab)."
+msgid ""
+"For every 3 items in the cart, the cheapest one is free (after applying, set"
+" the specific products / categories on the \"Nth-item discount\" tab)."
 msgstr ""
 
-#: src/Modules/Templates/Catalog.php:709
-#: src/Modules/Templates/Catalog.php:717
+#: src/Modules/Templates/Catalog.php:709 src/Modules/Templates/Catalog.php:717
 msgid "30% off the third item for every 3"
 msgstr ""
 
 #: src/Modules/Templates/Catalog.php:710
-msgid "For every 3 items in the cart, get 30% off the cheapest one (after applying, set the specific products / categories on the \"Nth-item discount\" tab)."
+msgid ""
+"For every 3 items in the cart, get 30% off the cheapest one (after applying,"
+" set the specific products / categories on the \"Nth-item discount\" tab)."
 msgstr ""
 
 #: src/Modules/Templates/Catalog.php:731
@@ -3987,7 +4369,9 @@ msgid "Free gift on orders over 1500"
 msgstr ""
 
 #: src/Modules/Templates/Catalog.php:732
-msgid "Automatically add a free gift on cart orders over 1500 (after applying, set the gift on the \"Free gift\" tab)."
+msgid ""
+"Automatically add a free gift on cart orders over 1500 (after applying, set "
+"the gift on the \"Free gift\" tab)."
 msgstr ""
 
 #: src/Modules/Templates/Catalog.php:739
@@ -4011,7 +4395,8 @@ msgid "Win-back gift 12% off"
 msgstr ""
 
 #: src/Modules/Templates/Catalog.php:773
-msgid "12% off to reward returning customers who have completed at least 1 order."
+msgid ""
+"12% off to reward returning customers who have completed at least 1 order."
 msgstr ""
 
 #: src/Modules/Templates/Catalog.php:780
@@ -4023,20 +4408,22 @@ msgid "High-spend member 20% off"
 msgstr ""
 
 #: src/Modules/Templates/Catalog.php:791
-msgid "20% off to reward high-value customers whose cumulative spend reaches 10000."
+msgid ""
+"20% off to reward high-value customers whose cumulative spend reaches 10000."
 msgstr ""
 
 #: src/Modules/Templates/Catalog.php:798
 msgid "High-spend member deal"
 msgstr ""
 
-#: src/Modules/Templates/Catalog.php:809
-#: src/Modules/Templates/Catalog.php:817
+#: src/Modules/Templates/Catalog.php:809 src/Modules/Templates/Catalog.php:817
 msgid "Tiered discount by cumulative spend"
 msgstr ""
 
 #: src/Modules/Templates/Catalog.php:810
-msgid "A single coupon tiered by cart amount: 10% off over 1000, 15% off over 2000, 20% off over 3000, automatically taking the highest tier."
+msgid ""
+"A single coupon tiered by cart amount: 10% off over 1000, 15% off over 2000,"
+" 20% off over 3000, automatically taking the highest tier."
 msgstr ""
 
 #: src/Modules/Templates/Catalog.php:828
@@ -4044,7 +4431,9 @@ msgid "Advanced rules: over 600 and 2 items get 80 off"
 msgstr ""
 
 #: src/Modules/Templates/Catalog.php:829
-msgid "Demo advanced-rules AND combination: cart over 600 \"and\" at least 2 items to get 80 off. You can expand further on the \"Advanced rules\" tab."
+msgid ""
+"Demo advanced-rules AND combination: cart over 600 \"and\" at least 2 items "
+"to get 80 off. You can expand further on the \"Advanced rules\" tab."
 msgstr ""
 
 #: src/Modules/Templates/Catalog.php:836
@@ -4056,7 +4445,10 @@ msgid "Return-visit gift for no purchase in the last 30 days"
 msgstr ""
 
 #: src/Modules/Templates/Catalog.php:847
-msgid "Returning customers whose last order was more than 30 days ago get 100 off, to win back dormant customers (logged-in members only; guests have no purchase history)."
+msgid ""
+"Returning customers whose last order was more than 30 days ago get 100 off, "
+"to win back dormant customers (logged-in members only; guests have no "
+"purchase history)."
 msgstr ""
 
 #: src/Modules/Templates/Catalog.php:854
@@ -4068,7 +4460,9 @@ msgid "Free shipping to the main island (Taiwan only)"
 msgstr ""
 
 #: src/Modules/Templates/Catalog.php:865
-msgid "Free shipping only when the shipping address is in Taiwan; not applicable overseas."
+msgid ""
+"Free shipping only when the shipping address is in Taiwan; not applicable "
+"overseas."
 msgstr ""
 
 #: src/Modules/Templates/Catalog.php:872
@@ -4080,7 +4474,10 @@ msgid "Free shipping on weight over 5kg"
 msgstr ""
 
 #: src/Modules/Templates/Catalog.php:885
-msgid "Free shipping when the total cart weight reaches 5 kg, suitable for heavy goods such as food / pet food (after applying, adjust the threshold to the actual product weight)."
+msgid ""
+"Free shipping when the total cart weight reaches 5 kg, suitable for heavy "
+"goods such as food / pet food (after applying, adjust the threshold to the "
+"actual product weight)."
 msgstr ""
 
 #: src/Modules/Templates/Catalog.php:892
@@ -4092,7 +4489,9 @@ msgid "15% off store-wide (up to 500)"
 msgstr ""
 
 #: src/Modules/Templates/Catalog.php:904
-msgid "15% off store-wide, but with a maximum discount of 500 per order, protecting margins on high-value orders."
+msgid ""
+"15% off store-wide, but with a maximum discount of 500 per order, protecting"
+" margins on high-value orders."
 msgstr ""
 
 #: src/Modules/Templates/Catalog.php:911
@@ -4104,7 +4503,10 @@ msgid "Auto-apply 5% off store-wide"
 msgstr ""
 
 #: src/Modules/Templates/Catalog.php:921
-msgid "5% off store-wide automatically added when the customer enters the cart, no code required (after applying, set the campaign start and end on the Schedule tab to avoid a permanent discount)."
+msgid ""
+"5% off store-wide automatically added when the customer enters the cart, no "
+"code required (after applying, set the campaign start and end on the "
+"Schedule tab to avoid a permanent discount)."
 msgstr ""
 
 #: src/Modules/Templates/Catalog.php:928
@@ -4116,7 +4518,9 @@ msgid "VIP non-stackable 20% off"
 msgstr ""
 
 #: src/Modules/Templates/Catalog.php:939
-msgid "20% off for members only (customer role), and cannot be combined with other coupons."
+msgid ""
+"20% off for members only (customer role), and cannot be combined with other "
+"coupons."
 msgstr ""
 
 #: src/Modules/Templates/Catalog.php:946
@@ -4128,20 +4532,25 @@ msgid "50 off for a specific payment method"
 msgstr ""
 
 #: src/Modules/Templates/Catalog.php:959
-msgid "50 off coupon valid only for a specific payment method (after applying, choose the payment method to restrict on the \"Payment method\" tab, e.g. LINE Pay / JKOPAY)."
+msgid ""
+"50 off coupon valid only for a specific payment method (after applying, "
+"choose the payment method to restrict on the \"Payment method\" tab, e.g. "
+"LINE Pay / JKOPAY)."
 msgstr ""
 
 #: src/Modules/Templates/Catalog.php:966
 msgid "Payment-method discount"
 msgstr ""
 
-#: src/Modules/Templates/Catalog.php:976
-#: src/Modules/Templates/Catalog.php:984
+#: src/Modules/Templates/Catalog.php:976 src/Modules/Templates/Catalog.php:984
 msgid "Required-category discount"
 msgstr ""
 
 #: src/Modules/Templates/Catalog.php:977
-msgid "85% off only when the cart contains products from a specified category, suitable for cross-selling / bundle promotions (after applying, choose the required category on the \"Product conditions\" tab)."
+msgid ""
+"85% off only when the cart contains products from a specified category, "
+"suitable for cross-selling / bundle promotions (after applying, choose the "
+"required category on the \"Product conditions\" tab)."
 msgstr ""
 
 #: src/Modules/Templates/Catalog.php:993
@@ -4150,7 +4559,9 @@ msgid "Buy 3 get 1 free in specific categories"
 msgstr ""
 
 #: src/Modules/Templates/Catalog.php:994
-msgid "Buy 3, get 1 free in a specific category (once, no repeated stacking; after applying, set the category on the \"Buy X Get Y\" tab)."
+msgid ""
+"Buy 3, get 1 free in a specific category (once, no repeated stacking; after "
+"applying, set the category on the \"Buy X Get Y\" tab)."
 msgstr ""
 
 #: src/Modules/Templates/Catalog.php:1014
@@ -4158,15 +4569,16 @@ msgid "Birthday gift 12% off"
 msgstr ""
 
 #: src/Modules/Templates/Catalog.php:1015
-msgid "12% off coupon exclusive to the birthday person's birthday month, limited to one use per person (after applying, send it to the birthday person)."
+msgid ""
+"12% off coupon exclusive to the birthday person's birthday month, limited to"
+" one use per person (after applying, send it to the birthday person)."
 msgstr ""
 
 #: src/Modules/Templates/Catalog.php:1023
 msgid "Birthday gift deal"
 msgstr ""
 
-#: src/Modules/Templates/Catalog.php:1073
-#: src/Settings/SettingsScreen.php:133
+#: src/Modules/Templates/Catalog.php:1073 src/Settings/SettingsScreen.php:133
 msgid "Coupon conditions"
 msgstr ""
 
@@ -4179,7 +4591,10 @@ msgid "Ready-made coupon templates, create a draft coupon in one click"
 msgstr ""
 
 #: src/Modules/Templates/TemplatePage.php:64
-msgid "Pick a template to quickly create a coupon. Click \"Apply\" to first fine-tune the code, discount amount and expiry date, then create a draft coupon in one click."
+msgid ""
+"Pick a template to quickly create a coupon. Click \"Apply\" to first fine-"
+"tune the code, discount amount and expiry date, then create a draft coupon "
+"in one click."
 msgstr ""
 
 #: src/Modules/Templates/TemplatePage.php:73
@@ -4252,7 +4667,9 @@ msgid "Enable coupon URL"
 msgstr ""
 
 #: src/Modules/UrlCoupons/Fields.php:56
-msgid "Generate a dedicated URL / QR code that customers can click or scan to automatically apply this coupon to the cart."
+msgid ""
+"Generate a dedicated URL / QR code that customers can click or scan to "
+"automatically apply this coupon to the cart."
 msgstr ""
 
 #: src/Modules/UrlCoupons/Fields.php:63
@@ -4260,7 +4677,8 @@ msgid "Custom URL slug"
 msgstr ""
 
 #: src/Modules/UrlCoupons/Fields.php:65
-msgid "Optional. Leave blank to use the coupon code. Must be unique per coupon."
+msgid ""
+"Optional. Leave blank to use the coupon code. Must be unique per coupon."
 msgstr ""
 
 #: src/Modules/UrlCoupons/Fields.php:72
@@ -4268,7 +4686,9 @@ msgid "Redirect URL after applying"
 msgstr ""
 
 #: src/Modules/UrlCoupons/Fields.php:74
-msgid "Optional. You can use the variables {coupon_code} {coupon_applied} {coupon_error}. Leave blank to redirect to the cart."
+msgid ""
+"Optional. You can use the variables {coupon_code} {coupon_applied} "
+"{coupon_error}. Leave blank to redirect to the cart."
 msgstr ""
 
 #: src/Modules/UrlCoupons/Fields.php:81
@@ -4280,7 +4700,9 @@ msgid "Return to the source page after applying"
 msgstr ""
 
 #: src/Modules/UrlCoupons/Fields.php:89
-msgid "When checked, the customer is returned to the page they were originally on after the coupon is applied (ideal for buttons placed in posts / banners)."
+msgid ""
+"When checked, the customer is returned to the page they were originally on "
+"after the coupon is applied (ideal for buttons placed in posts / banners)."
 msgstr ""
 
 #: src/Modules/UrlCoupons/Fields.php:96
@@ -4320,15 +4742,21 @@ msgid "Get coupon share link / QR"
 msgstr ""
 
 #: src/Modules/UrlCoupons/ShareAbility.php:31
-msgid "Get the \"auto-apply\" share URL and QR code link for a coupon (customers apply the coupon automatically by clicking or scanning). If the coupon has not enabled the URL feature, it returns enabled=false with a hint. Read-only."
+msgid ""
+"Get the \"auto-apply\" share URL and QR code link for a coupon (customers "
+"apply the coupon automatically by clicking or scanning). If the coupon has "
+"not enabled the URL feature, it returns enabled=false with a hint. Read-"
+"only."
 msgstr ""
 
 #: src/Modules/UrlCoupons/ShareService.php:76
-msgid "This coupon has not enabled URL apply yet. Check the \"Enable\" box on the coupon's \"Coupon URL\" tab, or turn on \"Apply via URL query string\" in the settings."
+msgid ""
+"This coupon has not enabled URL apply yet. Check the \"Enable\" box on the "
+"coupon's \"Coupon URL\" tab, or turn on \"Apply via URL query string\" in "
+"the settings."
 msgstr ""
 
-#: src/Modules/UrlCoupons/ShareService.php:89
-#: src/Support/Qr/QrEncoder.php:92
+#: src/Modules/UrlCoupons/ShareService.php:89 src/Support/Qr/QrEncoder.php:92
 msgid "QR content cannot be empty."
 msgstr ""
 
@@ -4336,8 +4764,7 @@ msgstr ""
 msgid "This coupon is invalid or unavailable."
 msgstr ""
 
-#: src/Plugin.php:80
-#: src/Settings/SettingsScreen.php:97
+#: src/Plugin.php:80 src/Settings/SettingsScreen.php:97
 #: src/Modules/Frontend/blocks/coupon-cards/index.js:26
 msgid "Settings"
 msgstr ""
@@ -4358,13 +4785,11 @@ msgstr ""
 msgid "AI and openness"
 msgstr ""
 
-#: src/Settings/SettingsScreen.php:78
-#: src/Settings/SettingsScreen.php:192
+#: src/Settings/SettingsScreen.php:78 src/Settings/SettingsScreen.php:192
 msgid "Front-end and shipping"
 msgstr ""
 
-#: src/Settings/SettingsScreen.php:79
-#: src/Settings/SettingsScreen.php:204
+#: src/Settings/SettingsScreen.php:79 src/Settings/SettingsScreen.php:204
 msgid "Remarketing / win-back coupon"
 msgstr ""
 
@@ -4373,16 +4798,19 @@ msgid "Feature settings"
 msgstr ""
 
 #: src/Settings/SettingsScreen.php:98
-msgid "Choose the coupon features you want to enable. Click a section heading to collapse it, so you can focus on the settings you need."
+msgid ""
+"Choose the coupon features you want to enable. Click a section heading to "
+"collapse it, so you can focus on the settings you need."
 msgstr ""
 
-#: src/Settings/SettingsScreen.php:104
-#: src/Settings/SettingsScreen.php:105
+#: src/Settings/SettingsScreen.php:104 src/Settings/SettingsScreen.php:105
 msgid "Front-end and marketing"
 msgstr ""
 
 #: src/Settings/SettingsScreen.php:106
-msgid "Display coupons on the front end, send them to customers, and automatically issue win-back coupons after an order is completed."
+msgid ""
+"Display coupons on the front end, send them to customers, and automatically "
+"issue win-back coupons after an order is completed."
 msgstr ""
 
 #: src/Settings/SettingsScreen.php:130
@@ -4390,23 +4818,36 @@ msgid "Core discount features"
 msgstr ""
 
 #: src/Settings/SettingsScreen.php:131
-msgid "The coupon's discount mechanics and checkout validation. Each is disabled by default; enable only what you need."
+msgid ""
+"The coupon's discount mechanics and checkout validation. Each is disabled by"
+" default; enable only what you need."
 msgstr ""
 
 #: src/Settings/SettingsScreen.php:133
-msgid "Add conditions to the coupon edit page such as schedule, role restrictions, minimum cart total, products / categories, shipping region, payment method, and day / time slots, and check them automatically at checkout."
+msgid ""
+"Add conditions to the coupon edit page such as schedule, role restrictions, "
+"minimum cart total, products / categories, shipping region, payment method, "
+"and day / time slots, and check them automatically at checkout."
 msgstr ""
 
 #: src/Settings/SettingsScreen.php:134
-msgid "An advanced rule builder that freely combines conditions with groups and AND/OR (subtotal / item count / products / categories / region / payment / role / weekday / time), gatekeeping beyond individual conditions."
+msgid ""
+"An advanced rule builder that freely combines conditions with groups and "
+"AND/OR (subtotal / item count / products / categories / region / payment / "
+"role / weekday / time), gatekeeping beyond individual conditions."
 msgstr ""
 
 #: src/Settings/SettingsScreen.php:135
-msgid "Set a maximum discount amount for percentage-discount coupons (e.g. 20% off, but at most 500)."
+msgid ""
+"Set a maximum discount amount for percentage-discount coupons (e.g. 20% off,"
+" but at most 500)."
 msgstr ""
 
 #: src/Settings/SettingsScreen.php:136
-msgid "Give the same percentage coupon different discounts based on cart thresholds (subtotal / item count) (e.g. 10% off below 1000, 20% off at 1000 or more); can be limited to specific products / categories."
+msgid ""
+"Give the same percentage coupon different discounts based on cart thresholds"
+" (subtotal / item count) (e.g. 10% off below 1000, 20% off at 1000 or more);"
+" can be limited to specific products / categories."
 msgstr ""
 
 #: src/Settings/SettingsScreen.php:137
@@ -4414,31 +4855,52 @@ msgid "Shipping discount / free shipping"
 msgstr ""
 
 #: src/Settings/SettingsScreen.php:137
-msgid "Adjust shipping when the coupon is applied: free shipping, a shipping discount, or a fixed amount off (this replaces the shipping cost of all original shipping methods)."
+msgid ""
+"Adjust shipping when the coupon is applied: free shipping, a shipping "
+"discount, or a fixed amount off (this replaces the shipping cost of all "
+"original shipping methods)."
 msgstr ""
 
 #: src/Settings/SettingsScreen.php:138
-msgid "Automatically add a specified gift to the cart when the coupon is applied (free or discounted); customers cannot change the quantity or remove it."
+msgid ""
+"Automatically add a specified gift to the cart when the coupon is applied "
+"(free or discounted); customers cannot change the quantity or remove it."
 msgstr ""
 
 #: src/Settings/SettingsScreen.php:139
-msgid "Add a \"Buy X Get Y\" discount type: buy a set quantity of specified products / categories to get the gift free / discounted. Can be created with natural language."
+msgid ""
+"Add a \"Buy X Get Y\" discount type: buy a set quantity of specified "
+"products / categories to get the gift free / discounted. Can be created with"
+" natural language."
 msgstr ""
 
 #: src/Settings/SettingsScreen.php:140
-msgid "Add an \"Nth-item discount\" type: for the same group of products (or the whole store), every N items qualifies the Nth item for free / percentage / fixed-per-item discount (e.g. 40% off the second item), repeatable. Can be created with natural language."
+msgid ""
+"Add an \"Nth-item discount\" type: for the same group of products (or the "
+"whole store), every N items qualifies the Nth item for free / percentage / "
+"fixed-per-item discount (e.g. 40% off the second item), repeatable. Can be "
+"created with natural language."
 msgstr ""
 
 #: src/Settings/SettingsScreen.php:141
-msgid "Add a \"Mix & Match\" discount type: for a specified group of products (or the whole store), pick any N items settled at a fixed group total or a group percentage discount (e.g. any 3 for $299), repeatable. Can be created with natural language."
+msgid ""
+"Add a \"Mix & Match\" discount type: for a specified group of products (or "
+"the whole store), pick any N items settled at a fixed group total or a group"
+" percentage discount (e.g. any 3 for $299), repeatable. Can be created with "
+"natural language."
 msgstr ""
 
 #: src/Settings/SettingsScreen.php:142
-msgid "Control whether the coupon can be combined with other coupons: mutually exclusive coupons, allow / deny lists of coupon codes, checked automatically at checkout."
+msgid ""
+"Control whether the coupon can be combined with other coupons: mutually "
+"exclusive coupons, allow / deny lists of coupon codes, checked automatically"
+" at checkout."
 msgstr ""
 
 #: src/Settings/SettingsScreen.php:143
-msgid "Coupons with \"Auto-apply\" checked are added automatically once the customer's cart meets the conditions, with no code to enter."
+msgid ""
+"Coupons with \"Auto-apply\" checked are added automatically once the "
+"customer's cart meets the conditions, with no code to enter."
 msgstr ""
 
 #: src/Settings/SettingsScreen.php:148
@@ -4446,7 +4908,9 @@ msgid "URL / QR apply"
 msgstr ""
 
 #: src/Settings/SettingsScreen.php:149
-msgid "Let customers apply coupons with one tap using a dedicated link, QR, or query string."
+msgid ""
+"Let customers apply coupons with one tap using a dedicated link, QR, or "
+"query string."
 msgstr ""
 
 #: src/Settings/SettingsScreen.php:151
@@ -4454,7 +4918,9 @@ msgid "Coupon URL / QR"
 msgstr ""
 
 #: src/Settings/SettingsScreen.php:151
-msgid "Generate a dedicated link /coupon/code and a server-side QR code for the coupon; customers apply it automatically by clicking or scanning."
+msgid ""
+"Generate a dedicated link /coupon/code and a server-side QR code for the "
+"coupon; customers apply it automatically by clicking or scanning."
 msgstr ""
 
 #: src/Settings/SettingsScreen.php:157
@@ -4462,7 +4928,9 @@ msgid "Coupon URL path"
 msgstr ""
 
 #: src/Settings/SettingsScreen.php:158
-msgid "The leading path segment of the dedicated link, e.g. coupon → /coupon/code. Permalinks are refreshed after a change."
+msgid ""
+"The leading path segment of the dedicated link, e.g. coupon → /coupon/code. "
+"Permalinks are refreshed after a change."
 msgstr ""
 
 #: src/Settings/SettingsScreen.php:160
@@ -4470,7 +4938,9 @@ msgid "Allow apply via query string"
 msgstr ""
 
 #: src/Settings/SettingsScreen.php:160
-msgid "Allow appending ?coupon=code to any page URL to apply the coupon. Disabled by default."
+msgid ""
+"Allow appending ?coupon=code to any page URL to apply the coupon. Disabled "
+"by default."
 msgstr ""
 
 #: src/Settings/SettingsScreen.php:165
@@ -4498,7 +4968,9 @@ msgid "Admin interface and display"
 msgstr ""
 
 #: src/Settings/SettingsScreen.php:178
-msgid "Layout and display of the admin menu, templates, reports, and the coupon edit page."
+msgid ""
+"Layout and display of the admin menu, templates, reports, and the coupon "
+"edit page."
 msgstr ""
 
 #: src/Settings/SettingsScreen.php:180
@@ -4506,19 +4978,30 @@ msgid "Standalone coupon management menu"
 msgstr ""
 
 #: src/Settings/SettingsScreen.php:180
-msgid "Move coupon management into a standalone top-level menu \"Moksa Coupon\" (All coupons / Add / Reports / Settings), no longer buried under WooCommerce."
+msgid ""
+"Move coupon management into a standalone top-level menu \"Moksa Coupon\" "
+"(All coupons / Add / Reports / Settings), no longer buried under "
+"WooCommerce."
 msgstr ""
 
 #: src/Settings/SettingsScreen.php:181
-msgid "Add a \"Coupon templates\" page offering ready-made coupon templates (new-customer first purchase / spend-threshold discount / free shipping / buy two get one…) to create draft coupons in one click."
+msgid ""
+"Add a \"Coupon templates\" page offering ready-made coupon templates (new-"
+"customer first purchase / spend-threshold discount / free shipping / buy two"
+" get one…) to create draft coupons in one click."
 msgstr ""
 
 #: src/Settings/SettingsScreen.php:182
-msgid "Track each coupon's orders used and total discount (embedded in the dashboard when the standalone menu is enabled)."
+msgid ""
+"Track each coupon's orders used and total discount (embedded in the "
+"dashboard when the standalone menu is enabled)."
 msgstr ""
 
 #: src/Settings/SettingsScreen.php:183
-msgid "Add uniform single-color icons to each settings section of the coupon edit page (schedule / role / cart / shipping…), suitable for both the tabbed and centralized panel layouts."
+msgid ""
+"Add uniform single-color icons to each settings section of the coupon edit "
+"page (schedule / role / cart / shipping…), suitable for both the tabbed and "
+"centralized panel layouts."
 msgstr ""
 
 #: src/Settings/SettingsScreen.php:184
@@ -4526,7 +5009,10 @@ msgid "Standalone settings panel"
 msgstr ""
 
 #: src/Settings/SettingsScreen.php:184
-msgid "Consolidate the coupon's settings sections (conditions / BOGO / gift / shipping / stacking / URL / front end) into a single WooCommerce-native tabbed settings panel."
+msgid ""
+"Consolidate the coupon's settings sections (conditions / BOGO / gift / "
+"shipping / stacking / URL / front end) into a single WooCommerce-native "
+"tabbed settings panel."
 msgstr ""
 
 #: src/Settings/SettingsScreen.php:185
@@ -4534,7 +5020,9 @@ msgid "Coupon list tools"
 msgstr ""
 
 #: src/Settings/SettingsScreen.php:185
-msgid "Add management tools to the coupon list such as an enable / disable status column, batch enable/disable, and one-click copy."
+msgid ""
+"Add management tools to the coupon list such as an enable / disable status "
+"column, batch enable/disable, and one-click copy."
 msgstr ""
 
 #: src/Settings/SettingsScreen.php:186
@@ -4542,19 +5030,26 @@ msgid "Import / Export (CSV)"
 msgstr ""
 
 #: src/Settings/SettingsScreen.php:186
-msgid "Import / export coupons via CSV (including tiers, advanced rules JSON, and campaigns), for easy backup, auditing, and batch editing."
+msgid ""
+"Import / export coupons via CSV (including tiers, advanced rules JSON, and "
+"campaigns), for easy backup, auditing, and batch editing."
 msgstr ""
 
 #: src/Settings/SettingsScreen.php:187
-msgid "Show a live summary panel on the coupon edit page: discount mechanics, enabled features, and conflict warnings, updating in real time as you type."
+msgid ""
+"Show a live summary panel on the coupon edit page: discount mechanics, "
+"enabled features, and conflict warnings, updating in real time as you type."
 msgstr ""
 
 #: src/Settings/SettingsScreen.php:193
-msgid "Display available coupons on the front end, or send coupons to customers."
+msgid ""
+"Display available coupons on the front end, or send coupons to customers."
 msgstr ""
 
 #: src/Settings/SettingsScreen.php:195
-msgid "Provide a [moksafocou_coupons] shortcode that displays the available coupons the merchant selected as cards on the front end (with copy and apply)."
+msgid ""
+"Provide a [moksafocou_coupons] shortcode that displays the available coupons"
+" the merchant selected as cards on the front end (with copy and apply)."
 msgstr ""
 
 #: src/Settings/SettingsScreen.php:196
@@ -4562,23 +5057,37 @@ msgid "Cart savings hint"
 msgstr ""
 
 #: src/Settings/SettingsScreen.php:196
-msgid "Show a \"You saved a total of NT$X\" hint in the cart / checkout to reinforce the sense of the discount."
+msgid ""
+"Show a \"You saved a total of NT$X\" hint in the cart / checkout to "
+"reinforce the sense of the discount."
 msgstr ""
 
 #: src/Settings/SettingsScreen.php:197
-msgid "Show \"Spend NT$X more for free shipping\" in the cart / checkout to drive up order value (reads the store's configured free-shipping threshold)."
+msgid ""
+"Show \"Spend NT$X more for free shipping\" in the cart / checkout to drive "
+"up order value (reads the store's configured free-shipping threshold)."
 msgstr ""
 
 #: src/Settings/SettingsScreen.php:198
-msgid "Add a \"Send coupon\" ability: send a coupon to a customer's email using natural language, and optionally lock it to that email only."
+msgid ""
+"Add a \"Send coupon\" ability: send a coupon to a customer's email using "
+"natural language, and optionally lock it to that email only."
 msgstr ""
 
 #: src/Settings/SettingsScreen.php:199
-msgid "Add a \"My coupons\" tab under WooCommerce \"My Account\" that lists the dedicated coupons issued to that customer (bound to their account or email), which can be copied or applied in one click."
+msgid ""
+"Add a \"My coupons\" tab under WooCommerce \"My Account\" that lists the "
+"dedicated coupons issued to that customer (bound to their account or email),"
+" which can be copied or applied in one click."
 msgstr ""
 
 #: src/Settings/SettingsScreen.php:205
-msgid "After an order is completed, automatically copy a \"template coupon\" into a customer-specific coupon (reusing the template's discount and all conditions), place it in the customer's My Account, and optionally send it out to encourage repeat purchases. You must also enable \"My Account coupons\" above for it to be visible."
+msgid ""
+"After an order is completed, automatically copy a \"template coupon\" into a"
+" customer-specific coupon (reusing the template's discount and all "
+"conditions), place it in the customer's My Account, and optionally send it "
+"out to encourage repeat purchases. You must also enable \"My Account "
+"coupons\" above for it to be visible."
 msgstr ""
 
 #: src/Settings/SettingsScreen.php:207
@@ -4586,7 +5095,9 @@ msgid "Enable automatic coupon issuance after an order is completed"
 msgstr ""
 
 #: src/Settings/SettingsScreen.php:207
-msgid "When an order's status changes to \"Completed\", issue a win-back coupon according to the settings below."
+msgid ""
+"When an order's status changes to \"Completed\", issue a win-back coupon "
+"according to the settings below."
 msgstr ""
 
 #: src/Settings/SettingsScreen.php:212
@@ -4594,7 +5105,11 @@ msgid "Template coupon code"
 msgstr ""
 
 #: src/Settings/SettingsScreen.php:213
-msgid "First create a normal coupon as the \"template\" (any coupon type / conditions), and enter its code here. The system copies it into a customer-specific unique coupon after the order is completed. We recommend setting the template to \"Limit to one use per customer\"."
+msgid ""
+"First create a normal coupon as the \"template\" (any coupon type / "
+"conditions), and enter its code here. The system copies it into a customer-"
+"specific unique coupon after the order is completed. We recommend setting "
+"the template to \"Limit to one use per customer\"."
 msgstr ""
 
 #: src/Settings/SettingsScreen.php:220
@@ -4618,7 +5133,9 @@ msgid "Order amount threshold"
 msgstr ""
 
 #: src/Settings/SettingsScreen.php:232
-msgid "Takes effect when the issuance condition is \"reaches a threshold\": the order total must be ≥ this amount."
+msgid ""
+"Takes effect when the issuance condition is \"reaches a threshold\": the "
+"order total must be ≥ this amount."
 msgstr ""
 
 #: src/Settings/SettingsScreen.php:238
@@ -4626,15 +5143,21 @@ msgid "Win-back coupon validity days"
 msgstr ""
 
 #: src/Settings/SettingsScreen.php:239
-msgid "How many days it is valid after being issued (counted from the moment of issuance). Enter 0 = use the template's own expiry settings."
+msgid ""
+"How many days it is valid after being issued (counted from the moment of "
+"issuance). Enter 0 = use the template's own expiry settings."
 msgstr ""
 
 #: src/Settings/SettingsScreen.php:241
-msgid "When the coupon is issued, also send the customer an email containing the code and a one-click apply link (requires working site email settings)."
+msgid ""
+"When the coupon is issued, also send the customer an email containing the "
+"code and a one-click apply link (requires working site email settings)."
 msgstr ""
 
 #: src/Settings/SettingsScreen.php:242
-msgid "Check customers' dedicated coupons automatically every day, and email a reminder when they are about to expire, encouraging use before the deadline."
+msgid ""
+"Check customers' dedicated coupons automatically every day, and email a "
+"reminder when they are about to expire, encouraging use before the deadline."
 msgstr ""
 
 #: src/Settings/SettingsScreen.php:247
@@ -4642,7 +5165,9 @@ msgid "Days before expiry to remind"
 msgstr ""
 
 #: src/Settings/SettingsScreen.php:248
-msgid "Send the reminder a number of days before the coupon's expiry date (1–60, default 3)."
+msgid ""
+"Send the reminder a number of days before the coupon's expiry date (1–60, "
+"default 3)."
 msgstr ""
 
 #: src/Settings/SettingsScreen.php:254
@@ -4650,7 +5175,10 @@ msgid "AI and external openness (MCP)"
 msgstr ""
 
 #: src/Settings/SettingsScreen.php:255
-msgid "Create / query coupons with natural language in the admin, and optionally open them up to external AI tools. All disabled by default; enable when needed."
+msgid ""
+"Create / query coupons with natural language in the admin, and optionally "
+"open them up to external AI tools. All disabled by default; enable when "
+"needed."
 msgstr ""
 
 #: src/Settings/SettingsScreen.php:257
@@ -4658,7 +5186,9 @@ msgid "AI coupon assistant"
 msgstr ""
 
 #: src/Settings/SettingsScreen.php:257
-msgid "Create / query coupons with natural language in the admin (requires the AI Client of WordPress 7.0+ and a configured Connector)."
+msgid ""
+"Create / query coupons with natural language in the admin (requires the AI "
+"Client of WordPress 7.0+ and a configured Connector)."
 msgstr ""
 
 #: src/Settings/SettingsScreen.php:258
@@ -4666,7 +5196,8 @@ msgid "External MCP server"
 msgstr ""
 
 #: src/Settings/SettingsScreen.php:258
-msgid "Open up coupon capabilities to external AI tools (MCP). Disabled by default."
+msgid ""
+"Open up coupon capabilities to external AI tools (MCP). Disabled by default."
 msgstr ""
 
 #: src/Settings/SettingsScreen.php:259
@@ -4674,7 +5205,9 @@ msgid "Allow external MCP to make changes"
 msgstr ""
 
 #: src/Settings/SettingsScreen.php:259
-msgid "Allow destructive capabilities (create / update / delete coupons) to be exposed to external MCP. Disabled by default (read-only)."
+msgid ""
+"Allow destructive capabilities (create / update / delete coupons) to be "
+"exposed to external MCP. Disabled by default (read-only)."
 msgstr ""
 
 #: src/Settings/SettingsScreen.php:312
@@ -4685,10 +5218,13 @@ msgstr ""
 msgid "Save settings"
 msgstr ""
 
-#. translators: 1: enabled module name, 2: comma-separated names of the modules it needs.
+#. translators: 1: enabled module name, 2: comma-separated names of the
+#. modules it needs.
 #: src/Settings/SettingsScreen.php:375
 #, php-format
-msgid "\"%1$s\" is enabled; we recommend also enabling \"%2$s\", otherwise some features will not take effect."
+msgid ""
+"\"%1$s\" is enabled; we recommend also enabling \"%2$s\", otherwise some "
+"features will not take effect."
 msgstr ""
 
 #: src/Support/DiscountTypeRegistry.php:37
@@ -4707,13 +5243,14 @@ msgstr ""
 msgid "Could not generate a unique coupon code."
 msgstr ""
 
-#: src/Support/Qr/QrEncoder.php:95
-#: src/Support/Qr/QrEncoder.php:100
+#: src/Support/Qr/QrEncoder.php:95 src/Support/Qr/QrEncoder.php:100
 msgid "QR content is too long to generate."
 msgstr ""
 
 #: src/Support/SpecialPriceTypes.php:66
-msgid "Only one special-discount coupon (Buy X Get Y / Nth-item discount / Mix & Match) can be used at a time."
+msgid ""
+"Only one special-discount coupon (Buy X Get Y / Nth-item discount / Mix & "
+"Match) can be used at a time."
 msgstr ""
 
 #: src/Modules/Frontend/blocks/coupon-cards/index.js:28
@@ -4731,7 +5268,9 @@ msgstr ""
 
 #: src/Modules/Frontend/blocks/coupon-cards/block.json
 msgctxt "block description"
-msgid "Show the currently available coupon cards (same as the [moksafocou_coupons] shortcode)."
+msgid ""
+"Show the currently available coupon cards (same as the [moksafocou_coupons] "
+"shortcode)."
 msgstr ""
 
 #: src/Modules/Frontend/blocks/coupon-cards/block.json
@@ -4747,4 +5286,148 @@ msgstr ""
 #: src/Modules/Frontend/blocks/coupon-cards/block.json
 msgctxt "block keyword"
 msgid "moksafocou"
+msgstr ""
+
+#: src/Coupon/Meta/CouponSettings.php:434
+msgid ""
+"Numbers and text as they are; lists and objects as JSON text, for example "
+"[12,34] or {\"a\":12,\"b\":3}."
+msgstr ""
+
+#: src/Mcp/Provider.php:110
+msgid "Carried out"
+msgstr ""
+
+#: src/Mcp/Provider.php:111
+msgid "Failed"
+msgstr ""
+
+#: src/Mcp/Provider.php:113
+msgid "Refused: no permission"
+msgstr ""
+
+#: src/Mcp/Provider.php:114
+msgid "Refused: hourly limit reached"
+msgstr ""
+
+#: src/Mcp/Provider.php:115
+msgid "Refused: token expired or already used"
+msgstr ""
+
+#: src/Mcp/Provider.php:116
+msgid "Refused: tool not ticked"
+msgstr ""
+
+#: src/Modules/AiAssistant/Config.php:43
+msgid ""
+"You are the \"coupon assistant\" for a WooCommerce merchant. Common tools: "
+"count-coupons for any \"how many coupons\" question (never answer a count by"
+" counting the rows list-coupons returned — it returns at most 50), list-"
+"coupons to list, get-coupon for details, find-coupon-by-code to check "
+"whether a code is a duplicate, coupon-usage-summary for usage, get-coupon-"
+"report for performance reports (all read-only); create-coupon to create, "
+"update-coupon to update, toggle-coupon to enable or disable, delete-coupon "
+"to delete, bulk-generate-coupons for mass generation, extend-expiry to "
+"extend the expiry date, duplicate-coupon to duplicate, create-tiered-coupon "
+"to create a tiered coupon, apply-template to apply a template (all "
+"destructive). Destructive operations are only \"proposed\"; the system asks "
+"the user to click \"Confirm\" before they take effect, so you do not need to"
+" ask for confirmation again. When creating a coupon: the discount types are "
+"only percent (percentage), fixed_cart (fixed cart amount), and fixed_product"
+" (fixed product amount); the amount for percent is a percentage number and "
+"cannot exceed 100; use YYYY-MM-DD for the expiry date."
+msgstr ""
+
+#: src/Modules/CouponCore/Ability.php:63
+msgid "Count coupons"
+msgstr ""
+
+#: src/Modules/CouponCore/Ability.php:64
+msgid ""
+"How many coupons the store has, broken down by status. Use this for any "
+"\"how many coupons\" question instead of counting rows from list-coupons. "
+"Read-only."
+msgstr ""
+
+#: src/Modules/CouponCore/Ability.php:75
+msgid ""
+"Which figure to emphasise; the response always contains every status. Pass "
+"\"any\" unless the question is about one status."
+msgstr ""
+
+#: src/Modules/CouponCore/Ability.php:103
+msgid ""
+"List coupons, filterable by status (publish = enabled / draft = disabled), "
+"discount type, and keyword. Returns total (how many match the filter in the "
+"whole store) and coupons (a page of at most 50 rows, default 20). Answer "
+"questions about how many there are with total, never with the number of rows"
+" returned. Read-only."
+msgstr ""
+
+#: src/Modules/CouponCore/ToolsAbility.php:141
+msgid "Rule tree as a JSON string"
+msgstr ""
+
+#: src/Settings/SettingsScreen.php:261
+msgid ""
+"Open up coupon capabilities to external AI tools (MCP). Read-only tools "
+"only, unless you tick changes below. Disabled by default."
+msgstr ""
+
+#: src/Settings/SettingsScreen.php:266
+msgid "Changes AI tools may make over MCP"
+msgstr ""
+
+#: src/Settings/SettingsScreen.php:267
+msgid ""
+"None are ticked by default. Each change is first proposed with a summary, "
+"and only carried out when the AI tool confirms it with a one-time token "
+"(valid for 10 minutes, usable once). Each one also needs its own permission "
+"on the account the AI tool signs in with."
+msgstr ""
+
+#: src/Settings/SettingsScreen.php:273
+msgid "Recent changes made over MCP"
+msgstr ""
+
+#: src/Settings/SettingsScreen.php:274
+msgid ""
+"The latest changes AI tools carried out, or tried to, over MCP. Only a "
+"fingerprint of what was sent is kept, never the content."
+msgstr ""
+
+#: src/Settings/SettingsScreen.php:509
+msgid "MCP endpoint:"
+msgstr ""
+
+#: src/Settings/SettingsScreen.php:512
+msgid ""
+"Create the application password for AI tools on a dedicated account with "
+"only the permissions it needs. If your AI tool is set to approve tool calls "
+"automatically, ticking a change here lets the AI confirm it by itself — the "
+"site cannot tell the difference."
+msgstr ""
+
+#: src/Settings/SettingsScreen.php:517
+msgid "No change tools are available (requires WordPress 6.9 or later)."
+msgstr ""
+
+#: src/Settings/SettingsScreen.php:535
+msgid "Nothing yet."
+msgstr ""
+
+#: src/Settings/SettingsScreen.php:539
+msgid "Time"
+msgstr ""
+
+#: src/Settings/SettingsScreen.php:540
+msgid "Account"
+msgstr ""
+
+#: src/Settings/SettingsScreen.php:541
+msgid "Tool"
+msgstr ""
+
+#: src/Settings/SettingsScreen.php:542
+msgid "Result"
 msgstr ""

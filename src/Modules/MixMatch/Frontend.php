@@ -33,8 +33,9 @@ final class Frontend {
 		return 'mixmatch';
 	}
 
-	protected static function priority_filter(): string {
-		return 'moksafocou_mixmatch_priority';
+	/** before_calculate_totals priority for the Mix & Match price engine (filterable). */
+	protected static function priority(): int {
+		return (int) apply_filters( 'moksafocou_mixmatch_priority', 11 );
 	}
 
 	/**

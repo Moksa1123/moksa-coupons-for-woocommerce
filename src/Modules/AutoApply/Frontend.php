@@ -43,6 +43,12 @@ final class Frontend {
 		if ( self::$running || ! $cart instanceof \WC_Cart ) {
 			return;
 		}
+		// WooCommerce is in the middle of changing the coupons (applying an individual-use coupon
+		// removes the others, and a listener recalculates totals while that removal runs). Adding our
+		// coupon back at that moment would undo the removal, so wait for the next recalculation.
+		if ( doing_action( 'woocommerce_removed_coupon' ) ) {
+			return;
+		}
 		if ( ! function_exists( 'wc_coupons_enabled' ) || ! wc_coupons_enabled() ) {
 			return;
 		}
@@ -79,14 +85,19 @@ final class Frontend {
 					continue;
 				}
 				$discounts = new \WC_Discounts( $cart );
-				if ( true === $discounts->is_coupon_valid( $coupon ) ) {
+				if ( true !== $discounts->is_coupon_valid( $coupon ) || ! self::can_join( $cart, $coupon ) ) {
+					continue;
+				}
+				// WooCommerce's own apply path: validates again, adds the success message and fires
+				// woocommerce_applied_coupon for listeners. If it still refuses, drop the error notice
+				// it added — an automatic attempt must not show the customer an error on every page.
+				$errors_before = function_exists( 'wc_get_notices' ) ? wc_get_notices( 'error' ) : array();
+				if ( $cart->apply_coupon( $code ) ) {
 					$applied[] = $code;
 					$ours[]    = $code;
-					$cart->set_applied_coupons( $applied );
-					$coupon->add_coupon_message( \WC_Coupon::WC_COUPON_SUCCESS );
-					// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- deliberately firing WooCommerce's own coupon-applied hook (mirrors WC_Cart::apply_coupon) so listeners react to our auto-applied coupon.
-					do_action( 'woocommerce_applied_coupon', $code );
-					$changed = true;
+					$changed   = true;
+				} else {
+					self::restore_errors( $errors_before );
 				}
 			}
 
@@ -101,6 +112,42 @@ final class Frontend {
 		} finally {
 			self::$running = false;
 		}
+	}
+
+	/**
+	 * Can this coupon join the cart without displacing anything? WooCommerce's individual-use rules:
+	 * an individual-use coupon already in the cart blocks every other coupon, and applying an
+	 * individual-use coupon removes the others. An automatic coupon must never remove a code the
+	 * customer typed, so it is simply not added in either case.
+	 */
+	private static function can_join( \WC_Cart $cart, \WC_Coupon $coupon ): bool {
+		$applied = $cart->get_applied_coupons();
+		if ( $coupon->get_individual_use() && array() !== $applied ) {
+			return false;
+		}
+		foreach ( $applied as $code ) {
+			if ( ( new \WC_Coupon( (string) $code ) )->get_individual_use() ) {
+				return false;
+			}
+		}
+		return true;
+	}
+
+	/**
+	 * Put the error notices back to how they were before a refused automatic apply.
+	 *
+	 * @param array<int,mixed> $errors_before Error notices before the attempt.
+	 */
+	private static function restore_errors( array $errors_before ): void {
+		if ( ! function_exists( 'wc_get_notices' ) || ! function_exists( 'wc_set_notices' ) ) {
+			return;
+		}
+		$all          = wc_get_notices();
+		$all['error'] = $errors_before;
+		if ( array() === $errors_before ) {
+			unset( $all['error'] );
+		}
+		wc_set_notices( $all );
 	}
 
 	/**

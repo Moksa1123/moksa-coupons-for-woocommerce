@@ -33,14 +33,25 @@ final class AbilityMeta {
 
 	/**
 	 * Meta for a write/destructive ability. `show_in_rest` keeps these off the REST ability endpoint,
-	 * and `mcp.public` — the flag the MCP Adapter actually reads, and which wins over the high-level
-	 * `public` whenever it is set — follows this plugin's own "expose destructive over MCP" switch, so
-	 * an external adapter can never offer a destructive tool the shop has not asked for. Every one is
-	 * still gated by its own permission_callback too.
+	 * and `mcp.public` is always false, so the official MCP Adapter never offers a destructive tool
+	 * (SOP §2.2). Over MCP they are reachable only through the shared Moksa MCP endpoint, and only the
+	 * ones the shop owner ticked one by one, as a two-step propose / apply.
 	 *
+	 * `mcp.capability` is the tool's own capability: the shared endpoint re-checks it when the change
+	 * is proposed and again when it is applied, on top of the ability's permission_callback. A write
+	 * without one is never offered over MCP.
+	 *
+	 * @param string $mcp_capability The capability this one tool needs over MCP ('' = not offered).
 	 * @return array<string,mixed>
 	 */
-	public static function write(): array {
+	public static function write( string $mcp_capability = '' ): array {
+		$mcp = array(
+			'public' => false,
+			'type'   => 'tool',
+		);
+		if ( '' !== $mcp_capability ) {
+			$mcp['capability'] = $mcp_capability;
+		}
 		return array(
 			'show_in_rest' => false,
 			'public'       => false,
@@ -49,14 +60,7 @@ final class AbilityMeta {
 				'destructive' => true,
 				'idempotent'  => false,
 			),
-			'mcp'          => array(
-				// The MCP Adapter's rule is `isset( meta.mcp.public ) ? meta.mcp.public : meta.public`,
-				// so this flag — not the high-level `public` — decides whether a third-party adapter
-				// offers the tool. Bound to the shop's own switch: off by default, and when the shop
-				// opts in, our server and any external adapter agree.
-				'public' => 'yes' === get_option( 'moksafocou_mcp_expose_destructive', 'no' ),
-				'type'   => 'tool',
-			),
+			'mcp'          => $mcp,
 		);
 	}
 

@@ -16,7 +16,8 @@ defined( 'ABSPATH' ) || exit;
  * membership / notice wording lives here. A using class supplies its meta constants + these hooks:
  *   - coupon_type():   the coupon TYPE string it owns (e.g. BogoMeta::TYPE)
  *   - css_slug():      cart-markup slug segment ("bogo" / "mixmatch" / "nth")
- *   - priority_filter(): its before_calculate_totals priority filter name
+ *   - priority():      its before_calculate_totals priority (each module applies its own
+ *                      literally-named filter, e.g. moksafocou_bogo_priority)
  *   - apply():         the module-specific price engine (must set self::$price_display / $notices)
  * and two private consts ORDER_META / COUPON_LINE_META (the order + coupon-line meta keys).
  *
@@ -40,8 +41,8 @@ trait SpecialPriceFrontend {
 	/** Cart-markup slug segment used in the hint/summary CSS classes ("bogo" / "mixmatch" / "nth"). */
 	abstract protected static function css_slug(): string;
 
-	/** The apply()-priority filter hook name (e.g. 'moksafocou_bogo_priority'). */
-	abstract protected static function priority_filter(): string;
+	/** The apply() priority on woocommerce_before_calculate_totals (each module's own filter). */
+	abstract protected static function priority(): int;
 
 	/**
 	 * The price engine: read config, lower reward-line prices via set_price, and populate
@@ -52,8 +53,7 @@ trait SpecialPriceFrontend {
 	abstract public static function apply( $cart ): void;
 
 	public static function boot(): void {
-		// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.DynamicHooknameFound -- priority_filter() is an abstract that each concrete module returns a moksafocou_-prefixed hook name from (moksafocou_bogo_priority / _nthitem_ / _mixmatch_).
-		add_action( 'woocommerce_before_calculate_totals', array( self::class, 'apply' ), (int) apply_filters( static::priority_filter(), 11 ) );
+		add_action( 'woocommerce_before_calculate_totals', array( self::class, 'apply' ), static::priority() );
 		add_filter( 'woocommerce_coupon_is_valid', array( self::class, 'is_valid' ), 10, 2 );
 		add_filter( 'woocommerce_cart_totals_coupon_html', array( self::class, 'coupon_html' ), 10, 3 );
 		// set_price savings never appear as a coupon discount line, so feed them into the shared

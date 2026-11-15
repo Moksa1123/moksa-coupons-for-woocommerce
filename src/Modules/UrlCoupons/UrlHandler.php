@@ -5,6 +5,7 @@ declare( strict_types=1 );
 namespace Moksafocou\Modules\UrlCoupons;
 
 use Moksafocou\Coupon\Meta\Keys;
+use Moksafocou\Support\CouponIndex;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -23,6 +24,16 @@ defined( 'ABSPATH' ) || exit;
  */
 final class UrlHandler {
 
+	/** Query-string apply link: ?coupon=CODE. */
+	private const QUERY_VAR = 'coupon';
+
+	/**
+	 * The ?coupon= value taken from the parsed request ('' when absent).
+	 *
+	 * @var string
+	 */
+	private static string $query_code = '';
+
 	/** @var bool Guards the query-string handler against re-entrancy / loops. */
 	private static bool $query_done = false;
 
@@ -34,6 +45,8 @@ final class UrlHandler {
 		add_action( 'template_redirect', array( self::class, 'maybe_apply_pretty' ), 5 );
 
 		if ( ShareService::query_enabled() ) {
+			add_filter( 'query_vars', array( self::class, 'add_query_var' ) );
+			add_action( 'parse_request', array( self::class, 'take_query_var' ) );
 			add_action( 'wp', array( self::class, 'maybe_apply_query_string' ) );
 		}
 
@@ -110,22 +123,14 @@ final class UrlHandler {
 		$id   = $post instanceof \WP_Post ? (int) $post->ID : 0;
 
 		if ( ! $id ) {
-			// Fall back to a slug-override meta lookup (no raw SQL).
-			$found = get_posts(
-				array(
-					'post_type'              => 'shop_coupon',
-					'post_status'            => 'publish',
-					'posts_per_page'         => 1,
-					'no_found_rows'          => true,
-					'update_post_term_cache' => false,
-					// phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_key
-					'meta_key'               => Keys::URL_SLUG,
-					// phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_value
-					'meta_value'             => $slug,
-					'fields'                 => 'ids',
-				)
-			);
-			$id    = ! empty( $found ) ? (int) $found[0] : 0;
+			// Fall back to the slug override, via the coupon index (published coupons only).
+			$id = 0;
+			foreach ( CouponIndex::ids( CouponIndex::name( 'url_slug', strtolower( $slug ) ) ) as $candidate ) {
+				if ( 'publish' === get_post_status( $candidate ) ) {
+					$id = $candidate;
+					break;
+				}
+			}
 		}
 
 		if ( ! $id || 'publish' !== get_post_status( $id ) ) {
@@ -167,6 +172,34 @@ final class UrlHandler {
 
 	/* ---------------- ?coupon=CODE query string ---------------- */
 
+	/**
+	 * Register ?coupon= as a public query var, so WordPress parses it and we read it through
+	 * get_query_var() instead of $_GET.
+	 *
+	 * @param mixed $vars Public query vars.
+	 * @return array<int,string>
+	 */
+	public static function add_query_var( $vars ): array {
+		$vars   = is_array( $vars ) ? $vars : array();
+		$vars[] = self::QUERY_VAR;
+		return $vars;
+	}
+
+	/**
+	 * Take ?coupon= out of the parsed request before the main query runs. Left in, an extra public
+	 * query var makes WordPress treat a static front page request as the blog index, so
+	 * "/?coupon=X" on such a site would show the posts list instead of the home page.
+	 *
+	 * @param \WP $wp The request.
+	 */
+	public static function take_query_var( $wp ): void {
+		if ( ! is_object( $wp ) || ! isset( $wp->query_vars[ self::QUERY_VAR ] ) ) {
+			return;
+		}
+		self::$query_code = sanitize_text_field( (string) $wp->query_vars[ self::QUERY_VAR ] );
+		unset( $wp->query_vars[ self::QUERY_VAR ] );
+	}
+
 	public static function maybe_apply_query_string(): void {
 		if ( self::$query_done || ! self::is_front_get() || ! is_main_query() ) {
 			return;
@@ -175,8 +208,9 @@ final class UrlHandler {
 		if ( is_singular( 'shop_coupon' ) ) {
 			return;
 		}
-		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- public, idempotent apply link to the visitor's own cart; no nonce by design (mirrors a coupon link in an email/banner).
-		$raw = isset( $_GET['coupon'] ) ? sanitize_text_field( wp_unslash( $_GET['coupon'] ) ) : '';
+		// A public, idempotent apply link to the visitor's own cart (like a coupon link in an email
+		// or banner), so it carries no nonce by design. Read from the parsed request (take_query_var).
+		$raw = self::$query_code;
 		if ( '' === $raw ) {
 			return;
 		}

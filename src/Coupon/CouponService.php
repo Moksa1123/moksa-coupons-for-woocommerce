@@ -402,8 +402,17 @@ final class CouponService {
 		// the unfiltered set.
 		$discount_type = isset( $args['discount_type'] ) ? sanitize_text_field( (string) $args['discount_type'] ) : '';
 		if ( '' !== $discount_type ) {
-			$query_args['meta_key']   = 'discount_type'; // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_key
-			$query_args['meta_value'] = $discount_type; // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_value
+			// From the coupon index instead of a meta query. An empty post__in would mean "no
+			// restriction" to WP_Query, so a type with no coupons is answered here directly.
+			$typed = \Moksafocou\Support\CouponIndex::ids( \Moksafocou\Support\CouponIndex::name( 'discount_type', $discount_type ) );
+			if ( array() === $typed ) {
+				return [
+					'count'   => 0,
+					'total'   => 0,
+					'coupons' => [],
+				];
+			}
+			$query_args['post__in'] = $typed;
 		}
 
 		$query   = new \WP_Query( $query_args );

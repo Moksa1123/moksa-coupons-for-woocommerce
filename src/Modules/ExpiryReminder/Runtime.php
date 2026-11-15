@@ -5,6 +5,7 @@ declare( strict_types=1 );
 namespace Moksafocou\Modules\ExpiryReminder;
 
 use Moksafocou\Modules\MyAccount\CouponQuery;
+use Moksafocou\Support\CouponIndex;
 use Moksafocou\Support\CouponPresenter;
 
 defined( 'ABSPATH' ) || exit;
@@ -17,6 +18,9 @@ final class Runtime {
 
 	private const REMINDED_META = '_moksafocou_expiry_reminded';
 
+	/** Reminders sent per daily run at most (the rest go out the next day). */
+	private const MAX_PER_RUN = 200;
+
 	/** How many days ahead to look (clamped to a sane range). */
 	private static function window_days(): int {
 		$days = (int) get_option( 'moksafocou_expiry_days', 3 );
@@ -27,32 +31,24 @@ final class Runtime {
 		$now = time();
 		$end = $now + self::window_days() * DAY_IN_SECONDS;
 
-		$ids = get_posts(
-			array(
-				'post_type'        => 'shop_coupon',
-				'post_status'      => 'publish',
-				// phpcs:ignore WordPress.WP.PostsPerPage.posts_per_page_numberposts -- bounded daily cron; caps the reminder scan, never unbounded.
-				'numberposts'      => 200,
-				'fields'           => 'ids',
-				'orderby'          => 'ID',
-				'order'            => 'ASC',
-				'suppress_filters' => false,
-				// phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query -- daily cron, bounded result set.
-				'meta_query'       => array(
-					'relation' => 'AND',
-					array(
-						'key'     => 'date_expires',
-						'value'   => array( $now, $end ),
-						'compare' => 'BETWEEN',
-						'type'    => 'NUMERIC',
-					),
-					array(
-						'key'     => self::REMINDED_META,
-						'compare' => 'NOT EXISTS',
-					),
-				),
-			)
-		);
+		// Personal coupons (owned by a customer or locked to an email) from the coupon index; the
+		// expiry window and "already reminded" are checked here rather than in a meta query.
+		$ids        = array();
+		$candidates = CouponIndex::ids( 'personal:1' );
+		update_meta_cache( 'post', $candidates ); // One query for every candidate's meta.
+		foreach ( $candidates as $id ) {
+			if ( count( $ids ) >= self::MAX_PER_RUN ) {
+				break;
+			}
+			$expires = (int) get_post_meta( $id, 'date_expires', true );
+			if ( $expires < $now || $expires > $end || 'publish' !== get_post_status( $id ) ) {
+				continue;
+			}
+			if ( '' !== (string) get_post_meta( $id, self::REMINDED_META, true ) ) {
+				continue;
+			}
+			$ids[] = $id;
+		}
 
 		foreach ( array_map( 'intval', (array) $ids ) as $id ) {
 			$coupon  = new \WC_Coupon( $id );

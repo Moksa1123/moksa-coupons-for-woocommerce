@@ -419,7 +419,7 @@ final class ToolsAbility {
 				'output_schema'       => self::summary_output(),
 				'execute_callback'    => [ CouponOps::class, 'create_tiered_prepare' ],
 				'permission_callback' => [ self::class, 'can_write' ],
-				'meta'                => self::write_meta(),
+				'meta'                => self::write_meta( 'publish_shop_coupons' ),
 			]
 		);
 
@@ -457,7 +457,7 @@ final class ToolsAbility {
 				'output_schema'       => self::summary_output(),
 				'execute_callback'    => [ CouponOps::class, 'apply_template_prepare' ],
 				'permission_callback' => [ self::class, 'can_write' ],
-				'meta'                => self::write_meta(),
+				'meta'                => self::write_meta( 'publish_shop_coupons' ),
 			]
 		);
 
@@ -481,7 +481,7 @@ final class ToolsAbility {
 				'output_schema'       => self::summary_output(),
 				'execute_callback'    => [ CouponOps::class, 'restore_prepare' ],
 				'permission_callback' => [ self::class, 'can_write' ],
-				'meta'                => self::write_meta(),
+				'meta'                => self::write_meta( 'delete_shop_coupons' ),
 			]
 		);
 
@@ -506,7 +506,7 @@ final class ToolsAbility {
 				'output_schema'       => self::summary_output(),
 				'execute_callback'    => [ CouponOps::class, 'expire_now_prepare' ],
 				'permission_callback' => [ self::class, 'can_write' ],
-				'meta'                => self::write_meta(),
+				'meta'                => self::write_meta( 'edit_shop_coupons' ),
 			]
 		);
 
@@ -535,7 +535,7 @@ final class ToolsAbility {
 				'output_schema'       => self::summary_output(),
 				'execute_callback'    => [ CouponOps::class, 'bulk_reschedule_prepare' ],
 				'permission_callback' => [ self::class, 'can_write' ],
-				'meta'                => self::write_meta(),
+				'meta'                => self::write_meta( 'edit_shop_coupons' ),
 			]
 		);
 	}
@@ -881,7 +881,7 @@ final class ToolsAbility {
 	}
 
 	/** @return array<string,mixed> */
-	private static function write_meta(): array {
-		return AbilityMeta::write();
+	private static function write_meta( string $mcp_capability ): array {
+		return AbilityMeta::write( $mcp_capability );
 	}
 }

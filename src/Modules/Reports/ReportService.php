@@ -278,22 +278,9 @@ final class ReportService {
 	 */
 	private static function code_campaign_map(): array {
 		$map = array();
-		$ids = get_posts(
-			array(
-				'post_type'   => 'shop_coupon',
-				'post_status' => 'any',
-				'numberposts' => 500,
-				'fields'      => 'ids',
-				// phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query -- admin report, runs behind the hourly cache.
-				'meta_query'  => array(
-					array(
-						'key'     => \Moksafocou\Coupon\Meta\Keys::CAMPAIGN,
-						'value'   => '',
-						'compare' => '!=',
-					),
-				),
-			)
-		);
+		// Coupons that carry a campaign tag, from the coupon index.
+		$ids = \Moksafocou\Support\CouponIndex::ids( 'campaign:1' );
+		update_meta_cache( 'post', $ids );
 		foreach ( array_map( 'intval', (array) $ids ) as $id ) {
 			$code     = (string) get_the_title( $id );
 			$campaign = trim( (string) get_post_meta( $id, \Moksafocou\Coupon\Meta\Keys::CAMPAIGN, true ) );

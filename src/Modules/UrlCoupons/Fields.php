@@ -5,6 +5,7 @@ declare( strict_types=1 );
 namespace Moksafocou\Modules\UrlCoupons;
 
 use Moksafocou\Coupon\Meta\Keys;
+use Moksafocou\Support\CouponIndex;
 use Moksafocou\Admin\FieldsSaveGuard;
 
 defined( 'ABSPATH' ) || exit;
@@ -148,21 +149,8 @@ final class Fields {
 		if ( $by_name instanceof \WP_Post && (int) $by_name->ID !== $self_id ) {
 			return false;
 		}
-		$found = get_posts(
-			array(
-				'post_type'      => 'shop_coupon',
-				'post_status'    => 'any',
-				'posts_per_page' => 2,
-				'no_found_rows'  => true,
-				// phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_key
-				'meta_key'       => Keys::URL_SLUG,
-				// phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_value
-				'meta_value'     => $slug,
-				'fields'         => 'ids',
-			)
-		);
-		// Unique when no coupon OTHER than this one owns the slug. Fetch up to two ids and
-		// drop self in PHP, rather than an exclusionary query param the VIP perf sniff flags.
-		return array() === array_diff( array_map( 'intval', $found ), array( $self_id ) );
+		// Unique when no coupon OTHER than this one owns the slug (the coupon index, any status).
+		$found = CouponIndex::ids( CouponIndex::name( 'url_slug', strtolower( $slug ) ) );
+		return array() === array_diff( $found, array( $self_id ) );
 	}
 }

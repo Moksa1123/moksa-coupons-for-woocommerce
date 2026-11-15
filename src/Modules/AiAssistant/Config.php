@@ -15,7 +15,6 @@ defined( 'ABSPATH' ) || exit;
  */
 final class Config {
 
-	public const CAP  = 'manage_woocommerce';
 	public const NAME = 'Moksa AI';
 
 	/**
@@ -36,13 +35,6 @@ final class Config {
 	 */
 	public static function destructive_handlers(): array {
 		return (array) apply_filters( 'moksafocou_ai_destructive_handlers', [] );
-	}
-
-	/**
-	 * @return array<int,string>
-	 */
-	public static function destructive_abilities(): array {
-		return array_keys( self::destructive_handlers() );
 	}
 
 	public static function system_instruction(): string {

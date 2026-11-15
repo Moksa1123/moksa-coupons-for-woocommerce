@@ -5,6 +5,7 @@ declare( strict_types=1 );
 namespace Moksafocou\Modules\Templates;
 
 use Moksafocou\Plugin;
+use Moksafocou\Support\RedirectNotice;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -47,9 +48,7 @@ final class TemplatePage {
 			return;
 		}
 
-		$notice = isset( $_GET['moksafocou_tpl_error'] ) // phpcs:ignore WordPress.Security.NonceVerification.Recommended
-			? sanitize_text_field( wp_unslash( (string) $_GET['moksafocou_tpl_error'] ) ) // phpcs:ignore WordPress.Security.NonceVerification.Recommended
-			: '';
+		$notice = (string) RedirectNotice::get( 'moksafocou_tpl_error' );
 
 		$all    = Catalog::all();
 		$by_cat = array();
@@ -277,7 +276,7 @@ final class TemplatePage {
 		if ( is_wp_error( $result ) ) {
 			// add_query_arg already URL-encodes the value; do not pre-encode it.
 			wp_safe_redirect(
-				add_query_arg( 'moksafocou_tpl_error', $result->get_error_message(), self::page_url() )
+				RedirectNotice::url( array( 'moksafocou_tpl_error' => $result->get_error_message() ), self::page_url() )
 			);
 			exit;
 		}

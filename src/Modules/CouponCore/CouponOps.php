@@ -537,10 +537,10 @@ final class CouponOps {
 		$basis = \Moksafocou\Support\Tiers::basis( $input['basis'] ?? 'subtotal' );
 
 		$create = [
-			'code'          => (string) ( $input['code'] ?? '' ),
-			'discount_type' => 'percent',
-			'amount'        => 0,
-			'moksa-coupons-for-woocommerce'    => [
+			'code'                          => (string) ( $input['code'] ?? '' ),
+			'discount_type'                 => 'percent',
+			'amount'                        => 0,
+			'moksa-coupons-for-woocommerce' => [
 				'tiers' => [
 					'enabled'           => true,
 					'rows'              => $rows,

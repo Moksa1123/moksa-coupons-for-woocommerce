@@ -2,9 +2,8 @@
 /**
  * Uninstall cleanup for Moksa Coupons for WooCommerce.
  *
- * Removes every plugin option / transient (matched by the moksafocou_ prefix, so new options are
- * covered automatically) and the plugin's own post-meta. Coupons themselves (shop_coupon CPT) are
- * intentionally left untouched — they are user content created via WooCommerce.
+ * Removes every plugin option and the plugin's own post-meta and index terms. Coupons themselves
+ * (shop_coupon CPT) are intentionally left untouched — they are user content created via WooCommerce.
  *
  * @package Moksafocou
  */
@@ -13,20 +12,53 @@ declare( strict_types=1 );
 
 defined( 'WP_UNINSTALL_PLUGIN' ) || exit;
 
-global $wpdb;
+// uninstall.php runs without the plugin's autoloader: load the few classes used here directly.
+foreach ( array( 'Support/OptionRegistry.php', 'Support/PersonalCoupon.php', 'Coupon/Meta/Keys.php', 'Support/Cron.php', 'Support/CouponIndex.php' ) as $moksafocou_file ) {
+	if ( is_readable( __DIR__ . '/src/' . $moksafocou_file ) ) {
+		require_once __DIR__ . '/src/' . $moksafocou_file;
+	}
+}
 
 /*
- * Prefix sweep of every plugin option + its transients. A prepared LIKE on the prefix removes all
- * moksafocou_* options (module toggles, URL/cron/rewrite flags, remarketing config, AI settings…)
- * without an ever-stale hand-maintained list. Direct queries are the correct tool for one-shot
- * uninstall cleanup (no caching applies, and the data is being deleted).
+ * Options: every option this plugin wrote is recorded by Support\OptionRegistry (added_option hook
+ * plus a one-time back-fill), so each is deleted through the options API — WordPress has no API for
+ * deleting by prefix. As a safety net, also sweep the back-fill sources (autoloaded options with
+ * our prefix, and the known autoload-off ones), in case the back-fill never ran on this site.
+ * Transients are not recorded; WordPress deletes expired ones daily.
  */
-$moksafocou_like    = $wpdb->esc_like( 'moksafocou_' ) . '%';
-$moksafocou_t_like  = $wpdb->esc_like( '_transient_moksafocou_' ) . '%';
-$moksafocou_tt_like = $wpdb->esc_like( '_transient_timeout_moksafocou_' ) . '%';
-foreach ( array( $moksafocou_like, $moksafocou_t_like, $moksafocou_tt_like ) as $moksafocou_pattern ) {
-	// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- one-shot uninstall cleanup; options table, prepared LIKE, nothing to cache.
-	$wpdb->query( $wpdb->prepare( "DELETE FROM {$wpdb->options} WHERE option_name LIKE %s", $moksafocou_pattern ) );
+if ( class_exists( \Moksafocou\Support\OptionRegistry::class ) ) {
+	$moksafocou_options = \Moksafocou\Support\OptionRegistry::names();
+	foreach ( array_keys( wp_load_alloptions() ) as $moksafocou_name ) {
+		if ( is_string( $moksafocou_name ) && \Moksafocou\Support\OptionRegistry::ours( $moksafocou_name ) ) {
+			$moksafocou_options[] = $moksafocou_name;
+		}
+	}
+	$moksafocou_options = array_merge( $moksafocou_options, \Moksafocou\Support\OptionRegistry::known_unautoloaded() );
+	foreach ( array_unique( $moksafocou_options ) as $moksafocou_name ) {
+		delete_option( $moksafocou_name );
+	}
+	delete_option( \Moksafocou\Support\OptionRegistry::OPTION );
+}
+
+/*
+ * The shared MCP audit log (lib/moksa-mcp) is site-wide: delete it only when no other plugin still
+ * bundles moksa-mcp (it is the last one going).
+ */
+$moksafocou_mcp_others = glob( WP_PLUGIN_DIR . '/*/lib/moksa-mcp/moksa-mcp.php' );
+$moksafocou_mcp_others = array_filter(
+	is_array( $moksafocou_mcp_others ) ? $moksafocou_mcp_others : array(),
+	static function ( $path ) {
+		return false === strpos( wp_normalize_path( (string) $path ), wp_normalize_path( __DIR__ ) . '/' );
+	}
+);
+if ( array() === $moksafocou_mcp_others ) {
+	delete_option( 'moksa_mcp_audit' );
+	delete_option( 'moksa_mcp_audit_changes' );
+}
+
+// Coupon lookup index (private taxonomy): delete every term through the taxonomy API.
+if ( class_exists( \Moksafocou\Support\CouponIndex::class ) ) {
+	\Moksafocou\Support\CouponIndex::purge();
 }
 
 /*
@@ -44,10 +76,10 @@ if ( is_readable( $moksafocou_keys_file ) ) {
 }
 
 /*
- * Post-meta NOT in Keys::all(): the coupon-owner link (MyAccount) and the order-side stamps for
- * the remarketing + cashback runtimes.
+ * Post-meta NOT in Keys::all(): the coupon-owner link (MyAccount), the order-side stamps for the
+ * remarketing + cashback runtimes, and the expiry-reminder "already sent" stamp.
  */
-foreach ( array( '_moksafocou_owner_user', '_moksafocou_remarketing_issued', '_moksafocou_cashback_awarded' ) as $moksafocou_extra_meta ) {
+foreach ( array( '_moksafocou_owner_user', '_moksafocou_remarketing_issued', '_moksafocou_cashback_awarded', '_moksafocou_expiry_reminded' ) as $moksafocou_extra_meta ) {
 	delete_post_meta_by_key( $moksafocou_extra_meta );
 }
 

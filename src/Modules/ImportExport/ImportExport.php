@@ -6,6 +6,7 @@ namespace Moksafocou\Modules\ImportExport;
 
 use Moksafocou\Coupon\CouponService;
 use Moksafocou\Coupon\Meta\Keys;
+use Moksafocou\Support\RedirectNotice;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -16,6 +17,9 @@ defined( 'ABSPATH' ) || exit;
  * existing ones matched by code. Capability- and nonce-checked on both paths.
  */
 final class ImportExport {
+
+	/** CSV escape character, spelled out (same as PHP's default) so PHP 8.4 does not warn. */
+	private const CSV_ESCAPE = '\\';
 
 	private const CAP          = 'manage_woocommerce';
 	private const SLUG         = 'moksafocou-import-export';
@@ -117,23 +121,21 @@ final class ImportExport {
 		header( 'Content-Type: text/csv; charset=utf-8' );
 		header( 'Content-Disposition: attachment; filename="moksafocou-coupons-' . gmdate( 'Ymd-His' ) . '.csv"' );
 
-		// phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fopen -- streaming CSV to the response, not the filesystem.
-		$out = fopen( 'php://output', 'w' );
-		if ( false === $out ) {
+		// Stream straight to the response body (php://output), not to the filesystem.
+		try {
+			$out = new \SplFileObject( 'php://output', 'w' );
+		} catch ( \RuntimeException $e ) {
 			exit;
 		}
-		// phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fwrite -- UTF-8 BOM to php://output so Excel reads Chinese correctly.
-		fwrite( $out, "\xEF\xBB\xBF" );
-		fputcsv( $out, array_map( array( self::class, 'escape_cell' ), self::columns() ) );
+		$out->fwrite( "\xEF\xBB\xBF" ); // UTF-8 BOM so Excel reads Chinese correctly.
+		$out->fputcsv( array_map( array( self::class, 'escape_cell' ), self::columns() ), ',', '"', self::CSV_ESCAPE );
 		foreach ( self::all_coupon_ids() as $id ) {
 			$coupon = new \WC_Coupon( $id );
 			if ( $coupon->get_id() ) {
-				// phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fputcsv -- writing to php://output.
-				fputcsv( $out, array_map( array( self::class, 'escape_cell' ), self::row( $coupon, $id ) ) );
+				$out->fputcsv( array_map( array( self::class, 'escape_cell' ), self::row( $coupon, $id ) ), ',', '"', self::CSV_ESCAPE );
 			}
 		}
-		// phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fclose -- closing php://output stream.
-		fclose( $out );
+		$out = null; // Close the stream.
 		exit;
 	}
 
@@ -212,7 +214,7 @@ final class ImportExport {
 
 		$tmp = isset( $_FILES['csv']['tmp_name'] ) ? sanitize_text_field( wp_unslash( $_FILES['csv']['tmp_name'] ) ) : '';
 		if ( '' === $tmp || ! is_uploaded_file( $tmp ) ) {
-			wp_safe_redirect( add_query_arg( 'moksafocou_import', 'nofile', $back ) );
+			wp_safe_redirect( RedirectNotice::url( array( 'moksafocou_import' => 'nofile' ), $back ) );
 			exit;
 		}
 
@@ -222,21 +224,21 @@ final class ImportExport {
 		$file_name = isset( $_FILES['csv']['name'] ) ? sanitize_file_name( wp_unslash( (string) $_FILES['csv']['name'] ) ) : '';
 		$file_type = wp_check_filetype_and_ext( $tmp, $file_name );
 		if ( ! in_array( (string) ( $file_type['ext'] ?? '' ), array( 'csv', 'txt' ), true ) ) {
-			wp_safe_redirect( add_query_arg( 'moksafocou_import', 'badtype', $back ) );
+			wp_safe_redirect( RedirectNotice::url( array( 'moksafocou_import' => 'badtype' ), $back ) );
 			exit;
 		}
 
-		// phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fopen -- reading the just-uploaded temp file row by row.
-		$handle = fopen( $tmp, 'r' );
-		if ( false === $handle ) {
-			wp_safe_redirect( add_query_arg( 'moksafocou_import', 'nofile', $back ) );
+		// Read the just-uploaded temp file row by row.
+		try {
+			$file = new \SplFileObject( $tmp, 'r' );
+		} catch ( \RuntimeException $e ) {
+			wp_safe_redirect( RedirectNotice::url( array( 'moksafocou_import' => 'nofile' ), $back ) );
 			exit;
 		}
 
-		$header = fgetcsv( $handle );
-		if ( ! is_array( $header ) ) {
-			fclose( $handle ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fclose
-			wp_safe_redirect( add_query_arg( 'moksafocou_import', 'empty', $back ) );
+		$header = $file->fgetcsv( ',', '"', self::CSV_ESCAPE );
+		if ( ! is_array( $header ) || array( null ) === $header ) {
+			wp_safe_redirect( RedirectNotice::url( array( 'moksafocou_import' => 'empty' ), $back ) );
 			exit;
 		}
 		$header = array_map( static fn( $h ): string => trim( str_replace( "\xEF\xBB\xBF", '', (string) $h ) ), $header );
@@ -244,8 +246,8 @@ final class ImportExport {
 		$created = 0;
 		$updated = 0;
 		$failed  = 0;
-		while ( true ) {
-			$data = fgetcsv( $handle );
+		while ( ! $file->eof() ) {
+			$data = $file->fgetcsv( ',', '"', self::CSV_ESCAPE );
 			if ( false === $data || null === $data ) {
 				break;
 			}
@@ -266,10 +268,10 @@ final class ImportExport {
 				++$failed;
 			}
 		}
-		fclose( $handle ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fclose
+		$file = null; // Close the file.
 
 		wp_safe_redirect(
-			add_query_arg(
+			RedirectNotice::url(
 				array(
 					'moksafocou_import' => 'ok',
 					'c'                 => $created,
@@ -388,15 +390,14 @@ final class ImportExport {
 		if ( ! $screen || false === strpos( (string) $screen->id, self::SLUG ) ) {
 			return;
 		}
-		// phpcs:disable WordPress.Security.NonceVerification.Recommended -- read-only result flags from a redirect.
-		if ( ! isset( $_GET['moksafocou_import'] ) ) {
+		$state = RedirectNotice::get( 'moksafocou_import' );
+		if ( null === $state ) {
 			return;
 		}
-		$state = sanitize_key( wp_unslash( $_GET['moksafocou_import'] ) );
 		if ( 'ok' === $state ) {
-			$created = isset( $_GET['c'] ) ? (int) $_GET['c'] : 0;
-			$updated = isset( $_GET['u'] ) ? (int) $_GET['u'] : 0;
-			$failed  = isset( $_GET['f'] ) ? (int) $_GET['f'] : 0;
+			$created = (int) RedirectNotice::get( 'c' );
+			$updated = (int) RedirectNotice::get( 'u' );
+			$failed  = (int) RedirectNotice::get( 'f' );
 			echo '<div class="notice notice-success is-dismissible"><p>' . esc_html(
 				sprintf(
 					/* translators: 1: created count, 2: updated count, 3: failed count. */
@@ -409,6 +410,5 @@ final class ImportExport {
 		} else {
 			echo '<div class="notice notice-error is-dismissible"><p>' . esc_html__( 'Import failed: please choose a valid CSV file.', 'moksa-coupons-for-woocommerce' ) . '</p></div>';
 		}
-		// phpcs:enable WordPress.Security.NonceVerification.Recommended
 	}
 }

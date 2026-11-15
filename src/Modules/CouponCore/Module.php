@@ -30,8 +30,9 @@ final class Module {
 
 		add_action( 'rest_api_init', [ CouponRest::class, 'register' ] );
 
-		// Self-built MCP server (1:1 tools). Self-gates on the server_enabled option.
-		add_action( 'rest_api_init', [ \Moksafocou\Mcp\Server::class, 'register' ] );
+		// MCP: join the shared Moksa MCP endpoint (lib/moksa-mcp); it serves /moksa/v1/mcp plus our
+		// old /moksafocou/v1/mcp as an alias, and only when the server_enabled option is on.
+		add_filter( 'moksa_mcp_providers', [ \Moksafocou\Mcp\Provider::class, 'register' ] );
 
 		// Register coupon abilities + destructive handlers into the AI assistant
 		// (decoupled — the assistant has no hard dependency on this module).

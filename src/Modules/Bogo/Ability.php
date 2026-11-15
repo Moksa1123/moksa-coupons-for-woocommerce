@@ -12,8 +12,8 @@ defined( 'ABSPATH' ) || exit;
  * Registers the destructive ability moksafocou/create-bogo-coupon so the AI
  * assistant / command palette / MCP can build a 'Buy X Get Y' coupon in one shot. The
  * execute_callback is the propose-only BogoOps::create_prepare; the real write runs
- * via the confirm flow (BogoOps::create_apply). Marked destructive, so the existing
- * MCP gate hides it unless moksafocou_mcp_expose_destructive=yes.
+ * via the confirm flow (BogoOps::create_apply). Marked destructive: over MCP it is
+ * offered only through the shared Moksa MCP endpoint, when the shop owner ticks it.
  */
 final class Ability {
 
@@ -95,7 +95,7 @@ final class Ability {
 				'output_schema'       => AbilityMeta::summary_output(),
 				'execute_callback'    => array( BogoOps::class, 'create_prepare' ),
 				'permission_callback' => array( self::class, 'can_write' ),
-				'meta'                => AbilityMeta::write(),
+				'meta'                => AbilityMeta::write( 'publish_shop_coupons' ),
 			)
 		);
 	}

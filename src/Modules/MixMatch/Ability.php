@@ -12,7 +12,7 @@ defined( 'ABSPATH' ) || exit;
  * Registers the destructive ability moksafocou/create-mixmatch-coupon so the AI assistant /
  * command palette / MCP can build a 'Mix & Match' coupon in one shot. The execute_callback is the
  * propose-only MixMatchOps::create_prepare; the real write runs via the confirm flow. Marked
- * destructive, so the MCP gate hides it unless moksafocou_mcp_expose_destructive=yes.
+ * destructive: over MCP it is offered only through the shared Moksa MCP endpoint, when ticked.
  */
 final class Ability {
 
@@ -86,7 +86,7 @@ final class Ability {
 				'output_schema'       => AbilityMeta::summary_output(),
 				'execute_callback'    => array( MixMatchOps::class, 'create_prepare' ),
 				'permission_callback' => array( self::class, 'can_write' ),
-				'meta'                => AbilityMeta::write(),
+				'meta'                => AbilityMeta::write( 'publish_shop_coupons' ),
 			)
 		);
 	}

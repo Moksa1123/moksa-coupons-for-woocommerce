@@ -47,7 +47,7 @@ final class SettingsScreenTest extends TestCase {
 	public function test_field_types_are_known_and_well_formed(): void {
 		foreach ( self::fields() as $field ) {
 			$type = (string) ( $field['type'] ?? '' );
-			$this->assertContains( $type, array( 'checkbox', 'text', 'select' ), "field {$field['id']} has unknown type {$type}" );
+			$this->assertContains( $type, array( 'checkbox', 'text', 'select', 'mcp_tools', 'mcp_audit' ), "field {$field['id']} has unknown type {$type}" );
 			$this->assertNotSame( '', (string) ( $field['title'] ?? '' ), "field {$field['id']} has no title" );
 
 			if ( 'checkbox' === $type ) {
@@ -64,16 +64,17 @@ final class SettingsScreenTest extends TestCase {
 		}
 	}
 
-	public function test_mcp_destructive_gate_is_present_and_defaults_off(): void {
-		// Guard the destructive-MCP gate: it must exist and default to 'no' (read-only first).
+	public function test_mcp_destructive_tools_are_opt_in_one_by_one(): void {
+		// Guard the destructive-MCP gate: a per-tool list that starts empty (read-only first).
 		$found = null;
 		foreach ( self::fields() as $field ) {
-			if ( 'moksafocou_mcp_expose_destructive' === ( $field['id'] ?? '' ) ) {
+			if ( 'moksafocou_mcp_destructive_tools' === ( $field['id'] ?? '' ) ) {
 				$found = $field;
 				break;
 			}
 		}
-		$this->assertNotNull( $found, 'destructive-MCP gate missing from settings' );
-		$this->assertSame( 'no', $found['default'] );
+		$this->assertNotNull( $found, 'destructive-MCP tool list missing from settings' );
+		$this->assertSame( 'mcp_tools', $found['type'] );
+		$this->assertSame( array(), $found['default'] );
 	}
 }
