@@ -59,6 +59,18 @@ final class Menu {
 	}
 
 	/**
+	 * WP 7.2 draws admin menu icons as line SVGs and only maps the dashicons it has a replacement
+	 * for; `dashicons-tickets-alt` has none and would stay the one filled font icon. Use the core
+	 * "receipt" icon there (WooCommerce already uses "tag" for Products); older versions keep the dashicon.
+	 */
+	private static function menu_icon(): string {
+		if ( class_exists( 'WP_Icons_Registry' ) && method_exists( 'WP_Icons_Registry', 'get_admin_icon_name_for_dashicon' ) ) {
+			return 'core-admin/receipt';
+		}
+		return 'dashicons-tickets-alt';
+	}
+
+	/**
 	 * admin_menu: register the top-level page and every submenu with explicit
 	 * positions so the order is deterministic regardless of core timing.
 	 */
@@ -69,7 +81,7 @@ final class Menu {
 			self::CAP,
 			self::TOPLEVEL,
 			'',
-			'dashicons-tickets-alt',
+			self::menu_icon(),
 			55.6
 		);
 

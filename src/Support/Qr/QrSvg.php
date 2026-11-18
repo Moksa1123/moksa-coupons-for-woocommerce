@@ -16,9 +16,10 @@ defined( 'ABSPATH' ) || exit;
  *
  * No viewBox: wp_kses() lower-cases attribute names, and a standalone SVG parser ignores
  * "viewbox", which used to break the coordinate system. Coordinates are therefore written in pixels
- * (module × scale) with fixed width/height, which renders identically. Empty elements are written
- * as " />", the form wp_kses() normalises to, so escaping leaves the markup byte-for-byte unchanged. A 4-module quiet zone is
- * included (scanners need it) and dark modules are one crisp-edged <path>.
+ * (module × scale) with fixed width/height; the admin preview adds a viewBox in the browser before
+ * shrinking it. Empty elements are written as " />", the form wp_kses() normalises to, so escaping
+ * keeps the same elements and attribute values (WP 7.2's kses may reorder attributes, which does
+ * not change the image). A 4-module quiet zone is included (scanners need it) and dark modules are one crisp-edged <path>.
  */
 final class QrSvg {
 

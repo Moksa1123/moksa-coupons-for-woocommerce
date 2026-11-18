@@ -72,6 +72,9 @@ final class UrlHandler {
 				'feeds'      => false,
 			)
 		);
+		// WP 7.2 adds /random, which picks posts from "randomable" types. Coupons must never be
+		// reached that way (older WordPress ignores the unknown argument).
+		$args['randomable'] = false;
 		return $args;
 	}
 

@@ -65,13 +65,13 @@ final class OptionRegistry {
 	 * @return array<int,string>
 	 */
 	public static function names(): array {
-		$names = get_option( self::OPTION, array() );
+		$names = FreshOption::get( self::OPTION, array() );
 		return is_array( $names ) ? array_values( array_filter( $names, 'is_string' ) ) : array();
 	}
 
 	/** One-time back-fill for sites that had options before the registry existed. */
 	public static function maybe_backfill(): void {
-		if ( 'yes' === get_option( self::BACKFILLED ) ) {
+		if ( 'yes' === FreshOption::get( self::BACKFILLED ) ) {
 			return;
 		}
 		$found = array();

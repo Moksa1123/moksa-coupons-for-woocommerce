@@ -75,7 +75,7 @@ final class CouponIndex {
 
 	/** Run one rebuild step from an admin request while the first build is still going. */
 	public static function step_if_building(): void {
-		if ( ! self::ready() && is_array( get_option( self::PROGRESS_OPTION, null ) ) && current_user_can( 'edit_shop_coupons' ) ) {
+		if ( ! self::ready() && is_array( FreshOption::get( self::PROGRESS_OPTION, null ) ) && current_user_can( 'edit_shop_coupons' ) ) {
 			self::step();
 		}
 	}
@@ -225,7 +225,7 @@ final class CouponIndex {
 
 	/** Has the first full build finished (for the current layout)? */
 	public static function ready(): bool {
-		return self::FORMAT === (int) get_option( self::READY_OPTION, 0 );
+		return self::FORMAT === (int) FreshOption::get( self::READY_OPTION, 0 );
 	}
 
 	/* ---------------- writes ---------------- */
@@ -276,7 +276,7 @@ final class CouponIndex {
 
 	/** Start a background rebuild (no-op while one is already running). */
 	public static function start_rebuild(): void {
-		$progress = get_option( self::PROGRESS_OPTION, null );
+		$progress = FreshOption::get( self::PROGRESS_OPTION, null );
 		if ( is_array( $progress ) && ( time() - (int) ( $progress['touched'] ?? 0 ) ) < HOUR_IN_SECONDS ) {
 			return;
 		}
@@ -288,12 +288,14 @@ final class CouponIndex {
 			),
 			false
 		);
+		// Store "not ready" as a real row, so ready() never takes the "missing" path while building.
+		FreshOption::add( self::READY_OPTION, 0 );
 		self::schedule_step();
 	}
 
 	/** One background step: a few pages of coupons, then schedule the next step or finish. */
 	public static function step(): void {
-		$progress = get_option( self::PROGRESS_OPTION, null );
+		$progress = FreshOption::get( self::PROGRESS_OPTION, null );
 		if ( ! is_array( $progress ) ) {
 			return;
 		}
@@ -321,7 +323,7 @@ final class CouponIndex {
 
 	/** Daily cron: start the weekly full re-check (and the first build if it never ran). */
 	public static function weekly_check(): void {
-		$last = (int) get_option( self::LAST_FULL_OPTION, 0 );
+		$last = (int) FreshOption::get( self::LAST_FULL_OPTION, 0 );
 		if ( ! self::ready() || ( time() - $last ) >= WEEK_IN_SECONDS ) {
 			self::start_rebuild();
 		}
@@ -458,13 +460,8 @@ final class CouponIndex {
 		if ( is_array( $map ) ) {
 			return $map;
 		}
-		$lock = (int) get_option( self::SCAN_LOCK, 0 );
-		if ( $lock > 0 && ( time() - $lock ) < MINUTE_IN_SECONDS ) {
-			return array();
-		}
-		delete_option( self::SCAN_LOCK );
-		if ( ! add_option( self::SCAN_LOCK, time(), '', false ) ) {
-			return array(); // Another request just took the lock.
+		if ( ! self::take_scan_lock() ) {
+			return array(); // Another request is scanning.
 		}
 		$map = array();
 		foreach ( self::walk( null ) as $name => $ids ) {
@@ -473,8 +470,33 @@ final class CouponIndex {
 			}
 		}
 		set_transient( self::SCAN_MAP, $map, 5 * MINUTE_IN_SECONDS );
-		delete_option( self::SCAN_LOCK );
+		self::release_scan_lock();
 		return $map;
+	}
+
+	/**
+	 * One scanner at a time. With a persistent object cache, wp_cache_add() is atomic (Redis /
+	 * Memcached "add if absent"), so exactly one request wins. Without one, fall back to an option:
+	 * not strictly atomic, but there is also no shared notoptions cache to go stale.
+	 */
+	private static function take_scan_lock(): bool {
+		if ( wp_using_ext_object_cache() ) {
+			return wp_cache_add( self::SCAN_LOCK, time(), 'moksafocou', MINUTE_IN_SECONDS );
+		}
+		$lock = (int) get_option( self::SCAN_LOCK, 0 );
+		if ( $lock > 0 && ( time() - $lock ) < MINUTE_IN_SECONDS ) {
+			return false;
+		}
+		delete_option( self::SCAN_LOCK );
+		return add_option( self::SCAN_LOCK, time(), '', false );
+	}
+
+	private static function release_scan_lock(): void {
+		if ( wp_using_ext_object_cache() ) {
+			wp_cache_delete( self::SCAN_LOCK, 'moksafocou' );
+			return;
+		}
+		delete_option( self::SCAN_LOCK );
 	}
 
 	/**

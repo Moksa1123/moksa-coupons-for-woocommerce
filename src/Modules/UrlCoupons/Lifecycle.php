@@ -70,7 +70,7 @@ final class Lifecycle {
 	public static function maybe_flush(): void {
 		$scheduled = (bool) get_transient( self::FLUSH_TRANSIENT );
 		$stale     = ShareService::module_enabled()
-			&& (string) get_option( self::VERSION_OPTION, '' ) !== MOKSAFOCOU_VERSION;
+			&& (string) \Moksafocou\Support\FreshOption::get( self::VERSION_OPTION, '' ) !== MOKSAFOCOU_VERSION;
 
 		if ( ! $scheduled && ! $stale ) {
 			return;

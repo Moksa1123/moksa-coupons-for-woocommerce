@@ -6,7 +6,7 @@ Tested up to: 7.1
 Requires PHP: 8.2
 WC requires at least: 10.7
 WC tested up to: 11.3
-Stable tag: 1.3.0
+Stable tag: 1.3.1
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -95,6 +95,13 @@ This plugin can connect to a third-party AI provider, but only when you, the sit
 
 == Changelog ==
 
+= 1.3.1 =
+* Fix: the shared Moksa AI component no longer changes other plugins' abilities. It used to rewrite every ability's input and output schema on the site, which broke tools such as Novamira's execute-ability ("output[data] is not of type string"). Now only the input schema of Moksa's own abilities is adjusted for AI models.
+* Fix: on sites with a persistent object cache (Redis/Memcached), one-time tasks (upgrade, coupon index build, rewrite-rule flush) no longer repeat on every request, and first activation no longer re-enables a module the owner had switched off.
+* Compatibility: WordPress 7.2. Line-style admin menu icon; coupons are never picked by the new /random URL.
+* Fix: the QR code preview on the coupon edit screen showed only part of the code.
+* Fix: the coupon cards block settings in the editor are now translated.
+
 = 1.3.0 =
 * New: one MCP endpoint for the whole site, /wp-json/moksa/v1/mcp, shared by every Moksa plugin you have switched MCP on in. The old /wp-json/moksafocou/v1/mcp keeps working and lists coupon tools only.
 * New: over MCP, tools that change coupons are switched on one by one in Settings → AI and external openness. Each needs its own permission (for example "delete coupons" to delete), and each runs in two steps: the change is proposed with a summary first, and only carried out when the AI tool confirms it with a one-time token (valid for 10 minutes, usable once). The old all-or-nothing "Allow external MCP to make changes" switch is gone; after updating, every change tool starts switched off.
@@ -169,8 +176,11 @@ Quality:
 
 == Upgrade Notice ==
 
+= 1.3.1 =
+Fixes a conflict where the shared Moksa AI component changed other plugins' AI abilities, and repeated background tasks on sites with Redis or Memcached.
+
 = 1.3.0 =
-New single MCP endpoint for all Moksa plugins. Tools that change coupons over MCP are now switched on one by one and confirmed in two steps; they all start switched off after updating, so re-enable the ones you need under Settings → AI and external openness. If your site uses a page cache, purge it after updating so the public coupon list is refreshed.
+One MCP endpoint for all Moksa plugins. MCP tools that change coupons are now switched on one by one (all off after updating; re-enable under Settings → AI and external openness). Purge any page cache after updating.
 
 = 1.2.1 =
 Auto-applied coupons that have been drafted or deleted no longer linger in the block cart. The tier upgrade prompt and the tier on the coupon line can be switched off separately.

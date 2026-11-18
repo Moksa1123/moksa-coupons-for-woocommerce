@@ -18,7 +18,7 @@ final class ReportService {
 
 	/** Cache-buster shared by overview()/by_campaign(); bumped on flush() so all variants lapse at once. */
 	private static function ver(): int {
-		return (int) get_option( self::VER_OPTION, 0 );
+		return (int) \Moksafocou\Support\FreshOption::get( self::VER_OPTION, 0 );
 	}
 
 	/**

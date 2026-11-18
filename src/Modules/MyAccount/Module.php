@@ -46,7 +46,7 @@ final class Module extends AbstractModule {
 	}
 
 	public static function maybe_flush(): void {
-		if ( get_option( self::REWRITE_FLAG ) === MOKSAFOCOU_VERSION ) {
+		if ( \Moksafocou\Support\FreshOption::get( self::REWRITE_FLAG ) === MOKSAFOCOU_VERSION ) {
 			return;
 		}
 		flush_rewrite_rules( false );

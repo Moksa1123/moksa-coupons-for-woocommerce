@@ -56,6 +56,11 @@
 		holder.innerHTML = svgMarkup;
 		var svg = holder.querySelector( 'svg' );
 		if ( svg ) {
+			// The server sends pixel width/height and no viewBox (see QrSvg); without one, shrinking
+			// the box crops the code instead of scaling it, so add it here before resizing.
+			if ( ! svg.getAttribute( 'viewBox' ) && svg.getAttribute( 'width' ) && svg.getAttribute( 'height' ) ) {
+				svg.setAttribute( 'viewBox', '0 0 ' + svg.getAttribute( 'width' ) + ' ' + svg.getAttribute( 'height' ) );
+			}
 			svg.style.width = '180px';
 			svg.style.height = '180px';
 		}

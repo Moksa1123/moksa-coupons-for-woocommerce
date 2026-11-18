@@ -33,7 +33,7 @@ final class Activation {
 	);
 
 	public static function on_activate(): void {
-		if ( 'yes' === get_option( self::SENTINEL ) ) {
+		if ( 'yes' === FreshOption::get( self::SENTINEL ) ) {
 			return;
 		}
 
@@ -46,7 +46,7 @@ final class Activation {
 		foreach ( $defaults as $key ) {
 			if ( is_string( $key ) && '' !== $key ) {
 				// add_option is a no-op when the option already exists → respects a prior choice.
-				add_option( 'moksafocou_' . $key . '_enabled', 'yes' );
+				FreshOption::add( 'moksafocou_' . $key . '_enabled', 'yes', true );
 			}
 		}
 

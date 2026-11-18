@@ -76,7 +76,7 @@ final class CardsCache {
 
 	/** Bump the version → every cached limit-variant is abandoned at once (lazy expiry). */
 	public static function flush(): void {
-		$ver = (int) get_option( self::VER_OPTION, 0 );
+		$ver = (int) \Moksafocou\Support\FreshOption::get( self::VER_OPTION, 0 );
 		update_option( self::VER_OPTION, $ver + 1, false );
 		self::$version = $ver + 1;
 	}
@@ -122,7 +122,7 @@ final class CardsCache {
 
 	private static function key( int $limit ): string {
 		if ( null === self::$version ) {
-			self::$version = (int) get_option( self::VER_OPTION, 0 );
+			self::$version = (int) \Moksafocou\Support\FreshOption::get( self::VER_OPTION, 0 );
 		}
 		return self::PREFIX . self::$version . '_' . $limit;
 	}

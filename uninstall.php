@@ -13,7 +13,7 @@ declare( strict_types=1 );
 defined( 'WP_UNINSTALL_PLUGIN' ) || exit;
 
 // uninstall.php runs without the plugin's autoloader: load the few classes used here directly.
-foreach ( array( 'Support/OptionRegistry.php', 'Support/PersonalCoupon.php', 'Coupon/Meta/Keys.php', 'Support/Cron.php', 'Support/CouponIndex.php' ) as $moksafocou_file ) {
+foreach ( array( 'Support/FreshOption.php', 'Support/OptionRegistry.php', 'Support/PersonalCoupon.php', 'Coupon/Meta/Keys.php', 'Support/Cron.php', 'Support/CouponIndex.php' ) as $moksafocou_file ) {
 	if ( is_readable( __DIR__ . '/src/' . $moksafocou_file ) ) {
 		require_once __DIR__ . '/src/' . $moksafocou_file;
 	}

@@ -13,6 +13,11 @@ defined( 'ABSPATH' ) || exit;
  * mechanics) and locking it to that customer: unique code, email restriction, relative expiry, and
  * the owner stamp that makes it show up in their 'My coupons' page. Shared by every "give this
  * customer a coupon" flow — remarketing, referral rewards, birthday coupons.
+ *
+ * External dependency: moksa-points. Its "redeem points for a coupon" calls
+ * \Moksafocou\Support\PersonalCoupon::issue( int, string, int, string, int ) directly (detected with
+ * class_exists). Do not rename the class or the method or change its parameters — the contract is in
+ * platform-plan/integration-contract.md §2; tell the dispatcher session first so points can follow.
  */
 final class PersonalCoupon {
 

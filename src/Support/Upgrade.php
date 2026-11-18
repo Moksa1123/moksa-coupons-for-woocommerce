@@ -21,7 +21,7 @@ final class Upgrade {
 	private const OPTION = 'moksafocou_db_version';
 
 	public static function maybe_run(): void {
-		if ( MOKSAFOCOU_VERSION === (string) get_option( self::OPTION, '' ) ) {
+		if ( MOKSAFOCOU_VERSION === (string) FreshOption::get( self::OPTION, '' ) ) {
 			return;
 		}
 

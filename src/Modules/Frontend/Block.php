@@ -42,9 +42,10 @@ final class Block {
 			$ver,
 			true
 		);
-		// Wire just-in-time translations for the editor script's wp.i18n.__() strings.
+		// Editor script strings: the bundled languages/*.json (scripts/make-json.py) first, then the
+		// language packs from translate.wordpress.org.
 		if ( function_exists( 'wp_set_script_translations' ) ) {
-			wp_set_script_translations( 'moksafocou-coupon-cards-editor', 'moksa-coupons-for-woocommerce' );
+			wp_set_script_translations( 'moksafocou-coupon-cards-editor', 'moksa-coupons-for-woocommerce', \MOKSAFOCOU_PLUGIN_DIR . 'languages' );
 		}
 		register_block_type( $dir, array( 'render_callback' => array( self::class, 'render' ) ) );
 	}

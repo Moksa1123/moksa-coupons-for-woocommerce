@@ -1,0 +1,1 @@
+{"domain":"messages","locale_data":{"messages":{"":{"domain":"messages","lang":"zh_TW","plural-forms":"nplurals=1; plural=0;"},"Coupon cards (front-end display)":["優惠券卡片(前台顯示)"],"Maximum number to display":["最多顯示張數"],"Settings":["設定"]}},"source":"src/Modules/Frontend/blocks/coupon-cards/index.js"}

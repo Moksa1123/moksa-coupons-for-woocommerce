@@ -15,6 +15,9 @@ declare( strict_types=1 );
 function mcp_stub_reset(): void {
 	$GLOBALS['__mcp'] = array(
 		'options'    => array(),
+		'notoptions' => array(),
+		'ext_cache'  => true,
+		'cache'      => array(),
 		'transients' => array(),
 		'filters'    => array(),
 		'user'       => 0,
@@ -24,9 +27,66 @@ function mcp_stub_reset(): void {
 }
 mcp_stub_reset();
 
+// 'notoptions' models core's shared "this option does not exist" cache: a name listed there reads as
+// missing even when it is stored, and add_option() then skips its existence check (as core does).
 if ( ! function_exists( 'get_option' ) ) {
 	function get_option( string $name, $default = false ) {
+		if ( isset( $GLOBALS['__mcp']['notoptions'][ $name ] ) ) {
+			return $default;
+		}
 		return array_key_exists( $name, $GLOBALS['__mcp']['options'] ) ? $GLOBALS['__mcp']['options'][ $name ] : $default;
+	}
+}
+if ( ! function_exists( 'add_option' ) ) {
+	function add_option( string $name, $value = '', $deprecated = '', $autoload = null ): bool {
+		if ( ! isset( $GLOBALS['__mcp']['notoptions'][ $name ] ) && array_key_exists( $name, $GLOBALS['__mcp']['options'] ) ) {
+			return false;
+		}
+		unset( $GLOBALS['__mcp']['notoptions'][ $name ] );
+		$GLOBALS['__mcp']['options'][ $name ] = $value;
+		return true;
+	}
+}
+if ( ! function_exists( 'wp_using_ext_object_cache' ) ) {
+	function wp_using_ext_object_cache( $using = null ): bool {
+		return (bool) $GLOBALS['__mcp']['ext_cache'];
+	}
+}
+if ( ! function_exists( 'wp_cache_get' ) ) {
+	function wp_cache_get( $key, $group = '' ) {
+		if ( 'notoptions' === $key && 'options' === $group ) {
+			return $GLOBALS['__mcp']['notoptions'];
+		}
+		return $GLOBALS['__mcp']['cache'][ $group ][ $key ] ?? false;
+	}
+}
+if ( ! function_exists( 'wp_cache_set' ) ) {
+	function wp_cache_set( $key, $data, $group = '', $expire = 0 ): bool {
+		if ( 'notoptions' === $key && 'options' === $group ) {
+			$GLOBALS['__mcp']['notoptions'] = (array) $data;
+			return true;
+		}
+		$GLOBALS['__mcp']['cache'][ $group ][ $key ] = $data;
+		return true;
+	}
+}
+if ( ! function_exists( 'wp_cache_add' ) ) {
+	function wp_cache_add( $key, $data, $group = '', $expire = 0 ): bool {
+		if ( isset( $GLOBALS['__mcp']['cache'][ $group ][ $key ] ) ) {
+			return false;
+		}
+		$GLOBALS['__mcp']['cache'][ $group ][ $key ] = $data;
+		return true;
+	}
+}
+if ( ! function_exists( 'wp_cache_delete' ) ) {
+	function wp_cache_delete( $key, $group = '' ): bool {
+		if ( 'notoptions' === $key && 'options' === $group ) {
+			$GLOBALS['__mcp']['notoptions'] = array();
+			return true;
+		}
+		unset( $GLOBALS['__mcp']['cache'][ $group ][ $key ] );
+		return true;
 	}
 }
 if ( ! function_exists( 'update_option' ) ) {
@@ -201,3 +261,8 @@ final class McpFakeAbility {
 }
 
 // phpcs:enable
+if ( ! function_exists( 'maybe_serialize' ) ) {
+	function maybe_serialize( $data ) {
+		return is_array( $data ) || is_object( $data ) ? serialize( $data ) : $data;
+	}
+}
